@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class MinosBasicServiceController {
 
-     @Value("${version}")
+     @Value("${message}")
      String result;
 
      @RequestMapping("/configInfo")
