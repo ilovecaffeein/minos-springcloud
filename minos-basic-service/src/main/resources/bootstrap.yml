@@ -4,7 +4,7 @@ spring:
   cloud:
     config:
       uri: http://localhost:3333
-      label: master
+      label: main
       profile: minos-config-dev
 eureka:
   client:
