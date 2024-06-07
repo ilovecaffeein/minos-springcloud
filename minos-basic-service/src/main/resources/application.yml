@@ -1,0 +1,23 @@
+server:
+  port: 4444
+spring:
+  application:
+    name: minos-basic-service
+  servlet:
+    context-path: /Cfs2MinosBasicHttpChannel
+  cloud: #Config客户端配置
+    config:
+      label: main
+      name: minos-config-pram
+      profile: pram
+      uri: http://localhost:3333/minosConfigService  #配置中心地址
+      discovery:
+        enabled: true
+        service-id: minos-config-service
+#服务注册到eureka地址
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
