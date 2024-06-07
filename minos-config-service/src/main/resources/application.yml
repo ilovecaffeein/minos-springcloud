@@ -10,7 +10,6 @@ spring:
           uri: https://github.com/ilovecaffeein/minos-springcloud.git
           username: shuaixiaofeng@caxins.com
           password: 6578007Shuai
-          search-paths: config
           default-label: main
 eureka:
   client:
