@@ -1,0 +1,5 @@
+# Created at 2024-06-07T14:39:53.396
+Boot Manifest-JAR contains absolute paths in classpath 'E:\minos-springcloud\minos-springcloud\minos-config-service\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
