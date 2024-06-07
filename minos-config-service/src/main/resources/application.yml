@@ -7,14 +7,16 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/ilovecaffeein/minos-springcloud.git #配置中心地址
+          uri: https://github.com/ilovecaffeein/minos-springcloud.git
           username: shuaixiaofeng@caxins.com
           password: 6578007Shuai
+          search-paths: config
           default-label: main
-#服务注册到eureka地址
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:1111/eureka/
+  instance:
+    prefer-ip-address: true

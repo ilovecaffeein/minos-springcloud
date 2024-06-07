@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: minos-config-service
+  cloud:
+    config:
+      uri: http://localhost:3333
+      label: master
+      profile: minos-config-dev
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
