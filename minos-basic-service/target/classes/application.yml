@@ -1,5 +1,0 @@
-server:
-  port: 4444
-spring:
-  application:
-    name: minos-basic-service
