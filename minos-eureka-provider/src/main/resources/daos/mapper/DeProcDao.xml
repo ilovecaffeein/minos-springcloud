@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.DeProcDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.caxs.minos.domain.DeProc" id="BaseResultMap">
+		<result property="seqNo" column="seq_no" jdbcType="VARCHAR"/>
+		<result property="jobNam" column="job_nam" jdbcType="VARCHAR"/>
+		<result property="execInd" column="exec_ind" jdbcType="VARCHAR"/>
+		<result property="jobFreq" column="job_freq" jdbcType="VARCHAR"/>
+		<result property="jobAbort" column="job_abort" jdbcType="VARCHAR"/>
+		<result property="jobTyp" column="job_typ" jdbcType="VARCHAR"/>
+		<result property="jobExe" column="job_exe" jdbcType="VARCHAR"/>
+		<result property="eodFlag" column="eod_flag" jdbcType="VARCHAR"/>
+		<result property="mutiThread" column="muti_thread" jdbcType="VARCHAR"/>
+		<result property="threadCnt" column="thread_cnt" jdbcType="BIGINT"/>
+		<result property="beanName" column="bean_name" jdbcType="VARCHAR"/>
+		<result property="mainFuncName" column="main_func_name" jdbcType="VARCHAR"/>
+		<result property="branchLevel" column="branch_level" jdbcType="BIGINT"/>
+		<result property="mutiMumber" column="muti_mumber" jdbcType="BIGINT"/>
+		<result property="mutiAbort" column="muti_abort" jdbcType="VARCHAR"/>
+		<result property="jobStop" column="job_stop" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		seq_no,job_nam,exec_ind,job_freq,job_abort,job_typ,job_exe,eod_flag,muti_thread,thread_cnt,bean_name,main_func_name,branch_level,muti_mumber,muti_abort,job_stop
+	</sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.DeProc">
+		select
+		<include refid="Base_Column_List" />
+		from de_proc
+		<where>
+			<if test="seqNo != null">
+				and seq_no = #{seqNo,jdbcType=VARCHAR}
+			</if>
+			<if test="jobNam != null">
+				and job_nam = #{jobNam,jdbcType=VARCHAR}
+			</if>
+			<if test="execInd != null">
+				and exec_ind = #{execInd,jdbcType=VARCHAR}
+			</if>
+			<if test="jobFreq != null">
+				and job_freq = #{jobFreq,jdbcType=VARCHAR}
+			</if>
+			<if test="jobAbort != null">
+				and job_abort = #{jobAbort,jdbcType=VARCHAR}
+			</if>
+			<if test="jobTyp != null">
+				and job_typ = #{jobTyp,jdbcType=VARCHAR}
+			</if>
+			<if test="jobExe != null">
+				and job_exe = #{jobExe,jdbcType=VARCHAR}
+			</if>
+			<if test="eodFlag != null">
+				and eod_flag = #{eodFlag,jdbcType=VARCHAR}
+			</if>
+			<if test="mutiThread != null">
+				and muti_thread = #{mutiThread,jdbcType=VARCHAR}
+			</if>
+			<if test="threadCnt != null">
+				and thread_cnt = #{threadCnt,jdbcType=BIGINT}
+			</if>
+			<if test="beanName != null">
+				and bean_name = #{beanName,jdbcType=VARCHAR}
+			</if>
+			<if test="mainFuncName != null">
+				and main_func_name = #{mainFuncName,jdbcType=VARCHAR}
+			</if>
+			<if test="branchLevel != null">
+				and branch_level = #{branchLevel,jdbcType=BIGINT}
+			</if>
+			<if test="mutiMumber != null">
+				and muti_mumber = #{mutiMumber,jdbcType=BIGINT}
+			</if>
+			<if test="mutiAbort != null">
+				and muti_abort = #{mutiAbort,jdbcType=VARCHAR}
+			</if>
+			<if test="jobStop != null">
+				and job_stop = #{jobStop,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.DeProc" >
+		select
+		<include refid="Base_Column_List" />
+		from de_proc
+		<where>
+			<if test="seqNo != null">
+				and seq_no = #{seqNo,jdbcType=VARCHAR}
+			</if>
+			<if test="jobNam != null">
+				and job_nam = #{jobNam,jdbcType=VARCHAR}
+			</if>
+			<if test="execInd != null">
+				and exec_ind = #{execInd,jdbcType=VARCHAR}
+			</if>
+			<if test="jobFreq != null">
+				and job_freq = #{jobFreq,jdbcType=VARCHAR}
+			</if>
+			<if test="jobAbort != null">
+				and job_abort = #{jobAbort,jdbcType=VARCHAR}
+			</if>
+			<if test="jobTyp != null">
+				and job_typ = #{jobTyp,jdbcType=VARCHAR}
+			</if>
+			<if test="jobExe != null">
+				and job_exe = #{jobExe,jdbcType=VARCHAR}
+			</if>
+			<if test="eodFlag != null">
+				and eod_flag = #{eodFlag,jdbcType=VARCHAR}
+			</if>
+			<if test="mutiThread != null">
+				and muti_thread = #{mutiThread,jdbcType=VARCHAR}
+			</if>
+			<if test="threadCnt != null">
+				and thread_cnt = #{threadCnt,jdbcType=BIGINT}
+			</if>
+			<if test="beanName != null">
+				and bean_name = #{beanName,jdbcType=VARCHAR}
+			</if>
+			<if test="mainFuncName != null">
+				and main_func_name = #{mainFuncName,jdbcType=VARCHAR}
+			</if>
+			<if test="branchLevel != null">
+				and branch_level = #{branchLevel,jdbcType=BIGINT}
+			</if>
+			<if test="mutiMumber != null">
+				and muti_mumber = #{mutiMumber,jdbcType=BIGINT}
+			</if>
+			<if test="mutiAbort != null">
+				and muti_abort = #{mutiAbort,jdbcType=VARCHAR}
+			</if>
+			<if test="jobStop != null">
+				and job_stop = #{jobStop,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.caxs.minos.domain.DeProc">
+		insert into de_proc
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="seqNo != null">
+				seq_no ,
+			</if>
+			<if test="jobNam != null">
+				job_nam ,
+			</if>
+			<if test="execInd != null">
+				exec_ind ,
+			</if>
+			<if test="jobFreq != null">
+				job_freq ,
+			</if>
+			<if test="jobAbort != null">
+				job_abort ,
+			</if>
+			<if test="jobTyp != null">
+				job_typ ,
+			</if>
+			<if test="jobExe != null">
+				job_exe ,
+			</if>
+			<if test="eodFlag != null">
+				eod_flag ,
+			</if>
+			<if test="mutiThread != null">
+				muti_thread ,
+			</if>
+			<if test="threadCnt != null">
+				thread_cnt ,
+			</if>
+			<if test="beanName != null">
+				bean_name ,
+			</if>
+			<if test="mainFuncName != null">
+				main_func_name ,
+			</if>
+			<if test="branchLevel != null">
+				branch_level ,
+			</if>
+			<if test="mutiMumber != null">
+				muti_mumber ,
+			</if>
+			<if test="mutiAbort != null">
+				muti_abort ,
+			</if>
+			<if test="jobStop != null">
+				job_stop ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="seqNo != null">
+				#{seqNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobNam != null">
+				#{jobNam,jdbcType=VARCHAR} ,
+			</if>
+			<if test="execInd != null">
+				#{execInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobFreq != null">
+				#{jobFreq,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobAbort != null">
+				#{jobAbort,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobTyp != null">
+				#{jobTyp,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobExe != null">
+				#{jobExe,jdbcType=VARCHAR} ,
+			</if>
+			<if test="eodFlag != null">
+				#{eodFlag,jdbcType=VARCHAR} ,
+			</if>
+			<if test="mutiThread != null">
+				#{mutiThread,jdbcType=VARCHAR} ,
+			</if>
+			<if test="threadCnt != null">
+				#{threadCnt,jdbcType=BIGINT} ,
+			</if>
+			<if test="beanName != null">
+				#{beanName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="mainFuncName != null">
+				#{mainFuncName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="branchLevel != null">
+				#{branchLevel,jdbcType=BIGINT} ,
+			</if>
+			<if test="mutiMumber != null">
+				#{mutiMumber,jdbcType=BIGINT} ,
+			</if>
+			<if test="mutiAbort != null">
+				#{mutiAbort,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobStop != null">
+				#{jobStop,jdbcType=VARCHAR} ,
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.caxs.minos.domain.DeProc">
+		update de_proc
+		<set>
+			<if test="seqNo != null">
+				seq_no = #{seqNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobNam != null">
+				job_nam = #{jobNam,jdbcType=VARCHAR} ,
+			</if>
+			<if test="execInd != null">
+				exec_ind = #{execInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobFreq != null">
+				job_freq = #{jobFreq,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobAbort != null">
+				job_abort = #{jobAbort,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobTyp != null">
+				job_typ = #{jobTyp,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobExe != null">
+				job_exe = #{jobExe,jdbcType=VARCHAR} ,
+			</if>
+			<if test="eodFlag != null">
+				eod_flag = #{eodFlag,jdbcType=VARCHAR} ,
+			</if>
+			<if test="mutiThread != null">
+				muti_thread = #{mutiThread,jdbcType=VARCHAR} ,
+			</if>
+			<if test="threadCnt != null">
+				thread_cnt = #{threadCnt,jdbcType=BIGINT} ,
+			</if>
+			<if test="beanName != null">
+				bean_name = #{beanName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="mainFuncName != null">
+				main_func_name = #{mainFuncName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="branchLevel != null">
+				branch_level = #{branchLevel,jdbcType=BIGINT} ,
+			</if>
+			<if test="mutiMumber != null">
+				muti_mumber = #{mutiMumber,jdbcType=BIGINT} ,
+			</if>
+			<if test="mutiAbort != null">
+				muti_abort = #{mutiAbort,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobStop != null">
+				job_stop = #{jobStop,jdbcType=VARCHAR} ,
+			</if>
+		</set>
+		where seq_no= #{seqNo}
+	</update>
+	<select id="findAllForRun" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from de_proc
+		where exec_ind=#{execInd,jdbcType=VARCHAR}  and eod_flag=#{eodFlag,jdbcType=VARCHAR}
+		and seq_no not in (select dp.seq_no from de_proc_log dp  where dp.job_sts ='FIN' and dp.prcs_dt =#{prcsDt,jdbcType=VARCHAR})
+		order by seq_no
+	</select>
+	<select id="findAllForRuning" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from de_proc
+		where exec_ind=#{execInd,jdbcType=VARCHAR}  and eod_flag=#{eodFlag,jdbcType=VARCHAR}
+		and seq_no=#{mtdDtlSeq,jdbcType=VARCHAR}
+		and seq_no not in (select dp.seq_no from de_proc_log dp  where dp.job_sts =#{jobSts,jdbcType=VARCHAR}  and  dp.prcs_dt =#{prcsDt,jdbcType=VARCHAR} )
+		order by seq_no asc
+	</select>
+</mapper>

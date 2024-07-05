@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmAcctChgLogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.caxs.minos.domain.LmAcctChgLog" id="BaseResultMap">
+		<result property="txLogSeq" column="tx_log_seq" jdbcType="VARCHAR"/>
+		<result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+		<result property="oldAcctBankCde" column="old_acct_bank_cde" jdbcType="VARCHAR"/>
+		<result property="oldAcctBchCde" column="old_acct_bch_cde" jdbcType="VARCHAR"/>
+		<result property="oldAcctNo" column="old_acct_no" jdbcType="VARCHAR"/>
+		<result property="acctBankCde" column="acct_bank_cde" jdbcType="VARCHAR"/>
+		<result property="acctBchCde" column="acct_bch_cde" jdbcType="VARCHAR"/>
+		<result property="acctNo" column="acct_no" jdbcType="VARCHAR"/>
+		<result property="acctName" column="acct_name" jdbcType="VARCHAR"/>
+		<result property="acctExpiryDt" column="acct_expiry_dt" jdbcType="VARCHAR"/>
+		<result property="acctRmk" column="acct_rmk" jdbcType="VARCHAR"/>
+		<result property="acctCardNo" column="acct_card_no" jdbcType="VARCHAR"/>
+		<result property="acctNttInd" column="acct_ntt_ind" jdbcType="VARCHAR"/>
+		<result property="acctTyp" column="acct_typ" jdbcType="VARCHAR"/>
+		<result property="acctCde" column="acct_cde" jdbcType="VARCHAR"/>
+		<result property="acctCcyCde" column="acct_ccy_cde" jdbcType="VARCHAR"/>
+		<result property="acctIdType" column="acct_id_type" jdbcType="VARCHAR"/>
+		<result property="acctIdNo" column="acct_id_no" jdbcType="VARCHAR"/>
+		<result property="acctIssCtry" column="acct_iss_ctry" jdbcType="VARCHAR"/>
+		<result property="acctLdgrCde" column="acct_ldgr_cde" jdbcType="VARCHAR"/>
+		<result property="acctPriNo" column="acct_pri_no" jdbcType="NUMERIC"/>
+		<result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+		<result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+		<result property="bindMobile" column="bind_mobile" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		tx_log_seq,loan_no,old_acct_bank_cde,old_acct_bch_cde,old_acct_no,acct_bank_cde,acct_bch_cde,acct_no,acct_name,acct_expiry_dt,acct_rmk,acct_card_no,acct_ntt_ind,acct_typ,acct_cde,acct_ccy_cde,acct_id_type,acct_id_no,acct_iss_ctry,acct_ldgr_cde,acct_pri_no,last_chg_usr,last_chg_dt,bind_mobile
+	</sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmAcctChgLog">
+		select
+		<include refid="Base_Column_List" />
+		from lm_acct_chg_log
+		<where>
+			<if test="txLogSeq != null">
+				and tx_log_seq = #{txLogSeq,jdbcType=VARCHAR}
+			</if>
+			<if test="loanNo != null">
+				and loan_no = #{loanNo,jdbcType=VARCHAR}
+			</if>
+			<if test="oldAcctBankCde != null">
+				and old_acct_bank_cde = #{oldAcctBankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="oldAcctBchCde != null">
+				and old_acct_bch_cde = #{oldAcctBchCde,jdbcType=VARCHAR}
+			</if>
+			<if test="oldAcctNo != null">
+				and old_acct_no = #{oldAcctNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctBankCde != null">
+				and acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctBchCde != null">
+				and acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctNo != null">
+				and acct_no = #{acctNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctName != null">
+				and acct_name = #{acctName,jdbcType=VARCHAR}
+			</if>
+			<if test="acctExpiryDt != null">
+				and acct_expiry_dt = #{acctExpiryDt,jdbcType=VARCHAR}
+			</if>
+			<if test="acctRmk != null">
+				and acct_rmk = #{acctRmk,jdbcType=VARCHAR}
+			</if>
+			<if test="acctCardNo != null">
+				and acct_card_no = #{acctCardNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctNttInd != null">
+				and acct_ntt_ind = #{acctNttInd,jdbcType=VARCHAR}
+			</if>
+			<if test="acctTyp != null">
+				and acct_typ = #{acctTyp,jdbcType=VARCHAR}
+			</if>
+			<if test="acctCde != null">
+				and acct_cde = #{acctCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctCcyCde != null">
+				and acct_ccy_cde = #{acctCcyCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctIdType != null">
+				and acct_id_type = #{acctIdType,jdbcType=VARCHAR}
+			</if>
+			<if test="acctIdNo != null">
+				and acct_id_no = #{acctIdNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctIssCtry != null">
+				and acct_iss_ctry = #{acctIssCtry,jdbcType=VARCHAR}
+			</if>
+			<if test="acctLdgrCde != null">
+				and acct_ldgr_cde = #{acctLdgrCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctPriNo != null">
+				and acct_pri_no = #{acctPriNo,jdbcType=NUMERIC}
+			</if>
+			<if test="lastChgUsr != null">
+				and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+			</if>
+			<if test="lastChgDt != null">
+				and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+			</if>
+			<if test="bindMobile != null">
+				and bind_mobile = #{bindMobile,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmAcctChgLog" >
+		select
+		<include refid="Base_Column_List" />
+		from lm_acct_chg_log
+		<where>
+			<if test="txLogSeq != null">
+				and tx_log_seq = #{txLogSeq,jdbcType=VARCHAR}
+			</if>
+			<if test="loanNo != null">
+				and loan_no = #{loanNo,jdbcType=VARCHAR}
+			</if>
+			<if test="oldAcctBankCde != null">
+				and old_acct_bank_cde = #{oldAcctBankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="oldAcctBchCde != null">
+				and old_acct_bch_cde = #{oldAcctBchCde,jdbcType=VARCHAR}
+			</if>
+			<if test="oldAcctNo != null">
+				and old_acct_no = #{oldAcctNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctBankCde != null">
+				and acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctBchCde != null">
+				and acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctNo != null">
+				and acct_no = #{acctNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctName != null">
+				and acct_name = #{acctName,jdbcType=VARCHAR}
+			</if>
+			<if test="acctExpiryDt != null">
+				and acct_expiry_dt = #{acctExpiryDt,jdbcType=VARCHAR}
+			</if>
+			<if test="acctRmk != null">
+				and acct_rmk = #{acctRmk,jdbcType=VARCHAR}
+			</if>
+			<if test="acctCardNo != null">
+				and acct_card_no = #{acctCardNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctNttInd != null">
+				and acct_ntt_ind = #{acctNttInd,jdbcType=VARCHAR}
+			</if>
+			<if test="acctTyp != null">
+				and acct_typ = #{acctTyp,jdbcType=VARCHAR}
+			</if>
+			<if test="acctCde != null">
+				and acct_cde = #{acctCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctCcyCde != null">
+				and acct_ccy_cde = #{acctCcyCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctIdType != null">
+				and acct_id_type = #{acctIdType,jdbcType=VARCHAR}
+			</if>
+			<if test="acctIdNo != null">
+				and acct_id_no = #{acctIdNo,jdbcType=VARCHAR}
+			</if>
+			<if test="acctIssCtry != null">
+				and acct_iss_ctry = #{acctIssCtry,jdbcType=VARCHAR}
+			</if>
+			<if test="acctLdgrCde != null">
+				and acct_ldgr_cde = #{acctLdgrCde,jdbcType=VARCHAR}
+			</if>
+			<if test="acctPriNo != null">
+				and acct_pri_no = #{acctPriNo,jdbcType=NUMERIC}
+			</if>
+			<if test="lastChgUsr != null">
+				and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+			</if>
+			<if test="lastChgDt != null">
+				and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+			</if>
+			<if test="bindMobile != null">
+				and bind_mobile = #{bindMobile,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmAcctChgLog">
+		insert into lm_acct_chg_log
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="txLogSeq != null">
+				tx_log_seq ,
+			</if>
+			<if test="loanNo != null">
+				loan_no ,
+			</if>
+			<if test="oldAcctBankCde != null">
+				old_acct_bank_cde ,
+			</if>
+			<if test="oldAcctBchCde != null">
+				old_acct_bch_cde ,
+			</if>
+			<if test="oldAcctNo != null">
+				old_acct_no ,
+			</if>
+			<if test="acctBankCde != null">
+				acct_bank_cde ,
+			</if>
+			<if test="acctBchCde != null">
+				acct_bch_cde ,
+			</if>
+			<if test="acctNo != null">
+				acct_no ,
+			</if>
+			<if test="acctName != null">
+				acct_name ,
+			</if>
+			<if test="acctExpiryDt != null">
+				acct_expiry_dt ,
+			</if>
+			<if test="acctRmk != null">
+				acct_rmk ,
+			</if>
+			<if test="acctCardNo != null">
+				acct_card_no ,
+			</if>
+			<if test="acctNttInd != null">
+				acct_ntt_ind ,
+			</if>
+			<if test="acctTyp != null">
+				acct_typ ,
+			</if>
+			<if test="acctCde != null">
+				acct_cde ,
+			</if>
+			<if test="acctCcyCde != null">
+				acct_ccy_cde ,
+			</if>
+			<if test="acctIdType != null">
+				acct_id_type ,
+			</if>
+			<if test="acctIdNo != null">
+				acct_id_no ,
+			</if>
+			<if test="acctIssCtry != null">
+				acct_iss_ctry ,
+			</if>
+			<if test="acctLdgrCde != null">
+				acct_ldgr_cde ,
+			</if>
+			<if test="acctPriNo != null">
+				acct_pri_no ,
+			</if>
+			<if test="lastChgUsr != null">
+				last_chg_usr ,
+			</if>
+			<if test="lastChgDt != null">
+				last_chg_dt ,
+			</if>
+			<if test="bindMobile != null">
+				bind_mobile ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="txLogSeq != null">
+				#{txLogSeq,jdbcType=VARCHAR} ,
+			</if>
+			<if test="loanNo != null">
+				#{loanNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="oldAcctBankCde != null">
+				#{oldAcctBankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="oldAcctBchCde != null">
+				#{oldAcctBchCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="oldAcctNo != null">
+				#{oldAcctNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctBankCde != null">
+				#{acctBankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctBchCde != null">
+				#{acctBchCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctNo != null">
+				#{acctNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctName != null">
+				#{acctName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctExpiryDt != null">
+				#{acctExpiryDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctRmk != null">
+				#{acctRmk,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctCardNo != null">
+				#{acctCardNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctNttInd != null">
+				#{acctNttInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctTyp != null">
+				#{acctTyp,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctCde != null">
+				#{acctCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctCcyCde != null">
+				#{acctCcyCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctIdType != null">
+				#{acctIdType,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctIdNo != null">
+				#{acctIdNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctIssCtry != null">
+				#{acctIssCtry,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctLdgrCde != null">
+				#{acctLdgrCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctPriNo != null">
+				#{acctPriNo,jdbcType=NUMERIC} ,
+			</if>
+			<if test="lastChgUsr != null">
+				#{lastChgUsr,jdbcType=VARCHAR} ,
+			</if>
+			<if test="lastChgDt != null">
+				#{lastChgDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="bindMobile != null">
+				#{bindMobile,jdbcType=VARCHAR} ,
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.caxs.minos.domain.LmAcctChgLog">
+		update lm_acct_chg_log
+		<set>
+			<if test="txLogSeq != null">
+				tx_log_seq = #{txLogSeq,jdbcType=VARCHAR} ,
+			</if>
+			<if test="loanNo != null">
+				loan_no = #{loanNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="oldAcctBankCde != null">
+				old_acct_bank_cde = #{oldAcctBankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="oldAcctBchCde != null">
+				old_acct_bch_cde = #{oldAcctBchCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="oldAcctNo != null">
+				old_acct_no = #{oldAcctNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctBankCde != null">
+				acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctBchCde != null">
+				acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctNo != null">
+				acct_no = #{acctNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctName != null">
+				acct_name = #{acctName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctExpiryDt != null">
+				acct_expiry_dt = #{acctExpiryDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctRmk != null">
+				acct_rmk = #{acctRmk,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctCardNo != null">
+				acct_card_no = #{acctCardNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctNttInd != null">
+				acct_ntt_ind = #{acctNttInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctTyp != null">
+				acct_typ = #{acctTyp,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctCde != null">
+				acct_cde = #{acctCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctCcyCde != null">
+				acct_ccy_cde = #{acctCcyCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctIdType != null">
+				acct_id_type = #{acctIdType,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctIdNo != null">
+				acct_id_no = #{acctIdNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctIssCtry != null">
+				acct_iss_ctry = #{acctIssCtry,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctLdgrCde != null">
+				acct_ldgr_cde = #{acctLdgrCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="acctPriNo != null">
+				acct_pri_no = #{acctPriNo,jdbcType=NUMERIC} ,
+			</if>
+			<if test="lastChgUsr != null">
+				last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+			</if>
+			<if test="lastChgDt != null">
+				last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="bindMobile != null">
+				bind_mobile = #{bindMobile,jdbcType=VARCHAR} ,
+			</if>
+		</set>
+		where tx_log_seq= #{txLogSeq}
+	</update>
+</mapper>

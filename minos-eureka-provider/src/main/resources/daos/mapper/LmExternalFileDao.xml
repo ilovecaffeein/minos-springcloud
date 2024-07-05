@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caxs.minos.dao.LmExternalFileDao">
+  <resultMap id="BaseResultMap" type="com.caxs.minos.domain.LmExternalFile">
+    <id column="out_chn" jdbcType="VARCHAR" property="outChn" />
+    <id column="out_desc" jdbcType="VARCHAR" property="outDesc" />
+    <result column="crt_dt" jdbcType="VARCHAR" property="crtDt" />
+    <result column="bank_cde" jdbcType="VARCHAR" property="bankCde" />
+    <result column="lmpmshd_file_form" jdbcType="VARCHAR" property="lmpmshdFileForm" />
+    <result column="lmpmshd_file_cont" jdbcType="BIGINT" property="lmpmshdFileCont" />
+    <result column="lmpmshd_file_ind" jdbcType="VARCHAR" property="lmpmshdFileInd" />
+    <result column="repay_file_form" jdbcType="VARCHAR" property="repayFileForm" />
+    <result column="repay_file_cont" jdbcType="BIGINT" property="repayFileCont" />
+    <result column="repay_file_ind" jdbcType="VARCHAR" property="repayFileInd" />
+    <result column="file_ip" jdbcType="VARCHAR" property="fileIp" />
+    <result column="file_port" jdbcType="VARCHAR" property="filePort" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_passwd" jdbcType="VARCHAR" property="userPasswd" />
+    <result column="file_path" jdbcType="VARCHAR" property="filePath" />
+    <result column="retrun_file_path" jdbcType="VARCHAR" property="retrunFilePath" />
+    <result column="data_sts" jdbcType="VARCHAR" property="dataSts" />
+    <result column="down_ind" jdbcType="VARCHAR" property="downInd" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from lm_external_file
+    where out_chn = #{outChn,jdbcType=VARCHAR}
+      and out_desc = #{outDesc,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.caxs.minos.domain.LmExternalFile">
+    insert into lm_external_file (out_chn, out_desc, crt_dt, 
+      bank_cde, lmpmshd_file_form, lmpmshd_file_cont, 
+      lmpmshd_file_ind, repay_file_form, repay_file_cont, 
+      repay_file_ind, file_ip, file_port, 
+      user_name, user_passwd, file_path, 
+      retrun_file_path, data_sts, down_ind
+      )
+    values (#{outChn,jdbcType=VARCHAR}, #{outDesc,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{bankCde,jdbcType=VARCHAR}, #{lmpmshdFileForm,jdbcType=VARCHAR}, #{lmpmshdFileCont,jdbcType=BIGINT}, 
+      #{lmpmshdFileInd,jdbcType=VARCHAR}, #{repayFileForm,jdbcType=VARCHAR}, #{repayFileCont,jdbcType=BIGINT}, 
+      #{repayFileInd,jdbcType=VARCHAR}, #{fileIp,jdbcType=VARCHAR}, #{filePort,jdbcType=VARCHAR}, 
+      #{userName,jdbcType=VARCHAR}, #{userPasswd,jdbcType=VARCHAR}, #{filePath,jdbcType=VARCHAR}, 
+      #{retrunFilePath,jdbcType=VARCHAR}, #{dataSts,jdbcType=VARCHAR}, #{downInd,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.caxs.minos.domain.LmExternalFile">
+    update lm_external_file
+    set crt_dt = #{crtDt,jdbcType=VARCHAR},
+      bank_cde = #{bankCde,jdbcType=VARCHAR},
+      lmpmshd_file_form = #{lmpmshdFileForm,jdbcType=VARCHAR},
+      lmpmshd_file_cont = #{lmpmshdFileCont,jdbcType=BIGINT},
+      lmpmshd_file_ind = #{lmpmshdFileInd,jdbcType=VARCHAR},
+      repay_file_form = #{repayFileForm,jdbcType=VARCHAR},
+      repay_file_cont = #{repayFileCont,jdbcType=BIGINT},
+      repay_file_ind = #{repayFileInd,jdbcType=VARCHAR},
+      file_ip = #{fileIp,jdbcType=VARCHAR},
+      file_port = #{filePort,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      user_passwd = #{userPasswd,jdbcType=VARCHAR},
+      file_path = #{filePath,jdbcType=VARCHAR},
+      retrun_file_path = #{retrunFilePath,jdbcType=VARCHAR},
+      data_sts = #{dataSts,jdbcType=VARCHAR},
+      down_ind = #{downInd,jdbcType=VARCHAR}
+    where out_chn = #{outChn,jdbcType=VARCHAR}
+      and out_desc = #{outDesc,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select out_chn, out_desc, crt_dt, bank_cde, lmpmshd_file_form, lmpmshd_file_cont, 
+    lmpmshd_file_ind, repay_file_form, repay_file_cont, repay_file_ind, file_ip, file_port, 
+    user_name, user_passwd, file_path, retrun_file_path, data_sts, down_ind
+    from lm_external_file
+    where out_chn = #{outChn,jdbcType=VARCHAR}
+    and out_desc = #{outDesc,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select out_chn, out_desc, crt_dt, bank_cde, lmpmshd_file_form, lmpmshd_file_cont, 
+    lmpmshd_file_ind, repay_file_form, repay_file_cont, repay_file_ind, file_ip, file_port, 
+    user_name, user_passwd, file_path, retrun_file_path, data_sts, down_ind
+    from lm_external_file
+  </select>
+  <select id="selectByOutChn" resultMap="BaseResultMap">
+    select out_chn, out_desc, crt_dt, bank_cde, lmpmshd_file_form, lmpmshd_file_cont,
+    lmpmshd_file_ind, repay_file_form, repay_file_cont, repay_file_ind, file_ip, file_port,
+    user_name, user_passwd, file_path, retrun_file_path, data_sts, down_ind
+    from lm_external_file
+    where data_sts='A'
+    and out_chn = #{outChn,jdbcType=VARCHAR}
+  </select>
+  <select id="findByRepayFileInd" resultMap="BaseResultMap">
+    select out_chn, out_desc, crt_dt, bank_cde, lmpmshd_file_form, lmpmshd_file_cont,
+    lmpmshd_file_ind, repay_file_form, repay_file_cont, repay_file_ind, file_ip, file_port,
+    user_name, user_passwd, file_path, retrun_file_path, data_sts, down_ind
+    from lm_external_file
+    where data_sts='A'
+    and lmpmshd_file_ind = #{lmpmshdFileInd,jdbcType=VARCHAR}
+  </select>
+  <select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmExternalFile" >
+    select out_chn, out_desc, crt_dt, bank_cde, lmpmshd_file_form, lmpmshd_file_cont,
+    lmpmshd_file_ind, repay_file_form, repay_file_cont, repay_file_ind, file_ip, file_port,
+    user_name, user_passwd, file_path, retrun_file_path, data_sts, down_ind
+    from lm_external_file
+    <where>
+      <if test="bankCde != null">
+        and bank_cde = #{bankCde,jdbcType=VARCHAR}
+      </if>
+      <if test="outChn != null">
+        and out_chn = #{outChn,jdbcType=VARCHAR}
+      </if>
+      <if test="lmpmshdFileInd != null">
+        and lmpmshd_file_ind = #{lmpmshdFileInd,jdbcType=VARCHAR}
+      </if>
+      <if test="repayFileInd != null">
+        and repay_file_ind = #{repayFileInd,jdbcType=VARCHAR}
+      </if>
+      <if test="dataSts != null">
+        and data_sts = #{dataSts,jdbcType=VARCHAR}
+      </if>
+      <if test="downInd != null">
+        and down_ind = #{downInd,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

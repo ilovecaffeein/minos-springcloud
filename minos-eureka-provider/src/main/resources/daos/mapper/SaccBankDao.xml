@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caxs.minos.dao.SaccBankDao">
+  <resultMap id="BaseResultMap" type="com.caxs.minos.domain.SaccBank">
+    <id column="acc_bank_cde" jdbcType="VARCHAR" property="accBankCde" />
+    <result column="acc_bank_name" jdbcType="VARCHAR" property="accBankName" />
+    <result column="bank_sts" jdbcType="VARCHAR" property="bankSts" />
+    <result column="last_chg_dt" jdbcType="VARCHAR" property="lastChgDt" />
+    <result column="last_chg_usr" jdbcType="VARCHAR" property="lastChgUsr" />
+    <result column="ol_ind" jdbcType="VARCHAR" property="olInd" />
+    <result column="bank_code" jdbcType="VARCHAR" property="bankCode" />
+    <result column="data_sts" jdbcType="VARCHAR" property="dataSts" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from s_acc_bank
+    where acc_bank_cde = #{accBankCde,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.caxs.minos.domain.SaccBank">
+    insert into s_acc_bank (acc_bank_cde, acc_bank_name, bank_sts, 
+      last_chg_dt, last_chg_usr, ol_ind, 
+      bank_code, data_sts)
+    values (#{accBankCde,jdbcType=VARCHAR}, #{accBankName,jdbcType=VARCHAR}, #{bankSts,jdbcType=VARCHAR}, 
+      #{lastChgDt,jdbcType=VARCHAR}, #{lastChgUsr,jdbcType=VARCHAR}, #{olInd,jdbcType=VARCHAR}, 
+      #{bankCode,jdbcType=VARCHAR}, #{dataSts,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.caxs.minos.domain.SaccBank">
+    update s_acc_bank
+    set acc_bank_name = #{accBankName,jdbcType=VARCHAR},
+      bank_sts = #{bankSts,jdbcType=VARCHAR},
+      last_chg_dt = #{lastChgDt,jdbcType=VARCHAR},
+      last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR},
+      ol_ind = #{olInd,jdbcType=VARCHAR},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      data_sts = #{dataSts,jdbcType=VARCHAR}
+    where acc_bank_cde = #{accBankCde,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select acc_bank_cde, acc_bank_name, bank_sts, last_chg_dt, last_chg_usr, ol_ind, 
+    bank_code, data_sts
+    from s_acc_bank
+    where acc_bank_cde = #{accBankCde,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select acc_bank_cde, acc_bank_name, bank_sts, last_chg_dt, last_chg_usr, ol_ind, 
+    bank_code, data_sts
+    from s_acc_bank
+  </select>
+</mapper>

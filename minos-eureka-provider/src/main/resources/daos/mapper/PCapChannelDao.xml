@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.PCapChannelDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.PCapChannel" id="BaseResultMap">
+        <result property="capSeq" column="cap_seq" jdbcType="NUMERIC"/>
+        <result property="capCde" column="cap_cde" jdbcType="VARCHAR"/>
+        <result property="capDesc" column="cap_desc" jdbcType="VARCHAR"/>
+        <result property="capInstuCde" column="cap_instu_cde" jdbcType="VARCHAR"/>
+        <result property="capInstuName" column="cap_instu_name" jdbcType="VARCHAR"/>
+        <result property="costRat" column="cost_rat" jdbcType="NUMERIC"/>
+        <result property="strDt" column="str_dt" jdbcType="VARCHAR"/>
+        <result property="sts" column="sts" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="endDt" column="end_dt" jdbcType="VARCHAR"/>
+        <result property="proAmt" column="pro_amt" jdbcType="NUMERIC"/>
+        <result property="restAmt" column="rest_amt" jdbcType="NUMERIC"/>
+        <result property="applicationBankCde" column="application_bank_cde" jdbcType="VARCHAR"/>
+        <result property="accBankCde" column="acc_bank_cde" jdbcType="VARCHAR"/>
+        <result property="accBankName" column="acc_bank_name" jdbcType="VARCHAR"/>
+        <result property="acName" column="ac_name" jdbcType="VARCHAR"/>
+        <result property="acCard" column="ac_card" jdbcType="VARCHAR"/>
+        <result property="trstCapCde" column="trst_cap_cde" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        cap_seq,cap_cde,cap_desc,cap_instu_cde,cap_instu_name,cost_rat,str_dt,sts,last_chg_dt,last_chg_usr,end_dt,pro_amt,rest_amt,application_bank_cde,acc_bank_cde,acc_bank_name,ac_name,ac_card,trst_cap_cde 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PCapChannel">
+		select 
+		<include refid="Base_Column_List" />
+		 from p_cap_channel
+		 <where>
+		 <if test="capSeq != null">
+        	and cap_seq = #{capSeq,jdbcType=NUMERIC}
+	  </if>
+		 <if test="capCde != null">
+        	and cap_cde = #{capCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="capDesc != null">
+        	and cap_desc = #{capDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="capInstuCde != null">
+        	and cap_instu_cde = #{capInstuCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="capInstuName != null">
+        	and cap_instu_name = #{capInstuName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="costRat != null">
+        	and cost_rat = #{costRat,jdbcType=NUMERIC}
+	  </if>
+		 <if test="strDt != null">
+        	and str_dt = #{strDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="sts != null">
+        	and sts = #{sts,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="endDt != null">
+        	and end_dt = #{endDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="proAmt != null">
+        	and pro_amt = #{proAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="restAmt != null">
+        	and rest_amt = #{restAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="applicationBankCde != null">
+        	and application_bank_cde = #{applicationBankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="accBankCde != null">
+        	and acc_bank_cde = #{accBankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="accBankName != null">
+        	and acc_bank_name = #{accBankName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acName != null">
+        	and ac_name = #{acName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acCard != null">
+        	and ac_card = #{acCard,jdbcType=VARCHAR}
+	  </if>
+		 <if test="trstCapCde != null">
+        	and trst_cap_cde = #{trstCapCde,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PCapChannel" >
+		select 
+		<include refid="Base_Column_List" />
+		 from p_cap_channel
+		 <where>
+         <if test="capSeq != null">
+        	and cap_seq = #{capSeq,jdbcType=NUMERIC}
+         </if>
+         <if test="capCde != null">
+        	and cap_cde = #{capCde,jdbcType=VARCHAR}
+         </if>
+         <if test="capDesc != null">
+        	and cap_desc = #{capDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="capInstuCde != null">
+        	and cap_instu_cde = #{capInstuCde,jdbcType=VARCHAR}
+         </if>
+         <if test="capInstuName != null">
+        	and cap_instu_name = #{capInstuName,jdbcType=VARCHAR}
+         </if>
+         <if test="costRat != null">
+        	and cost_rat = #{costRat,jdbcType=NUMERIC}
+         </if>
+         <if test="strDt != null">
+        	and str_dt = #{strDt,jdbcType=VARCHAR}
+         </if>
+         <if test="sts != null">
+        	and sts = #{sts,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="endDt != null">
+        	and end_dt = #{endDt,jdbcType=VARCHAR}
+         </if>
+         <if test="proAmt != null">
+        	and pro_amt = #{proAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="restAmt != null">
+        	and rest_amt = #{restAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="applicationBankCde != null">
+        	and application_bank_cde = #{applicationBankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="accBankCde != null">
+        	and acc_bank_cde = #{accBankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="accBankName != null">
+        	and acc_bank_name = #{accBankName,jdbcType=VARCHAR}
+         </if>
+         <if test="acName != null">
+        	and ac_name = #{acName,jdbcType=VARCHAR}
+         </if>
+         <if test="acCard != null">
+        	and ac_card = #{acCard,jdbcType=VARCHAR}
+         </if>
+         <if test="trstCapCde != null">
+        	and trst_cap_cde = #{trstCapCde,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.PCapChannel">
+		insert into p_cap_channel
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="capSeq != null">
+        	    cap_seq ,
+	    </if>
+			<if test="capCde != null">
+        	    cap_cde ,
+	    </if>
+			<if test="capDesc != null">
+        	    cap_desc ,
+	    </if>
+			<if test="capInstuCde != null">
+        	    cap_instu_cde ,
+	    </if>
+			<if test="capInstuName != null">
+        	    cap_instu_name ,
+	    </if>
+			<if test="costRat != null">
+        	    cost_rat ,
+	    </if>
+			<if test="strDt != null">
+        	    str_dt ,
+	    </if>
+			<if test="sts != null">
+        	    sts ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="endDt != null">
+        	    end_dt ,
+	    </if>
+			<if test="proAmt != null">
+        	    pro_amt ,
+	    </if>
+			<if test="restAmt != null">
+        	    rest_amt ,
+	    </if>
+			<if test="applicationBankCde != null">
+        	    application_bank_cde ,
+	    </if>
+			<if test="accBankCde != null">
+        	    acc_bank_cde ,
+	    </if>
+			<if test="accBankName != null">
+        	    acc_bank_name ,
+	    </if>
+			<if test="acName != null">
+        	    ac_name ,
+	    </if>
+			<if test="acCard != null">
+        	    ac_card ,
+	    </if>
+			<if test="trstCapCde != null">
+        	    trst_cap_cde ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="capSeq != null">
+        	   #{capSeq,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="capCde != null">
+        	   #{capCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="capDesc != null">
+        	   #{capDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="capInstuCde != null">
+        	   #{capInstuCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="capInstuName != null">
+        	   #{capInstuName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="costRat != null">
+        	   #{costRat,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="strDt != null">
+        	   #{strDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="sts != null">
+        	   #{sts,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="endDt != null">
+        	   #{endDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="proAmt != null">
+        	   #{proAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="restAmt != null">
+        	   #{restAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="applicationBankCde != null">
+        	   #{applicationBankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="accBankCde != null">
+        	   #{accBankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="accBankName != null">
+        	   #{accBankName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acName != null">
+        	   #{acName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acCard != null">
+        	   #{acCard,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="trstCapCde != null">
+        	   #{trstCapCde,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.PCapChannel">
+		update p_cap_channel 
+		<set>
+			<if test="capSeq != null">
+        	 cap_seq = #{capSeq,jdbcType=NUMERIC} ,
+       </if>
+			<if test="capCde != null">
+        	 cap_cde = #{capCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="capDesc != null">
+        	 cap_desc = #{capDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="capInstuCde != null">
+        	 cap_instu_cde = #{capInstuCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="capInstuName != null">
+        	 cap_instu_name = #{capInstuName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="costRat != null">
+        	 cost_rat = #{costRat,jdbcType=NUMERIC} ,
+       </if>
+			<if test="strDt != null">
+        	 str_dt = #{strDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="sts != null">
+        	 sts = #{sts,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="endDt != null">
+        	 end_dt = #{endDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="proAmt != null">
+        	 pro_amt = #{proAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="restAmt != null">
+        	 rest_amt = #{restAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="applicationBankCde != null">
+        	 application_bank_cde = #{applicationBankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="accBankCde != null">
+        	 acc_bank_cde = #{accBankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="accBankName != null">
+        	 acc_bank_name = #{accBankName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acName != null">
+        	 ac_name = #{acName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acCard != null">
+        	 ac_card = #{acCard,jdbcType=VARCHAR} ,
+       </if>
+			<if test="trstCapCde != null">
+        	 trst_cap_cde = #{trstCapCde,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where cap_seq= #{capSeq}
+	</update>
+	<select id="findCapCde"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from p_cap_channel
+		where 1=1
+		and trst_cap_cde= #{trstCapCde,jdbcType=VARCHAR}
+		and sts =#{sts,jdbcType=VARCHAR}
+	</select>
+</mapper>

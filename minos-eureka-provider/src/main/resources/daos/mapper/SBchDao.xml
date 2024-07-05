@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.SBchDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.SBch" id="BaseResultMap">
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="bchLegalCde" column="bch_legal_cde" jdbcType="VARCHAR"/>
+        <result property="bchCde" column="bch_cde" jdbcType="VARCHAR"/>
+        <result property="bchDesc" column="bch_desc" jdbcType="VARCHAR"/>
+        <result property="bchFincCde" column="bch_finc_cde" jdbcType="VARCHAR"/>
+        <result property="bchLevel" column="bch_level" jdbcType="VARCHAR"/>
+        <result property="bchFarCde" column="bch_far_cde" jdbcType="VARCHAR"/>
+        <result property="bchAcctCde" column="bch_acct_cde" jdbcType="VARCHAR"/>
+        <result property="bchVmCde" column="bch_vm_cde" jdbcType="VARCHAR"/>
+        <result property="bchContUsr" column="bch_cont_usr" jdbcType="VARCHAR"/>
+        <result property="bchContTel" column="bch_cont_tel" jdbcType="VARCHAR"/>
+        <result property="bchAddr" column="bch_addr" jdbcType="VARCHAR"/>
+        <result property="bchZip" column="bch_zip" jdbcType="VARCHAR"/>
+        <result property="bchTempAcctNo" column="bch_temp_acct_no" jdbcType="VARCHAR"/>
+        <result property="bchStatus" column="bch_status" jdbcType="VARCHAR"/>
+        <result property="bchLoanInd" column="bch_loan_ind" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        bank_cde,bch_legal_cde,bch_cde,bch_desc,bch_finc_cde,bch_level,bch_far_cde,bch_acct_cde,bch_vm_cde,bch_cont_usr,bch_cont_tel,bch_addr,bch_zip,bch_temp_acct_no,bch_status,bch_loan_ind,last_chg_dt,last_chg_usr 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SBch">
+		select 
+		<include refid="Base_Column_List" />
+		 from s_bch
+		 <where>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchLegalCde != null">
+        	and bch_legal_cde = #{bchLegalCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchDesc != null">
+        	and bch_desc = #{bchDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchFincCde != null">
+        	and bch_finc_cde = #{bchFincCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchLevel != null">
+        	and bch_level = #{bchLevel,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchFarCde != null">
+        	and bch_far_cde = #{bchFarCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchAcctCde != null">
+        	and bch_acct_cde = #{bchAcctCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchVmCde != null">
+        	and bch_vm_cde = #{bchVmCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchContUsr != null">
+        	and bch_cont_usr = #{bchContUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchContTel != null">
+        	and bch_cont_tel = #{bchContTel,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchAddr != null">
+        	and bch_addr = #{bchAddr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchZip != null">
+        	and bch_zip = #{bchZip,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchTempAcctNo != null">
+        	and bch_temp_acct_no = #{bchTempAcctNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchStatus != null">
+        	and bch_status = #{bchStatus,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchLoanInd != null">
+        	and bch_loan_ind = #{bchLoanInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SBch" >
+		select 
+		<include refid="Base_Column_List" />
+		 from s_bch
+		 <where>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchLegalCde != null">
+        	and bch_legal_cde = #{bchLegalCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchDesc != null">
+        	and bch_desc = #{bchDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="bchFincCde != null">
+        	and bch_finc_cde = #{bchFincCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchLevel != null">
+        	and bch_level = #{bchLevel,jdbcType=VARCHAR}
+         </if>
+         <if test="bchFarCde != null">
+        	and bch_far_cde = #{bchFarCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchAcctCde != null">
+        	and bch_acct_cde = #{bchAcctCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchVmCde != null">
+        	and bch_vm_cde = #{bchVmCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchContUsr != null">
+        	and bch_cont_usr = #{bchContUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="bchContTel != null">
+        	and bch_cont_tel = #{bchContTel,jdbcType=VARCHAR}
+         </if>
+         <if test="bchAddr != null">
+        	and bch_addr = #{bchAddr,jdbcType=VARCHAR}
+         </if>
+         <if test="bchZip != null">
+        	and bch_zip = #{bchZip,jdbcType=VARCHAR}
+         </if>
+         <if test="bchTempAcctNo != null">
+        	and bch_temp_acct_no = #{bchTempAcctNo,jdbcType=VARCHAR}
+         </if>
+         <if test="bchStatus != null">
+        	and bch_status = #{bchStatus,jdbcType=VARCHAR}
+         </if>
+         <if test="bchLoanInd != null">
+        	and bch_loan_ind = #{bchLoanInd,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.SBch">
+		insert into s_bch
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="bchLegalCde != null">
+        	    bch_legal_cde ,
+	    </if>
+			<if test="bchCde != null">
+        	    bch_cde ,
+	    </if>
+			<if test="bchDesc != null">
+        	    bch_desc ,
+	    </if>
+			<if test="bchFincCde != null">
+        	    bch_finc_cde ,
+	    </if>
+			<if test="bchLevel != null">
+        	    bch_level ,
+	    </if>
+			<if test="bchFarCde != null">
+        	    bch_far_cde ,
+	    </if>
+			<if test="bchAcctCde != null">
+        	    bch_acct_cde ,
+	    </if>
+			<if test="bchVmCde != null">
+        	    bch_vm_cde ,
+	    </if>
+			<if test="bchContUsr != null">
+        	    bch_cont_usr ,
+	    </if>
+			<if test="bchContTel != null">
+        	    bch_cont_tel ,
+	    </if>
+			<if test="bchAddr != null">
+        	    bch_addr ,
+	    </if>
+			<if test="bchZip != null">
+        	    bch_zip ,
+	    </if>
+			<if test="bchTempAcctNo != null">
+        	    bch_temp_acct_no ,
+	    </if>
+			<if test="bchStatus != null">
+        	    bch_status ,
+	    </if>
+			<if test="bchLoanInd != null">
+        	    bch_loan_ind ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchLegalCde != null">
+        	   #{bchLegalCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchCde != null">
+        	   #{bchCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchDesc != null">
+        	   #{bchDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchFincCde != null">
+        	   #{bchFincCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchLevel != null">
+        	   #{bchLevel,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchFarCde != null">
+        	   #{bchFarCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchAcctCde != null">
+        	   #{bchAcctCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchVmCde != null">
+        	   #{bchVmCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchContUsr != null">
+        	   #{bchContUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchContTel != null">
+        	   #{bchContTel,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchAddr != null">
+        	   #{bchAddr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchZip != null">
+        	   #{bchZip,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchTempAcctNo != null">
+        	   #{bchTempAcctNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchStatus != null">
+        	   #{bchStatus,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchLoanInd != null">
+        	   #{bchLoanInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.SBch">
+		update s_bch 
+		<set>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchLegalCde != null">
+        	 bch_legal_cde = #{bchLegalCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchCde != null">
+        	 bch_cde = #{bchCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchDesc != null">
+        	 bch_desc = #{bchDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchFincCde != null">
+        	 bch_finc_cde = #{bchFincCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchLevel != null">
+        	 bch_level = #{bchLevel,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchFarCde != null">
+        	 bch_far_cde = #{bchFarCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchAcctCde != null">
+        	 bch_acct_cde = #{bchAcctCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchVmCde != null">
+        	 bch_vm_cde = #{bchVmCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchContUsr != null">
+        	 bch_cont_usr = #{bchContUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchContTel != null">
+        	 bch_cont_tel = #{bchContTel,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchAddr != null">
+        	 bch_addr = #{bchAddr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchZip != null">
+        	 bch_zip = #{bchZip,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchTempAcctNo != null">
+        	 bch_temp_acct_no = #{bchTempAcctNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchStatus != null">
+        	 bch_status = #{bchStatus,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchLoanInd != null">
+        	 bch_loan_ind = #{bchLoanInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where bank_cde= #{bankCde}
+	</update>
+</mapper>

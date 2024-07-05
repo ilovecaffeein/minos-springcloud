@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmSetlmtTDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmSetlmtT" id="BaseResultMap">
+        <result property="genGlNo" column="gen_gl_no" jdbcType="VARCHAR"/>
+        <result property="genGlInd" column="gen_gl_ind" jdbcType="VARCHAR"/>
+        <result property="txLogSeq" column="tx_log_seq" jdbcType="BIGINT"/>
+        <result property="orgId" column="org_id" jdbcType="VARCHAR"/>
+        <result property="contNo" column="cont_no" jdbcType="VARCHAR"/>
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="loanCcy" column="loan_ccy" jdbcType="VARCHAR"/>
+        <result property="setlRecvAmt" column="setl_recv_amt" jdbcType="NUMERIC"/>
+        <result property="setlMode" column="setl_mode" jdbcType="VARCHAR"/>
+        <result property="setlTyp" column="setl_typ" jdbcType="VARCHAR"/>
+        <result property="setlOdPrcpAmt" column="setl_od_prcp_amt" jdbcType="NUMERIC"/>
+        <result property="setlValDt" column="setl_val_dt" jdbcType="VARCHAR"/>
+        <result property="setlIntAmt" column="setl_int_amt" jdbcType="NUMERIC"/>
+        <result property="setlOdIntAmt" column="setl_od_int_amt" jdbcType="NUMERIC"/>
+        <result property="setlOdCommInt" column="setl_od_comm_int" jdbcType="NUMERIC"/>
+        <result property="setlRemPrcpPaym" column="setl_rem_prcp_paym" jdbcType="NUMERIC"/>
+        <result property="setlFpaidIntOpt" column="setl_fpaid_int_opt" jdbcType="VARCHAR"/>
+        <result property="setlAccInt" column="setl_acc_int" jdbcType="NUMERIC"/>
+        <result property="setlCompInd" column="setl_comp_ind" jdbcType="VARCHAR"/>
+        <result property="setlPrcpInd" column="setl_prcp_ind" jdbcType="VARCHAR"/>
+        <result property="paymAcctNo" column="paym_acct_no" jdbcType="VARCHAR"/>
+        <result property="paymCcyCde" column="paym_ccy_cde" jdbcType="VARCHAR"/>
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="bchCde" column="bch_cde" jdbcType="VARCHAR"/>
+        <result property="paymAcctNam" column="paym_acct_nam" jdbcType="VARCHAR"/>
+        <result property="issCtry" column="iss_ctry" jdbcType="VARCHAR"/>
+        <result property="idType" column="id_type" jdbcType="VARCHAR"/>
+        <result property="idNo" column="id_no" jdbcType="VARCHAR"/>
+        <result property="paymAcctCcy" column="paym_acct_ccy" jdbcType="VARCHAR"/>
+        <result property="paymAcctCardNo" column="paym_acct_card_no" jdbcType="VARCHAR"/>
+        <result property="paymAcctNttInd" column="paym_acct_ntt_ind" jdbcType="VARCHAR"/>
+        <result property="paymAcctCde" column="paym_acct_cde" jdbcType="VARCHAR"/>
+        <result property="paymAcctLdgrCde" column="paym_acct_ldgr_cde" jdbcType="VARCHAR"/>
+        <result property="paymAcctTyp" column="paym_acct_typ" jdbcType="VARCHAR"/>
+        <result property="paymPerdCnt" column="paym_perd_cnt" jdbcType="BIGINT"/>
+        <result property="bussTyp" column="buss_typ" jdbcType="VARCHAR"/>
+        <result property="apdProdInd" column="apd_prod_ind" jdbcType="VARCHAR"/>
+        <result property="inputProof" column="input_proof" jdbcType="VARCHAR"/>
+        <result property="inputProofType" column="input_proof_type" jdbcType="VARCHAR"/>
+        <result property="acctTyp" column="acct_typ" jdbcType="VARCHAR"/>
+        <result property="setlFeeAmt" column="setl_fee_amt" jdbcType="NUMERIC"/>
+        <result property="trueRecvAmt" column="true_recv_amt" jdbcType="NUMERIC"/>
+        <result property="ppRatBase" column="pp_rat_base" jdbcType="VARCHAR"/>
+        <result property="dpTyp" column="dp_typ" jdbcType="VARCHAR"/>
+        <result property="clearOweInd" column="clear_owe_ind" jdbcType="VARCHAR"/>
+        <result property="sendSts" column="send_sts" jdbcType="VARCHAR"/>
+        <result property="failReason" column="fail_reason" jdbcType="VARCHAR"/>
+        <result property="txAmtSts" column="tx_amt_sts" jdbcType="VARCHAR"/>
+        <result property="revseInd" column="revse_ind" jdbcType="VARCHAR"/>
+        <result property="revseDt" column="revse_dt" jdbcType="VARCHAR"/>
+        <result property="paymPerdAmt" column="paym_perd_amt" jdbcType="NUMERIC"/>
+        <result property="olInd" column="ol_ind" jdbcType="VARCHAR"/>
+        <result property="txcodeTyp" column="txcode_typ" jdbcType="VARCHAR"/>
+        <result property="revsInd" column="revs_ind" jdbcType="VARCHAR"/>
+        <result property="caxInd" column="cax_ind" jdbcType="VARCHAR"/>
+        <result property="bankBchCde" column="bank_bch_cde" jdbcType="VARCHAR"/>
+        <result property="zqzrTyp" column="zqzr_typ" jdbcType="VARCHAR"/>
+        <result property="cmisGenGlNo" column="cmis_gen_gl_no" jdbcType="VARCHAR"/>
+        <result property="cmisSetlRecvAmt" column="cmis_setl_recv_amt" jdbcType="NUMERIC"/>
+        <result property="pchCde" column="pch_cde" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        gen_gl_no,gen_gl_ind,tx_log_seq,org_id,cont_no,loan_no,loan_ccy,setl_recv_amt,setl_mode,setl_typ,setl_od_prcp_amt,setl_val_dt,setl_int_amt,setl_od_int_amt,setl_od_comm_int,setl_rem_prcp_paym,setl_fpaid_int_opt,setl_acc_int,setl_comp_ind,setl_prcp_ind,paym_acct_no,paym_ccy_cde,bank_cde,bch_cde,paym_acct_nam,iss_ctry,id_type,id_no,paym_acct_ccy,paym_acct_card_no,paym_acct_ntt_ind,paym_acct_cde,paym_acct_ldgr_cde,paym_acct_typ,paym_perd_cnt,buss_typ,apd_prod_ind,input_proof,input_proof_type,acct_typ,setl_fee_amt,true_recv_amt,pp_rat_base,dp_typ,clear_owe_ind,send_sts,fail_reason,tx_amt_sts,revse_ind,revse_dt,paym_perd_amt,ol_ind,txcode_typ,revs_ind,cax_ind,bank_bch_cde,zqzr_typ,cmis_gen_gl_no,cmis_setl_recv_amt,pch_cde 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmSetlmtT">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_setlmt_t
+		 <where>
+		 <if test="genGlNo != null">
+        	and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="genGlInd != null">
+        	and gen_gl_ind = #{genGlInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="txLogSeq != null">
+        	and tx_log_seq = #{txLogSeq,jdbcType=BIGINT}
+	  </if>
+		 <if test="orgId != null">
+        	and org_id = #{orgId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="contNo != null">
+        	and cont_no = #{contNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanCcy != null">
+        	and loan_ccy = #{loanCcy,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlRecvAmt != null">
+        	and setl_recv_amt = #{setlRecvAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlMode != null">
+        	and setl_mode = #{setlMode,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlTyp != null">
+        	and setl_typ = #{setlTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlOdPrcpAmt != null">
+        	and setl_od_prcp_amt = #{setlOdPrcpAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlValDt != null">
+        	and setl_val_dt = #{setlValDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlIntAmt != null">
+        	and setl_int_amt = #{setlIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlOdIntAmt != null">
+        	and setl_od_int_amt = #{setlOdIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlOdCommInt != null">
+        	and setl_od_comm_int = #{setlOdCommInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlRemPrcpPaym != null">
+        	and setl_rem_prcp_paym = #{setlRemPrcpPaym,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlFpaidIntOpt != null">
+        	and setl_fpaid_int_opt = #{setlFpaidIntOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlAccInt != null">
+        	and setl_acc_int = #{setlAccInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlCompInd != null">
+        	and setl_comp_ind = #{setlCompInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlPrcpInd != null">
+        	and setl_prcp_ind = #{setlPrcpInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctNo != null">
+        	and paym_acct_no = #{paymAcctNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymCcyCde != null">
+        	and paym_ccy_cde = #{paymCcyCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctNam != null">
+        	and paym_acct_nam = #{paymAcctNam,jdbcType=VARCHAR}
+	  </if>
+		 <if test="issCtry != null">
+        	and iss_ctry = #{issCtry,jdbcType=VARCHAR}
+	  </if>
+		 <if test="idType != null">
+        	and id_type = #{idType,jdbcType=VARCHAR}
+	  </if>
+		 <if test="idNo != null">
+        	and id_no = #{idNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctCcy != null">
+        	and paym_acct_ccy = #{paymAcctCcy,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctCardNo != null">
+        	and paym_acct_card_no = #{paymAcctCardNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctNttInd != null">
+        	and paym_acct_ntt_ind = #{paymAcctNttInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctCde != null">
+        	and paym_acct_cde = #{paymAcctCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctLdgrCde != null">
+        	and paym_acct_ldgr_cde = #{paymAcctLdgrCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymAcctTyp != null">
+        	and paym_acct_typ = #{paymAcctTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymPerdCnt != null">
+        	and paym_perd_cnt = #{paymPerdCnt,jdbcType=BIGINT}
+	  </if>
+		 <if test="bussTyp != null">
+        	and buss_typ = #{bussTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="apdProdInd != null">
+        	and apd_prod_ind = #{apdProdInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="inputProof != null">
+        	and input_proof = #{inputProof,jdbcType=VARCHAR}
+	  </if>
+		 <if test="inputProofType != null">
+        	and input_proof_type = #{inputProofType,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctTyp != null">
+        	and acct_typ = #{acctTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlFeeAmt != null">
+        	and setl_fee_amt = #{setlFeeAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="trueRecvAmt != null">
+        	and true_recv_amt = #{trueRecvAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="ppRatBase != null">
+        	and pp_rat_base = #{ppRatBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="dpTyp != null">
+        	and dp_typ = #{dpTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="clearOweInd != null">
+        	and clear_owe_ind = #{clearOweInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="sendSts != null">
+        	and send_sts = #{sendSts,jdbcType=VARCHAR}
+	  </if>
+		 <if test="failReason != null">
+        	and fail_reason = #{failReason,jdbcType=VARCHAR}
+	  </if>
+		 <if test="txAmtSts != null">
+        	and tx_amt_sts = #{txAmtSts,jdbcType=VARCHAR}
+	  </if>
+		 <if test="revseInd != null">
+        	and revse_ind = #{revseInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="revseDt != null">
+        	and revse_dt = #{revseDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymPerdAmt != null">
+        	and paym_perd_amt = #{paymPerdAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="olInd != null">
+        	and ol_ind = #{olInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="txcodeTyp != null">
+        	and txcode_typ = #{txcodeTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="revsInd != null">
+        	and revs_ind = #{revsInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="caxInd != null">
+        	and cax_ind = #{caxInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bankBchCde != null">
+        	and bank_bch_cde = #{bankBchCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="zqzrTyp != null">
+        	and zqzr_typ = #{zqzrTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="cmisGenGlNo != null">
+        	and cmis_gen_gl_no = #{cmisGenGlNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="cmisSetlRecvAmt != null">
+        	and cmis_setl_recv_amt = #{cmisSetlRecvAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="pchCde != null">
+        	and pch_cde = #{pchCde,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmSetlmtT" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_setlmt_t
+		 <where>
+         <if test="genGlNo != null">
+        	and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+         </if>
+         <if test="genGlInd != null">
+        	and gen_gl_ind = #{genGlInd,jdbcType=VARCHAR}
+         </if>
+         <if test="txLogSeq != null">
+        	and tx_log_seq = #{txLogSeq,jdbcType=BIGINT}
+         </if>
+         <if test="orgId != null">
+        	and org_id = #{orgId,jdbcType=VARCHAR}
+         </if>
+         <if test="contNo != null">
+        	and cont_no = #{contNo,jdbcType=VARCHAR}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="loanCcy != null">
+        	and loan_ccy = #{loanCcy,jdbcType=VARCHAR}
+         </if>
+         <if test="setlRecvAmt != null">
+        	and setl_recv_amt = #{setlRecvAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlMode != null">
+        	and setl_mode = #{setlMode,jdbcType=VARCHAR}
+         </if>
+         <if test="setlTyp != null">
+        	and setl_typ = #{setlTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="setlOdPrcpAmt != null">
+        	and setl_od_prcp_amt = #{setlOdPrcpAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlValDt != null">
+        	and setl_val_dt = #{setlValDt,jdbcType=VARCHAR}
+         </if>
+         <if test="setlIntAmt != null">
+        	and setl_int_amt = #{setlIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlOdIntAmt != null">
+        	and setl_od_int_amt = #{setlOdIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlOdCommInt != null">
+        	and setl_od_comm_int = #{setlOdCommInt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlRemPrcpPaym != null">
+        	and setl_rem_prcp_paym = #{setlRemPrcpPaym,jdbcType=NUMERIC}
+         </if>
+         <if test="setlFpaidIntOpt != null">
+        	and setl_fpaid_int_opt = #{setlFpaidIntOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="setlAccInt != null">
+        	and setl_acc_int = #{setlAccInt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlCompInd != null">
+        	and setl_comp_ind = #{setlCompInd,jdbcType=VARCHAR}
+         </if>
+         <if test="setlPrcpInd != null">
+        	and setl_prcp_ind = #{setlPrcpInd,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctNo != null">
+        	and paym_acct_no = #{paymAcctNo,jdbcType=VARCHAR}
+         </if>
+         <if test="paymCcyCde != null">
+        	and paym_ccy_cde = #{paymCcyCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctNam != null">
+        	and paym_acct_nam = #{paymAcctNam,jdbcType=VARCHAR}
+         </if>
+         <if test="issCtry != null">
+        	and iss_ctry = #{issCtry,jdbcType=VARCHAR}
+         </if>
+         <if test="idType != null">
+        	and id_type = #{idType,jdbcType=VARCHAR}
+         </if>
+         <if test="idNo != null">
+        	and id_no = #{idNo,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctCcy != null">
+        	and paym_acct_ccy = #{paymAcctCcy,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctCardNo != null">
+        	and paym_acct_card_no = #{paymAcctCardNo,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctNttInd != null">
+        	and paym_acct_ntt_ind = #{paymAcctNttInd,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctCde != null">
+        	and paym_acct_cde = #{paymAcctCde,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctLdgrCde != null">
+        	and paym_acct_ldgr_cde = #{paymAcctLdgrCde,jdbcType=VARCHAR}
+         </if>
+         <if test="paymAcctTyp != null">
+        	and paym_acct_typ = #{paymAcctTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="paymPerdCnt != null">
+        	and paym_perd_cnt = #{paymPerdCnt,jdbcType=BIGINT}
+         </if>
+         <if test="bussTyp != null">
+        	and buss_typ = #{bussTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="apdProdInd != null">
+        	and apd_prod_ind = #{apdProdInd,jdbcType=VARCHAR}
+         </if>
+         <if test="inputProof != null">
+        	and input_proof = #{inputProof,jdbcType=VARCHAR}
+         </if>
+         <if test="inputProofType != null">
+        	and input_proof_type = #{inputProofType,jdbcType=VARCHAR}
+         </if>
+         <if test="acctTyp != null">
+        	and acct_typ = #{acctTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="setlFeeAmt != null">
+        	and setl_fee_amt = #{setlFeeAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="trueRecvAmt != null">
+        	and true_recv_amt = #{trueRecvAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="ppRatBase != null">
+        	and pp_rat_base = #{ppRatBase,jdbcType=VARCHAR}
+         </if>
+         <if test="dpTyp != null">
+        	and dp_typ = #{dpTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="clearOweInd != null">
+        	and clear_owe_ind = #{clearOweInd,jdbcType=VARCHAR}
+         </if>
+         <if test="sendSts != null">
+        	and send_sts = #{sendSts,jdbcType=VARCHAR}
+         </if>
+         <if test="failReason != null">
+        	and fail_reason = #{failReason,jdbcType=VARCHAR}
+         </if>
+         <if test="txAmtSts != null">
+        	and tx_amt_sts = #{txAmtSts,jdbcType=VARCHAR}
+         </if>
+         <if test="revseInd != null">
+        	and revse_ind = #{revseInd,jdbcType=VARCHAR}
+         </if>
+         <if test="revseDt != null">
+        	and revse_dt = #{revseDt,jdbcType=VARCHAR}
+         </if>
+         <if test="paymPerdAmt != null">
+        	and paym_perd_amt = #{paymPerdAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="olInd != null">
+        	and ol_ind = #{olInd,jdbcType=VARCHAR}
+         </if>
+         <if test="txcodeTyp != null">
+        	and txcode_typ = #{txcodeTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="revsInd != null">
+        	and revs_ind = #{revsInd,jdbcType=VARCHAR}
+         </if>
+         <if test="caxInd != null">
+        	and cax_ind = #{caxInd,jdbcType=VARCHAR}
+         </if>
+         <if test="bankBchCde != null">
+        	and bank_bch_cde = #{bankBchCde,jdbcType=VARCHAR}
+         </if>
+         <if test="zqzrTyp != null">
+        	and zqzr_typ = #{zqzrTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="cmisGenGlNo != null">
+        	and cmis_gen_gl_no = #{cmisGenGlNo,jdbcType=VARCHAR}
+         </if>
+         <if test="cmisSetlRecvAmt != null">
+        	and cmis_setl_recv_amt = #{cmisSetlRecvAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="pchCde != null">
+        	and pch_cde = #{pchCde,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmSetlmtT">
+		insert into lm_setlmt_t
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="genGlNo != null">
+        	    gen_gl_no ,
+	    </if>
+			<if test="genGlInd != null">
+        	    gen_gl_ind ,
+	    </if>
+			<if test="txLogSeq != null">
+        	    tx_log_seq ,
+	    </if>
+			<if test="orgId != null">
+        	    org_id ,
+	    </if>
+			<if test="contNo != null">
+        	    cont_no ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="loanCcy != null">
+        	    loan_ccy ,
+	    </if>
+			<if test="setlRecvAmt != null">
+        	    setl_recv_amt ,
+	    </if>
+			<if test="setlMode != null">
+        	    setl_mode ,
+	    </if>
+			<if test="setlTyp != null">
+        	    setl_typ ,
+	    </if>
+			<if test="setlOdPrcpAmt != null">
+        	    setl_od_prcp_amt ,
+	    </if>
+			<if test="setlValDt != null">
+        	    setl_val_dt ,
+	    </if>
+			<if test="setlIntAmt != null">
+        	    setl_int_amt ,
+	    </if>
+			<if test="setlOdIntAmt != null">
+        	    setl_od_int_amt ,
+	    </if>
+			<if test="setlOdCommInt != null">
+        	    setl_od_comm_int ,
+	    </if>
+			<if test="setlRemPrcpPaym != null">
+        	    setl_rem_prcp_paym ,
+	    </if>
+			<if test="setlFpaidIntOpt != null">
+        	    setl_fpaid_int_opt ,
+	    </if>
+			<if test="setlAccInt != null">
+        	    setl_acc_int ,
+	    </if>
+			<if test="setlCompInd != null">
+        	    setl_comp_ind ,
+	    </if>
+			<if test="setlPrcpInd != null">
+        	    setl_prcp_ind ,
+	    </if>
+			<if test="paymAcctNo != null">
+        	    paym_acct_no ,
+	    </if>
+			<if test="paymCcyCde != null">
+        	    paym_ccy_cde ,
+	    </if>
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="bchCde != null">
+        	    bch_cde ,
+	    </if>
+			<if test="paymAcctNam != null">
+        	    paym_acct_nam ,
+	    </if>
+			<if test="issCtry != null">
+        	    iss_ctry ,
+	    </if>
+			<if test="idType != null">
+        	    id_type ,
+	    </if>
+			<if test="idNo != null">
+        	    id_no ,
+	    </if>
+			<if test="paymAcctCcy != null">
+        	    paym_acct_ccy ,
+	    </if>
+			<if test="paymAcctCardNo != null">
+        	    paym_acct_card_no ,
+	    </if>
+			<if test="paymAcctNttInd != null">
+        	    paym_acct_ntt_ind ,
+	    </if>
+			<if test="paymAcctCde != null">
+        	    paym_acct_cde ,
+	    </if>
+			<if test="paymAcctLdgrCde != null">
+        	    paym_acct_ldgr_cde ,
+	    </if>
+			<if test="paymAcctTyp != null">
+        	    paym_acct_typ ,
+	    </if>
+			<if test="paymPerdCnt != null">
+        	    paym_perd_cnt ,
+	    </if>
+			<if test="bussTyp != null">
+        	    buss_typ ,
+	    </if>
+			<if test="apdProdInd != null">
+        	    apd_prod_ind ,
+	    </if>
+			<if test="inputProof != null">
+        	    input_proof ,
+	    </if>
+			<if test="inputProofType != null">
+        	    input_proof_type ,
+	    </if>
+			<if test="acctTyp != null">
+        	    acct_typ ,
+	    </if>
+			<if test="setlFeeAmt != null">
+        	    setl_fee_amt ,
+	    </if>
+			<if test="trueRecvAmt != null">
+        	    true_recv_amt ,
+	    </if>
+			<if test="ppRatBase != null">
+        	    pp_rat_base ,
+	    </if>
+			<if test="dpTyp != null">
+        	    dp_typ ,
+	    </if>
+			<if test="clearOweInd != null">
+        	    clear_owe_ind ,
+	    </if>
+			<if test="sendSts != null">
+        	    send_sts ,
+	    </if>
+			<if test="failReason != null">
+        	    fail_reason ,
+	    </if>
+			<if test="txAmtSts != null">
+        	    tx_amt_sts ,
+	    </if>
+			<if test="revseInd != null">
+        	    revse_ind ,
+	    </if>
+			<if test="revseDt != null">
+        	    revse_dt ,
+	    </if>
+			<if test="paymPerdAmt != null">
+        	    paym_perd_amt ,
+	    </if>
+			<if test="olInd != null">
+        	    ol_ind ,
+	    </if>
+			<if test="txcodeTyp != null">
+        	    txcode_typ ,
+	    </if>
+			<if test="revsInd != null">
+        	    revs_ind ,
+	    </if>
+			<if test="caxInd != null">
+        	    cax_ind ,
+	    </if>
+			<if test="bankBchCde != null">
+        	    bank_bch_cde ,
+	    </if>
+			<if test="zqzrTyp != null">
+        	    zqzr_typ ,
+	    </if>
+			<if test="cmisGenGlNo != null">
+        	    cmis_gen_gl_no ,
+	    </if>
+			<if test="cmisSetlRecvAmt != null">
+        	    cmis_setl_recv_amt ,
+	    </if>
+			<if test="pchCde != null">
+        	    pch_cde ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="genGlNo != null">
+        	   #{genGlNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="genGlInd != null">
+        	   #{genGlInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="txLogSeq != null">
+        	   #{txLogSeq,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="orgId != null">
+        	   #{orgId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="contNo != null">
+        	   #{contNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanCcy != null">
+        	   #{loanCcy,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlRecvAmt != null">
+        	   #{setlRecvAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlMode != null">
+        	   #{setlMode,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlTyp != null">
+        	   #{setlTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlOdPrcpAmt != null">
+        	   #{setlOdPrcpAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlValDt != null">
+        	   #{setlValDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlIntAmt != null">
+        	   #{setlIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlOdIntAmt != null">
+        	   #{setlOdIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlOdCommInt != null">
+        	   #{setlOdCommInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlRemPrcpPaym != null">
+        	   #{setlRemPrcpPaym,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlFpaidIntOpt != null">
+        	   #{setlFpaidIntOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlAccInt != null">
+        	   #{setlAccInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlCompInd != null">
+        	   #{setlCompInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlPrcpInd != null">
+        	   #{setlPrcpInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctNo != null">
+        	   #{paymAcctNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymCcyCde != null">
+        	   #{paymCcyCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchCde != null">
+        	   #{bchCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctNam != null">
+        	   #{paymAcctNam,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="issCtry != null">
+        	   #{issCtry,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="idType != null">
+        	   #{idType,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="idNo != null">
+        	   #{idNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctCcy != null">
+        	   #{paymAcctCcy,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctCardNo != null">
+        	   #{paymAcctCardNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctNttInd != null">
+        	   #{paymAcctNttInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctCde != null">
+        	   #{paymAcctCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctLdgrCde != null">
+        	   #{paymAcctLdgrCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymAcctTyp != null">
+        	   #{paymAcctTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymPerdCnt != null">
+        	   #{paymPerdCnt,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="bussTyp != null">
+        	   #{bussTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="apdProdInd != null">
+        	   #{apdProdInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="inputProof != null">
+        	   #{inputProof,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="inputProofType != null">
+        	   #{inputProofType,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctTyp != null">
+        	   #{acctTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlFeeAmt != null">
+        	   #{setlFeeAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="trueRecvAmt != null">
+        	   #{trueRecvAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="ppRatBase != null">
+        	   #{ppRatBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="dpTyp != null">
+        	   #{dpTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="clearOweInd != null">
+        	   #{clearOweInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="sendSts != null">
+        	   #{sendSts,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="failReason != null">
+        	   #{failReason,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="txAmtSts != null">
+        	   #{txAmtSts,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="revseInd != null">
+        	   #{revseInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="revseDt != null">
+        	   #{revseDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymPerdAmt != null">
+        	   #{paymPerdAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="olInd != null">
+        	   #{olInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="txcodeTyp != null">
+        	   #{txcodeTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="revsInd != null">
+        	   #{revsInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="caxInd != null">
+        	   #{caxInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bankBchCde != null">
+        	   #{bankBchCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="zqzrTyp != null">
+        	   #{zqzrTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="cmisGenGlNo != null">
+        	   #{cmisGenGlNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="cmisSetlRecvAmt != null">
+        	   #{cmisSetlRecvAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="pchCde != null">
+        	   #{pchCde,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmSetlmtT">
+		update lm_setlmt_t 
+		<set>
+			<if test="genGlNo != null">
+        	 gen_gl_no = #{genGlNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="genGlInd != null">
+        	 gen_gl_ind = #{genGlInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="txLogSeq != null">
+        	 tx_log_seq = #{txLogSeq,jdbcType=BIGINT} ,
+       </if>
+			<if test="orgId != null">
+        	 org_id = #{orgId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="contNo != null">
+        	 cont_no = #{contNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanCcy != null">
+        	 loan_ccy = #{loanCcy,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlRecvAmt != null">
+        	 setl_recv_amt = #{setlRecvAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlMode != null">
+        	 setl_mode = #{setlMode,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlTyp != null">
+        	 setl_typ = #{setlTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlOdPrcpAmt != null">
+        	 setl_od_prcp_amt = #{setlOdPrcpAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlValDt != null">
+        	 setl_val_dt = #{setlValDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlIntAmt != null">
+        	 setl_int_amt = #{setlIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlOdIntAmt != null">
+        	 setl_od_int_amt = #{setlOdIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlOdCommInt != null">
+        	 setl_od_comm_int = #{setlOdCommInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlRemPrcpPaym != null">
+        	 setl_rem_prcp_paym = #{setlRemPrcpPaym,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlFpaidIntOpt != null">
+        	 setl_fpaid_int_opt = #{setlFpaidIntOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlAccInt != null">
+        	 setl_acc_int = #{setlAccInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlCompInd != null">
+        	 setl_comp_ind = #{setlCompInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlPrcpInd != null">
+        	 setl_prcp_ind = #{setlPrcpInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctNo != null">
+        	 paym_acct_no = #{paymAcctNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymCcyCde != null">
+        	 paym_ccy_cde = #{paymCcyCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchCde != null">
+        	 bch_cde = #{bchCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctNam != null">
+        	 paym_acct_nam = #{paymAcctNam,jdbcType=VARCHAR} ,
+       </if>
+			<if test="issCtry != null">
+        	 iss_ctry = #{issCtry,jdbcType=VARCHAR} ,
+       </if>
+			<if test="idType != null">
+        	 id_type = #{idType,jdbcType=VARCHAR} ,
+       </if>
+			<if test="idNo != null">
+        	 id_no = #{idNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctCcy != null">
+        	 paym_acct_ccy = #{paymAcctCcy,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctCardNo != null">
+        	 paym_acct_card_no = #{paymAcctCardNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctNttInd != null">
+        	 paym_acct_ntt_ind = #{paymAcctNttInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctCde != null">
+        	 paym_acct_cde = #{paymAcctCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctLdgrCde != null">
+        	 paym_acct_ldgr_cde = #{paymAcctLdgrCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymAcctTyp != null">
+        	 paym_acct_typ = #{paymAcctTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymPerdCnt != null">
+        	 paym_perd_cnt = #{paymPerdCnt,jdbcType=BIGINT} ,
+       </if>
+			<if test="bussTyp != null">
+        	 buss_typ = #{bussTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="apdProdInd != null">
+        	 apd_prod_ind = #{apdProdInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="inputProof != null">
+        	 input_proof = #{inputProof,jdbcType=VARCHAR} ,
+       </if>
+			<if test="inputProofType != null">
+        	 input_proof_type = #{inputProofType,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctTyp != null">
+        	 acct_typ = #{acctTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlFeeAmt != null">
+        	 setl_fee_amt = #{setlFeeAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="trueRecvAmt != null">
+        	 true_recv_amt = #{trueRecvAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="ppRatBase != null">
+        	 pp_rat_base = #{ppRatBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="dpTyp != null">
+        	 dp_typ = #{dpTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="clearOweInd != null">
+        	 clear_owe_ind = #{clearOweInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="sendSts != null">
+        	 send_sts = #{sendSts,jdbcType=VARCHAR} ,
+       </if>
+			<if test="failReason != null">
+        	 fail_reason = #{failReason,jdbcType=VARCHAR} ,
+       </if>
+			<if test="txAmtSts != null">
+        	 tx_amt_sts = #{txAmtSts,jdbcType=VARCHAR} ,
+       </if>
+			<if test="revseInd != null">
+        	 revse_ind = #{revseInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="revseDt != null">
+        	 revse_dt = #{revseDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymPerdAmt != null">
+        	 paym_perd_amt = #{paymPerdAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="olInd != null">
+        	 ol_ind = #{olInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="txcodeTyp != null">
+        	 txcode_typ = #{txcodeTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="revsInd != null">
+        	 revs_ind = #{revsInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="caxInd != null">
+        	 cax_ind = #{caxInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bankBchCde != null">
+        	 bank_bch_cde = #{bankBchCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="zqzrTyp != null">
+        	 zqzr_typ = #{zqzrTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="cmisGenGlNo != null">
+        	 cmis_gen_gl_no = #{cmisGenGlNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="cmisSetlRecvAmt != null">
+        	 cmis_setl_recv_amt = #{cmisSetlRecvAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="pchCde != null">
+        	 pch_cde = #{pchCde,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where gen_gl_no= #{genGlNo}
+	</update>
+	<select id="selectAllByParam" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select  * from lm_setlmt_t
+		<where>
+		<if test="genGlNo != null">
+			and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+		</if>
+		<if test="loanNo != null">
+			and loan_no = #{loanNo,jdbcType=VARCHAR}
+		</if>
+		<if test="startDate != null">
+			and setl_val_dt = #{startDate,jdbcType=VARCHAR}
+		</if>
+		<if test="endDate != null">
+			and setl_val_dt = #{endDate,jdbcType=VARCHAR}
+		</if>
+		<if test="idNo != null">
+			and id_no = #{idNo,jdbcType=VARCHAR}
+		</if>
+		<if test="custName != null">
+			and paym_acct_nam = #{custName,jdbcType=VARCHAR}
+		</if>
+		</where>
+	</select>
+</mapper>

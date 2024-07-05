@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.DeTransLogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.DeTransLog" id="BaseResultMap">
+        <result property="txLogSeq" column="tx_log_seq" jdbcType="BIGINT"/>
+        <result property="bchCde" column="bch_cde" jdbcType="VARCHAR"/>
+        <result property="buzDt" column="buz_dt" jdbcType="VARCHAR"/>
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="transAmt" column="trans_amt" jdbcType="NUMERIC"/>
+        <result property="transCode" column="trans_code" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        tx_log_seq,bch_cde,buz_dt,loan_no,trans_amt,trans_code 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.DeTransLog">
+		select 
+		<include refid="Base_Column_List" />
+		 from de_trans_log
+		 <where>
+		 <if test="txLogSeq != null">
+        	and tx_log_seq = #{txLogSeq,jdbcType=BIGINT}
+	  </if>
+		 <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="buzDt != null">
+        	and buz_dt = #{buzDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="transAmt != null">
+        	and trans_amt = #{transAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="transCode != null">
+        	and trans_code = #{transCode,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.DeTransLog" >
+		select 
+		<include refid="Base_Column_List" />
+		 from de_trans_log
+		 <where>
+         <if test="txLogSeq != null">
+        	and tx_log_seq = #{txLogSeq,jdbcType=BIGINT}
+         </if>
+         <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+         </if>
+         <if test="buzDt != null">
+        	and buz_dt = #{buzDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="transAmt != null">
+        	and trans_amt = #{transAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="transCode != null">
+        	and trans_code = #{transCode,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.DeTransLog">
+		insert into de_trans_log
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="txLogSeq != null">
+        	    tx_log_seq ,
+	    </if>
+			<if test="bchCde != null">
+        	    bch_cde ,
+	    </if>
+			<if test="buzDt != null">
+        	    buz_dt ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="transAmt != null">
+        	    trans_amt ,
+	    </if>
+			<if test="transCode != null">
+        	    trans_code ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="txLogSeq != null">
+        	   #{txLogSeq,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="bchCde != null">
+        	   #{bchCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="buzDt != null">
+        	   #{buzDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="transAmt != null">
+        	   #{transAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="transCode != null">
+        	   #{transCode,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.DeTransLog">
+		update de_trans_log 
+		<set>
+			<if test="txLogSeq != null">
+        	 tx_log_seq = #{txLogSeq,jdbcType=BIGINT} ,
+       </if>
+			<if test="bchCde != null">
+        	 bch_cde = #{bchCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="buzDt != null">
+        	 buz_dt = #{buzDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="transAmt != null">
+        	 trans_amt = #{transAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="transCode != null">
+        	 trans_code = #{transCode,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where tx_log_seq= #{txLogSeq}
+	</update>
+</mapper>
