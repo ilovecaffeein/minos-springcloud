@@ -24,6 +24,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+
+import javax.annotation.Resource;
 import java.io.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -50,7 +52,7 @@ public class SpeciPaySystemService implements ISpeciPaySystemService {
     @Reference
     IBatchThirdPartyInterfaceService batchThirdPartyInterfaceService;
 
-    @Autowired
+    @Resource
     IBatchJoErrorLogService batchJoErrorLogService;
 
     @Reference
@@ -59,43 +61,43 @@ public class SpeciPaySystemService implements ISpeciPaySystemService {
     @Reference
     ISystemInfoService systemInfoService;
 
-    @Autowired
+    @Resource
     LmExternalFileDao  lmExternalFileDao;
 
-    @Autowired
+    @Resource
     LmAcctInfoDao  lmAcctInfoDao;
 
-    @Autowired
+    @Resource
     LmLoanDao  lmLoanDao;
 
-    @Autowired
+    @Resource
     LmAtpyDetlDao  lmAtpyDetlDao;
 
-    @Autowired
+    @Resource
     LmPmShdDao  lmPmShdDao;
 
-    @Autowired
+    @Resource
     IntfCaxtTransInfoDao  intfCaxtTransInfoDao;
 
-    @Autowired
+    @Resource
     IntfDgxtTransInfoDao  intfDgxtTransInfoDao;
 
-    @Autowired
+    @Resource
     IntfZhxtTransInfoDao  intfZhxtTransInfoDao;
 
-    @Autowired
+    @Resource
     SCtrlDao sCtrlDao;
 
-    @Autowired
+    @Resource
     ToPayIrDao  toPayIrDao;
 
-    @Autowired
+    @Resource
     PkgTypDao  pkgTypDao;
 
-    @Autowired
+    @Resource
     PkgTypDtlDao pkgTypDtlDao;
 
-    @Autowired
+    @Resource
     PayRstDao  payRstDao;
 
     @Value("${ipConfig1}")

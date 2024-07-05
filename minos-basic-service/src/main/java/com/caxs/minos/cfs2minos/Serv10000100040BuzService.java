@@ -13,6 +13,8 @@ import com.caxs.minos.utils.DateOperation;
 import com.caxs.minos.xml.XmlTool;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestTemplate;
+
 import javax.annotation.Resource;
 /***
  * @ClassName(类名) : Serv10000100040BuzService
