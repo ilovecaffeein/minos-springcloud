@@ -23,6 +23,7 @@ com\caxs\minos\enums\JobStateEnum.class
 com\caxs\minos\enums\PrcpStateEnum$1.class
 com\caxs\minos\utils\LoanRelateUtils.class
 com\caxs\minos\enums\LoanAccountTypEnum$1.class
+com\caxs\minos\utils\AppUtils.class
 com\caxs\minos\utils\RateUtils.class
 com\caxs\minos\aeskey\SSLFactory$SSLHandler.class
 com\caxs\minos\utils\SpringUtils.class
@@ -42,6 +43,7 @@ com\caxs\minos\enums\LoanRateBaseEnum$1.class
 com\caxs\minos\def\LoanVarDef.class
 com\caxs\minos\utils\CommonUtil.class
 com\caxs\minos\xml\XmlUtils.class
+com\caxs\minos\xml\JaxbBinder.class
 com\caxs\minos\enums\AdvancePaymentIntBaseEnum.class
 com\caxs\minos\utils\LoanRateUtils.class
 com\caxs\minos\enums\LoanDevaIndEnum$1.class
@@ -57,6 +59,7 @@ com\caxs\minos\enums\LoanRepayMethodEnum$1.class
 com\caxs\minos\aeskey\CryptAES.class
 com\caxs\minos\aeskey\SSLFactory.class
 com\caxs\minos\enums\ATPYExpStateEnum$1.class
+com\caxs\minos\xml\JaxbBinder$CollectionWrapper.class
 com\caxs\minos\enums\LoanOverToCalcOdTypEnum$1.class
 com\caxs\minos\enums\MtdRatBaseEnum$1.class
 com\caxs\minos\enums\YnFlagEnum$1.class

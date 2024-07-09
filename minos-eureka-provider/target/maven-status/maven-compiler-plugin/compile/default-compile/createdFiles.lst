@@ -37,12 +37,12 @@ com\caxs\minos\serv\db\ILoanAccountingFacadeBatcherService.class
 com\caxs\minos\serv\db\imp\SplitPunishIntExampleService.class
 com\caxs\minos\serv\db\ILoanDailyDeductionNotifiBatcherService.class
 com\caxs\minos\serv\db\IPunishCalorService.class
+com\caxs\minos\serv\core\comm\PikoPayHttpMsg.class
 com\caxs\minos\serv\db\ILoanAmountAccService.class
 com\caxs\minos\serv\batch\LoanOverdueIntAccrualBatcher.class
 com\caxs\minos\dao\PayRstDao.class
 com\caxs\minos\serv\db\imp\SuspensionService.class
 com\caxs\minos\serv\db\imp\BatchThirdPartyInterfaceService.class
-com\caxs\minos\serv\db\IHttpReqMsgService.class
 com\caxs\minos\serv\batch\LoanSuspensionBatcher.class
 com\caxs\minos\dao\LmFinanMarLogDao.class
 com\caxs\minos\serv\batch\LoanInteriorInfoModifyBatcher.class
@@ -119,6 +119,7 @@ com\caxs\minos\serv\db\imp\LoanEndOfDayDataFlowService.class
 com\caxs\minos\dao\LmDuedayFeeDao.class
 com\caxs\minos\serv\db\imp\LoanInteriorInfoModifyService.class
 com\caxs\minos\serv\db\IFileSourceService.class
+com\caxs\minos\serv\db\imp\CoreSystemService.class
 com\caxs\minos\serv\db\imp\PunishCalorService$PunishInterest.class
 com\caxs\minos\dao\PCapChannelDao.class
 com\caxs\minos\serv\batch\LoanTopayIrSingleJobBatcher.class
@@ -134,6 +135,7 @@ com\caxs\minos\dao\LmHoldInfoDao.class
 com\caxs\minos\serv\db\imp\SpeciPaySystemService.class
 com\caxs\minos\serv\batch\LoanAccountingFacadeJobBatcher.class
 com\caxs\minos\serv\db\ILoanNormIntAccrualBatcherService.class
+com\caxs\minos\serv\core\comm\PikoPayHttpList.class
 com\caxs\minos\serv\db\imp\SystemInitService.class
 com\caxs\minos\serv\batch\LoanAccrualEverydayJobBatcher.class
 com\caxs\minos\serv\db\IOverReckonAccrualEverydayService.class
@@ -144,6 +146,7 @@ com\caxs\minos\serv\db\imp\BatchService.class
 com\caxs\minos\serv\db\imp\LmChgStatRuleDefaultService.class
 com\caxs\minos\serv\batch\LoanDailyDeductionNotifiBatcher.class
 com\caxs\minos\serv\batch\LoanPaymentJobBatcher.class
+com\caxs\minos\serv\core\comm\XYMessageWrapper.class
 com\caxs\minos\serv\db\imp\PunishCalorService$1.class
 com\caxs\minos\serv\db\ILoanSuspensionBatcherService.class
 com\caxs\minos\serv\db\imp\RunForEndDayService.class
@@ -153,6 +156,7 @@ com\caxs\minos\serv\db\IDailyDeductionNotifiService.class
 com\caxs\minos\serv\db\ILoanBFinishBatcherService.class
 com\caxs\minos\dao\DeProcLogDao.class
 com\caxs\minos\dao\LmLnRepcLogDao.class
+com\caxs\minos\serv\db\ICoreSystemService.class
 com\caxs\minos\serv\db\IBatchJoErrorLogService.class
 com\caxs\minos\dao\DeErrorLogDao.class
 com\caxs\minos\serv\batch\LoanAccrualEverydayBatcher.class

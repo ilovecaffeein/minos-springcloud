@@ -9,15 +9,14 @@ import com.caxs.minos.domain.ToPayIr;
 import com.caxs.minos.domain.trans.LmSetLmtTrans;
 import com.caxs.minos.domain.trans.SingleResultTrans;
 import com.caxs.minos.exception.MinosException;
+import com.caxs.minos.https.HttpClient;
 import com.caxs.minos.serv.db.IBatchThirdPartyInterfaceService;
-import com.caxs.minos.serv.db.IHttpReqMsgService;
+import com.caxs.minos.serv.db.ICoreSystemService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-
 import javax.annotation.Resource;
 import java.util.List;
 /***
@@ -32,10 +31,10 @@ public class BatchThirdPartyInterfaceService implements IBatchThirdPartyInterfac
     private final Log log = LogFactory.getLog(getClass());
 
     @Resource
-    IHttpReqMsgService httpReqMsgService;
+    private AccessTokenInfoDao accessTokenInfoDao;
 
     @Resource
-    private AccessTokenInfoDao accessTokenInfoDao;
+    ICoreSystemService iCoreSystemService;
 
     @Resource
     private LmLoanDao lmLoanDao;
@@ -76,7 +75,7 @@ public class BatchThirdPartyInterfaceService implements IBatchThirdPartyInterfac
         lmSetLmtTrans.setTrstplnNo(lmLoan.getTrstplnNo());
 
         try {
-            httpReqMsgService.SingleChargeCollection(lmSetLmtTrans);
+            iCoreSystemService.singleToPorosReady(lmSetLmtTrans);
         } catch (Exception e) {
             log.error("借据号：" + toPayIr.getLoanNo() + ",批量还款发送清算时出现异常，"
                     + e.getMessage());
@@ -110,7 +109,7 @@ public class BatchThirdPartyInterfaceService implements IBatchThirdPartyInterfac
         lmSetLmtTrans.setGenGlNo(String.valueOf(accessTokenInfos.get(0).getCallId()+ toPayIr.getBuzSeqNo()));
 
         try {
-            return  httpReqMsgService.SingleChargeCollectionQry(lmSetLmtTrans);
+            return  iCoreSystemService.singleToPorosQuery(lmSetLmtTrans);
         } catch (Exception e) {
             log.error("借据号：" + toPayIr.getLoanNo() + ",批量还款发送清算时出现异常，"
                     + e.getMessage());

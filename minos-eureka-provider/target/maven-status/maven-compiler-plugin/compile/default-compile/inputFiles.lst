@@ -6,13 +6,13 @@ E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\c
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanPaymentBatcher.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanRunForBeginDayBatcher.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IFileSourceService.java
-E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IHttpReqMsgService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\ILoanSuspensionBatcherService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\SCcyDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\imp\SplitPunishIntExampleService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmPmShdDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmSetlmtLogDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmHoldShdDao.java
+E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\core\comm\PikoPayHttpMsg.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\PLoanMtdDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\imp\SystemInitService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmExternalFileDao.java
@@ -80,6 +80,7 @@ E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\c
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmAcctInfoDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmLoanContDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\buz\InterestCal.java
+E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\imp\CoreSystemService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IBatchService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\ILoanTransChgStatBatcherService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\ILoanEndOfDayDataFlowService.java
@@ -118,6 +119,7 @@ E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\c
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanTopayIrSingleResultJobBatcher.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IEntryRuleConfiguraService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\LmHoldInfoDao.java
+E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\core\comm\XYMessageWrapper.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\SIntRatDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanDailyDeductionNotifiBatcher.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\imp\BatchService.java
@@ -162,6 +164,7 @@ E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\c
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\imp\EntryRuleConfiguraService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\PRpymOrdDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\PkgTypDao.java
+E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\ICoreSystemService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\PLoanTypGlDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\dao\SBchDao.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanAccountingFacadeOsBatcher.java
@@ -173,6 +176,7 @@ E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\c
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanInterestEverydayJobBatcher.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IBatcherService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IDailyDeductionNotifiService.java
+E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\core\comm\PikoPayHttpList.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\IPunishCalorService.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\batch\LoanInteriorInfoModifyJobBatcher.java
 E:\minos-springcloud\minos-springcloud\minos-eureka-provider\src\main\java\com\caxs\minos\serv\db\imp\NormIntAccrualSerivce.java

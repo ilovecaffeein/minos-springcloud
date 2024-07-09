@@ -2,8 +2,8 @@ package com.caxs.minos.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
-
 /**
  * 处理信贷系统中字符串或公式工具类
  * @Classname com.yucheng.cmis.pub.util.StringUtil.java
@@ -728,5 +728,26 @@ public class StringUtil {
         serialStr = sourcestr.substring(0, 9-snsl)+serialNoStr;
 
         return serialStr;
+    }
+
+    /**
+     * @param
+     * @Description: 获取当时日期时间部分
+     * @Date: 2020/9/08 14:37
+     * @Author: fengdetian
+     * @Return String
+     * @Throws
+     */
+    public  static String getCurTimeStamp4PK() {
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddkkmmss");
+        String strStamp = sdf.format(date);
+        String strmymd=strStamp.substring(0,8);
+        String strk=strStamp.substring(8,10);
+        String strms=strStamp.substring(10);
+        if("24".equals(strk)){
+            strStamp=strmymd+"00"+strms;
+        }
+        return strStamp;
     }
 }
