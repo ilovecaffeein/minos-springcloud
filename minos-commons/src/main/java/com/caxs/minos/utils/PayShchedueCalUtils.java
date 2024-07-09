@@ -183,6 +183,43 @@ public class PayShchedueCalUtils {
                 .getDoubleWhenEvenUp(DigitalUtils.subtract(odInt, setl));
     }
 
+
+    /**
+     * 费用产生
+     * @return 费用
+     */
+    public double getFeeAmt() {
+        double feeAmt = 0;
+        double setFeeAmt = 0;
+        if (paySchedue.getPsFeeAmt() != null) {
+            feeAmt = paySchedue.getPsFeeAmt().doubleValue();
+        }
+        if (paySchedue.getSetlFeeAmt() != null) {
+            setFeeAmt = paySchedue.getSetlFeeAmt().doubleValue();
+        }
+        return SystemUtils
+                .getDoubleWhenEvenUp(SystemUtils.amtSubs(feeAmt, setFeeAmt));
+    }
+
+    /**
+     * 逾期费用产生
+     * @return 逾期费用
+     */
+    public double getOdFeeAmt() {
+        double feeOdAmt = 0;
+        double setOdFeeAmt = 0;
+        if (paySchedue.getPsOdIntFeeAmt() != null) {
+            feeOdAmt = paySchedue.getPsOdIntFeeAmt().doubleValue();
+
+        }
+        if (paySchedue.getSetlOdIntFeeAmt() != null) {
+            setOdFeeAmt = paySchedue.getSetlOdIntFeeAmt().doubleValue();
+        }
+        return SystemUtils
+                .getDoubleWhenEvenUp(SystemUtils.amtSubs(feeOdAmt, setOdFeeAmt));
+    }
+
+
     /**
      * 上次逾期产生日
      * @return 上次逾期产生日

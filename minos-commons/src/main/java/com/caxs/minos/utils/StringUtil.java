@@ -2,10 +2,7 @@ package com.caxs.minos.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 处理信贷系统中字符串或公式工具类

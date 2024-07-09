@@ -13,5 +13,6 @@ public class MinosOutsideServiceApplication {
     public static void main( String[] args ) {
         SpringApplication.run(MinosOutsideServiceApplication.class, args);
         System.out.println( "*********** minos-outside-service-核算应用服务开启! ***********" );
+        System.out.println( "*********** 启动默认地址：http://localhost:8094/  ***********" );
     }
 }

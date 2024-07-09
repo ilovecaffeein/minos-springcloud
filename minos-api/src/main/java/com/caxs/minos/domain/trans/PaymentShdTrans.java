@@ -18,11 +18,13 @@ public class PaymentShdTrans implements Serializable {
     private BigDecimal psOdIntAmt;
     private BigDecimal psCommOdInt;
     private BigDecimal psFeeAmt;
+    private BigDecimal psOdIntFeeAmt;
     private BigDecimal setlPrcp;
     private BigDecimal setlNormInt;
     private BigDecimal setlOdIntAmt;
     private BigDecimal setlCommOdInt;
     private BigDecimal setlFeeAmt;
+    private BigDecimal setlOdIntFeeAmt;
     private String setlInd;
     private BigDecimal psIncTaken;
     private BigDecimal psOdIncTaken;
@@ -86,6 +88,18 @@ public class PaymentShdTrans implements Serializable {
     /**
      * 还得复利
      */
+    /**
+     * 还得逾期手续费
+     */
+    private BigDecimal payedOdFeeAmt = new BigDecimal(0);
+
+    public BigDecimal getPayedOdFeeAmt() {
+        return payedOdFeeAmt;
+    }
+    public void setPayedOdFeeAmt(BigDecimal payedOdFeeAmt) {
+        this.payedOdFeeAmt = payedOdFeeAmt;
+    }
+
     private BigDecimal payedCommInt =new BigDecimal(0);
 
     private BigDecimal payedDevNormInt = new BigDecimal(0);
@@ -107,6 +121,18 @@ public class PaymentShdTrans implements Serializable {
 
     public BigDecimal getPsFeeAmt() {
         return psFeeAmt;
+    }
+    public BigDecimal getPsOdIntFeeAmt() {
+        return psOdIntFeeAmt;
+    }
+    public void setPsOdIntFeeAmt(BigDecimal psOdIntFeeAmt) {
+        this.psOdIntFeeAmt = psOdIntFeeAmt;
+    }
+    public BigDecimal getSetlOdIntFeeAmt() {
+        return setlOdIntFeeAmt;
+    }
+    public void setSetlOdIntFeeAmt(BigDecimal setlOdIntFeeAmt) {
+        this.setlOdIntFeeAmt = setlOdIntFeeAmt;
     }
 
     public void setPsFeeAmt(BigDecimal psFeeAmt) {

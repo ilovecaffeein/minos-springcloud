@@ -51,4 +51,8 @@ public class SpringUtils  implements ApplicationContextAware {
         }
         return false;
     }
+
+    public static boolean isNullOrEmpty(String   collection) {
+        return collection != null && collection.isEmpty();
+    }
 }

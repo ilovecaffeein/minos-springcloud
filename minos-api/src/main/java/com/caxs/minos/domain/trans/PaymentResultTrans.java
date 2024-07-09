@@ -44,6 +44,19 @@ public class PaymentResultTrans implements Serializable {
         this.payFeeAmt = payFeeAmt;
     }
     /**
+     *归还逾期费用
+     */
+    private double payOdFeeAmt = 0;
+
+    public double getPayOdFeeAmt() {
+        return payOdFeeAmt;
+    }
+
+    public void setPayOdFeeAmt(double payOdFeeAmt) {
+        this.payOdFeeAmt = payOdFeeAmt;
+    }
+
+    /**
      * 是否贷款置换add by fanyl on 2014-12-01
      */
     private boolean isDisp = false;

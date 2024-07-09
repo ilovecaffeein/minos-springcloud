@@ -5,12 +5,12 @@ spring:
     config:
       name: minos-config-service
       default-label: main
-      uri: http://localhost:3333/
+      uri: http://localhost:8091/
 # Eureka客户端相关配置
 eureka:
   client:   #客户端进行Eureka注册的配置
     service-url:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://localhost:8090/eureka/
       instance:
         instance-id: minos-basic-service    #在信息列表显示主机名称
         prefer-ip-address: true       #访问的路径变为IP地址

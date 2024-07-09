@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
+import javax.annotation.Resource;
 import java.util.List;
 /**
  * @Description: 日终交易数据流操作
@@ -26,13 +28,13 @@ import java.util.List;
 public class LoanEndOfDayDataFlowService implements ILoanEndOfDayDataFlowService {
     private Log log = LogFactory.getLog(getClass());
 
-    @Autowired
+    @Resource
     LmLoanDao lmLoanDao;
 
-    @Autowired
+    @Resource
     LmPmShdDao lmPmShdDao;
 
-    @Autowired
+    @Resource
     LmLnShdMtdDao  lmLnShdMtdDao;
 
 

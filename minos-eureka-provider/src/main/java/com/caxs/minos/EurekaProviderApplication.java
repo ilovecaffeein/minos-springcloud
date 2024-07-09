@@ -17,5 +17,6 @@ public class EurekaProviderApplication {
     public static void main( String[] args ) {
         SpringApplication.run(EurekaProviderApplication.class, args);
         System.out.println( "*********** minos-eureka-provider-注册中心客户端开启! ***********" );
+        System.out.println( "*********** 启动默认地址：http://localhost:8092/  ***********" );
     }
 }

@@ -1,5 +1,5 @@
 server:
-  port: 5555
+  port: 8094
 spring:
   application:
     name: minos-outside-service

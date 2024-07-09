@@ -71,9 +71,13 @@ public class SplitPaymentExampleService implements ISplitPaymentExampleService {
     @Override
     public PaymentTryCalculationTrans getSplitPaymentExample(String receiptNumber, String paymentTime,
                            double repaymentAmount, String paymentMode, String paymentTyp, AdvPayOptTrans advPayOpt){
-        PaymentTryCalculationTrans paymentTryCal = new PaymentTryCalculationTrans(0.00,
-                0.00, 0.00, 0.00, 0.00);
+        PaymentTryCalculationTrans paymentTryCal = new PaymentTryCalculationTrans(
+                0.00,0.00, 0.00, 0.00, 0.00,0.00,0.00,0.00,0.00,0.00,0.00,
+                0.00, 0.00, 0.00,0.00,0.00,0.00,0.00,0.00,0.00, 0.00, 0.00,
+                0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00);
+
         try {
+
             LmLoan lmLoan = lmLoanDao.findByLoanNo(receiptNumber);
             if (lmLoan == null) {
                 throw new MinosException("此借据无借据主表信息！");
@@ -111,10 +115,14 @@ public class SplitPaymentExampleService implements ISplitPaymentExampleService {
                 payShchedueCal.setDaylyRate(loanRate.getLendOdIntRateDayly());
                 payShchedueCal.setCheckDayCount(true);
                 payShchedueCalList.add(payShchedueCal);
+
                 double principal = paymentTryCal.getArrearPrincipal(); //应归还本金
                 double interest = paymentTryCal.getArrearInterest();//应归还利息
                 double lateInterest = paymentTryCal.getArrearLateInterest();//应归还逾期利息
                 double CompoundInterest = paymentTryCal.getArrearCompoundInterest();//应归还复利
+                double arrearFeeAmt = paymentTryCal.getArrearFeeAmt(); //应归还费用
+                double arrearOdFeeAmt = paymentTryCal.getArrearOdFeeAmt();//应归逾期费用
+
                 paymentTryCal.setArrearPrincipal(principal
                         + payShchedueCal.getPrcp());
                 paymentTryCal.setArrearInterest(interest
@@ -123,6 +131,10 @@ public class SplitPaymentExampleService implements ISplitPaymentExampleService {
                         + payShchedueCal.getOdInt());
                 paymentTryCal.setArrearCompoundInterest(CompoundInterest
                         + payShchedueCal.getCommInt());
+                paymentTryCal.setArrearFeeAmt(arrearFeeAmt
+                        + payShchedueCal.getFeeAmt());
+                paymentTryCal.setArrearOdFeeAmt(arrearOdFeeAmt
+                        + payShchedueCal.getOdFeeAmt());
             }
             double lateInterest = paymentTryCal.getArrearLateInterest(); //应归还逾期利息
             double CompoundInterest = paymentTryCal.getArrearCompoundInterest(); //应归还复利
@@ -197,6 +209,7 @@ public class SplitPaymentExampleService implements ISplitPaymentExampleService {
             paymentTryCal.setReturnLateInterest(paymentResult.getPayOdInt());//总应还罚息
             paymentTryCal.setReturnCompoundInterest(paymentResult.getPayCommInt());//总应还复利
             paymentTryCal.setReturnFeeAmt(paymentResult.getPayFeeAmt());//总应还手续费
+            paymentTryCal.setReturnOdFeeAmt(paymentResult.getPayOdFeeAmt());//总应还逾期费用
         }catch (Exception e) {
             e.printStackTrace();
             throw e;

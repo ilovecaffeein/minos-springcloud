@@ -8,12 +8,11 @@ import com.caxs.minos.enums.LoanRepayMethodEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
 import com.caxs.minos.serv.db.ISuspensionService;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 /***
  * @ClassName(类名) : SuspensionService
@@ -27,7 +26,7 @@ public class SuspensionService implements ISuspensionService {
     // 打印日志属性
     private final Log log = LogFactory.getLog(getClass());
 
-    @Autowired
+    @Reference
     LmLoanSuspFuncDao lmLoanSuspFuncDao;
 
     /**

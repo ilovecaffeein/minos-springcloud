@@ -1,5 +1,5 @@
 server:
-  port: 1111
+  port: 8090
 spring:
   application:
     name: minos-eureka-service
@@ -10,4 +10,4 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://localhost:8090/eureka/

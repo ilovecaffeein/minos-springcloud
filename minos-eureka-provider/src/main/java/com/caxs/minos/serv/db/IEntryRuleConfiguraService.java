@@ -4,7 +4,6 @@ import com.caxs.minos.domain.PLoanMtd;
 import com.caxs.minos.domain.PLoanMtdDtl;
 import com.caxs.minos.domain.PLoanTypGl;
 import com.caxs.minos.domain.PRpymOrdDtl;
-
 import java.util.List;
 /***
  * @ClassName(类名) : IEntryRuleConfiguraService

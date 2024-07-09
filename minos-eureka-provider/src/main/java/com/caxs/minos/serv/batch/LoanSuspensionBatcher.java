@@ -36,6 +36,7 @@ public class LoanSuspensionBatcher implements ILoanSuspensionBatcherService {
     @Resource
     private ISuspensionService iSuspensionService;
 
+    @Resource
     DeAtpyJobsDao deAtpyJobsDao;
 
     public LoanSuspensionBatcher() {

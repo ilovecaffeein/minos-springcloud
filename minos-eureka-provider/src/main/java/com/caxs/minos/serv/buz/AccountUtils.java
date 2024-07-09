@@ -67,6 +67,8 @@ public class AccountUtils {
                     + SystemUtils.getBigDecimalfNull(shd.getPayedCommInt()));
             paymentResult.setPayFeeAmt(paymentResult.getPayFeeAmt()
                     + SystemUtils.getBigDecimalfNull(shd.getPsFeeAmt()));
+            paymentResult.setPayOdFeeAmt(paymentResult.getPayOdFeeAmt()
+                    + SystemUtils.getBigDecimalfNull(shd.getPsOdIntFeeAmt()));
         }
         return paymentResult;
     }
@@ -106,6 +108,7 @@ public class AccountUtils {
             dest.setPayedOdInt(dest.getPsOdIntAmt().subtract(shd.getSetlOdIntAmt()));
             dest.setPayedCommInt(dest.getPsCommOdInt().subtract(shd.getSetlCommOdInt()));
             dest.setPayedFeeAmt(dest.getPsFeeAmt().subtract(shd.getSetlFeeAmt()));
+            dest.setPayedOdFeeAmt(dest.getPsOdIntFeeAmt().subtract(shd.getSetlOdIntFeeAmt()));
             if ( log.isInfoEnabled() ) {
                 log.info("试算期数  =" + dest.getPsPerdNo());
                 log.info("归还正常本金=" + dest.getPayedPrcp());
@@ -113,6 +116,7 @@ public class AccountUtils {
                 log.info("归还逾期利息=" + dest.getPayedOdInt());
                 log.info("归还复利    =" + dest.getPayedCommInt());
                 log.info("归还手续费  =" + dest.getPayedFeeAmt());
+                log.info("归还逾期手续费  =" + dest.getPayedOdFeeAmt());
             }
             tempPayShdList.add(dest);
         }

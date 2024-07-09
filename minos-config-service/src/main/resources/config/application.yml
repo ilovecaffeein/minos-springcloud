@@ -1,5 +1,5 @@
 server:
-  port: 3333
+  port: 8091
 spring:
   application:
     name: minos-config-service
@@ -10,13 +10,12 @@ spring:
           uri: https://github.com/ilovecaffeein/minos-springcloud.git
           username: shuaixiaofeng@caxins.com
           password: 6578007Shuai
-          search-paths: config
           default-label: main
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://localhost:8090/eureka/
   instance:
     prefer-ip-address: true

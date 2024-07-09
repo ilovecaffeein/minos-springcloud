@@ -1,5 +1,5 @@
 server:
-  port: 2222
+  port: 8092
 spring:
   application:
     name: minos-eureka-provider

@@ -17,5 +17,6 @@ public class MinosBasicServiceApplication {
 
         SpringApplication.run(MinosBasicServiceApplication.class, args);
         System.out.println( "*********** minos-basic-service-核算应用服务开启! ***********" );
+        System.out.println( "*********** 启动默认地址：http://localhost:8093/  ***********" );
     }
 }

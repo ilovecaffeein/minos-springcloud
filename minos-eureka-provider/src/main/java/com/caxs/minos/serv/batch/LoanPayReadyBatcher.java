@@ -38,6 +38,7 @@ public class LoanPayReadyBatcher implements ILoanPayReadyBatcherService {
     @Resource
     private IGenerateLoanRepayService generateLoanRepayService;
 
+    @Resource
     DeAtpyJobsDao deAtpyJobsDao;
 
     public LoanPayReadyBatcher() {

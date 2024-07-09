@@ -2,7 +2,6 @@ package com.caxs.minos.serv.db;
 
 import com.caxs.minos.domain.ToPayIr;
 import com.caxs.minos.domain.trans.SingleResultTrans;
-
 /***
  * @ClassName(类名) : ILineThirdPartyInterfaceService
  * @Description(描述) : 调第三方接口服务

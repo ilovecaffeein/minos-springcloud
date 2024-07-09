@@ -257,17 +257,22 @@ public class GenerateLoanRepayService implements IGenerateLoanRepayService {
         } catch ( Exception re) {
             throw new MinosException("lmAtpyDetl 计算应还金额失败!");
         }
+
         //组装结构体汇总
         LmAtpyDetl detail = createDetailCommInfo(loanRelate, lmAcctInfo,jobContext.getBuzDate(), job);
         detail.setAtpyPrcpAmt(new BigDecimal(String.valueOf(paymentTryCalculation.getArrearPrincipal())));
         detail.setAtpyIntAmt(new BigDecimal(String.valueOf(paymentTryCalculation.getArrearInterest())));
         detail.setAtpyCompInt(new BigDecimal(String.valueOf(paymentTryCalculation.getArrearCompoundInterest())));
-        // /修约方法
         detail.setAtpyOdInt(new BigDecimal(String.valueOf(paymentTryCalculation.getArrearLateInterest())));
         detail.setAtpyFeeAmt(new BigDecimal(String.valueOf(paymentTryCalculation.getArrearFeeAmt())));
+        double arrearFeeAmt = SystemUtils.amtAdd(
+                paymentTryCalculation.getArrearFeeAmt(),paymentTryCalculation.getArrearOdFeeAmt());
+        detail.setAtpyFeeAmt(new BigDecimal(String.valueOf(arrearFeeAmt)));
+
         BigDecimal money = detail.getAtpyPrcpAmt().add(detail.getAtpyIntAmt()).add(detail.getAtpyOdInt());
         money = money.add(detail.getAtpyCompInt()).add(detail.getAtpyFeeAmt());
         money = RoundingUtil.roundingBigDecimal(money);
+
         detail.setAtpyPaymAmt(money);
         detail.setAtpyInstmNo(new BigDecimal(0));
         detail.setBindMobile(lmAcctInfo.getBindMobile());

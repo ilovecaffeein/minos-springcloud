@@ -62,6 +62,10 @@ public class LmPmShd implements Serializable {
 	 */
 	private BigDecimal psFeeAmt;
 	/**
+	 * 逾期费用金额
+	 */
+	private BigDecimal psOdIntFeeAmt;
+	/**
 	 * 本金积数
 	 */
 	private BigDecimal prodPrcpAmt;
@@ -105,6 +109,10 @@ public class LmPmShd implements Serializable {
 	 * 已还费用金额
 	 */
 	private BigDecimal setlFeeAmt;
+	/**
+	 * 已还逾期费用罚息
+	 */
+	private BigDecimal setlOdIntFeeAmt;
 	/**
 	 * 已还罚息计提金额
 	 */
@@ -403,6 +411,18 @@ public class LmPmShd implements Serializable {
 		return psFeeAmt;
 	}
 	/**
+	 * 获取：逾期费用金额
+	 */
+	public void setPsOdIntFeeAmt(BigDecimal psOdIntFeeAmt) {
+		this.psOdIntFeeAmt = psOdIntFeeAmt;
+	}
+	/**
+	 * 设置：逾期费用金额
+	 */
+	public BigDecimal getPsOdIntFeeAmt() {
+		return psOdIntFeeAmt;
+	}
+	/**
 	 * 设置：本金积数
 	 */
 	public void setProdPrcpAmt(BigDecimal prodPrcpAmt) {
@@ -533,6 +553,18 @@ public class LmPmShd implements Serializable {
 	 */
 	public BigDecimal getSetlFeeAmt() {
 		return setlFeeAmt;
+	}
+	/**
+	 * 获取：已还逾期费用金额
+	 */
+	public BigDecimal getSetlOdIntFeeAmt() {
+		return setlOdIntFeeAmt;
+	}
+	/**
+	 * 设置：已还逾期费用金额
+	 */
+	public void setSetlOdIntFeeAmt(BigDecimal setlOdIntFeeAmt) {
+		this.setlOdIntFeeAmt = setlOdIntFeeAmt;
 	}
 	/**
 	 * 设置：已还罚息计提金额

@@ -66,8 +66,9 @@ public class SplitPunishIntExampleService implements ISplitPunishIntExampleServi
     @Override
     public Map<Integer, PunishIntFieldsTrans> getSplitPunishIntExample(String receiptNumber, String paymentTime,
                            double repaymentAmount, String paymentMode, String paymentTyp, AdvPayOptTrans advPayOpt){
-        PaymentTryCalculationTrans paymentTryCal = new PaymentTryCalculationTrans(0.00,
-                0.00, 0.00, 0.00, 0.00);
+        PaymentTryCalculationTrans paymentTryCal = new PaymentTryCalculationTrans(
+                0.00,0.00, 0.00, 0.00, 0.00,0.00,0.00,0.00,0.00,0.00,0.00,
+                0.00, 0.00, 0.00,0.00,0.00,0.00,0.00,0.00,0.00, 0.00, 0.00, 0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00);
         Map<Integer, PunishIntFieldsTrans> punishIntMap = null;
 
         try {
