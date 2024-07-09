@@ -1,12 +1,15 @@
 # Spring相关配置
 spring:
+  application:
+    name: minos-eureka-provider
   profiles:
     include: datasource
   cloud:
     config:
-      name: minos-config-service
+      name: config
       default-label: main
       uri: http://localhost:8091/
+      profile: prod
 # Eureka客户端相关配置
 eureka:
   client:   #客户端进行Eureka注册的配置
@@ -17,3 +20,9 @@ eureka:
         prefer-ip-address: true       #访问的路径变为IP地址
         lease-renewal-interval-in-seconds: 2      #设置心跳的时间间隔（默认30秒）
         lease-expiration-duration-in-seconds: 5   #如果现在超过了5秒的间隔（默认9 0秒）
+# 暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

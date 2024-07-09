@@ -21,6 +21,7 @@ import com.caxs.minos.utils.SystemUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
@@ -37,6 +38,7 @@ import java.util.Map;
  * @author(作者) ： coffee
  * @date (开发日期) ： 2020/8/4 18:47
  */
+@RefreshScope
 @Component
 @Service
 public class DailyDeductionNotifiService implements IDailyDeductionNotifiService {
