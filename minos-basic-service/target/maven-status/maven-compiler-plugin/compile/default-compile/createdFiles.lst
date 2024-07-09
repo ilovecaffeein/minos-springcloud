@@ -1,0 +1,6 @@
+com\caxs\minos\MinosBasicServiceApplication.class
+com\caxs\minos\cfs2minos\Ser1buzInterface.class
+com\caxs\minos\controller\Cfs2MinosHttpChannel.class
+com\caxs\minos\cfs2minos\Cfs2MinosBuzCheck.class
+com\caxs\minos\cfs2minos\Serv10000100040BuzService.class
+com\caxs\minos\MinosBasicServiceApplicationTest.class

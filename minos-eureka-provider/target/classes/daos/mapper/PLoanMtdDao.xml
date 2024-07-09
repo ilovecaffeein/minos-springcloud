@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.PLoanMtdDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.PLoanMtd" id="BaseResultMap">
+        <result property="mtdCde" column="mtd_cde" jdbcType="VARCHAR"/>
+        <result property="mtdDesc" column="mtd_desc" jdbcType="VARCHAR"/>
+        <result property="mtdTyp" column="mtd_typ" jdbcType="VARCHAR"/>
+        <result property="mtdMinTnr" column="mtd_min_tnr" jdbcType="BIGINT"/>
+        <result property="mtdMaxTnr" column="mtd_max_tnr" jdbcType="BIGINT"/>
+        <result property="mtdPrcpBase" column="mtd_prcp_base" jdbcType="VARCHAR"/>
+        <result property="mtdPropFreq" column="mtd_prop_freq" jdbcType="VARCHAR"/>
+        <result property="mtdPrcpFreq" column="mtd_prcp_freq" jdbcType="VARCHAR"/>
+        <result property="mtdPropPct" column="mtd_prop_pct" jdbcType="NUMERIC"/>
+        <result property="mtdFreq" column="mtd_freq" jdbcType="VARCHAR"/>
+        <result property="mtdByRatio" column="mtd_by_ratio" jdbcType="VARCHAR"/>
+        <result property="mtdPropUnit" column="mtd_prop_unit" jdbcType="VARCHAR"/>
+        <result property="mtdFstPct" column="mtd_fst_pct" jdbcType="NUMERIC"/>
+        <result property="mtdEndPct" column="mtd_end_pct" jdbcType="NUMERIC"/>
+        <result property="mtdSts" column="mtd_sts" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="instInd" column="inst_ind" jdbcType="VARCHAR"/>
+        <result property="mtdPropAmt" column="mtd_prop_amt" jdbcType="NUMERIC"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        mtd_cde,mtd_desc,mtd_typ,mtd_min_tnr,mtd_max_tnr,mtd_prcp_base,mtd_prop_freq,mtd_prcp_freq,mtd_prop_pct,mtd_freq,mtd_by_ratio,mtd_prop_unit,mtd_fst_pct,mtd_end_pct,mtd_sts,last_chg_dt,last_chg_usr,inst_ind,mtd_prop_amt 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PLoanMtd">
+		select 
+		<include refid="Base_Column_List" />
+		 from p_loan_mtd
+		 <where>
+		 <if test="mtdCde != null">
+        	and mtd_cde = #{mtdCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdDesc != null">
+        	and mtd_desc = #{mtdDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdTyp != null">
+        	and mtd_typ = #{mtdTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdMinTnr != null">
+        	and mtd_min_tnr = #{mtdMinTnr,jdbcType=BIGINT}
+	  </if>
+		 <if test="mtdMaxTnr != null">
+        	and mtd_max_tnr = #{mtdMaxTnr,jdbcType=BIGINT}
+	  </if>
+		 <if test="mtdPrcpBase != null">
+        	and mtd_prcp_base = #{mtdPrcpBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdPropFreq != null">
+        	and mtd_prop_freq = #{mtdPropFreq,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdPrcpFreq != null">
+        	and mtd_prcp_freq = #{mtdPrcpFreq,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdPropPct != null">
+        	and mtd_prop_pct = #{mtdPropPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="mtdFreq != null">
+        	and mtd_freq = #{mtdFreq,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdByRatio != null">
+        	and mtd_by_ratio = #{mtdByRatio,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdPropUnit != null">
+        	and mtd_prop_unit = #{mtdPropUnit,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdFstPct != null">
+        	and mtd_fst_pct = #{mtdFstPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="mtdEndPct != null">
+        	and mtd_end_pct = #{mtdEndPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="mtdSts != null">
+        	and mtd_sts = #{mtdSts,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="instInd != null">
+        	and inst_ind = #{instInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mtdPropAmt != null">
+        	and mtd_prop_amt = #{mtdPropAmt,jdbcType=NUMERIC}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PLoanMtd" >
+		select 
+		<include refid="Base_Column_List" />
+		 from p_loan_mtd
+		 <where>
+         <if test="mtdCde != null">
+        	and mtd_cde = #{mtdCde,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdDesc != null">
+        	and mtd_desc = #{mtdDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdTyp != null">
+        	and mtd_typ = #{mtdTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdMinTnr != null">
+        	and mtd_min_tnr = #{mtdMinTnr,jdbcType=BIGINT}
+         </if>
+         <if test="mtdMaxTnr != null">
+        	and mtd_max_tnr = #{mtdMaxTnr,jdbcType=BIGINT}
+         </if>
+         <if test="mtdPrcpBase != null">
+        	and mtd_prcp_base = #{mtdPrcpBase,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdPropFreq != null">
+        	and mtd_prop_freq = #{mtdPropFreq,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdPrcpFreq != null">
+        	and mtd_prcp_freq = #{mtdPrcpFreq,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdPropPct != null">
+        	and mtd_prop_pct = #{mtdPropPct,jdbcType=NUMERIC}
+         </if>
+         <if test="mtdFreq != null">
+        	and mtd_freq = #{mtdFreq,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdByRatio != null">
+        	and mtd_by_ratio = #{mtdByRatio,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdPropUnit != null">
+        	and mtd_prop_unit = #{mtdPropUnit,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdFstPct != null">
+        	and mtd_fst_pct = #{mtdFstPct,jdbcType=NUMERIC}
+         </if>
+         <if test="mtdEndPct != null">
+        	and mtd_end_pct = #{mtdEndPct,jdbcType=NUMERIC}
+         </if>
+         <if test="mtdSts != null">
+        	and mtd_sts = #{mtdSts,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="instInd != null">
+        	and inst_ind = #{instInd,jdbcType=VARCHAR}
+         </if>
+         <if test="mtdPropAmt != null">
+        	and mtd_prop_amt = #{mtdPropAmt,jdbcType=NUMERIC}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.PLoanMtd">
+		insert into p_loan_mtd
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="mtdCde != null">
+        	    mtd_cde ,
+	    </if>
+			<if test="mtdDesc != null">
+        	    mtd_desc ,
+	    </if>
+			<if test="mtdTyp != null">
+        	    mtd_typ ,
+	    </if>
+			<if test="mtdMinTnr != null">
+        	    mtd_min_tnr ,
+	    </if>
+			<if test="mtdMaxTnr != null">
+        	    mtd_max_tnr ,
+	    </if>
+			<if test="mtdPrcpBase != null">
+        	    mtd_prcp_base ,
+	    </if>
+			<if test="mtdPropFreq != null">
+        	    mtd_prop_freq ,
+	    </if>
+			<if test="mtdPrcpFreq != null">
+        	    mtd_prcp_freq ,
+	    </if>
+			<if test="mtdPropPct != null">
+        	    mtd_prop_pct ,
+	    </if>
+			<if test="mtdFreq != null">
+        	    mtd_freq ,
+	    </if>
+			<if test="mtdByRatio != null">
+        	    mtd_by_ratio ,
+	    </if>
+			<if test="mtdPropUnit != null">
+        	    mtd_prop_unit ,
+	    </if>
+			<if test="mtdFstPct != null">
+        	    mtd_fst_pct ,
+	    </if>
+			<if test="mtdEndPct != null">
+        	    mtd_end_pct ,
+	    </if>
+			<if test="mtdSts != null">
+        	    mtd_sts ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="instInd != null">
+        	    inst_ind ,
+	    </if>
+			<if test="mtdPropAmt != null">
+        	    mtd_prop_amt ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="mtdCde != null">
+        	   #{mtdCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdDesc != null">
+        	   #{mtdDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdTyp != null">
+        	   #{mtdTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdMinTnr != null">
+        	   #{mtdMinTnr,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="mtdMaxTnr != null">
+        	   #{mtdMaxTnr,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="mtdPrcpBase != null">
+        	   #{mtdPrcpBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdPropFreq != null">
+        	   #{mtdPropFreq,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdPrcpFreq != null">
+        	   #{mtdPrcpFreq,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdPropPct != null">
+        	   #{mtdPropPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="mtdFreq != null">
+        	   #{mtdFreq,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdByRatio != null">
+        	   #{mtdByRatio,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdPropUnit != null">
+        	   #{mtdPropUnit,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdFstPct != null">
+        	   #{mtdFstPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="mtdEndPct != null">
+        	   #{mtdEndPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="mtdSts != null">
+        	   #{mtdSts,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="instInd != null">
+        	   #{instInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mtdPropAmt != null">
+        	   #{mtdPropAmt,jdbcType=NUMERIC} ,
+        </if>
+    	</trim>
+	</insert>
+	<update id="update" parameterType="com.caxs.minos.domain.PLoanMtd">
+		update p_loan_mtd 
+		<set>
+			<if test="mtdCde != null">
+        	 mtd_cde = #{mtdCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdDesc != null">
+        	 mtd_desc = #{mtdDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdTyp != null">
+        	 mtd_typ = #{mtdTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdMinTnr != null">
+        	 mtd_min_tnr = #{mtdMinTnr,jdbcType=BIGINT} ,
+       </if>
+			<if test="mtdMaxTnr != null">
+        	 mtd_max_tnr = #{mtdMaxTnr,jdbcType=BIGINT} ,
+       </if>
+			<if test="mtdPrcpBase != null">
+        	 mtd_prcp_base = #{mtdPrcpBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdPropFreq != null">
+        	 mtd_prop_freq = #{mtdPropFreq,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdPrcpFreq != null">
+        	 mtd_prcp_freq = #{mtdPrcpFreq,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdPropPct != null">
+        	 mtd_prop_pct = #{mtdPropPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="mtdFreq != null">
+        	 mtd_freq = #{mtdFreq,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdByRatio != null">
+        	 mtd_by_ratio = #{mtdByRatio,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdPropUnit != null">
+        	 mtd_prop_unit = #{mtdPropUnit,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdFstPct != null">
+        	 mtd_fst_pct = #{mtdFstPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="mtdEndPct != null">
+        	 mtd_end_pct = #{mtdEndPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="mtdSts != null">
+        	 mtd_sts = #{mtdSts,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="instInd != null">
+        	 inst_ind = #{instInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mtdPropAmt != null">
+        	 mtd_prop_amt = #{mtdPropAmt,jdbcType=NUMERIC} ,
+       </if>
+		</set>
+		where mtd_cde= #{mtdCde}
+	</update>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select mtd_dtl_seq, mtd_cde, mtd_instl, mtd_prcp_ratio, mtd_calc_tnr, mtd_rpym_opt,
+		mtd_setl_typ, mtd_int_base, mtd_modi_ind, mtd_rate_typ, mtd_rat_base, last_chg_dt,
+		last_chg_usr
+		from p_loan_mtd_dtl
+	</select>
+	<select id="selectByPrimaryKey" parameterType="com.caxs.minos.domain.PLoanMtd" resultMap="BaseResultMap">
+		select mtd_cde, mtd_desc, mtd_typ, mtd_min_tnr, mtd_max_tnr, mtd_prcp_base, mtd_prop_freq,
+		mtd_prcp_freq, mtd_prop_pct, mtd_freq, mtd_by_ratio, mtd_prop_unit, mtd_fst_pct,
+		mtd_end_pct, mtd_sts, last_chg_dt, last_chg_usr, inst_ind, mtd_prop_amt
+		from p_loan_mtd
+		where 1=1
+		<if test="mtdCde != null" >
+			and mtd_cde = #{mtdCde,jdbcType=VARCHAR}
+		</if>
+		<if test="mtdTyp != null" >
+			and mtd_typ  = #{mtdTyp,jdbcType=VARCHAR}
+		</if>
+	</select>
+</mapper>

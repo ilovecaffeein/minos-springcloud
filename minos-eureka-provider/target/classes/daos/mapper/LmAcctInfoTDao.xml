@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caxs.minos.dao.LmAcctInfoTDao">
+  <resultMap id="BaseResultMap" type="com.caxs.minos.domain.LmAcctInfoT">
+    <id column="gen_gl_no" jdbcType="VARCHAR" property="genGlNo" />
+    <id column="loan_no" jdbcType="VARCHAR" property="loanNo" />
+    <id column="acct_bank_cde" jdbcType="VARCHAR" property="acctBankCde" />
+    <id column="acct_bch_cde" jdbcType="VARCHAR" property="acctBchCde" />
+    <id column="loan_acct_typ" jdbcType="VARCHAR" property="loanAcctTyp" />
+    <id column="acct_no" jdbcType="VARCHAR" property="acctNo" />
+    <result column="acct_name" jdbcType="VARCHAR" property="acctName" />
+    <result column="acct_val_dt" jdbcType="VARCHAR" property="acctValDt" />
+    <result column="acct_create_dt" jdbcType="VARCHAR" property="acctCreateDt" />
+    <result column="acct_expiry_dt" jdbcType="VARCHAR" property="acctExpiryDt" />
+    <result column="acct_rmk" jdbcType="VARCHAR" property="acctRmk" />
+    <result column="atpy_sts" jdbcType="VARCHAR" property="atpySts" />
+    <result column="acct_card_no" jdbcType="VARCHAR" property="acctCardNo" />
+    <result column="acct_ntt_ind" jdbcType="VARCHAR" property="acctNttInd" />
+    <result column="acct_typ" jdbcType="VARCHAR" property="acctTyp" />
+    <result column="acct_cde" jdbcType="VARCHAR" property="acctCde" />
+    <result column="acct_ccy_cde" jdbcType="VARCHAR" property="acctCcyCde" />
+    <result column="acct_id_type" jdbcType="VARCHAR" property="acctIdType" />
+    <result column="acct_id_no" jdbcType="VARCHAR" property="acctIdNo" />
+    <result column="acct_iss_ctry" jdbcType="VARCHAR" property="acctIssCtry" />
+    <result column="acct_ldgr_cde" jdbcType="VARCHAR" property="acctLdgrCde" />
+    <result column="acct_pri_no" jdbcType="INTEGER" property="acctPriNo" />
+    <result column="acct_compst_ind" jdbcType="VARCHAR" property="acctCompstInd" />
+    <result column="contr_no" jdbcType="VARCHAR" property="contrNo" />
+    <result column="issue_amt" jdbcType="NUMERIC" property="issueAmt" />
+    <result column="account_self" jdbcType="VARCHAR" property="accountSelf" />
+    <result column="acct_bank_add" jdbcType="VARCHAR" property="acctBankAdd" />
+    <result column="acct_bank_nam" jdbcType="VARCHAR" property="acctBankNam" />
+    <result column="actv_amt" jdbcType="NUMERIC" property="actvAmt" />
+    <result column="actv_amt_pct" jdbcType="NUMERIC" property="actvAmtPct" />
+    <result column="last_chg_usr" jdbcType="VARCHAR" property="lastChgUsr" />
+    <result column="last_chg_dt" jdbcType="VARCHAR" property="lastChgDt" />
+    <result column="fund_ratio" jdbcType="NUMERIC" property="fundRatio" />
+    <result column="fund_amt" jdbcType="NUMERIC" property="fundAmt" />
+    <result column="bind_mobile" jdbcType="VARCHAR" property="bindMobile" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    gen_gl_no,loan_no,acct_bank_cde,acct_bch_cde,loan_acct_typ,acct_no,acct_name,acct_val_dt,acct_create_dt,acct_expiry_dt,acct_rmk,atpy_sts,acct_card_no,acct_ntt_ind,acct_typ,acct_cde,acct_ccy_cde,acct_id_type,acct_id_no,acct_iss_ctry,acct_ldgr_cde,acct_pri_no,acct_compst_ind,contr_no,issue_amt,account_self,acct_bank_add,acct_bank_nam,actv_amt,actv_amt_pct,last_chg_usr,last_chg_dt,fund_ratio,fund_amt,bind_mobile
+  </sql>
+
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from lm_acct_info_t
+    where gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+      and loan_no = #{loanNo,jdbcType=VARCHAR}
+      and acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR}
+      and acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR}
+      and loan_acct_typ = #{loanAcctTyp,jdbcType=VARCHAR}
+      and acct_no = #{acctNo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.caxs.minos.domain.LmAcctInfoT">
+    insert into lm_acct_info_t (gen_gl_no, loan_no, acct_bank_cde, 
+      acct_bch_cde, loan_acct_typ, acct_no, 
+      acct_name, acct_val_dt, acct_create_dt, 
+      acct_expiry_dt, acct_rmk, atpy_sts, 
+      acct_card_no, acct_ntt_ind, acct_typ, 
+      acct_cde, acct_ccy_cde, acct_id_type, 
+      acct_id_no, acct_iss_ctry, acct_ldgr_cde, 
+      acct_pri_no, acct_compst_ind, contr_no, 
+      issue_amt, account_self, acct_bank_add, 
+      acct_bank_nam, actv_amt, actv_amt_pct, 
+      last_chg_usr, last_chg_dt, fund_ratio, 
+      fund_amt, bind_mobile)
+    values (#{genGlNo,jdbcType=VARCHAR}, #{loanNo,jdbcType=VARCHAR}, #{acctBankCde,jdbcType=VARCHAR}, 
+      #{acctBchCde,jdbcType=VARCHAR}, #{loanAcctTyp,jdbcType=VARCHAR}, #{acctNo,jdbcType=VARCHAR}, 
+      #{acctName,jdbcType=VARCHAR}, #{acctValDt,jdbcType=VARCHAR}, #{acctCreateDt,jdbcType=VARCHAR}, 
+      #{acctExpiryDt,jdbcType=VARCHAR}, #{acctRmk,jdbcType=VARCHAR}, #{atpySts,jdbcType=VARCHAR}, 
+      #{acctCardNo,jdbcType=VARCHAR}, #{acctNttInd,jdbcType=VARCHAR}, #{acctTyp,jdbcType=VARCHAR}, 
+      #{acctCde,jdbcType=VARCHAR}, #{acctCcyCde,jdbcType=VARCHAR}, #{acctIdType,jdbcType=VARCHAR}, 
+      #{acctIdNo,jdbcType=VARCHAR}, #{acctIssCtry,jdbcType=VARCHAR}, #{acctLdgrCde,jdbcType=VARCHAR}, 
+      #{acctPriNo,jdbcType=INTEGER}, #{acctCompstInd,jdbcType=VARCHAR}, #{contrNo,jdbcType=VARCHAR}, 
+      #{issueAmt,jdbcType=NUMERIC}, #{accountSelf,jdbcType=VARCHAR}, #{acctBankAdd,jdbcType=VARCHAR}, 
+      #{acctBankNam,jdbcType=VARCHAR}, #{actvAmt,jdbcType=NUMERIC}, #{actvAmtPct,jdbcType=NUMERIC}, 
+      #{lastChgUsr,jdbcType=VARCHAR}, #{lastChgDt,jdbcType=VARCHAR}, #{fundRatio,jdbcType=NUMERIC}, 
+      #{fundAmt,jdbcType=NUMERIC}, #{bindMobile,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.caxs.minos.domain.LmAcctInfoT">
+    update lm_acct_info_t
+    set acct_name = #{acctName,jdbcType=VARCHAR},
+      acct_val_dt = #{acctValDt,jdbcType=VARCHAR},
+      acct_create_dt = #{acctCreateDt,jdbcType=VARCHAR},
+      acct_expiry_dt = #{acctExpiryDt,jdbcType=VARCHAR},
+      acct_rmk = #{acctRmk,jdbcType=VARCHAR},
+      atpy_sts = #{atpySts,jdbcType=VARCHAR},
+      acct_card_no = #{acctCardNo,jdbcType=VARCHAR},
+      acct_ntt_ind = #{acctNttInd,jdbcType=VARCHAR},
+      acct_typ = #{acctTyp,jdbcType=VARCHAR},
+      acct_cde = #{acctCde,jdbcType=VARCHAR},
+      acct_ccy_cde = #{acctCcyCde,jdbcType=VARCHAR},
+      acct_id_type = #{acctIdType,jdbcType=VARCHAR},
+      acct_id_no = #{acctIdNo,jdbcType=VARCHAR},
+      acct_iss_ctry = #{acctIssCtry,jdbcType=VARCHAR},
+      acct_ldgr_cde = #{acctLdgrCde,jdbcType=VARCHAR},
+      acct_pri_no = #{acctPriNo,jdbcType=INTEGER},
+      acct_compst_ind = #{acctCompstInd,jdbcType=VARCHAR},
+      contr_no = #{contrNo,jdbcType=VARCHAR},
+      issue_amt = #{issueAmt,jdbcType=NUMERIC},
+      account_self = #{accountSelf,jdbcType=VARCHAR},
+      acct_bank_add = #{acctBankAdd,jdbcType=VARCHAR},
+      acct_bank_nam = #{acctBankNam,jdbcType=VARCHAR},
+      actv_amt = #{actvAmt,jdbcType=NUMERIC},
+      actv_amt_pct = #{actvAmtPct,jdbcType=NUMERIC},
+      last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR},
+      last_chg_dt = #{lastChgDt,jdbcType=VARCHAR},
+      fund_ratio = #{fundRatio,jdbcType=NUMERIC},
+      fund_amt = #{fundAmt,jdbcType=NUMERIC},
+      bind_mobile = #{bindMobile,jdbcType=VARCHAR}
+    where gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+      and loan_no = #{loanNo,jdbcType=VARCHAR}
+      and acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR}
+      and acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR}
+      and loan_acct_typ = #{loanAcctTyp,jdbcType=VARCHAR}
+      and acct_no = #{acctNo,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select gen_gl_no, loan_no, acct_bank_cde, acct_bch_cde, loan_acct_typ, acct_no, acct_name, 
+    acct_val_dt, acct_create_dt, acct_expiry_dt, acct_rmk, atpy_sts, acct_card_no, acct_ntt_ind, 
+    acct_typ, acct_cde, acct_ccy_cde, acct_id_type, acct_id_no, acct_iss_ctry, acct_ldgr_cde, 
+    acct_pri_no, acct_compst_ind, contr_no, issue_amt, account_self, acct_bank_add, acct_bank_nam, 
+    actv_amt, actv_amt_pct, last_chg_usr, last_chg_dt, fund_ratio, fund_amt, bind_mobile
+    from lm_acct_info_t
+    where gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+      and loan_no = #{loanNo,jdbcType=VARCHAR}
+      and acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR}
+      and acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR}
+      and loan_acct_typ = #{loanAcctTyp,jdbcType=VARCHAR}
+      and acct_no = #{acctNo,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select gen_gl_no, loan_no, acct_bank_cde, acct_bch_cde, loan_acct_typ, acct_no, acct_name, 
+    acct_val_dt, acct_create_dt, acct_expiry_dt, acct_rmk, atpy_sts, acct_card_no, acct_ntt_ind, 
+    acct_typ, acct_cde, acct_ccy_cde, acct_id_type, acct_id_no, acct_iss_ctry, acct_ldgr_cde, 
+    acct_pri_no, acct_compst_ind, contr_no, issue_amt, account_self, acct_bank_add, acct_bank_nam, 
+    actv_amt, actv_amt_pct, last_chg_usr, last_chg_dt, fund_ratio, fund_amt, bind_mobile
+    from lm_acct_info_t
+  </select>
+  <insert id="insertList" parameterType="java.util.List">
+    insert into lm_acct_info_t (gen_gl_no,loan_no, acct_bank_cde, acct_bch_cde,
+    loan_acct_typ, acct_no, acct_name,
+    acct_val_dt, acct_create_dt, acct_expiry_dt,
+    acct_rmk, atpy_sts, acct_card_no,
+    acct_ntt_ind, acct_typ, acct_cde,
+    acct_ccy_cde, acct_id_type, acct_id_no,
+    acct_iss_ctry, acct_ldgr_cde, acct_pri_no,
+    acct_compst_ind, contr_no, issue_amt,
+    account_self, acct_bank_add, acct_bank_nam,
+    actv_amt, actv_amt_pct, last_chg_usr,
+    last_chg_dt, fund_ratio, fund_amt,
+    bind_mobile)
+    values
+    <foreach collection="list" item = "item" index = "lmAcctInfoT" separator=",">
+      (#{item.genGlNo,jdbcType=VARCHAR},#{item.loanNo,jdbcType=VARCHAR}, #{item.acctBankCde,jdbcType=VARCHAR},
+      #{item.acctBchCde,jdbcType=VARCHAR},
+      #{item.loanAcctTyp,jdbcType=VARCHAR}, #{item.acctNo,jdbcType=VARCHAR}, #{item.acctName,jdbcType=VARCHAR},
+      #{item.acctValDt,jdbcType=VARCHAR}, #{item.acctCreateDt,jdbcType=VARCHAR}, #{item.acctExpiryDt,jdbcType=VARCHAR},
+      #{item.acctRmk,jdbcType=VARCHAR}, #{item.atpySts,jdbcType=VARCHAR}, #{item.acctCardNo,jdbcType=VARCHAR},
+      #{item.acctNttInd,jdbcType=VARCHAR}, #{item.acctTyp,jdbcType=VARCHAR}, #{item.acctCde,jdbcType=VARCHAR},
+      #{item.acctCcyCde,jdbcType=VARCHAR}, #{item.acctIdType,jdbcType=VARCHAR}, #{item.acctIdNo,jdbcType=VARCHAR},
+      #{item.acctIssCtry,jdbcType=VARCHAR}, #{item.acctLdgrCde,jdbcType=VARCHAR}, #{item.acctPriNo,jdbcType=INTEGER},
+      #{item.acctCompstInd,jdbcType=VARCHAR}, #{item.contrNo,jdbcType=VARCHAR}, #{item.issueAmt,jdbcType=NUMERIC},
+      #{item.accountSelf,jdbcType=VARCHAR}, #{item.acctBankAdd,jdbcType=VARCHAR}, #{item.acctBankNam,jdbcType=VARCHAR},
+      #{item.actvAmt,jdbcType=NUMERIC}, #{item.actvAmtPct,jdbcType=NUMERIC}, #{item.lastChgUsr,jdbcType=VARCHAR},
+      #{item.lastChgDt,jdbcType=VARCHAR}, #{item.fundRatio,jdbcType=NUMERIC}, #{item.fundAmt,jdbcType=NUMERIC},
+      #{item.bindMobile,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+  <select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmAcctInfo" >
+    select
+    <include refid="Base_Column_List" />
+    from lm_acct_info_t
+    <where>
+      <if test="genGlNo != null">
+        and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+      </if>
+      <if test="loanNo != null">
+        and loan_no = #{loanNo,jdbcType=VARCHAR}
+      </if>
+      <if test="acctBankCde != null">
+        and acct_bank_cde = #{acctBankCde,jdbcType=VARCHAR}
+      </if>
+      <if test="acctBchCde != null">
+        and acct_bch_cde = #{acctBchCde,jdbcType=VARCHAR}
+      </if>
+      <if test="loanAcctTyp != null">
+        and loan_acct_typ = #{loanAcctTyp,jdbcType=VARCHAR}
+      </if>
+      <if test="acctNo != null">
+        and acct_no = #{acctNo,jdbcType=VARCHAR}
+      </if>
+      <if test="acctName != null">
+        and acct_name = #{acctName,jdbcType=VARCHAR}
+      </if>
+      <if test="acctValDt != null">
+        and acct_val_dt = #{acctValDt,jdbcType=VARCHAR}
+      </if>
+      <if test="acctCreateDt != null">
+        and acct_create_dt = #{acctCreateDt,jdbcType=VARCHAR}
+      </if>
+      <if test="acctExpiryDt != null">
+        and acct_expiry_dt = #{acctExpiryDt,jdbcType=VARCHAR}
+      </if>
+      <if test="acctRmk != null">
+        and acct_rmk = #{acctRmk,jdbcType=VARCHAR}
+      </if>
+      <if test="atpySts != null">
+        and atpy_sts = #{atpySts,jdbcType=VARCHAR}
+      </if>
+      <if test="acctCardNo != null">
+        and acct_card_no = #{acctCardNo,jdbcType=VARCHAR}
+      </if>
+      <if test="acctNttInd != null">
+        and acct_ntt_ind = #{acctNttInd,jdbcType=VARCHAR}
+      </if>
+      <if test="acctTyp != null">
+        and acct_typ = #{acctTyp,jdbcType=VARCHAR}
+      </if>
+      <if test="acctCde != null">
+        and acct_cde = #{acctCde,jdbcType=VARCHAR}
+      </if>
+      <if test="acctCcyCde != null">
+        and acct_ccy_cde = #{acctCcyCde,jdbcType=VARCHAR}
+      </if>
+      <if test="acctIdType != null">
+        and acct_id_type = #{acctIdType,jdbcType=VARCHAR}
+      </if>
+      <if test="acctIdNo != null">
+        and acct_id_no = #{acctIdNo,jdbcType=VARCHAR}
+      </if>
+      <if test="acctIssCtry != null">
+        and acct_iss_ctry = #{acctIssCtry,jdbcType=VARCHAR}
+      </if>
+      <if test="acctLdgrCde != null">
+        and acct_ldgr_cde = #{acctLdgrCde,jdbcType=VARCHAR}
+      </if>
+      <if test="acctPriNo != null">
+        and acct_pri_no = #{acctPriNo,jdbcType=BIGINT}
+      </if>
+      <if test="acctCompstInd != null">
+        and acct_compst_ind = #{acctCompstInd,jdbcType=VARCHAR}
+      </if>
+      <if test="contrNo != null">
+        and contr_no = #{contrNo,jdbcType=VARCHAR}
+      </if>
+      <if test="issueAmt != null">
+        and issue_amt = #{issueAmt,jdbcType=NUMERIC}
+      </if>
+      <if test="accountSelf != null">
+        and account_self = #{accountSelf,jdbcType=VARCHAR}
+      </if>
+      <if test="acctBankAdd != null">
+        and acct_bank_add = #{acctBankAdd,jdbcType=VARCHAR}
+      </if>
+      <if test="acctBankNam != null">
+        and acct_bank_nam = #{acctBankNam,jdbcType=VARCHAR}
+      </if>
+      <if test="actvAmt != null">
+        and actv_amt = #{actvAmt,jdbcType=NUMERIC}
+      </if>
+      <if test="actvAmtPct != null">
+        and actv_amt_pct = #{actvAmtPct,jdbcType=NUMERIC}
+      </if>
+      <if test="lastChgUsr != null">
+        and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+      </if>
+      <if test="lastChgDt != null">
+        and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+      </if>
+      <if test="fundRatio != null">
+        and fund_ratio = #{fundRatio,jdbcType=NUMERIC}
+      </if>
+      <if test="fundAmt != null">
+        and fund_amt = #{fundAmt,jdbcType=NUMERIC}
+      </if>
+      <if test="bindMobile != null">
+        and bind_mobile = #{bindMobile,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+</mapper>

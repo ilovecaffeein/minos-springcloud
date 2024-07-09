@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.SIntRatDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.SIntRat" id="BaseResultMap">
+        <result property="effDt" column="eff_dt" jdbcType="VARCHAR"/>
+        <result property="rateTyp" column="rate_typ" jdbcType="VARCHAR"/>
+        <result property="intRat" column="int_rat" jdbcType="NUMERIC"/>
+        <result property="dailyUpdInd" column="daily_upd_ind" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="ccy" column="ccy" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        eff_dt,rate_typ,int_rat,daily_upd_ind,last_chg_dt,last_chg_usr,ccy 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SIntRat">
+		select 
+		<include refid="Base_Column_List" />
+		 from s_int_rat
+		 <where>
+		 <if test="effDt != null">
+        	and eff_dt = #{effDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="rateTyp != null">
+        	and rate_typ = #{rateTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="intRat != null">
+        	and int_rat = #{intRat,jdbcType=NUMERIC}
+	  </if>
+		 <if test="dailyUpdInd != null">
+        	and daily_upd_ind = #{dailyUpdInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="ccy != null">
+        	and ccy = #{ccy,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SIntRat" >
+		select 
+		<include refid="Base_Column_List" />
+		 from s_int_rat
+		 <where>
+         <if test="effDt != null">
+        	and eff_dt = #{effDt,jdbcType=VARCHAR}
+         </if>
+         <if test="rateTyp != null">
+        	and rate_typ = #{rateTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="intRat != null">
+        	and int_rat = #{intRat,jdbcType=NUMERIC}
+         </if>
+         <if test="dailyUpdInd != null">
+        	and daily_upd_ind = #{dailyUpdInd,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="ccy != null">
+        	and ccy = #{ccy,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.SIntRat">
+		insert into s_int_rat
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="effDt != null">
+        	    eff_dt ,
+	    </if>
+			<if test="rateTyp != null">
+        	    rate_typ ,
+	    </if>
+			<if test="intRat != null">
+        	    int_rat ,
+	    </if>
+			<if test="dailyUpdInd != null">
+        	    daily_upd_ind ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="ccy != null">
+        	    ccy ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="effDt != null">
+        	   #{effDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="rateTyp != null">
+        	   #{rateTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="intRat != null">
+        	   #{intRat,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="dailyUpdInd != null">
+        	   #{dailyUpdInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="ccy != null">
+        	   #{ccy,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.SIntRat">
+		update s_int_rat 
+		<set>
+			<if test="effDt != null">
+        	 eff_dt = #{effDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="rateTyp != null">
+        	 rate_typ = #{rateTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="intRat != null">
+        	 int_rat = #{intRat,jdbcType=NUMERIC} ,
+       </if>
+			<if test="dailyUpdInd != null">
+        	 daily_upd_ind = #{dailyUpdInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="ccy != null">
+        	 ccy = #{ccy,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where eff_dt= #{effDt}
+	</update>
+</mapper>

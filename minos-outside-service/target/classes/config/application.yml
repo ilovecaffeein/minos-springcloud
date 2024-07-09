@@ -1,0 +1,30 @@
+server:
+  port: 8094
+spring:
+  application:
+    name: minos-outside-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://10.10.8.227:5433/glloans?characterEncoding=utf8
+    username: glloans
+    password: RunAq4EpFdNNvbj
+    filters: stat,wall,log4j
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+    connection-properties: druid.stat.merggSql=ture;druid.stat.slowSqlMillis=5000
+#logging  不同的目录不同的日志输出级别
+logging:
+  config: classpath:config/logback-boot.xml
+  level:
+    root: info
+    com.caxs: debug

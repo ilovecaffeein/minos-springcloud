@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.SCtrlDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.SCtrl" id="BaseResultMap">
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="passPerd" column="pass_perd" jdbcType="BIGINT"/>
+        <result property="passErr" column="pass_err" jdbcType="BIGINT"/>
+        <result property="loginNum" column="login_num" jdbcType="BIGINT"/>
+        <result property="passMin" column="pass_min" jdbcType="BIGINT"/>
+        <result property="accInd" column="acc_ind" jdbcType="VARCHAR"/>
+        <result property="intfInd" column="intf_ind" jdbcType="VARCHAR"/>
+        <result property="curPrcsDt" column="cur_prcs_dt" jdbcType="VARCHAR"/>
+        <result property="nextPrcsDt" column="next_prcs_dt" jdbcType="VARCHAR"/>
+        <result property="lastPrcsDt" column="last_prcs_dt" jdbcType="VARCHAR"/>
+        <result property="logoFile" column="logo_file" jdbcType="VARCHAR"/>
+        <result property="faceTyp" column="face_typ" jdbcType="VARCHAR"/>
+        <result property="defCcyCde" column="def_ccy_cde" jdbcType="VARCHAR"/>
+        <result property="night" column="night" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="batching" column="batching" jdbcType="VARCHAR"/>
+        <result property="headBchCde" column="head_bch_cde" jdbcType="VARCHAR"/>
+        <result property="rtPrcsDt" column="rt_prcs_dt" jdbcType="VARCHAR"/>
+        <result property="onlineDt" column="online_dt" jdbcType="VARCHAR"/>
+        <result property="dayendDt" column="dayend_dt" jdbcType="VARCHAR"/>
+        <result property="defBankCde" column="def_bank_cde" jdbcType="VARCHAR"/>
+        <result property="loopNum" column="loop_num" jdbcType="BIGINT"/>
+        <result property="debtOver" column="debt_over" jdbcType="BIGINT"/>
+        <result property="batchInd" column="batch_ind" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        bank_cde,pass_perd,pass_err,login_num,pass_min,acc_ind,intf_ind,cur_prcs_dt,next_prcs_dt,last_prcs_dt,logo_file,face_typ,def_ccy_cde,night,last_chg_dt,last_chg_usr,batching,head_bch_cde,rt_prcs_dt,online_dt,dayend_dt,def_bank_cde,loop_num,debt_over,batch_ind 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SCtrl">
+		select 
+		<include refid="Base_Column_List" />
+		 from s_ctrl
+		 <where>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="passPerd != null">
+        	and pass_perd = #{passPerd,jdbcType=BIGINT}
+	  </if>
+		 <if test="passErr != null">
+        	and pass_err = #{passErr,jdbcType=BIGINT}
+	  </if>
+		 <if test="loginNum != null">
+        	and login_num = #{loginNum,jdbcType=BIGINT}
+	  </if>
+		 <if test="passMin != null">
+        	and pass_min = #{passMin,jdbcType=BIGINT}
+	  </if>
+		 <if test="accInd != null">
+        	and acc_ind = #{accInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="intfInd != null">
+        	and intf_ind = #{intfInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="curPrcsDt != null">
+        	and cur_prcs_dt = #{curPrcsDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="nextPrcsDt != null">
+        	and next_prcs_dt = #{nextPrcsDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastPrcsDt != null">
+        	and last_prcs_dt = #{lastPrcsDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="logoFile != null">
+        	and logo_file = #{logoFile,jdbcType=VARCHAR}
+	  </if>
+		 <if test="faceTyp != null">
+        	and face_typ = #{faceTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="defCcyCde != null">
+        	and def_ccy_cde = #{defCcyCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="night != null">
+        	and night = #{night,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="batching != null">
+        	and batching = #{batching,jdbcType=VARCHAR}
+	  </if>
+		 <if test="headBchCde != null">
+        	and head_bch_cde = #{headBchCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="rtPrcsDt != null">
+        	and rt_prcs_dt = #{rtPrcsDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="onlineDt != null">
+        	and online_dt = #{onlineDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="dayendDt != null">
+        	and dayend_dt = #{dayendDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="defBankCde != null">
+        	and def_bank_cde = #{defBankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loopNum != null">
+        	and loop_num = #{loopNum,jdbcType=BIGINT}
+	  </if>
+		 <if test="debtOver != null">
+        	and debt_over = #{debtOver,jdbcType=BIGINT}
+	  </if>
+		 <if test="batchInd != null">
+        	and batch_ind = #{batchInd,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SCtrl" >
+		select 
+		<include refid="Base_Column_List" />
+		 from s_ctrl
+		 <where>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="passPerd != null">
+        	and pass_perd = #{passPerd,jdbcType=BIGINT}
+         </if>
+         <if test="passErr != null">
+        	and pass_err = #{passErr,jdbcType=BIGINT}
+         </if>
+         <if test="loginNum != null">
+        	and login_num = #{loginNum,jdbcType=BIGINT}
+         </if>
+         <if test="passMin != null">
+        	and pass_min = #{passMin,jdbcType=BIGINT}
+         </if>
+         <if test="accInd != null">
+        	and acc_ind = #{accInd,jdbcType=VARCHAR}
+         </if>
+         <if test="intfInd != null">
+        	and intf_ind = #{intfInd,jdbcType=VARCHAR}
+         </if>
+         <if test="curPrcsDt != null">
+        	and cur_prcs_dt = #{curPrcsDt,jdbcType=VARCHAR}
+         </if>
+         <if test="nextPrcsDt != null">
+        	and next_prcs_dt = #{nextPrcsDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastPrcsDt != null">
+        	and last_prcs_dt = #{lastPrcsDt,jdbcType=VARCHAR}
+         </if>
+         <if test="logoFile != null">
+        	and logo_file = #{logoFile,jdbcType=VARCHAR}
+         </if>
+         <if test="faceTyp != null">
+        	and face_typ = #{faceTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="defCcyCde != null">
+        	and def_ccy_cde = #{defCcyCde,jdbcType=VARCHAR}
+         </if>
+         <if test="night != null">
+        	and night = #{night,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="batching != null">
+        	and batching = #{batching,jdbcType=VARCHAR}
+         </if>
+         <if test="headBchCde != null">
+        	and head_bch_cde = #{headBchCde,jdbcType=VARCHAR}
+         </if>
+         <if test="rtPrcsDt != null">
+        	and rt_prcs_dt = #{rtPrcsDt,jdbcType=VARCHAR}
+         </if>
+         <if test="onlineDt != null">
+        	and online_dt = #{onlineDt,jdbcType=VARCHAR}
+         </if>
+         <if test="dayendDt != null">
+        	and dayend_dt = #{dayendDt,jdbcType=VARCHAR}
+         </if>
+         <if test="defBankCde != null">
+        	and def_bank_cde = #{defBankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="loopNum != null">
+        	and loop_num = #{loopNum,jdbcType=BIGINT}
+         </if>
+         <if test="debtOver != null">
+        	and debt_over = #{debtOver,jdbcType=BIGINT}
+         </if>
+         <if test="batchInd != null">
+        	and batch_ind = #{batchInd,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+
+	<insert id="insert" parameterType="com.caxs.minos.domain.SCtrl">
+		insert into s_ctrl
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="passPerd != null">
+        	    pass_perd ,
+	    </if>
+			<if test="passErr != null">
+        	    pass_err ,
+	    </if>
+			<if test="loginNum != null">
+        	    login_num ,
+	    </if>
+			<if test="passMin != null">
+        	    pass_min ,
+	    </if>
+			<if test="accInd != null">
+        	    acc_ind ,
+	    </if>
+			<if test="intfInd != null">
+        	    intf_ind ,
+	    </if>
+			<if test="curPrcsDt != null">
+        	    cur_prcs_dt ,
+	    </if>
+			<if test="nextPrcsDt != null">
+        	    next_prcs_dt ,
+	    </if>
+			<if test="lastPrcsDt != null">
+        	    last_prcs_dt ,
+	    </if>
+			<if test="logoFile != null">
+        	    logo_file ,
+	    </if>
+			<if test="faceTyp != null">
+        	    face_typ ,
+	    </if>
+			<if test="defCcyCde != null">
+        	    def_ccy_cde ,
+	    </if>
+			<if test="night != null">
+        	    night ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="batching != null">
+        	    batching ,
+	    </if>
+			<if test="headBchCde != null">
+        	    head_bch_cde ,
+	    </if>
+			<if test="rtPrcsDt != null">
+        	    rt_prcs_dt ,
+	    </if>
+			<if test="onlineDt != null">
+        	    online_dt ,
+	    </if>
+			<if test="dayendDt != null">
+        	    dayend_dt ,
+	    </if>
+			<if test="defBankCde != null">
+        	    def_bank_cde ,
+	    </if>
+			<if test="loopNum != null">
+        	    loop_num ,
+	    </if>
+			<if test="debtOver != null">
+        	    debt_over ,
+	    </if>
+			<if test="batchInd != null">
+        	    batch_ind ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="passPerd != null">
+        	   #{passPerd,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="passErr != null">
+        	   #{passErr,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loginNum != null">
+        	   #{loginNum,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="passMin != null">
+        	   #{passMin,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="accInd != null">
+        	   #{accInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="intfInd != null">
+        	   #{intfInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="curPrcsDt != null">
+        	   #{curPrcsDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="nextPrcsDt != null">
+        	   #{nextPrcsDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastPrcsDt != null">
+        	   #{lastPrcsDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="logoFile != null">
+        	   #{logoFile,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="faceTyp != null">
+        	   #{faceTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="defCcyCde != null">
+        	   #{defCcyCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="night != null">
+        	   #{night,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="batching != null">
+        	   #{batching,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="headBchCde != null">
+        	   #{headBchCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="rtPrcsDt != null">
+        	   #{rtPrcsDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="onlineDt != null">
+        	   #{onlineDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="dayendDt != null">
+        	   #{dayendDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="defBankCde != null">
+        	   #{defBankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loopNum != null">
+        	   #{loopNum,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="debtOver != null">
+        	   #{debtOver,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="batchInd != null">
+        	   #{batchInd,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.SCtrl">
+		update s_ctrl 
+		<set>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="passPerd != null">
+        	 pass_perd = #{passPerd,jdbcType=BIGINT} ,
+       </if>
+			<if test="passErr != null">
+        	 pass_err = #{passErr,jdbcType=BIGINT} ,
+       </if>
+			<if test="loginNum != null">
+        	 login_num = #{loginNum,jdbcType=BIGINT} ,
+       </if>
+			<if test="passMin != null">
+        	 pass_min = #{passMin,jdbcType=BIGINT} ,
+       </if>
+			<if test="accInd != null">
+        	 acc_ind = #{accInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="intfInd != null">
+        	 intf_ind = #{intfInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="curPrcsDt != null">
+        	 cur_prcs_dt = #{curPrcsDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="nextPrcsDt != null">
+        	 next_prcs_dt = #{nextPrcsDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastPrcsDt != null">
+        	 last_prcs_dt = #{lastPrcsDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="logoFile != null">
+        	 logo_file = #{logoFile,jdbcType=VARCHAR} ,
+       </if>
+			<if test="faceTyp != null">
+        	 face_typ = #{faceTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="defCcyCde != null">
+        	 def_ccy_cde = #{defCcyCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="night != null">
+        	 night = #{night,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="batching != null">
+        	 batching = #{batching,jdbcType=VARCHAR} ,
+       </if>
+			<if test="headBchCde != null">
+        	 head_bch_cde = #{headBchCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="rtPrcsDt != null">
+        	 rt_prcs_dt = #{rtPrcsDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="onlineDt != null">
+        	 online_dt = #{onlineDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="dayendDt != null">
+        	 dayend_dt = #{dayendDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="defBankCde != null">
+        	 def_bank_cde = #{defBankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loopNum != null">
+        	 loop_num = #{loopNum,jdbcType=BIGINT} ,
+       </if>
+			<if test="debtOver != null">
+        	 debt_over = #{debtOver,jdbcType=BIGINT} ,
+       </if>
+			<if test="batchInd != null">
+        	 batch_ind = #{batchInd,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where bank_cde= #{bankCde}
+	</update>
+
+<!--  查询日终状态	-->
+	<select id="selectEndOfDayState" resultType="java.lang.String">
+		select night from s_ctrl
+	</select>
+    <select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from s_ctrl
+	</select>
+</mapper>

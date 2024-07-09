@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmInterfaceInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmInterfaceInfo" id="BaseResultMap">
+        <result property="trstplnNo" column="trstpln_no" jdbcType="VARCHAR"/>
+        <result property="trstplnName" column="trstpln_name" jdbcType="VARCHAR"/>
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="bchName" column="bch_name" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="custId" column="cust_id" jdbcType="VARCHAR"/>
+        <result property="telpassword" column="telpassword" jdbcType="VARCHAR"/>
+        <result property="billCodeBh" column="bill_code_bh" jdbcType="VARCHAR"/>
+        <result property="useofCodeBh" column="useof_code_bh" jdbcType="VARCHAR"/>
+        <result property="billCodeTh" column="bill_code_th" jdbcType="VARCHAR"/>
+        <result property="useofCodeTh" column="useof_code_th" jdbcType="VARCHAR"/>
+        <result property="acctDfTyp" column="acct_df_typ" jdbcType="VARCHAR"/>
+        <result property="acctDfNo" column="acct_df_no" jdbcType="VARCHAR"/>
+        <result property="acctDfName" column="acct_df_name" jdbcType="VARCHAR"/>
+        <result property="acctBankCdeDf" column="acct_bank_cde_df" jdbcType="VARCHAR"/>
+        <result property="acctBankNameDf" column="acct_bank_name_df" jdbcType="VARCHAR"/>
+        <result property="acctDsTyp" column="acct_ds_typ" jdbcType="VARCHAR"/>
+        <result property="acctDsNo" column="acct_ds_no" jdbcType="VARCHAR"/>
+        <result property="acctDsName" column="acct_ds_name" jdbcType="VARCHAR"/>
+        <result property="acctBankCdeDs" column="acct_bank_cde_ds" jdbcType="VARCHAR"/>
+        <result property="acctBankNameDs" column="acct_bank_name_ds" jdbcType="VARCHAR"/>
+        <result property="actv" column="actv" jdbcType="VARCHAR"/>
+        <result property="txDate" column="tx_date" jdbcType="VARCHAR"/>
+        <result property="defBankCde" column="def_bank_cde" jdbcType="VARCHAR"/>
+        <result property="rem1" column="rem1" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        trstpln_no,trstpln_name,bank_cde,bch_name,user_id,cust_id,telpassword,bill_code_bh,useof_code_bh,bill_code_th,useof_code_th,acct_df_typ,acct_df_no,acct_df_name,acct_bank_cde_df,acct_bank_name_df,acct_ds_typ,acct_ds_no,acct_ds_name,acct_bank_cde_ds,acct_bank_name_ds,actv,tx_date,def_bank_cde,rem1 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmInterfaceInfo">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_interface_info
+		 <where>
+		 <if test="trstplnNo != null">
+        	and trstpln_no = #{trstplnNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="trstplnName != null">
+        	and trstpln_name = #{trstplnName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchName != null">
+        	and bch_name = #{bchName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="userId != null">
+        	and user_id = #{userId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="telpassword != null">
+        	and telpassword = #{telpassword,jdbcType=VARCHAR}
+	  </if>
+		 <if test="billCodeBh != null">
+        	and bill_code_bh = #{billCodeBh,jdbcType=VARCHAR}
+	  </if>
+		 <if test="useofCodeBh != null">
+        	and useof_code_bh = #{useofCodeBh,jdbcType=VARCHAR}
+	  </if>
+		 <if test="billCodeTh != null">
+        	and bill_code_th = #{billCodeTh,jdbcType=VARCHAR}
+	  </if>
+		 <if test="useofCodeTh != null">
+        	and useof_code_th = #{useofCodeTh,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctDfTyp != null">
+        	and acct_df_typ = #{acctDfTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctDfNo != null">
+        	and acct_df_no = #{acctDfNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctDfName != null">
+        	and acct_df_name = #{acctDfName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctBankCdeDf != null">
+        	and acct_bank_cde_df = #{acctBankCdeDf,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctBankNameDf != null">
+        	and acct_bank_name_df = #{acctBankNameDf,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctDsTyp != null">
+        	and acct_ds_typ = #{acctDsTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctDsNo != null">
+        	and acct_ds_no = #{acctDsNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctDsName != null">
+        	and acct_ds_name = #{acctDsName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctBankCdeDs != null">
+        	and acct_bank_cde_ds = #{acctBankCdeDs,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctBankNameDs != null">
+        	and acct_bank_name_ds = #{acctBankNameDs,jdbcType=VARCHAR}
+	  </if>
+		 <if test="actv != null">
+        	and actv = #{actv,jdbcType=VARCHAR}
+	  </if>
+		 <if test="txDate != null">
+        	and tx_date = #{txDate,jdbcType=VARCHAR}
+	  </if>
+		 <if test="defBankCde != null">
+        	and def_bank_cde = #{defBankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="rem1 != null">
+        	and rem1 = #{rem1,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmInterfaceInfo" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_interface_info
+		 <where>
+         <if test="trstplnNo != null">
+        	and trstpln_no = #{trstplnNo,jdbcType=VARCHAR}
+         </if>
+         <if test="trstplnName != null">
+        	and trstpln_name = #{trstplnName,jdbcType=VARCHAR}
+         </if>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchName != null">
+        	and bch_name = #{bchName,jdbcType=VARCHAR}
+         </if>
+         <if test="userId != null">
+        	and user_id = #{userId,jdbcType=VARCHAR}
+         </if>
+         <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+         </if>
+         <if test="telpassword != null">
+        	and telpassword = #{telpassword,jdbcType=VARCHAR}
+         </if>
+         <if test="billCodeBh != null">
+        	and bill_code_bh = #{billCodeBh,jdbcType=VARCHAR}
+         </if>
+         <if test="useofCodeBh != null">
+        	and useof_code_bh = #{useofCodeBh,jdbcType=VARCHAR}
+         </if>
+         <if test="billCodeTh != null">
+        	and bill_code_th = #{billCodeTh,jdbcType=VARCHAR}
+         </if>
+         <if test="useofCodeTh != null">
+        	and useof_code_th = #{useofCodeTh,jdbcType=VARCHAR}
+         </if>
+         <if test="acctDfTyp != null">
+        	and acct_df_typ = #{acctDfTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="acctDfNo != null">
+        	and acct_df_no = #{acctDfNo,jdbcType=VARCHAR}
+         </if>
+         <if test="acctDfName != null">
+        	and acct_df_name = #{acctDfName,jdbcType=VARCHAR}
+         </if>
+         <if test="acctBankCdeDf != null">
+        	and acct_bank_cde_df = #{acctBankCdeDf,jdbcType=VARCHAR}
+         </if>
+         <if test="acctBankNameDf != null">
+        	and acct_bank_name_df = #{acctBankNameDf,jdbcType=VARCHAR}
+         </if>
+         <if test="acctDsTyp != null">
+        	and acct_ds_typ = #{acctDsTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="acctDsNo != null">
+        	and acct_ds_no = #{acctDsNo,jdbcType=VARCHAR}
+         </if>
+         <if test="acctDsName != null">
+        	and acct_ds_name = #{acctDsName,jdbcType=VARCHAR}
+         </if>
+         <if test="acctBankCdeDs != null">
+        	and acct_bank_cde_ds = #{acctBankCdeDs,jdbcType=VARCHAR}
+         </if>
+         <if test="acctBankNameDs != null">
+        	and acct_bank_name_ds = #{acctBankNameDs,jdbcType=VARCHAR}
+         </if>
+         <if test="actv != null">
+        	and actv = #{actv,jdbcType=VARCHAR}
+         </if>
+         <if test="txDate != null">
+        	and tx_date = #{txDate,jdbcType=VARCHAR}
+         </if>
+         <if test="defBankCde != null">
+        	and def_bank_cde = #{defBankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="rem1 != null">
+        	and rem1 = #{rem1,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmInterfaceInfo">
+		insert into lm_interface_info
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="trstplnNo != null">
+        	    trstpln_no ,
+	    </if>
+			<if test="trstplnName != null">
+        	    trstpln_name ,
+	    </if>
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="bchName != null">
+        	    bch_name ,
+	    </if>
+			<if test="userId != null">
+        	    user_id ,
+	    </if>
+			<if test="custId != null">
+        	    cust_id ,
+	    </if>
+			<if test="telpassword != null">
+        	    telpassword ,
+	    </if>
+			<if test="billCodeBh != null">
+        	    bill_code_bh ,
+	    </if>
+			<if test="useofCodeBh != null">
+        	    useof_code_bh ,
+	    </if>
+			<if test="billCodeTh != null">
+        	    bill_code_th ,
+	    </if>
+			<if test="useofCodeTh != null">
+        	    useof_code_th ,
+	    </if>
+			<if test="acctDfTyp != null">
+        	    acct_df_typ ,
+	    </if>
+			<if test="acctDfNo != null">
+        	    acct_df_no ,
+	    </if>
+			<if test="acctDfName != null">
+        	    acct_df_name ,
+	    </if>
+			<if test="acctBankCdeDf != null">
+        	    acct_bank_cde_df ,
+	    </if>
+			<if test="acctBankNameDf != null">
+        	    acct_bank_name_df ,
+	    </if>
+			<if test="acctDsTyp != null">
+        	    acct_ds_typ ,
+	    </if>
+			<if test="acctDsNo != null">
+        	    acct_ds_no ,
+	    </if>
+			<if test="acctDsName != null">
+        	    acct_ds_name ,
+	    </if>
+			<if test="acctBankCdeDs != null">
+        	    acct_bank_cde_ds ,
+	    </if>
+			<if test="acctBankNameDs != null">
+        	    acct_bank_name_ds ,
+	    </if>
+			<if test="actv != null">
+        	    actv ,
+	    </if>
+			<if test="txDate != null">
+        	    tx_date ,
+	    </if>
+			<if test="defBankCde != null">
+        	    def_bank_cde ,
+	    </if>
+			<if test="rem1 != null">
+        	    rem1 ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="trstplnNo != null">
+        	   #{trstplnNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="trstplnName != null">
+        	   #{trstplnName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchName != null">
+        	   #{bchName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="userId != null">
+        	   #{userId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="custId != null">
+        	   #{custId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="telpassword != null">
+        	   #{telpassword,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="billCodeBh != null">
+        	   #{billCodeBh,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="useofCodeBh != null">
+        	   #{useofCodeBh,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="billCodeTh != null">
+        	   #{billCodeTh,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="useofCodeTh != null">
+        	   #{useofCodeTh,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctDfTyp != null">
+        	   #{acctDfTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctDfNo != null">
+        	   #{acctDfNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctDfName != null">
+        	   #{acctDfName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctBankCdeDf != null">
+        	   #{acctBankCdeDf,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctBankNameDf != null">
+        	   #{acctBankNameDf,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctDsTyp != null">
+        	   #{acctDsTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctDsNo != null">
+        	   #{acctDsNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctDsName != null">
+        	   #{acctDsName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctBankCdeDs != null">
+        	   #{acctBankCdeDs,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctBankNameDs != null">
+        	   #{acctBankNameDs,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="actv != null">
+        	   #{actv,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="txDate != null">
+        	   #{txDate,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="defBankCde != null">
+        	   #{defBankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="rem1 != null">
+        	   #{rem1,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmInterfaceInfo">
+		update lm_interface_info 
+		<set>
+			<if test="trstplnNo != null">
+        	 trstpln_no = #{trstplnNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="trstplnName != null">
+        	 trstpln_name = #{trstplnName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchName != null">
+        	 bch_name = #{bchName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="userId != null">
+        	 user_id = #{userId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="custId != null">
+        	 cust_id = #{custId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="telpassword != null">
+        	 telpassword = #{telpassword,jdbcType=VARCHAR} ,
+       </if>
+			<if test="billCodeBh != null">
+        	 bill_code_bh = #{billCodeBh,jdbcType=VARCHAR} ,
+       </if>
+			<if test="useofCodeBh != null">
+        	 useof_code_bh = #{useofCodeBh,jdbcType=VARCHAR} ,
+       </if>
+			<if test="billCodeTh != null">
+        	 bill_code_th = #{billCodeTh,jdbcType=VARCHAR} ,
+       </if>
+			<if test="useofCodeTh != null">
+        	 useof_code_th = #{useofCodeTh,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctDfTyp != null">
+        	 acct_df_typ = #{acctDfTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctDfNo != null">
+        	 acct_df_no = #{acctDfNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctDfName != null">
+        	 acct_df_name = #{acctDfName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctBankCdeDf != null">
+        	 acct_bank_cde_df = #{acctBankCdeDf,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctBankNameDf != null">
+        	 acct_bank_name_df = #{acctBankNameDf,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctDsTyp != null">
+        	 acct_ds_typ = #{acctDsTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctDsNo != null">
+        	 acct_ds_no = #{acctDsNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctDsName != null">
+        	 acct_ds_name = #{acctDsName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctBankCdeDs != null">
+        	 acct_bank_cde_ds = #{acctBankCdeDs,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctBankNameDs != null">
+        	 acct_bank_name_ds = #{acctBankNameDs,jdbcType=VARCHAR} ,
+       </if>
+			<if test="actv != null">
+        	 actv = #{actv,jdbcType=VARCHAR} ,
+       </if>
+			<if test="txDate != null">
+        	 tx_date = #{txDate,jdbcType=VARCHAR} ,
+       </if>
+			<if test="defBankCde != null">
+        	 def_bank_cde = #{defBankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="rem1 != null">
+        	 rem1 = #{rem1,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where trstpln_no= #{trstplnNo}
+	</update>
+</mapper>

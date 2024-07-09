@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmHoldShdHistDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmHoldShdHist" id="BaseResultMap">
+        <result property="seqNo" column="seq_no" jdbcType="BIGINT"/>
+        <result property="txNo" column="tx_no" jdbcType="BIGINT"/>
+        <result property="loanNo" column="loan_no" jdbcType="BIGINT"/>
+        <result property="custId" column="cust_id" jdbcType="VARCHAR"/>
+        <result property="psPerdNo" column="ps_perd_no" jdbcType="BIGINT"/>
+        <result property="psDueDt" column="ps_due_dt" jdbcType="VARCHAR"/>
+        <result property="psInstmAmt" column="ps_instm_amt" jdbcType="NUMERIC"/>
+        <result property="psPrcpAmt" column="ps_prcp_amt" jdbcType="NUMERIC"/>
+        <result property="psNormIntAmt" column="ps_norm_int_amt" jdbcType="NUMERIC"/>
+        <result property="psRemPrcp" column="ps_rem_prcp" jdbcType="NUMERIC"/>
+        <result property="setlPrcp" column="setl_prcp" jdbcType="NUMERIC"/>
+        <result property="setlNormInt" column="setl_norm_int" jdbcType="NUMERIC"/>
+        <result property="incPct" column="inc_pct" jdbcType="NUMERIC"/>
+        <result property="incAmt" column="inc_amt" jdbcType="NUMERIC"/>
+        <result property="lastSetlDt" column="last_setl_dt" jdbcType="VARCHAR"/>
+        <result property="setlInd" column="setl_ind" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        seq_no,tx_no,loan_no,cust_id,ps_perd_no,ps_due_dt,ps_instm_amt,ps_prcp_amt,ps_norm_int_amt,ps_rem_prcp,setl_prcp,setl_norm_int,inc_pct,inc_amt,last_setl_dt,setl_ind 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmHoldShdHist">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_hold_shd_hist
+		 <where>
+		 <if test="seqNo != null">
+        	and seq_no = #{seqNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="txNo != null">
+        	and tx_no = #{txNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psPerdNo != null">
+        	and ps_perd_no = #{psPerdNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="psDueDt != null">
+        	and ps_due_dt = #{psDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psInstmAmt != null">
+        	and ps_instm_amt = #{psInstmAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psPrcpAmt != null">
+        	and ps_prcp_amt = #{psPrcpAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psNormIntAmt != null">
+        	and ps_norm_int_amt = #{psNormIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psRemPrcp != null">
+        	and ps_rem_prcp = #{psRemPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlPrcp != null">
+        	and setl_prcp = #{setlPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlNormInt != null">
+        	and setl_norm_int = #{setlNormInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="incPct != null">
+        	and inc_pct = #{incPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="incAmt != null">
+        	and inc_amt = #{incAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="lastSetlDt != null">
+        	and last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlInd != null">
+        	and setl_ind = #{setlInd,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmHoldShdHist" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_hold_shd_hist
+		 <where>
+         <if test="seqNo != null">
+        	and seq_no = #{seqNo,jdbcType=BIGINT}
+         </if>
+         <if test="txNo != null">
+        	and tx_no = #{txNo,jdbcType=BIGINT}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=BIGINT}
+         </if>
+         <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+         </if>
+         <if test="psPerdNo != null">
+        	and ps_perd_no = #{psPerdNo,jdbcType=BIGINT}
+         </if>
+         <if test="psDueDt != null">
+        	and ps_due_dt = #{psDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="psInstmAmt != null">
+        	and ps_instm_amt = #{psInstmAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psPrcpAmt != null">
+        	and ps_prcp_amt = #{psPrcpAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psNormIntAmt != null">
+        	and ps_norm_int_amt = #{psNormIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psRemPrcp != null">
+        	and ps_rem_prcp = #{psRemPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="setlPrcp != null">
+        	and setl_prcp = #{setlPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="setlNormInt != null">
+        	and setl_norm_int = #{setlNormInt,jdbcType=NUMERIC}
+         </if>
+         <if test="incPct != null">
+        	and inc_pct = #{incPct,jdbcType=NUMERIC}
+         </if>
+         <if test="incAmt != null">
+        	and inc_amt = #{incAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="lastSetlDt != null">
+        	and last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR}
+         </if>
+         <if test="setlInd != null">
+        	and setl_ind = #{setlInd,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmHoldShdHist">
+		insert into lm_hold_shd_hist
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="seqNo != null">
+        	    seq_no ,
+	    </if>
+			<if test="txNo != null">
+        	    tx_no ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="custId != null">
+        	    cust_id ,
+	    </if>
+			<if test="psPerdNo != null">
+        	    ps_perd_no ,
+	    </if>
+			<if test="psDueDt != null">
+        	    ps_due_dt ,
+	    </if>
+			<if test="psInstmAmt != null">
+        	    ps_instm_amt ,
+	    </if>
+			<if test="psPrcpAmt != null">
+        	    ps_prcp_amt ,
+	    </if>
+			<if test="psNormIntAmt != null">
+        	    ps_norm_int_amt ,
+	    </if>
+			<if test="psRemPrcp != null">
+        	    ps_rem_prcp ,
+	    </if>
+			<if test="setlPrcp != null">
+        	    setl_prcp ,
+	    </if>
+			<if test="setlNormInt != null">
+        	    setl_norm_int ,
+	    </if>
+			<if test="incPct != null">
+        	    inc_pct ,
+	    </if>
+			<if test="incAmt != null">
+        	    inc_amt ,
+	    </if>
+			<if test="lastSetlDt != null">
+        	    last_setl_dt ,
+	    </if>
+			<if test="setlInd != null">
+        	    setl_ind ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="seqNo != null">
+        	   #{seqNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="txNo != null">
+        	   #{txNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="custId != null">
+        	   #{custId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psPerdNo != null">
+        	   #{psPerdNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="psDueDt != null">
+        	   #{psDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psInstmAmt != null">
+        	   #{psInstmAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psPrcpAmt != null">
+        	   #{psPrcpAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psNormIntAmt != null">
+        	   #{psNormIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psRemPrcp != null">
+        	   #{psRemPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlPrcp != null">
+        	   #{setlPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlNormInt != null">
+        	   #{setlNormInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="incPct != null">
+        	   #{incPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="incAmt != null">
+        	   #{incAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="lastSetlDt != null">
+        	   #{lastSetlDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlInd != null">
+        	   #{setlInd,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmHoldShdHist">
+		update lm_hold_shd_hist 
+		<set>
+			<if test="seqNo != null">
+        	 seq_no = #{seqNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="txNo != null">
+        	 tx_no = #{txNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="custId != null">
+        	 cust_id = #{custId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psPerdNo != null">
+        	 ps_perd_no = #{psPerdNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="psDueDt != null">
+        	 ps_due_dt = #{psDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psInstmAmt != null">
+        	 ps_instm_amt = #{psInstmAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psPrcpAmt != null">
+        	 ps_prcp_amt = #{psPrcpAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psNormIntAmt != null">
+        	 ps_norm_int_amt = #{psNormIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psRemPrcp != null">
+        	 ps_rem_prcp = #{psRemPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlPrcp != null">
+        	 setl_prcp = #{setlPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlNormInt != null">
+        	 setl_norm_int = #{setlNormInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="incPct != null">
+        	 inc_pct = #{incPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="incAmt != null">
+        	 inc_amt = #{incAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="lastSetlDt != null">
+        	 last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlInd != null">
+        	 setl_ind = #{setlInd,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where seq_no= #{seqNo}
+	</update>
+</mapper>
