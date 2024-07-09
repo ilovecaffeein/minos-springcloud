@@ -66,8 +66,8 @@ public class DailyDeductionNotifiService implements IDailyDeductionNotifiService
     @Value("${sndTotal}")
     private String sndTotal;
 
-    @Value("${smsAddress}")
-    private String smsAddress;
+    @Value("${notifyUtrl}")
+    private String notifyUtrl;
 
 
     /**
@@ -158,7 +158,7 @@ public class DailyDeductionNotifiService implements IDailyDeductionNotifiService
                 String reqMsgSnd=JSONObject.toJSONString(reqMsg);
                 log.info("发送报文内容: 【" + reqMsgSnd + "】");
                 while( sndValue>0 ){//发送三次
-                    String  result= HttpClient.senJsonPost(smsAddress,reqMsgSnd);
+                    String  result= HttpClient.senJsonPost(notifyUtrl,reqMsgSnd);
                     log.info("短信返回码:: 【" + result + "】");
                     JSONObject jsonObject = JSONObject.parseObject(result);
                     String messageCode=jsonObject.getString("messageCode");
