@@ -1,11 +1,12 @@
 spring:
-  application:
-    name: minos-config-service
+  profiles:
+    include: datasource
   cloud:
     config:
-      uri: http://localhost:8091
-      label: main
-      profile: application
+      name: config
+      default-label: main
+      uri: http://localhost:8091/
+      profile: prod
 eureka:
   client:
     register-with-eureka: true

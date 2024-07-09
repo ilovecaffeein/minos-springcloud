@@ -15,6 +15,6 @@ public class MinosConfigServiceApplication {
     public static void main( String[] args ) {
         SpringApplication.run(MinosConfigServiceApplication.class, args);
         System.out.println( "*********** minos-config-service-配置中心服务端开启! ***********" );
-        System.out.println( "*********** 启动默认地址：http://localhost:8091/main/application  ***********" );
+        System.out.println( "*********** 默认参数地址：http://localhost:8091/main/config-prod.properties  ***********" );
     }
 }

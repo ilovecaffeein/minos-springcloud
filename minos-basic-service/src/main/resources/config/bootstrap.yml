@@ -3,9 +3,10 @@ spring:
     include: datasource
   cloud:
     config:
-      name: minos-config-service
+      name: config
       default-label: main
       uri: http://localhost:8091/
+      profile: prod
 # Eureka客户端相关配置
 eureka:
   client:   #客户端进行Eureka注册的配置

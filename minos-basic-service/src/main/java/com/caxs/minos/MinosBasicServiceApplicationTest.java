@@ -12,7 +12,7 @@ public class MinosBasicServiceApplicationTest  {
     public static void main(String[] args) {
         try {
 
-            final String str = "http://localhost:4444/minos-basic-service/Cfs2MinosHttpChannel";
+            final String str = "http://localhost:8093/minos-basic-service/Cfs2MinosHttpChannel";
 
             String reqMsg = "XXXXX;serv10000100040;";
             String filepath = "C://glycloans-xml/040.xml";
