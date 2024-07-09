@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.PRpymOrdDtlDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.PRpymOrdDtl" id="BaseResultMap">
+        <result property="rpymOrdSeqNo" column="rpym_ord_seq_no" jdbcType="BIGINT"/>
+        <result property="rpymOrdPriority" column="rpym_ord_priority" jdbcType="BIGINT"/>
+        <result property="rpymOrdTyp" column="rpym_ord_typ" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        rpym_ord_seq_no,rpym_ord_priority,rpym_ord_typ 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PRpymOrdDtl">
+		select 
+		<include refid="Base_Column_List" />
+		 from p_rpym_ord_dtl
+		 <where>
+		 <if test="rpymOrdSeqNo != null">
+        	and rpym_ord_seq_no = #{rpymOrdSeqNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="rpymOrdPriority != null">
+        	and rpym_ord_priority = #{rpymOrdPriority,jdbcType=BIGINT}
+	  </if>
+		 <if test="rpymOrdTyp != null">
+        	and rpym_ord_typ = #{rpymOrdTyp,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PRpymOrdDtl" >
+		select 
+		<include refid="Base_Column_List" />
+		 from p_rpym_ord_dtl
+		 <where>
+         <if test="rpymOrdSeqNo != null">
+        	and rpym_ord_seq_no = #{rpymOrdSeqNo,jdbcType=BIGINT}
+         </if>
+         <if test="rpymOrdPriority != null">
+        	and rpym_ord_priority = #{rpymOrdPriority,jdbcType=BIGINT}
+         </if>
+         <if test="rpymOrdTyp != null">
+        	and rpym_ord_typ = #{rpymOrdTyp,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.PRpymOrdDtl">
+		insert into p_rpym_ord_dtl
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="rpymOrdSeqNo != null">
+        	    rpym_ord_seq_no ,
+	    </if>
+			<if test="rpymOrdPriority != null">
+        	    rpym_ord_priority ,
+	    </if>
+			<if test="rpymOrdTyp != null">
+        	    rpym_ord_typ ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="rpymOrdSeqNo != null">
+        	   #{rpymOrdSeqNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="rpymOrdPriority != null">
+        	   #{rpymOrdPriority,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="rpymOrdTyp != null">
+        	   #{rpymOrdTyp,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.PRpymOrdDtl">
+		update p_rpym_ord_dtl 
+		<set>
+			<if test="rpymOrdSeqNo != null">
+        	 rpym_ord_seq_no = #{rpymOrdSeqNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="rpymOrdPriority != null">
+        	 rpym_ord_priority = #{rpymOrdPriority,jdbcType=BIGINT} ,
+       </if>
+			<if test="rpymOrdTyp != null">
+        	 rpym_ord_typ = #{rpymOrdTyp,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where rpym_ord_seq_no= #{rpymOrdSeqNo}
+	</update>
+	<select id="selectPRpymOrdDtl" parameterType="map" resultMap="BaseResultMap">
+		select rpym_ord_seq_no, rpym_ord_priority, rpym_ord_typ
+		from p_rpym_ord_dtl
+		where rpym_ord_seq_no = #{rpymOrdSeqNo,jdbcType=INTEGER}
+		order by rpym_ord_priority asc
+	</select>
+</mapper>

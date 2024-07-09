@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmPmShdHistDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmPmShdHist" id="BaseResultMap">
+        <result property="seqNo" column="seq_no" jdbcType="BIGINT"/>
+        <result property="txNo" column="tx_no" jdbcType="BIGINT"/>
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="psPerdNo" column="ps_perd_no" jdbcType="BIGINT"/>
+        <result property="psDueDt" column="ps_due_dt" jdbcType="VARCHAR"/>
+        <result property="psBillDt" column="ps_bill_dt" jdbcType="VARCHAR"/>
+        <result property="psInstmAmt" column="ps_instm_amt" jdbcType="NUMERIC"/>
+        <result property="psPrcpAmt" column="ps_prcp_amt" jdbcType="NUMERIC"/>
+        <result property="psNormIntAmt" column="ps_norm_int_amt" jdbcType="NUMERIC"/>
+        <result property="psOdIntAmt" column="ps_od_int_amt" jdbcType="NUMERIC"/>
+        <result property="psCommOdInt" column="ps_comm_od_int" jdbcType="NUMERIC"/>
+        <result property="psFeeAmt" column="ps_fee_amt" jdbcType="NUMERIC"/>
+        <result property="extOdIntAmt" column="ext_od_int_amt" jdbcType="NUMERIC"/>
+        <result property="sbsyIntAmt" column="sbsy_int_amt" jdbcType="NUMERIC"/>
+        <result property="prodPrcpAmt" column="prod_prcp_amt" jdbcType="NUMERIC"/>
+        <result property="prodIntAmt" column="prod_int_amt" jdbcType="NUMERIC"/>
+        <result property="prodCommIntAmt" column="prod_comm_int_amt" jdbcType="NUMERIC"/>
+        <result property="prodFeeAmt" column="prod_fee_amt" jdbcType="NUMERIC"/>
+        <result property="psRemPrcp" column="ps_rem_prcp" jdbcType="NUMERIC"/>
+        <result property="setlPrcp" column="setl_prcp" jdbcType="NUMERIC"/>
+        <result property="setlNormInt" column="setl_norm_int" jdbcType="NUMERIC"/>
+        <result property="setlOdIntAmt" column="setl_od_int_amt" jdbcType="NUMERIC"/>
+        <result property="setlCommOdInt" column="setl_comm_od_int" jdbcType="NUMERIC"/>
+        <result property="setlFeeAmt" column="setl_fee_amt" jdbcType="NUMERIC"/>
+        <result property="setlOdIncTaken" column="setl_od_inc_taken" jdbcType="NUMERIC"/>
+        <result property="setlIncTaken" column="setl_inc_taken" jdbcType="NUMERIC"/>
+        <result property="psIntRate" column="ps_int_rate" jdbcType="NUMERIC"/>
+        <result property="sbsyRate" column="sbsy_rate" jdbcType="NUMERIC"/>
+        <result property="psOdIntRate" column="ps_od_int_rate" jdbcType="NUMERIC"/>
+        <result property="psOdInd" column="ps_od_ind" jdbcType="VARCHAR"/>
+        <result property="lastSetlDt" column="last_setl_dt" jdbcType="VARCHAR"/>
+        <result property="psIncTaken" column="ps_inc_taken" jdbcType="NUMERIC"/>
+        <result property="psOdIncTaken" column="ps_od_inc_taken" jdbcType="NUMERIC"/>
+        <result property="psWvPrcpAmt" column="ps_wv_prcp_amt" jdbcType="NUMERIC"/>
+        <result property="psWvNmInt" column="ps_wv_nm_int" jdbcType="NUMERIC"/>
+        <result property="psWvOdInt" column="ps_wv_od_int" jdbcType="NUMERIC"/>
+        <result property="psWvCommInt" column="ps_wv_comm_int" jdbcType="NUMERIC"/>
+        <result property="prcpState" column="prcp_state" jdbcType="VARCHAR"/>
+        <result property="intState" column="int_state" jdbcType="VARCHAR"/>
+        <result property="setlInd" column="setl_ind" jdbcType="VARCHAR"/>
+        <result property="commOdGenDt" column="comm_od_gen_dt" jdbcType="VARCHAR"/>
+        <result property="ppErInd" column="pp_er_ind" jdbcType="VARCHAR"/>
+        <result property="psGenProdDt" column="ps_gen_prod_dt" jdbcType="VARCHAR"/>
+        <result property="psCurOdIncTaken" column="ps_cur_od_inc_taken" jdbcType="NUMERIC"/>
+        <result property="grcProdPrcp" column="grc_prod_prcp" jdbcType="NUMERIC"/>
+        <result property="grcProdInt" column="grc_prod_int" jdbcType="NUMERIC"/>
+        <result property="grcProdComm" column="grc_prod_comm" jdbcType="NUMERIC"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        seq_no,tx_no,loan_no,ps_perd_no,ps_due_dt,ps_bill_dt,ps_instm_amt,ps_prcp_amt,ps_norm_int_amt,ps_od_int_amt,ps_comm_od_int,ps_fee_amt,ext_od_int_amt,sbsy_int_amt,prod_prcp_amt,prod_int_amt,prod_comm_int_amt,prod_fee_amt,ps_rem_prcp,setl_prcp,setl_norm_int,setl_od_int_amt,setl_comm_od_int,setl_fee_amt,setl_od_inc_taken,setl_inc_taken,ps_int_rate,sbsy_rate,ps_od_int_rate,ps_od_ind,last_setl_dt,ps_inc_taken,ps_od_inc_taken,ps_wv_prcp_amt,ps_wv_nm_int,ps_wv_od_int,ps_wv_comm_int,prcp_state,int_state,setl_ind,comm_od_gen_dt,pp_er_ind,ps_gen_prod_dt,ps_cur_od_inc_taken,grc_prod_prcp,grc_prod_int,grc_prod_comm 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmPmShdHist">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_pm_shd_hist
+		 <where>
+		 <if test="seqNo != null">
+        	and seq_no = #{seqNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="txNo != null">
+        	and tx_no = #{txNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psPerdNo != null">
+        	and ps_perd_no = #{psPerdNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="psDueDt != null">
+        	and ps_due_dt = #{psDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psBillDt != null">
+        	and ps_bill_dt = #{psBillDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psInstmAmt != null">
+        	and ps_instm_amt = #{psInstmAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psPrcpAmt != null">
+        	and ps_prcp_amt = #{psPrcpAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psNormIntAmt != null">
+        	and ps_norm_int_amt = #{psNormIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psOdIntAmt != null">
+        	and ps_od_int_amt = #{psOdIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psCommOdInt != null">
+        	and ps_comm_od_int = #{psCommOdInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psFeeAmt != null">
+        	and ps_fee_amt = #{psFeeAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="extOdIntAmt != null">
+        	and ext_od_int_amt = #{extOdIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="sbsyIntAmt != null">
+        	and sbsy_int_amt = #{sbsyIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="prodPrcpAmt != null">
+        	and prod_prcp_amt = #{prodPrcpAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="prodIntAmt != null">
+        	and prod_int_amt = #{prodIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="prodCommIntAmt != null">
+        	and prod_comm_int_amt = #{prodCommIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="prodFeeAmt != null">
+        	and prod_fee_amt = #{prodFeeAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psRemPrcp != null">
+        	and ps_rem_prcp = #{psRemPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlPrcp != null">
+        	and setl_prcp = #{setlPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlNormInt != null">
+        	and setl_norm_int = #{setlNormInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlOdIntAmt != null">
+        	and setl_od_int_amt = #{setlOdIntAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlCommOdInt != null">
+        	and setl_comm_od_int = #{setlCommOdInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlFeeAmt != null">
+        	and setl_fee_amt = #{setlFeeAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlOdIncTaken != null">
+        	and setl_od_inc_taken = #{setlOdIncTaken,jdbcType=NUMERIC}
+	  </if>
+		 <if test="setlIncTaken != null">
+        	and setl_inc_taken = #{setlIncTaken,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psIntRate != null">
+        	and ps_int_rate = #{psIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="sbsyRate != null">
+        	and sbsy_rate = #{sbsyRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psOdIntRate != null">
+        	and ps_od_int_rate = #{psOdIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psOdInd != null">
+        	and ps_od_ind = #{psOdInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastSetlDt != null">
+        	and last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psIncTaken != null">
+        	and ps_inc_taken = #{psIncTaken,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psOdIncTaken != null">
+        	and ps_od_inc_taken = #{psOdIncTaken,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psWvPrcpAmt != null">
+        	and ps_wv_prcp_amt = #{psWvPrcpAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psWvNmInt != null">
+        	and ps_wv_nm_int = #{psWvNmInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psWvOdInt != null">
+        	and ps_wv_od_int = #{psWvOdInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="psWvCommInt != null">
+        	and ps_wv_comm_int = #{psWvCommInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="prcpState != null">
+        	and prcp_state = #{prcpState,jdbcType=VARCHAR}
+	  </if>
+		 <if test="intState != null">
+        	and int_state = #{intState,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlInd != null">
+        	and setl_ind = #{setlInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="commOdGenDt != null">
+        	and comm_od_gen_dt = #{commOdGenDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="ppErInd != null">
+        	and pp_er_ind = #{ppErInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psGenProdDt != null">
+        	and ps_gen_prod_dt = #{psGenProdDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="psCurOdIncTaken != null">
+        	and ps_cur_od_inc_taken = #{psCurOdIncTaken,jdbcType=NUMERIC}
+	  </if>
+		 <if test="grcProdPrcp != null">
+        	and grc_prod_prcp = #{grcProdPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="grcProdInt != null">
+        	and grc_prod_int = #{grcProdInt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="grcProdComm != null">
+        	and grc_prod_comm = #{grcProdComm,jdbcType=NUMERIC}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmPmShdHist" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_pm_shd_hist
+		 <where>
+         <if test="seqNo != null">
+        	and seq_no = #{seqNo,jdbcType=BIGINT}
+         </if>
+         <if test="txNo != null">
+        	and tx_no = #{txNo,jdbcType=BIGINT}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="psPerdNo != null">
+        	and ps_perd_no = #{psPerdNo,jdbcType=BIGINT}
+         </if>
+         <if test="psDueDt != null">
+        	and ps_due_dt = #{psDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="psBillDt != null">
+        	and ps_bill_dt = #{psBillDt,jdbcType=VARCHAR}
+         </if>
+         <if test="psInstmAmt != null">
+        	and ps_instm_amt = #{psInstmAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psPrcpAmt != null">
+        	and ps_prcp_amt = #{psPrcpAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psNormIntAmt != null">
+        	and ps_norm_int_amt = #{psNormIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psOdIntAmt != null">
+        	and ps_od_int_amt = #{psOdIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psCommOdInt != null">
+        	and ps_comm_od_int = #{psCommOdInt,jdbcType=NUMERIC}
+         </if>
+         <if test="psFeeAmt != null">
+        	and ps_fee_amt = #{psFeeAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="extOdIntAmt != null">
+        	and ext_od_int_amt = #{extOdIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="sbsyIntAmt != null">
+        	and sbsy_int_amt = #{sbsyIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="prodPrcpAmt != null">
+        	and prod_prcp_amt = #{prodPrcpAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="prodIntAmt != null">
+        	and prod_int_amt = #{prodIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="prodCommIntAmt != null">
+        	and prod_comm_int_amt = #{prodCommIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="prodFeeAmt != null">
+        	and prod_fee_amt = #{prodFeeAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psRemPrcp != null">
+        	and ps_rem_prcp = #{psRemPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="setlPrcp != null">
+        	and setl_prcp = #{setlPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="setlNormInt != null">
+        	and setl_norm_int = #{setlNormInt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlOdIntAmt != null">
+        	and setl_od_int_amt = #{setlOdIntAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlCommOdInt != null">
+        	and setl_comm_od_int = #{setlCommOdInt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlFeeAmt != null">
+        	and setl_fee_amt = #{setlFeeAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="setlOdIncTaken != null">
+        	and setl_od_inc_taken = #{setlOdIncTaken,jdbcType=NUMERIC}
+         </if>
+         <if test="setlIncTaken != null">
+        	and setl_inc_taken = #{setlIncTaken,jdbcType=NUMERIC}
+         </if>
+         <if test="psIntRate != null">
+        	and ps_int_rate = #{psIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="sbsyRate != null">
+        	and sbsy_rate = #{sbsyRate,jdbcType=NUMERIC}
+         </if>
+         <if test="psOdIntRate != null">
+        	and ps_od_int_rate = #{psOdIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="psOdInd != null">
+        	and ps_od_ind = #{psOdInd,jdbcType=VARCHAR}
+         </if>
+         <if test="lastSetlDt != null">
+        	and last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR}
+         </if>
+         <if test="psIncTaken != null">
+        	and ps_inc_taken = #{psIncTaken,jdbcType=NUMERIC}
+         </if>
+         <if test="psOdIncTaken != null">
+        	and ps_od_inc_taken = #{psOdIncTaken,jdbcType=NUMERIC}
+         </if>
+         <if test="psWvPrcpAmt != null">
+        	and ps_wv_prcp_amt = #{psWvPrcpAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="psWvNmInt != null">
+        	and ps_wv_nm_int = #{psWvNmInt,jdbcType=NUMERIC}
+         </if>
+         <if test="psWvOdInt != null">
+        	and ps_wv_od_int = #{psWvOdInt,jdbcType=NUMERIC}
+         </if>
+         <if test="psWvCommInt != null">
+        	and ps_wv_comm_int = #{psWvCommInt,jdbcType=NUMERIC}
+         </if>
+         <if test="prcpState != null">
+        	and prcp_state = #{prcpState,jdbcType=VARCHAR}
+         </if>
+         <if test="intState != null">
+        	and int_state = #{intState,jdbcType=VARCHAR}
+         </if>
+         <if test="setlInd != null">
+        	and setl_ind = #{setlInd,jdbcType=VARCHAR}
+         </if>
+         <if test="commOdGenDt != null">
+        	and comm_od_gen_dt = #{commOdGenDt,jdbcType=VARCHAR}
+         </if>
+         <if test="ppErInd != null">
+        	and pp_er_ind = #{ppErInd,jdbcType=VARCHAR}
+         </if>
+         <if test="psGenProdDt != null">
+        	and ps_gen_prod_dt = #{psGenProdDt,jdbcType=VARCHAR}
+         </if>
+         <if test="psCurOdIncTaken != null">
+        	and ps_cur_od_inc_taken = #{psCurOdIncTaken,jdbcType=NUMERIC}
+         </if>
+         <if test="grcProdPrcp != null">
+        	and grc_prod_prcp = #{grcProdPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="grcProdInt != null">
+        	and grc_prod_int = #{grcProdInt,jdbcType=NUMERIC}
+         </if>
+         <if test="grcProdComm != null">
+        	and grc_prod_comm = #{grcProdComm,jdbcType=NUMERIC}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmPmShdHist">
+		insert into lm_pm_shd_hist
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="seqNo != null">
+        	    seq_no ,
+	    </if>
+			<if test="txNo != null">
+        	    tx_no ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="psPerdNo != null">
+        	    ps_perd_no ,
+	    </if>
+			<if test="psDueDt != null">
+        	    ps_due_dt ,
+	    </if>
+			<if test="psBillDt != null">
+        	    ps_bill_dt ,
+	    </if>
+			<if test="psInstmAmt != null">
+        	    ps_instm_amt ,
+	    </if>
+			<if test="psPrcpAmt != null">
+        	    ps_prcp_amt ,
+	    </if>
+			<if test="psNormIntAmt != null">
+        	    ps_norm_int_amt ,
+	    </if>
+			<if test="psOdIntAmt != null">
+        	    ps_od_int_amt ,
+	    </if>
+			<if test="psCommOdInt != null">
+        	    ps_comm_od_int ,
+	    </if>
+			<if test="psFeeAmt != null">
+        	    ps_fee_amt ,
+	    </if>
+			<if test="extOdIntAmt != null">
+        	    ext_od_int_amt ,
+	    </if>
+			<if test="sbsyIntAmt != null">
+        	    sbsy_int_amt ,
+	    </if>
+			<if test="prodPrcpAmt != null">
+        	    prod_prcp_amt ,
+	    </if>
+			<if test="prodIntAmt != null">
+        	    prod_int_amt ,
+	    </if>
+			<if test="prodCommIntAmt != null">
+        	    prod_comm_int_amt ,
+	    </if>
+			<if test="prodFeeAmt != null">
+        	    prod_fee_amt ,
+	    </if>
+			<if test="psRemPrcp != null">
+        	    ps_rem_prcp ,
+	    </if>
+			<if test="setlPrcp != null">
+        	    setl_prcp ,
+	    </if>
+			<if test="setlNormInt != null">
+        	    setl_norm_int ,
+	    </if>
+			<if test="setlOdIntAmt != null">
+        	    setl_od_int_amt ,
+	    </if>
+			<if test="setlCommOdInt != null">
+        	    setl_comm_od_int ,
+	    </if>
+			<if test="setlFeeAmt != null">
+        	    setl_fee_amt ,
+	    </if>
+			<if test="setlOdIncTaken != null">
+        	    setl_od_inc_taken ,
+	    </if>
+			<if test="setlIncTaken != null">
+        	    setl_inc_taken ,
+	    </if>
+			<if test="psIntRate != null">
+        	    ps_int_rate ,
+	    </if>
+			<if test="sbsyRate != null">
+        	    sbsy_rate ,
+	    </if>
+			<if test="psOdIntRate != null">
+        	    ps_od_int_rate ,
+	    </if>
+			<if test="psOdInd != null">
+        	    ps_od_ind ,
+	    </if>
+			<if test="lastSetlDt != null">
+        	    last_setl_dt ,
+	    </if>
+			<if test="psIncTaken != null">
+        	    ps_inc_taken ,
+	    </if>
+			<if test="psOdIncTaken != null">
+        	    ps_od_inc_taken ,
+	    </if>
+			<if test="psWvPrcpAmt != null">
+        	    ps_wv_prcp_amt ,
+	    </if>
+			<if test="psWvNmInt != null">
+        	    ps_wv_nm_int ,
+	    </if>
+			<if test="psWvOdInt != null">
+        	    ps_wv_od_int ,
+	    </if>
+			<if test="psWvCommInt != null">
+        	    ps_wv_comm_int ,
+	    </if>
+			<if test="prcpState != null">
+        	    prcp_state ,
+	    </if>
+			<if test="intState != null">
+        	    int_state ,
+	    </if>
+			<if test="setlInd != null">
+        	    setl_ind ,
+	    </if>
+			<if test="commOdGenDt != null">
+        	    comm_od_gen_dt ,
+	    </if>
+			<if test="ppErInd != null">
+        	    pp_er_ind ,
+	    </if>
+			<if test="psGenProdDt != null">
+        	    ps_gen_prod_dt ,
+	    </if>
+			<if test="psCurOdIncTaken != null">
+        	    ps_cur_od_inc_taken ,
+	    </if>
+			<if test="grcProdPrcp != null">
+        	    grc_prod_prcp ,
+	    </if>
+			<if test="grcProdInt != null">
+        	    grc_prod_int ,
+	    </if>
+			<if test="grcProdComm != null">
+        	    grc_prod_comm ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="seqNo != null">
+        	   #{seqNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="txNo != null">
+        	   #{txNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psPerdNo != null">
+        	   #{psPerdNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="psDueDt != null">
+        	   #{psDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psBillDt != null">
+        	   #{psBillDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psInstmAmt != null">
+        	   #{psInstmAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psPrcpAmt != null">
+        	   #{psPrcpAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psNormIntAmt != null">
+        	   #{psNormIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psOdIntAmt != null">
+        	   #{psOdIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psCommOdInt != null">
+        	   #{psCommOdInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psFeeAmt != null">
+        	   #{psFeeAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="extOdIntAmt != null">
+        	   #{extOdIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="sbsyIntAmt != null">
+        	   #{sbsyIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="prodPrcpAmt != null">
+        	   #{prodPrcpAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="prodIntAmt != null">
+        	   #{prodIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="prodCommIntAmt != null">
+        	   #{prodCommIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="prodFeeAmt != null">
+        	   #{prodFeeAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psRemPrcp != null">
+        	   #{psRemPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlPrcp != null">
+        	   #{setlPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlNormInt != null">
+        	   #{setlNormInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlOdIntAmt != null">
+        	   #{setlOdIntAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlCommOdInt != null">
+        	   #{setlCommOdInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlFeeAmt != null">
+        	   #{setlFeeAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlOdIncTaken != null">
+        	   #{setlOdIncTaken,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="setlIncTaken != null">
+        	   #{setlIncTaken,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psIntRate != null">
+        	   #{psIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="sbsyRate != null">
+        	   #{sbsyRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psOdIntRate != null">
+        	   #{psOdIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psOdInd != null">
+        	   #{psOdInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastSetlDt != null">
+        	   #{lastSetlDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psIncTaken != null">
+        	   #{psIncTaken,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psOdIncTaken != null">
+        	   #{psOdIncTaken,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psWvPrcpAmt != null">
+        	   #{psWvPrcpAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psWvNmInt != null">
+        	   #{psWvNmInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psWvOdInt != null">
+        	   #{psWvOdInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="psWvCommInt != null">
+        	   #{psWvCommInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="prcpState != null">
+        	   #{prcpState,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="intState != null">
+        	   #{intState,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlInd != null">
+        	   #{setlInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="commOdGenDt != null">
+        	   #{commOdGenDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="ppErInd != null">
+        	   #{ppErInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psGenProdDt != null">
+        	   #{psGenProdDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="psCurOdIncTaken != null">
+        	   #{psCurOdIncTaken,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="grcProdPrcp != null">
+        	   #{grcProdPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="grcProdInt != null">
+        	   #{grcProdInt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="grcProdComm != null">
+        	   #{grcProdComm,jdbcType=NUMERIC} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmPmShdHist">
+		update lm_pm_shd_hist 
+		<set>
+			<if test="seqNo != null">
+        	 seq_no = #{seqNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="txNo != null">
+        	 tx_no = #{txNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psPerdNo != null">
+        	 ps_perd_no = #{psPerdNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="psDueDt != null">
+        	 ps_due_dt = #{psDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psBillDt != null">
+        	 ps_bill_dt = #{psBillDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psInstmAmt != null">
+        	 ps_instm_amt = #{psInstmAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psPrcpAmt != null">
+        	 ps_prcp_amt = #{psPrcpAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psNormIntAmt != null">
+        	 ps_norm_int_amt = #{psNormIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psOdIntAmt != null">
+        	 ps_od_int_amt = #{psOdIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psCommOdInt != null">
+        	 ps_comm_od_int = #{psCommOdInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psFeeAmt != null">
+        	 ps_fee_amt = #{psFeeAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="extOdIntAmt != null">
+        	 ext_od_int_amt = #{extOdIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="sbsyIntAmt != null">
+        	 sbsy_int_amt = #{sbsyIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="prodPrcpAmt != null">
+        	 prod_prcp_amt = #{prodPrcpAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="prodIntAmt != null">
+        	 prod_int_amt = #{prodIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="prodCommIntAmt != null">
+        	 prod_comm_int_amt = #{prodCommIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="prodFeeAmt != null">
+        	 prod_fee_amt = #{prodFeeAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psRemPrcp != null">
+        	 ps_rem_prcp = #{psRemPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlPrcp != null">
+        	 setl_prcp = #{setlPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlNormInt != null">
+        	 setl_norm_int = #{setlNormInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlOdIntAmt != null">
+        	 setl_od_int_amt = #{setlOdIntAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlCommOdInt != null">
+        	 setl_comm_od_int = #{setlCommOdInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlFeeAmt != null">
+        	 setl_fee_amt = #{setlFeeAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlOdIncTaken != null">
+        	 setl_od_inc_taken = #{setlOdIncTaken,jdbcType=NUMERIC} ,
+       </if>
+			<if test="setlIncTaken != null">
+        	 setl_inc_taken = #{setlIncTaken,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psIntRate != null">
+        	 ps_int_rate = #{psIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="sbsyRate != null">
+        	 sbsy_rate = #{sbsyRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psOdIntRate != null">
+        	 ps_od_int_rate = #{psOdIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psOdInd != null">
+        	 ps_od_ind = #{psOdInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastSetlDt != null">
+        	 last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psIncTaken != null">
+        	 ps_inc_taken = #{psIncTaken,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psOdIncTaken != null">
+        	 ps_od_inc_taken = #{psOdIncTaken,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psWvPrcpAmt != null">
+        	 ps_wv_prcp_amt = #{psWvPrcpAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psWvNmInt != null">
+        	 ps_wv_nm_int = #{psWvNmInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psWvOdInt != null">
+        	 ps_wv_od_int = #{psWvOdInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="psWvCommInt != null">
+        	 ps_wv_comm_int = #{psWvCommInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="prcpState != null">
+        	 prcp_state = #{prcpState,jdbcType=VARCHAR} ,
+       </if>
+			<if test="intState != null">
+        	 int_state = #{intState,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlInd != null">
+        	 setl_ind = #{setlInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="commOdGenDt != null">
+        	 comm_od_gen_dt = #{commOdGenDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="ppErInd != null">
+        	 pp_er_ind = #{ppErInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psGenProdDt != null">
+        	 ps_gen_prod_dt = #{psGenProdDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="psCurOdIncTaken != null">
+        	 ps_cur_od_inc_taken = #{psCurOdIncTaken,jdbcType=NUMERIC} ,
+       </if>
+			<if test="grcProdPrcp != null">
+        	 grc_prod_prcp = #{grcProdPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="grcProdInt != null">
+        	 grc_prod_int = #{grcProdInt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="grcProdComm != null">
+        	 grc_prod_comm = #{grcProdComm,jdbcType=NUMERIC} ,
+       </if>
+		</set>
+		where seq_no= #{seqNo}
+	</update>
+</mapper>

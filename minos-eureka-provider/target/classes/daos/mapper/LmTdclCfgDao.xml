@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmTdclCfgDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.caxs.minos.domain.LmTdclCfg" id="BaseResultMap">
+		<result property="transCode" column="trans_code" jdbcType="VARCHAR"/>
+		<result property="tableName" column="table_name" jdbcType="VARCHAR"/>
+		<result property="histTableName" column="hist_table_name" jdbcType="VARCHAR"/>
+		<result property="clTyp" column="cl_typ" jdbcType="VARCHAR"/>
+		<result property="clFd" column="cl_fd" jdbcType="VARCHAR"/>
+		<result property="isList" column="is_list" jdbcType="VARCHAR"/>
+		<result property="idClass" column="id_class" jdbcType="VARCHAR"/>
+		<result property="srcIdClass" column="src_id_class" jdbcType="VARCHAR"/>
+		<result property="srcKeyFd" column="src_key_fd" jdbcType="VARCHAR"/>
+		<result property="histTxSeqFd" column="hist_tx_seq_fd" jdbcType="VARCHAR"/>
+		<result property="toHistInd" column="to_hist_ind" jdbcType="VARCHAR"/>
+		<result property="reCoverInd" column="re_cover_ind" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		trans_code,table_name,hist_table_name,cl_typ,cl_fd,is_list,id_class,src_id_class,src_key_fd,hist_tx_seq_fd,to_hist_ind,re_cover_ind
+	</sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmTdclCfg">
+		select
+		<include refid="Base_Column_List" />
+		from lm_tdcl_cfg
+		<where>
+			<if test="transCode != null">
+				and trans_code = #{transCode,jdbcType=VARCHAR}
+			</if>
+			<if test="tableName != null">
+				and table_name = #{tableName,jdbcType=VARCHAR}
+			</if>
+			<if test="histTableName != null">
+				and hist_table_name = #{histTableName,jdbcType=VARCHAR}
+			</if>
+			<if test="clTyp != null">
+				and cl_typ = #{clTyp,jdbcType=VARCHAR}
+			</if>
+			<if test="clFd != null">
+				and cl_fd = #{clFd,jdbcType=VARCHAR}
+			</if>
+			<if test="isList != null">
+				and is_list = #{isList,jdbcType=VARCHAR}
+			</if>
+			<if test="idClass != null">
+				and id_class = #{idClass,jdbcType=VARCHAR}
+			</if>
+			<if test="srcIdClass != null">
+				and src_id_class = #{srcIdClass,jdbcType=VARCHAR}
+			</if>
+			<if test="srcKeyFd != null">
+				and src_key_fd = #{srcKeyFd,jdbcType=VARCHAR}
+			</if>
+			<if test="histTxSeqFd != null">
+				and hist_tx_seq_fd = #{histTxSeqFd,jdbcType=VARCHAR}
+			</if>
+			<if test="toHistInd != null">
+				and to_hist_ind = #{toHistInd,jdbcType=VARCHAR}
+			</if>
+			<if test="reCoverInd != null">
+				and re_cover_ind = #{reCoverInd,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmTdclCfg" >
+		select
+		<include refid="Base_Column_List" />
+		from lm_tdcl_cfg
+		<where>
+			<if test="transCode != null">
+				and trans_code = #{transCode,jdbcType=VARCHAR}
+			</if>
+			<if test="tableName != null">
+				and table_name = #{tableName,jdbcType=VARCHAR}
+			</if>
+			<if test="histTableName != null">
+				and hist_table_name = #{histTableName,jdbcType=VARCHAR}
+			</if>
+			<if test="clTyp != null">
+				and cl_typ = #{clTyp,jdbcType=VARCHAR}
+			</if>
+			<if test="clFd != null">
+				and cl_fd = #{clFd,jdbcType=VARCHAR}
+			</if>
+			<if test="isList != null">
+				and is_list = #{isList,jdbcType=VARCHAR}
+			</if>
+			<if test="idClass != null">
+				and id_class = #{idClass,jdbcType=VARCHAR}
+			</if>
+			<if test="srcIdClass != null">
+				and src_id_class = #{srcIdClass,jdbcType=VARCHAR}
+			</if>
+			<if test="srcKeyFd != null">
+				and src_key_fd = #{srcKeyFd,jdbcType=VARCHAR}
+			</if>
+			<if test="histTxSeqFd != null">
+				and hist_tx_seq_fd = #{histTxSeqFd,jdbcType=VARCHAR}
+			</if>
+			<if test="toHistInd != null">
+				and to_hist_ind = #{toHistInd,jdbcType=VARCHAR}
+			</if>
+			<if test="reCoverInd != null">
+				and re_cover_ind = #{reCoverInd,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmTdclCfg">
+		insert into lm_tdcl_cfg
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="transCode != null">
+				trans_code ,
+			</if>
+			<if test="tableName != null">
+				table_name ,
+			</if>
+			<if test="histTableName != null">
+				hist_table_name ,
+			</if>
+			<if test="clTyp != null">
+				cl_typ ,
+			</if>
+			<if test="clFd != null">
+				cl_fd ,
+			</if>
+			<if test="isList != null">
+				is_list ,
+			</if>
+			<if test="idClass != null">
+				id_class ,
+			</if>
+			<if test="srcIdClass != null">
+				src_id_class ,
+			</if>
+			<if test="srcKeyFd != null">
+				src_key_fd ,
+			</if>
+			<if test="histTxSeqFd != null">
+				hist_tx_seq_fd ,
+			</if>
+			<if test="toHistInd != null">
+				to_hist_ind ,
+			</if>
+			<if test="reCoverInd != null">
+				re_cover_ind ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="transCode != null">
+				#{transCode,jdbcType=VARCHAR} ,
+			</if>
+			<if test="tableName != null">
+				#{tableName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="histTableName != null">
+				#{histTableName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="clTyp != null">
+				#{clTyp,jdbcType=VARCHAR} ,
+			</if>
+			<if test="clFd != null">
+				#{clFd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="isList != null">
+				#{isList,jdbcType=VARCHAR} ,
+			</if>
+			<if test="idClass != null">
+				#{idClass,jdbcType=VARCHAR} ,
+			</if>
+			<if test="srcIdClass != null">
+				#{srcIdClass,jdbcType=VARCHAR} ,
+			</if>
+			<if test="srcKeyFd != null">
+				#{srcKeyFd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="histTxSeqFd != null">
+				#{histTxSeqFd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="toHistInd != null">
+				#{toHistInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="reCoverInd != null">
+				#{reCoverInd,jdbcType=VARCHAR} ,
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.caxs.minos.domain.LmTdclCfg">
+		update lm_tdcl_cfg
+		<set>
+			<if test="transCode != null">
+				trans_code = #{transCode,jdbcType=VARCHAR} ,
+			</if>
+			<if test="tableName != null">
+				table_name = #{tableName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="histTableName != null">
+				hist_table_name = #{histTableName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="clTyp != null">
+				cl_typ = #{clTyp,jdbcType=VARCHAR} ,
+			</if>
+			<if test="clFd != null">
+				cl_fd = #{clFd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="isList != null">
+				is_list = #{isList,jdbcType=VARCHAR} ,
+			</if>
+			<if test="idClass != null">
+				id_class = #{idClass,jdbcType=VARCHAR} ,
+			</if>
+			<if test="srcIdClass != null">
+				src_id_class = #{srcIdClass,jdbcType=VARCHAR} ,
+			</if>
+			<if test="srcKeyFd != null">
+				src_key_fd = #{srcKeyFd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="histTxSeqFd != null">
+				hist_tx_seq_fd = #{histTxSeqFd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="toHistInd != null">
+				to_hist_ind = #{toHistInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="reCoverInd != null">
+				re_cover_ind = #{reCoverInd,jdbcType=VARCHAR} ,
+			</if>
+		</set>
+		where trans_code= #{transCode}
+	</update>
+</mapper>

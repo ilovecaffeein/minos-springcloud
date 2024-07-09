@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmDuedayFeeDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmDuedayFee" id="BaseResultMap">
+        <result property="genGlNo" column="gen_gl_no" jdbcType="VARCHAR"/>
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="createDt" column="create_dt" jdbcType="VARCHAR"/>
+        <result property="feeAmt" column="fee_amt" jdbcType="NUMERIC"/>
+        <result property="feeTxAmt" column="fee_tx_amt" jdbcType="NUMERIC"/>
+        <result property="feeSts" column="fee_sts" jdbcType="BIGINT"/>
+        <result property="feeCde" column="fee_cde" jdbcType="VARCHAR"/>
+        <result property="feeTyp" column="fee_typ" jdbcType="VARCHAR"/>
+        <result property="feeDesc" column="fee_desc" jdbcType="VARCHAR"/>
+        <result property="ccyCde" column="ccy_cde" jdbcType="VARCHAR"/>
+        <result property="curDueDt" column="cur_due_dt" jdbcType="VARCHAR"/>
+        <result property="nextDueDt" column="next_due_dt" jdbcType="VARCHAR"/>
+        <result property="setlDueDt" column="setl_due_dt" jdbcType="VARCHAR"/>
+        <result property="setlInd" column="setl_ind" jdbcType="VARCHAR"/>
+        <result property="prcsPageDtInd" column="prcs_page_dt_ind" jdbcType="VARCHAR"/>
+        <result property="thdCnt" column="thd_cnt" jdbcType="BIGINT"/>
+        <result property="fileCnt" column="file_cnt" jdbcType="BIGINT"/>
+        <result property="trstplnNo" column="trstpln_no" jdbcType="VARCHAR"/>
+        <result property="trstplnName" column="trstpln_name" jdbcType="VARCHAR"/>
+        <result property="memo" column="memo" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        gen_gl_no,loan_no,create_dt,fee_amt,fee_tx_amt,fee_sts,fee_cde,fee_typ,fee_desc,ccy_cde,cur_due_dt,next_due_dt,setl_due_dt,setl_ind,prcs_page_dt_ind,thd_cnt,file_cnt,trstpln_no,trstpln_name,memo 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmDuedayFee">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_dueday_fee
+		 <where>
+		 <if test="genGlNo != null">
+        	and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="createDt != null">
+        	and create_dt = #{createDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeAmt != null">
+        	and fee_amt = #{feeAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="feeTxAmt != null">
+        	and fee_tx_amt = #{feeTxAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="feeSts != null">
+        	and fee_sts = #{feeSts,jdbcType=BIGINT}
+	  </if>
+		 <if test="feeCde != null">
+        	and fee_cde = #{feeCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeTyp != null">
+        	and fee_typ = #{feeTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeDesc != null">
+        	and fee_desc = #{feeDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="ccyCde != null">
+        	and ccy_cde = #{ccyCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="curDueDt != null">
+        	and cur_due_dt = #{curDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="nextDueDt != null">
+        	and next_due_dt = #{nextDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlDueDt != null">
+        	and setl_due_dt = #{setlDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="setlInd != null">
+        	and setl_ind = #{setlInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="prcsPageDtInd != null">
+        	and prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="thdCnt != null">
+        	and thd_cnt = #{thdCnt,jdbcType=BIGINT}
+	  </if>
+		 <if test="fileCnt != null">
+        	and file_cnt = #{fileCnt,jdbcType=BIGINT}
+	  </if>
+		 <if test="trstplnNo != null">
+        	and trstpln_no = #{trstplnNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="trstplnName != null">
+        	and trstpln_name = #{trstplnName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="memo != null">
+        	and memo = #{memo,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmDuedayFee" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_dueday_fee
+		 <where>
+         <if test="genGlNo != null">
+        	and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="createDt != null">
+        	and create_dt = #{createDt,jdbcType=VARCHAR}
+         </if>
+         <if test="feeAmt != null">
+        	and fee_amt = #{feeAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="feeTxAmt != null">
+        	and fee_tx_amt = #{feeTxAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="feeSts != null">
+        	and fee_sts = #{feeSts,jdbcType=BIGINT}
+         </if>
+         <if test="feeCde != null">
+        	and fee_cde = #{feeCde,jdbcType=VARCHAR}
+         </if>
+         <if test="feeTyp != null">
+        	and fee_typ = #{feeTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="feeDesc != null">
+        	and fee_desc = #{feeDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="ccyCde != null">
+        	and ccy_cde = #{ccyCde,jdbcType=VARCHAR}
+         </if>
+         <if test="curDueDt != null">
+        	and cur_due_dt = #{curDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="nextDueDt != null">
+        	and next_due_dt = #{nextDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="setlDueDt != null">
+        	and setl_due_dt = #{setlDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="setlInd != null">
+        	and setl_ind = #{setlInd,jdbcType=VARCHAR}
+         </if>
+         <if test="prcsPageDtInd != null">
+        	and prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR}
+         </if>
+         <if test="thdCnt != null">
+        	and thd_cnt = #{thdCnt,jdbcType=BIGINT}
+         </if>
+         <if test="fileCnt != null">
+        	and file_cnt = #{fileCnt,jdbcType=BIGINT}
+         </if>
+         <if test="trstplnNo != null">
+        	and trstpln_no = #{trstplnNo,jdbcType=VARCHAR}
+         </if>
+         <if test="trstplnName != null">
+        	and trstpln_name = #{trstplnName,jdbcType=VARCHAR}
+         </if>
+         <if test="memo != null">
+        	and memo = #{memo,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmDuedayFee">
+		insert into lm_dueday_fee
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="genGlNo != null">
+        	    gen_gl_no ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="createDt != null">
+        	    create_dt ,
+	    </if>
+			<if test="feeAmt != null">
+        	    fee_amt ,
+	    </if>
+			<if test="feeTxAmt != null">
+        	    fee_tx_amt ,
+	    </if>
+			<if test="feeSts != null">
+        	    fee_sts ,
+	    </if>
+			<if test="feeCde != null">
+        	    fee_cde ,
+	    </if>
+			<if test="feeTyp != null">
+        	    fee_typ ,
+	    </if>
+			<if test="feeDesc != null">
+        	    fee_desc ,
+	    </if>
+			<if test="ccyCde != null">
+        	    ccy_cde ,
+	    </if>
+			<if test="curDueDt != null">
+        	    cur_due_dt ,
+	    </if>
+			<if test="nextDueDt != null">
+        	    next_due_dt ,
+	    </if>
+			<if test="setlDueDt != null">
+        	    setl_due_dt ,
+	    </if>
+			<if test="setlInd != null">
+        	    setl_ind ,
+	    </if>
+			<if test="prcsPageDtInd != null">
+        	    prcs_page_dt_ind ,
+	    </if>
+			<if test="thdCnt != null">
+        	    thd_cnt ,
+	    </if>
+			<if test="fileCnt != null">
+        	    file_cnt ,
+	    </if>
+			<if test="trstplnNo != null">
+        	    trstpln_no ,
+	    </if>
+			<if test="trstplnName != null">
+        	    trstpln_name ,
+	    </if>
+			<if test="memo != null">
+        	    memo ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="genGlNo != null">
+        	   #{genGlNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="createDt != null">
+        	   #{createDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeAmt != null">
+        	   #{feeAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="feeTxAmt != null">
+        	   #{feeTxAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="feeSts != null">
+        	   #{feeSts,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="feeCde != null">
+        	   #{feeCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeTyp != null">
+        	   #{feeTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeDesc != null">
+        	   #{feeDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="ccyCde != null">
+        	   #{ccyCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="curDueDt != null">
+        	   #{curDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="nextDueDt != null">
+        	   #{nextDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlDueDt != null">
+        	   #{setlDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="setlInd != null">
+        	   #{setlInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="prcsPageDtInd != null">
+        	   #{prcsPageDtInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="thdCnt != null">
+        	   #{thdCnt,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="fileCnt != null">
+        	   #{fileCnt,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="trstplnNo != null">
+        	   #{trstplnNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="trstplnName != null">
+        	   #{trstplnName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="memo != null">
+        	   #{memo,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmDuedayFee">
+		update lm_dueday_fee 
+		<set>
+			<if test="genGlNo != null">
+        	 gen_gl_no = #{genGlNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="createDt != null">
+        	 create_dt = #{createDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeAmt != null">
+        	 fee_amt = #{feeAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="feeTxAmt != null">
+        	 fee_tx_amt = #{feeTxAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="feeSts != null">
+        	 fee_sts = #{feeSts,jdbcType=BIGINT} ,
+       </if>
+			<if test="feeCde != null">
+        	 fee_cde = #{feeCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeTyp != null">
+        	 fee_typ = #{feeTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeDesc != null">
+        	 fee_desc = #{feeDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="ccyCde != null">
+        	 ccy_cde = #{ccyCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="curDueDt != null">
+        	 cur_due_dt = #{curDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="nextDueDt != null">
+        	 next_due_dt = #{nextDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlDueDt != null">
+        	 setl_due_dt = #{setlDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="setlInd != null">
+        	 setl_ind = #{setlInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="prcsPageDtInd != null">
+        	 prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="thdCnt != null">
+        	 thd_cnt = #{thdCnt,jdbcType=BIGINT} ,
+       </if>
+			<if test="fileCnt != null">
+        	 file_cnt = #{fileCnt,jdbcType=BIGINT} ,
+       </if>
+			<if test="trstplnNo != null">
+        	 trstpln_no = #{trstplnNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="trstplnName != null">
+        	 trstpln_name = #{trstplnName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="memo != null">
+        	 memo = #{memo,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where loan_no= #{loanNo}
+	</update>
+	<insert id="insertList" parameterType="java.util.List">
+		insert into lm_dueday_fee (gen_gl_no,loan_no,create_dt,fee_amt,fee_tx_amt,
+		fee_sts,fee_cde,fee_typ,fee_desc,ccy_cde,cur_due_dt,next_due_dt,
+		setl_due_dt,setl_ind,prcs_page_dt_ind,thd_cnt,file_cnt,trstpln_no,trstpln_name,memo)
+		values
+		<foreach collection="list" item="lmDuedayFee"  separator=",">
+			(#{lmDuedayFee.genGlNo,jdbcType=VARCHAR}, #{lmDuedayFee.loanNo,jdbcType=VARCHAR}, #{lmDuedayFee.createDt,jdbcType=VARCHAR},
+			#{lmDuedayFee.feeAmt,jdbcType=NUMERIC}, #{lmDuedayFee.feeTxAmt,jdbcType=NUMERIC}, #{lmDuedayFee.feeSts,jdbcType=BIGINT},
+			#{lmDuedayFee.feeCde,jdbcType=VARCHAR}, #{lmDuedayFee.feeTyp,jdbcType=VARCHAR}, #{lmDuedayFee.feeDesc,jdbcType=VARCHAR},
+			#{lmDuedayFee.ccyCde,jdbcType=VARCHAR}, #{lmDuedayFee.curDueDt,jdbcType=VARCHAR}, #{lmDuedayFee.nextDueDt,jdbcType=VARCHAR},
+			#{lmDuedayFee.setlDueDt,jdbcType=NUMERIC}, #{lmDuedayFee.setlInd,jdbcType=VARCHAR}, #{lmDuedayFee.prcsPageDtInd,jdbcType=VARCHAR},
+			#{lmDuedayFee.thdCnt,jdbcType=BIGINT}, #{lmDuedayFee.fileCnt,jdbcType=BIGINT}, #{lmDuedayFee.trstplnNo,jdbcType=VARCHAR},
+			#{lmDuedayFee.trstplnName,jdbcType=VARCHAR}, #{lmDuedayFee.memo,jdbcType=VARCHAR})
+		</foreach>
+	</insert>
+</mapper>

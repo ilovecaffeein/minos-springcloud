@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.PFeeTypDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.PFeeTyp" id="BaseResultMap">
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="feeCde" column="fee_cde" jdbcType="VARCHAR"/>
+        <result property="feeTyp" column="fee_typ" jdbcType="VARCHAR"/>
+        <result property="feeDesc" column="fee_desc" jdbcType="VARCHAR"/>
+        <result property="feeFixAmt" column="fee_fix_amt" jdbcType="NUMERIC"/>
+        <result property="feeMinFee" column="fee_min_fee" jdbcType="NUMERIC"/>
+        <result property="feeMaxFee" column="fee_max_fee" jdbcType="NUMERIC"/>
+        <result property="feePct" column="fee_pct" jdbcType="NUMERIC"/>
+        <result property="feePctBase" column="fee_pct_base" jdbcType="VARCHAR"/>
+        <result property="feeFormula" column="fee_formula" jdbcType="VARCHAR"/>
+        <result property="feeStatus" column="fee_status" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="feeActionTyp" column="fee_action_typ" jdbcType="VARCHAR"/>
+        <result property="feeCondOpt" column="fee_cond_opt" jdbcType="VARCHAR"/>
+        <result property="feeOperOpt" column="fee_oper_opt" jdbcType="VARCHAR"/>
+        <result property="feeDay" column="fee_day" jdbcType="BIGINT"/>
+        <result property="feeLoanMth" column="fee_loan_mth" jdbcType="VARCHAR"/>
+        <result property="feeTnrType" column="fee_tnr_type" jdbcType="VARCHAR"/>
+        <result property="feeTnr" column="fee_tnr" jdbcType="BIGINT"/>
+        <result property="feeTnrEnd" column="fee_tnr_end" jdbcType="BIGINT"/>
+        <result property="feeAmtTyp" column="fee_amt_typ" jdbcType="VARCHAR"/>
+        <result property="feeTermEnd" column="fee_term_end" jdbcType="VARCHAR"/>
+        <result property="feeTermStart" column="fee_term_start" jdbcType="VARCHAR"/>
+        <result property="accInd" column="acc_ind" jdbcType="VARCHAR"/>
+        <result property="accAmtTyp" column="acc_amt_typ" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        bank_cde,fee_cde,fee_typ,fee_desc,fee_fix_amt,fee_min_fee,fee_max_fee,fee_pct,fee_pct_base,fee_formula,fee_status,last_chg_dt,last_chg_usr,fee_action_typ,fee_cond_opt,fee_oper_opt,fee_day,fee_loan_mth,fee_tnr_type,fee_tnr,fee_tnr_end,fee_amt_typ,fee_term_end,fee_term_start,acc_ind,acc_amt_typ 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PFeeTyp">
+		select 
+		<include refid="Base_Column_List" />
+		 from p_fee_typ
+		 <where>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeCde != null">
+        	and fee_cde = #{feeCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeTyp != null">
+        	and fee_typ = #{feeTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeDesc != null">
+        	and fee_desc = #{feeDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeFixAmt != null">
+        	and fee_fix_amt = #{feeFixAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="feeMinFee != null">
+        	and fee_min_fee = #{feeMinFee,jdbcType=NUMERIC}
+	  </if>
+		 <if test="feeMaxFee != null">
+        	and fee_max_fee = #{feeMaxFee,jdbcType=NUMERIC}
+	  </if>
+		 <if test="feePct != null">
+        	and fee_pct = #{feePct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="feePctBase != null">
+        	and fee_pct_base = #{feePctBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeFormula != null">
+        	and fee_formula = #{feeFormula,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeStatus != null">
+        	and fee_status = #{feeStatus,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeActionTyp != null">
+        	and fee_action_typ = #{feeActionTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeCondOpt != null">
+        	and fee_cond_opt = #{feeCondOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeOperOpt != null">
+        	and fee_oper_opt = #{feeOperOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeDay != null">
+        	and fee_day = #{feeDay,jdbcType=INT4}
+	  </if>
+		 <if test="feeLoanMth != null">
+        	and fee_loan_mth = #{feeLoanMth,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeTnrType != null">
+        	and fee_tnr_type = #{feeTnrType,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeTnr != null">
+        	and fee_tnr = #{feeTnr,jdbcType=INT4}
+	  </if>
+		 <if test="feeTnrEnd != null">
+        	and fee_tnr_end = #{feeTnrEnd,jdbcType=INT4}
+	  </if>
+		 <if test="feeAmtTyp != null">
+        	and fee_amt_typ = #{feeAmtTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeTermEnd != null">
+        	and fee_term_end = #{feeTermEnd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="feeTermStart != null">
+        	and fee_term_start = #{feeTermStart,jdbcType=VARCHAR}
+	  </if>
+		 <if test="accInd != null">
+        	and acc_ind = #{accInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="accAmtTyp != null">
+        	and acc_amt_typ = #{accAmtTyp,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PFeeTyp" >
+		select 
+		<include refid="Base_Column_List" />
+		 from p_fee_typ
+		 <where>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="feeCde != null">
+        	and fee_cde = #{feeCde,jdbcType=VARCHAR}
+         </if>
+         <if test="feeTyp != null">
+        	and fee_typ = #{feeTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="feeDesc != null">
+        	and fee_desc = #{feeDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="feeFixAmt != null">
+        	and fee_fix_amt = #{feeFixAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="feeMinFee != null">
+        	and fee_min_fee = #{feeMinFee,jdbcType=NUMERIC}
+         </if>
+         <if test="feeMaxFee != null">
+        	and fee_max_fee = #{feeMaxFee,jdbcType=NUMERIC}
+         </if>
+         <if test="feePct != null">
+        	and fee_pct = #{feePct,jdbcType=NUMERIC}
+         </if>
+         <if test="feePctBase != null">
+        	and fee_pct_base = #{feePctBase,jdbcType=VARCHAR}
+         </if>
+         <if test="feeFormula != null">
+        	and fee_formula = #{feeFormula,jdbcType=VARCHAR}
+         </if>
+         <if test="feeStatus != null">
+        	and fee_status = #{feeStatus,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="feeActionTyp != null">
+        	and fee_action_typ = #{feeActionTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="feeCondOpt != null">
+        	and fee_cond_opt = #{feeCondOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="feeOperOpt != null">
+        	and fee_oper_opt = #{feeOperOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="feeDay != null">
+        	and fee_day = #{feeDay,jdbcType=INT4}
+         </if>
+         <if test="feeLoanMth != null">
+        	and fee_loan_mth = #{feeLoanMth,jdbcType=VARCHAR}
+         </if>
+         <if test="feeTnrType != null">
+        	and fee_tnr_type = #{feeTnrType,jdbcType=VARCHAR}
+         </if>
+         <if test="feeTnr != null">
+        	and fee_tnr = #{feeTnr,jdbcType=INT4}
+         </if>
+         <if test="feeTnrEnd != null">
+        	and fee_tnr_end = #{feeTnrEnd,jdbcType=INT4}
+         </if>
+         <if test="feeAmtTyp != null">
+        	and fee_amt_typ = #{feeAmtTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="feeTermEnd != null">
+        	and fee_term_end = #{feeTermEnd,jdbcType=VARCHAR}
+         </if>
+         <if test="feeTermStart != null">
+        	and fee_term_start = #{feeTermStart,jdbcType=VARCHAR}
+         </if>
+         <if test="accInd != null">
+        	and acc_ind = #{accInd,jdbcType=VARCHAR}
+         </if>
+         <if test="accAmtTyp != null">
+        	and acc_amt_typ = #{accAmtTyp,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.PFeeTyp">
+		insert into p_fee_typ
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="feeCde != null">
+        	    fee_cde ,
+	    </if>
+			<if test="feeTyp != null">
+        	    fee_typ ,
+	    </if>
+			<if test="feeDesc != null">
+        	    fee_desc ,
+	    </if>
+			<if test="feeFixAmt != null">
+        	    fee_fix_amt ,
+	    </if>
+			<if test="feeMinFee != null">
+        	    fee_min_fee ,
+	    </if>
+			<if test="feeMaxFee != null">
+        	    fee_max_fee ,
+	    </if>
+			<if test="feePct != null">
+        	    fee_pct ,
+	    </if>
+			<if test="feePctBase != null">
+        	    fee_pct_base ,
+	    </if>
+			<if test="feeFormula != null">
+        	    fee_formula ,
+	    </if>
+			<if test="feeStatus != null">
+        	    fee_status ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="feeActionTyp != null">
+        	    fee_action_typ ,
+	    </if>
+			<if test="feeCondOpt != null">
+        	    fee_cond_opt ,
+	    </if>
+			<if test="feeOperOpt != null">
+        	    fee_oper_opt ,
+	    </if>
+			<if test="feeDay != null">
+        	    fee_day ,
+	    </if>
+			<if test="feeLoanMth != null">
+        	    fee_loan_mth ,
+	    </if>
+			<if test="feeTnrType != null">
+        	    fee_tnr_type ,
+	    </if>
+			<if test="feeTnr != null">
+        	    fee_tnr ,
+	    </if>
+			<if test="feeTnrEnd != null">
+        	    fee_tnr_end ,
+	    </if>
+			<if test="feeAmtTyp != null">
+        	    fee_amt_typ ,
+	    </if>
+			<if test="feeTermEnd != null">
+        	    fee_term_end ,
+	    </if>
+			<if test="feeTermStart != null">
+        	    fee_term_start ,
+	    </if>
+			<if test="accInd != null">
+        	    acc_ind ,
+	    </if>
+			<if test="accAmtTyp != null">
+        	    acc_amt_typ ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeCde != null">
+        	   #{feeCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeTyp != null">
+        	   #{feeTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeDesc != null">
+        	   #{feeDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeFixAmt != null">
+        	   #{feeFixAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="feeMinFee != null">
+        	   #{feeMinFee,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="feeMaxFee != null">
+        	   #{feeMaxFee,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="feePct != null">
+        	   #{feePct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="feePctBase != null">
+        	   #{feePctBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeFormula != null">
+        	   #{feeFormula,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeStatus != null">
+        	   #{feeStatus,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeActionTyp != null">
+        	   #{feeActionTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeCondOpt != null">
+        	   #{feeCondOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeOperOpt != null">
+        	   #{feeOperOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeDay != null">
+        	   #{feeDay,jdbcType=INT4} ,
+        </if>
+    	    <if test="feeLoanMth != null">
+        	   #{feeLoanMth,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeTnrType != null">
+        	   #{feeTnrType,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeTnr != null">
+        	   #{feeTnr,jdbcType=INT4} ,
+        </if>
+    	    <if test="feeTnrEnd != null">
+        	   #{feeTnrEnd,jdbcType=INT4} ,
+        </if>
+    	    <if test="feeAmtTyp != null">
+        	   #{feeAmtTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeTermEnd != null">
+        	   #{feeTermEnd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="feeTermStart != null">
+        	   #{feeTermStart,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="accInd != null">
+        	   #{accInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="accAmtTyp != null">
+        	   #{accAmtTyp,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.PFeeTyp">
+		update p_fee_typ 
+		<set>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeCde != null">
+        	 fee_cde = #{feeCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeTyp != null">
+        	 fee_typ = #{feeTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeDesc != null">
+        	 fee_desc = #{feeDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeFixAmt != null">
+        	 fee_fix_amt = #{feeFixAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="feeMinFee != null">
+        	 fee_min_fee = #{feeMinFee,jdbcType=NUMERIC} ,
+       </if>
+			<if test="feeMaxFee != null">
+        	 fee_max_fee = #{feeMaxFee,jdbcType=NUMERIC} ,
+       </if>
+			<if test="feePct != null">
+        	 fee_pct = #{feePct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="feePctBase != null">
+        	 fee_pct_base = #{feePctBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeFormula != null">
+        	 fee_formula = #{feeFormula,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeStatus != null">
+        	 fee_status = #{feeStatus,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeActionTyp != null">
+        	 fee_action_typ = #{feeActionTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeCondOpt != null">
+        	 fee_cond_opt = #{feeCondOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeOperOpt != null">
+        	 fee_oper_opt = #{feeOperOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeDay != null">
+        	 fee_day = #{feeDay,jdbcType=INT4} ,
+       </if>
+			<if test="feeLoanMth != null">
+        	 fee_loan_mth = #{feeLoanMth,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeTnrType != null">
+        	 fee_tnr_type = #{feeTnrType,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeTnr != null">
+        	 fee_tnr = #{feeTnr,jdbcType=INT4} ,
+       </if>
+			<if test="feeTnrEnd != null">
+        	 fee_tnr_end = #{feeTnrEnd,jdbcType=INT4} ,
+       </if>
+			<if test="feeAmtTyp != null">
+        	 fee_amt_typ = #{feeAmtTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeTermEnd != null">
+        	 fee_term_end = #{feeTermEnd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="feeTermStart != null">
+        	 fee_term_start = #{feeTermStart,jdbcType=VARCHAR} ,
+       </if>
+			<if test="accInd != null">
+        	 acc_ind = #{accInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="accAmtTyp != null">
+        	 acc_amt_typ = #{accAmtTyp,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where bank_cde= #{bankCde}
+	</update>
+</mapper>

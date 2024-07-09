@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmSbsyLogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.caxs.minos.domain.LmSbsyLog" id="BaseResultMap">
+		<result property="genGlNo" column="gen_gl_no" jdbcType="VARCHAR"/>
+		<result property="crtDate" column="crt_date" jdbcType="VARCHAR"/>
+		<result property="txCode" column="tx_code" jdbcType="VARCHAR"/>
+		<result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+		<result property="bchCde" column="bch_cde" jdbcType="VARCHAR"/>
+		<result property="sbsyCustId" column="sbsy_cust_id" jdbcType="VARCHAR"/>
+		<result property="sbsyCustName" column="sbsy_cust_name" jdbcType="VARCHAR"/>
+		<result property="loanContNo" column="loan_cont_no" jdbcType="VARCHAR"/>
+		<result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+		<result property="sbsyAcctBankCde" column="sbsy_acct_bank_cde" jdbcType="VARCHAR"/>
+		<result property="sbsyAcctBankName" column="sbsy_acct_bank_name" jdbcType="VARCHAR"/>
+		<result property="sbsyAcctNo" column="sbsy_acct_no" jdbcType="VARCHAR"/>
+		<result property="sbsyAcctName" column="sbsy_acct_name" jdbcType="VARCHAR"/>
+		<result property="sbsyIntRate" column="sbsy_int_rate" jdbcType="NUMERIC"/>
+		<result property="sbsyAmt" column="sbsy_amt" jdbcType="NUMERIC"/>
+		<result property="sbsyFlag" column="sbsy_flag" jdbcType="VARCHAR"/>
+		<result property="appUserName" column="app_user_name" jdbcType="VARCHAR"/>
+		<result property="appUserId" column="app_user_id" jdbcType="VARCHAR"/>
+		<result property="appUserOrgNo" column="app_user_org_no" jdbcType="VARCHAR"/>
+		<result property="sbsyOlInd" column="sbsy_ol_ind" jdbcType="VARCHAR"/>
+		<result property="memo" column="memo" jdbcType="VARCHAR"/>
+		<result property="sbsyTrstplnNo" column="sbsy_trstpln_no" jdbcType="VARCHAR"/>
+		<result property="sbsyTrstplnName" column="sbsy_trstpln_name" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		gen_gl_no,crt_date,tx_code,bank_cde,bch_cde,sbsy_cust_id,sbsy_cust_name,loan_cont_no,loan_no,sbsy_acct_bank_cde,sbsy_acct_bank_name,sbsy_acct_no,sbsy_acct_name,sbsy_int_rate,sbsy_amt,sbsy_flag,app_user_name,app_user_id,app_user_org_no,sbsy_ol_ind,memo,sbsy_trstpln_no,sbsy_trstpln_name
+	</sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmSbsyLog">
+		select
+		<include refid="Base_Column_List" />
+		from lm_sbsy_log
+		<where>
+			<if test="genGlNo != null">
+				and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+			</if>
+			<if test="crtDate != null">
+				and crt_date = #{crtDate,jdbcType=VARCHAR}
+			</if>
+			<if test="txCode != null">
+				and tx_code = #{txCode,jdbcType=VARCHAR}
+			</if>
+			<if test="bankCde != null">
+				and bank_cde = #{bankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="bchCde != null">
+				and bch_cde = #{bchCde,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyCustId != null">
+				and sbsy_cust_id = #{sbsyCustId,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyCustName != null">
+				and sbsy_cust_name = #{sbsyCustName,jdbcType=VARCHAR}
+			</if>
+			<if test="loanContNo != null">
+				and loan_cont_no = #{loanContNo,jdbcType=VARCHAR}
+			</if>
+			<if test="loanNo != null">
+				and loan_no = #{loanNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctBankCde != null">
+				and sbsy_acct_bank_cde = #{sbsyAcctBankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctBankName != null">
+				and sbsy_acct_bank_name = #{sbsyAcctBankName,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctNo != null">
+				and sbsy_acct_no = #{sbsyAcctNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctName != null">
+				and sbsy_acct_name = #{sbsyAcctName,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyIntRate != null">
+				and sbsy_int_rate = #{sbsyIntRate,jdbcType=NUMERIC}
+			</if>
+			<if test="sbsyAmt != null">
+				and sbsy_amt = #{sbsyAmt,jdbcType=NUMERIC}
+			</if>
+			<if test="sbsyFlag != null">
+				and sbsy_flag = #{sbsyFlag,jdbcType=VARCHAR}
+			</if>
+			<if test="appUserName != null">
+				and app_user_name = #{appUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="appUserId != null">
+				and app_user_id = #{appUserId,jdbcType=VARCHAR}
+			</if>
+			<if test="appUserOrgNo != null">
+				and app_user_org_no = #{appUserOrgNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyOlInd != null">
+				and sbsy_ol_ind = #{sbsyOlInd,jdbcType=VARCHAR}
+			</if>
+			<if test="memo != null">
+				and memo = #{memo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyTrstplnNo != null">
+				and sbsy_trstpln_no = #{sbsyTrstplnNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyTrstplnName != null">
+				and sbsy_trstpln_name = #{sbsyTrstplnName,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmSbsyLog" >
+		select
+		<include refid="Base_Column_List" />
+		from lm_sbsy_log
+		<where>
+			<if test="genGlNo != null">
+				and gen_gl_no = #{genGlNo,jdbcType=VARCHAR}
+			</if>
+			<if test="crtDate != null">
+				and crt_date = #{crtDate,jdbcType=VARCHAR}
+			</if>
+			<if test="txCode != null">
+				and tx_code = #{txCode,jdbcType=VARCHAR}
+			</if>
+			<if test="bankCde != null">
+				and bank_cde = #{bankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="bchCde != null">
+				and bch_cde = #{bchCde,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyCustId != null">
+				and sbsy_cust_id = #{sbsyCustId,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyCustName != null">
+				and sbsy_cust_name = #{sbsyCustName,jdbcType=VARCHAR}
+			</if>
+			<if test="loanContNo != null">
+				and loan_cont_no = #{loanContNo,jdbcType=VARCHAR}
+			</if>
+			<if test="loanNo != null">
+				and loan_no = #{loanNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctBankCde != null">
+				and sbsy_acct_bank_cde = #{sbsyAcctBankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctBankName != null">
+				and sbsy_acct_bank_name = #{sbsyAcctBankName,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctNo != null">
+				and sbsy_acct_no = #{sbsyAcctNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyAcctName != null">
+				and sbsy_acct_name = #{sbsyAcctName,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyIntRate != null">
+				and sbsy_int_rate = #{sbsyIntRate,jdbcType=NUMERIC}
+			</if>
+			<if test="sbsyAmt != null">
+				and sbsy_amt = #{sbsyAmt,jdbcType=NUMERIC}
+			</if>
+			<if test="sbsyFlag != null">
+				and sbsy_flag = #{sbsyFlag,jdbcType=VARCHAR}
+			</if>
+			<if test="appUserName != null">
+				and app_user_name = #{appUserName,jdbcType=VARCHAR}
+			</if>
+			<if test="appUserId != null">
+				and app_user_id = #{appUserId,jdbcType=VARCHAR}
+			</if>
+			<if test="appUserOrgNo != null">
+				and app_user_org_no = #{appUserOrgNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyOlInd != null">
+				and sbsy_ol_ind = #{sbsyOlInd,jdbcType=VARCHAR}
+			</if>
+			<if test="memo != null">
+				and memo = #{memo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyTrstplnNo != null">
+				and sbsy_trstpln_no = #{sbsyTrstplnNo,jdbcType=VARCHAR}
+			</if>
+			<if test="sbsyTrstplnName != null">
+				and sbsy_trstpln_name = #{sbsyTrstplnName,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmSbsyLog">
+		insert into lm_sbsy_log
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="genGlNo != null">
+				gen_gl_no ,
+			</if>
+			<if test="crtDate != null">
+				crt_date ,
+			</if>
+			<if test="txCode != null">
+				tx_code ,
+			</if>
+			<if test="bankCde != null">
+				bank_cde ,
+			</if>
+			<if test="bchCde != null">
+				bch_cde ,
+			</if>
+			<if test="sbsyCustId != null">
+				sbsy_cust_id ,
+			</if>
+			<if test="sbsyCustName != null">
+				sbsy_cust_name ,
+			</if>
+			<if test="loanContNo != null">
+				loan_cont_no ,
+			</if>
+			<if test="loanNo != null">
+				loan_no ,
+			</if>
+			<if test="sbsyAcctBankCde != null">
+				sbsy_acct_bank_cde ,
+			</if>
+			<if test="sbsyAcctBankName != null">
+				sbsy_acct_bank_name ,
+			</if>
+			<if test="sbsyAcctNo != null">
+				sbsy_acct_no ,
+			</if>
+			<if test="sbsyAcctName != null">
+				sbsy_acct_name ,
+			</if>
+			<if test="sbsyIntRate != null">
+				sbsy_int_rate ,
+			</if>
+			<if test="sbsyAmt != null">
+				sbsy_amt ,
+			</if>
+			<if test="sbsyFlag != null">
+				sbsy_flag ,
+			</if>
+			<if test="appUserName != null">
+				app_user_name ,
+			</if>
+			<if test="appUserId != null">
+				app_user_id ,
+			</if>
+			<if test="appUserOrgNo != null">
+				app_user_org_no ,
+			</if>
+			<if test="sbsyOlInd != null">
+				sbsy_ol_ind ,
+			</if>
+			<if test="memo != null">
+				memo ,
+			</if>
+			<if test="sbsyTrstplnNo != null">
+				sbsy_trstpln_no ,
+			</if>
+			<if test="sbsyTrstplnName != null">
+				sbsy_trstpln_name ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="genGlNo != null">
+				#{genGlNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="crtDate != null">
+				#{crtDate,jdbcType=VARCHAR} ,
+			</if>
+			<if test="txCode != null">
+				#{txCode,jdbcType=VARCHAR} ,
+			</if>
+			<if test="bankCde != null">
+				#{bankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="bchCde != null">
+				#{bchCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyCustId != null">
+				#{sbsyCustId,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyCustName != null">
+				#{sbsyCustName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="loanContNo != null">
+				#{loanContNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="loanNo != null">
+				#{loanNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctBankCde != null">
+				#{sbsyAcctBankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctBankName != null">
+				#{sbsyAcctBankName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctNo != null">
+				#{sbsyAcctNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctName != null">
+				#{sbsyAcctName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyIntRate != null">
+				#{sbsyIntRate,jdbcType=NUMERIC} ,
+			</if>
+			<if test="sbsyAmt != null">
+				#{sbsyAmt,jdbcType=NUMERIC} ,
+			</if>
+			<if test="sbsyFlag != null">
+				#{sbsyFlag,jdbcType=VARCHAR} ,
+			</if>
+			<if test="appUserName != null">
+				#{appUserName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="appUserId != null">
+				#{appUserId,jdbcType=VARCHAR} ,
+			</if>
+			<if test="appUserOrgNo != null">
+				#{appUserOrgNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyOlInd != null">
+				#{sbsyOlInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="memo != null">
+				#{memo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyTrstplnNo != null">
+				#{sbsyTrstplnNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyTrstplnName != null">
+				#{sbsyTrstplnName,jdbcType=VARCHAR} ,
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.caxs.minos.domain.LmSbsyLog">
+		update lm_sbsy_log
+		<set>
+			<if test="genGlNo != null">
+				gen_gl_no = #{genGlNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="crtDate != null">
+				crt_date = #{crtDate,jdbcType=VARCHAR} ,
+			</if>
+			<if test="txCode != null">
+				tx_code = #{txCode,jdbcType=VARCHAR} ,
+			</if>
+			<if test="bankCde != null">
+				bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="bchCde != null">
+				bch_cde = #{bchCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyCustId != null">
+				sbsy_cust_id = #{sbsyCustId,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyCustName != null">
+				sbsy_cust_name = #{sbsyCustName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="loanContNo != null">
+				loan_cont_no = #{loanContNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="loanNo != null">
+				loan_no = #{loanNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctBankCde != null">
+				sbsy_acct_bank_cde = #{sbsyAcctBankCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctBankName != null">
+				sbsy_acct_bank_name = #{sbsyAcctBankName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctNo != null">
+				sbsy_acct_no = #{sbsyAcctNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyAcctName != null">
+				sbsy_acct_name = #{sbsyAcctName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyIntRate != null">
+				sbsy_int_rate = #{sbsyIntRate,jdbcType=NUMERIC} ,
+			</if>
+			<if test="sbsyAmt != null">
+				sbsy_amt = #{sbsyAmt,jdbcType=NUMERIC} ,
+			</if>
+			<if test="sbsyFlag != null">
+				sbsy_flag = #{sbsyFlag,jdbcType=VARCHAR} ,
+			</if>
+			<if test="appUserName != null">
+				app_user_name = #{appUserName,jdbcType=VARCHAR} ,
+			</if>
+			<if test="appUserId != null">
+				app_user_id = #{appUserId,jdbcType=VARCHAR} ,
+			</if>
+			<if test="appUserOrgNo != null">
+				app_user_org_no = #{appUserOrgNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyOlInd != null">
+				sbsy_ol_ind = #{sbsyOlInd,jdbcType=VARCHAR} ,
+			</if>
+			<if test="memo != null">
+				memo = #{memo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyTrstplnNo != null">
+				sbsy_trstpln_no = #{sbsyTrstplnNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="sbsyTrstplnName != null">
+				sbsy_trstpln_name = #{sbsyTrstplnName,jdbcType=VARCHAR} ,
+			</if>
+		</set>
+		where sbsy_cust_id= #{sbsyCustId}
+	</update>
+	<select id="findSbsyLogOlOnd"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from lm_sbsy_log
+		where 1=1
+		and sbsy_flag IN ('N','F')
+		and loan_cont_no= #{loanContNo,jdbcType=VARCHAR}
+		and sbsy_ol_ind =#{sbsyOlInd,jdbcType=VARCHAR}
+	</select>
+	<insert id="insertList" parameterType="java.util.List">
+		insert into lm_sbsy_log (gen_gl_no,crt_date,tx_code,bank_cde,bch_cde,sbsy_cust_id,sbsy_cust_name,
+		loan_cont_no,loan_no,sbsy_acct_bank_cde,sbsy_acct_bank_name,sbsy_acct_no,sbsy_acct_name,sbsy_int_rate,
+		sbsy_amt,sbsy_flag,app_user_name,app_user_id,app_user_org_no,sbsy_ol_ind,memo,sbsy_trstpln_no,sbsy_trstpln_name)
+		values
+		<foreach collection="list" item="lmSbsyLog"  separator=",">
+			(#{lmSbsyLog.loanNo,jdbcType=VARCHAR}, #{lmSbsyLog.crtDate,jdbcType=VARCHAR}, #{lmSbsyLog.txCode,jdbcType=BIGINT},
+			#{lmSbsyLog.bankCde,jdbcType=VARCHAR}, #{lmSbsyLog.bchCde,jdbcType=NUMERIC}, #{lmSbsyLog.sbsyCustId,jdbcType=NUMERIC},
+			#{lmSbsyLog.sbsyCustName,jdbcType=NUMERIC}, #{lmSbsyLog.loanContNo,jdbcType=NUMERIC}, #{lmSbsyLog.loanNo,jdbcType=NUMERIC},
+			#{lmSbsyLog.sbsyAcctBankCde,jdbcType=NUMERIC}, #{lmSbsyLog.sbsyAcctBankName,jdbcType=NUMERIC}, #{lmSbsyLog.sbsyAcctNo,jdbcType=NUMERIC},
+			#{lmSbsyLog.sbsyAcctName,jdbcType=NUMERIC}, #{lmSbsyLog.sbsyIntRate,jdbcType=NUMERIC}, #{lmSbsyLog.sbsyAmt,jdbcType=VARCHAR},
+			#{lmSbsyLog.sbsyFlag,jdbcType=VARCHAR}, #{lmSbsyLog.appUserName,jdbcType=NUMERIC}, #{lmSbsyLog.appUserId,jdbcType=NUMERIC},
+			#{lmSbsyLog.appUserOrgNo,jdbcType=VARCHAR},	#{lmSbsyLog.sbsyOlInd,jdbcType=VARCHAR}, #{lmSbsyLog.memo,jdbcType=NUMERIC},
+			#{lmSbsyLog.sbsyTrstplnNo,jdbcType=NUMERIC},#{lmSbsyLog.sbsyTrstplnName,jdbcType=NUMERIC})
+		</foreach>
+	</insert>
+</mapper>

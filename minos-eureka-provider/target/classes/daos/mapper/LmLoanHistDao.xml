@@ -1,0 +1,1484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmLoanHistDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmLoanHist" id="BaseResultMap">
+        <result property="txLogSeq" column="tx_log_seq" jdbcType="BIGINT"/>
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="bchCde" column="bch_cde" jdbcType="VARCHAR"/>
+        <result property="idType" column="id_type" jdbcType="VARCHAR"/>
+        <result property="idNo" column="id_no" jdbcType="VARCHAR"/>
+        <result property="issCtry" column="iss_ctry" jdbcType="VARCHAR"/>
+        <result property="custId" column="cust_id" jdbcType="VARCHAR"/>
+        <result property="custName" column="cust_name" jdbcType="VARCHAR"/>
+        <result property="dealerCde" column="dealer_cde" jdbcType="VARCHAR"/>
+        <result property="loanTyp" column="loan_typ" jdbcType="VARCHAR"/>
+        <result property="loanContNo" column="loan_cont_no" jdbcType="VARCHAR"/>
+        <result property="loanSts" column="loan_sts" jdbcType="VARCHAR"/>
+        <result property="tnr" column="tnr" jdbcType="NUMERIC"/>
+        <result property="lastDueDt" column="last_due_dt" jdbcType="VARCHAR"/>
+        <result property="intStartDt" column="int_start_dt" jdbcType="VARCHAR"/>
+        <result property="loanDebtSts" column="loan_debt_sts" jdbcType="VARCHAR"/>
+        <result property="fstPaymDt" column="fst_paym_dt" jdbcType="VARCHAR"/>
+        <result property="dueDay" column="due_day" jdbcType="BIGINT"/>
+        <result property="loanOdInd" column="loan_od_ind" jdbcType="VARCHAR"/>
+        <result property="loanDevaInd" column="loan_deva_ind" jdbcType="VARCHAR"/>
+        <result property="loanDevaDt" column="loan_deva_dt" jdbcType="VARCHAR"/>
+        <result property="loanStpAccInd" column="loan_stp_acc_ind" jdbcType="VARCHAR"/>
+        <result property="loanStpAccDt" column="loan_stp_acc_dt" jdbcType="VARCHAR"/>
+        <result property="loanActvDt" column="loan_actv_dt" jdbcType="VARCHAR"/>
+        <result property="loanRateMode" column="loan_rate_mode" jdbcType="VARCHAR"/>
+        <result property="rateBase" column="rate_base" jdbcType="VARCHAR"/>
+        <result property="loanRateTyp" column="loan_rate_typ" jdbcType="VARCHAR"/>
+        <result property="loanIntRate" column="loan_int_rate" jdbcType="NUMERIC"/>
+        <result property="loanBaseRate" column="loan_base_rate" jdbcType="NUMERIC"/>
+        <result property="loanSprd" column="loan_sprd" jdbcType="NUMERIC"/>
+        <result property="intAdjPct" column="int_adj_pct" jdbcType="NUMERIC"/>
+        <result property="loanOdRateTyp" column="loan_od_rate_typ" jdbcType="VARCHAR"/>
+        <result property="loanOdBaseRate" column="loan_od_base_rate" jdbcType="NUMERIC"/>
+        <result property="loanOdIntRate" column="loan_od_int_rate" jdbcType="NUMERIC"/>
+        <result property="loanDiverInd" column="loan_diver_ind" jdbcType="VARCHAR"/>
+        <result property="loanDiverIntRate" column="loan_diver_int_rate" jdbcType="NUMERIC"/>
+        <result property="firstRepcDt" column="first_repc_dt" jdbcType="VARCHAR"/>
+        <result property="lastGenOdIntDt" column="last_gen_od_int_dt" jdbcType="VARCHAR"/>
+        <result property="lastIntAccDt" column="last_int_acc_dt" jdbcType="VARCHAR"/>
+        <result property="lastDeviIntAccDt" column="last_devi_int_acc_dt" jdbcType="VARCHAR"/>
+        <result property="lastSetlDt" column="last_setl_dt" jdbcType="VARCHAR"/>
+        <result property="curDueDt" column="cur_due_dt" jdbcType="VARCHAR"/>
+        <result property="nextDueDt" column="next_due_dt" jdbcType="VARCHAR"/>
+        <result property="nextBillDt" column="next_bill_dt" jdbcType="VARCHAR"/>
+        <result property="paymFreqUnit" column="paym_freq_unit" jdbcType="VARCHAR"/>
+        <result property="paymFreqFreq" column="paym_freq_freq" jdbcType="BIGINT"/>
+        <result property="lastRepcDt" column="last_repc_dt" jdbcType="VARCHAR"/>
+        <result property="nextRepcDt" column="next_repc_dt" jdbcType="VARCHAR"/>
+        <result property="loanCcy" column="loan_ccy" jdbcType="VARCHAR"/>
+        <result property="origPrcp" column="orig_prcp" jdbcType="NUMERIC"/>
+        <result property="loanOsPrcp" column="loan_os_prcp" jdbcType="NUMERIC"/>
+        <result property="loanTnr" column="loan_tnr" jdbcType="BIGINT" />
+        <result property="loanOsDay" column="loan_os_day" jdbcType="BIGINT" />
+        <result property="chargeDt" column="charge_dt" jdbcType="VARCHAR"/>
+        <result property="ratChgEffDt" column="rat_chg_eff_dt" jdbcType="VARCHAR"/>
+        <result property="loanGlRoleCde" column="loan_gl_role_cde" jdbcType="VARCHAR"/>
+        <result property="bussTyp" column="buss_typ" jdbcType="VARCHAR"/>
+        <result property="lnCostProd" column="ln_cost_prod" jdbcType="NUMERIC"/>
+        <result property="lnCostProdDt" column="ln_cost_prod_dt" jdbcType="VARCHAR"/>
+        <result property="loanGrd" column="loan_grd" jdbcType="VARCHAR"/>
+        <result property="loanPaymMtd" column="loan_paym_mtd" jdbcType="VARCHAR"/>
+        <result property="loanPaymTyp" column="loan_paym_typ" jdbcType="VARCHAR"/>
+        <result property="odRateAdjPct" column="od_rate_adj_pct" jdbcType="NUMERIC"/>
+        <result property="diverAdjPct" column="diver_adj_pct" jdbcType="NUMERIC"/>
+        <result property="intBase" column="int_base" jdbcType="VARCHAR"/>
+        <result property="curGenOdIntDt" column="cur_gen_od_int_dt" jdbcType="VARCHAR"/>
+        <result property="lastOdIntAccDt" column="last_od_int_acc_dt" jdbcType="VARCHAR"/>
+        <result property="loanDevaOrd" column="loan_deva_ord" jdbcType="VARCHAR"/>
+        <result property="oldLastDueDt" column="old_last_due_dt" jdbcType="VARCHAR"/>
+        <result property="prcsPageDtInd" column="prcs_page_dt_ind" jdbcType="VARCHAR"/>
+        <result property="billDay" column="bill_day" jdbcType="BIGINT" />
+        <result property="lisId" column="lis_id" jdbcType="VARCHAR"/>
+        <result property="sbsyInd" column="sbsy_ind" jdbcType="VARCHAR"/>
+        <result property="acctNo" column="acct_no" jdbcType="VARCHAR"/>
+        <result property="lastChgOdDt" column="last_chg_od_dt" jdbcType="VARCHAR"/>
+        <result property="upVer" column="up_ver" jdbcType="NUMERIC"/>
+        <result property="nextSynRateDt" column="next_syn_rate_dt" jdbcType="VARCHAR"/>
+        <result property="instmInd" column="instm_ind" jdbcType="VARCHAR"/>
+        <result property="sbsyIntRate" column="sbsy_int_rate" jdbcType="NUMERIC"/>
+        <result property="remTermPrcp" column="rem_term_prcp" jdbcType="NUMERIC"/>
+        <result property="thdCnt" column="thd_cnt" jdbcType="BIGINT"/>
+        <result property="appUserId" column="app_user_id" jdbcType="VARCHAR"/>
+        <result property="appUserName" column="app_user_name" jdbcType="VARCHAR"/>
+        <result property="appUserOrgNo" column="app_user_org_no" jdbcType="VARCHAR"/>
+        <result property="rlIntRate" column="rl_int_rate" jdbcType="NUMERIC"/>
+        <result property="typGrp" column="typ_grp" jdbcType="VARCHAR"/>
+        <result property="payTyp" column="pay_typ" jdbcType="VARCHAR"/>
+        <result property="odRateSprd" column="od_rate_sprd" jdbcType="NUMERIC"/>
+        <result property="oldLoanTyp" column="old_loan_typ" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        tx_log_seq,loan_no,bank_cde,bch_cde,id_type,id_no,iss_ctry,cust_id,cust_name,dealer_cde,loan_typ,loan_cont_no,loan_sts,tnr,last_due_dt,int_start_dt,loan_debt_sts,fst_paym_dt,due_day,loan_od_ind,loan_deva_ind,loan_deva_dt,loan_stp_acc_ind,loan_stp_acc_dt,loan_actv_dt,loan_rate_mode,rate_base,loan_rate_typ,loan_int_rate,loan_base_rate,loan_sprd,int_adj_pct,loan_od_rate_typ,loan_od_base_rate,loan_od_int_rate,loan_diver_ind,loan_diver_int_rate,first_repc_dt,last_gen_od_int_dt,last_int_acc_dt,last_devi_int_acc_dt,last_setl_dt,cur_due_dt,next_due_dt,next_bill_dt,paym_freq_unit,paym_freq_freq,last_repc_dt,next_repc_dt,loan_ccy,orig_prcp,loan_os_prcp,loan_tnr,loan_os_day,charge_dt,rat_chg_eff_dt,loan_gl_role_cde,buss_typ,ln_cost_prod,ln_cost_prod_dt,loan_grd,loan_paym_mtd,loan_paym_typ,od_rate_adj_pct,diver_adj_pct,int_base,cur_gen_od_int_dt,last_od_int_acc_dt,loan_deva_ord,old_last_due_dt,prcs_page_dt_ind,bill_day,lis_id,sbsy_ind,acct_no,last_chg_od_dt,up_ver,next_syn_rate_dt,instm_ind,sbsy_int_rate,rem_term_prcp,thd_cnt,app_user_id,app_user_name,app_user_org_no,rl_int_rate,typ_grp,pay_typ,od_rate_sprd,old_loan_typ 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmLoanHist">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_loan_hist
+		 <where>
+		 <if test="txLogSeq != null">
+        	and tx_log_seq = #{txLogSeq,jdbcType=BIGINT}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="idType != null">
+        	and id_type = #{idType,jdbcType=VARCHAR}
+	  </if>
+		 <if test="idNo != null">
+        	and id_no = #{idNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="issCtry != null">
+        	and iss_ctry = #{issCtry,jdbcType=VARCHAR}
+	  </if>
+		 <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="custName != null">
+        	and cust_name = #{custName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="dealerCde != null">
+        	and dealer_cde = #{dealerCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanTyp != null">
+        	and loan_typ = #{loanTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanContNo != null">
+        	and loan_cont_no = #{loanContNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanSts != null">
+        	and loan_sts = #{loanSts,jdbcType=VARCHAR}
+	  </if>
+		 <if test="tnr != null">
+        	and tnr = #{tnr,jdbcType=NUMERIC}
+	  </if>
+		 <if test="lastDueDt != null">
+        	and last_due_dt = #{lastDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="intStartDt != null">
+        	and int_start_dt = #{intStartDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanDebtSts != null">
+        	and loan_debt_sts = #{loanDebtSts,jdbcType=VARCHAR}
+	  </if>
+		 <if test="fstPaymDt != null">
+        	and fst_paym_dt = #{fstPaymDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="dueDay != null">
+        	and due_day = #{dueDay,jdbcType=BIGINT}
+	  </if>
+		 <if test="loanOdInd != null">
+        	and loan_od_ind = #{loanOdInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanDevaInd != null">
+        	and loan_deva_ind = #{loanDevaInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanDevaDt != null">
+        	and loan_deva_dt = #{loanDevaDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanStpAccInd != null">
+        	and loan_stp_acc_ind = #{loanStpAccInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanStpAccDt != null">
+        	and loan_stp_acc_dt = #{loanStpAccDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanActvDt != null">
+        	and loan_actv_dt = #{loanActvDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanRateMode != null">
+        	and loan_rate_mode = #{loanRateMode,jdbcType=VARCHAR}
+	  </if>
+		 <if test="rateBase != null">
+        	and rate_base = #{rateBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanRateTyp != null">
+        	and loan_rate_typ = #{loanRateTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanIntRate != null">
+        	and loan_int_rate = #{loanIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanBaseRate != null">
+        	and loan_base_rate = #{loanBaseRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanSprd != null">
+        	and loan_sprd = #{loanSprd,jdbcType=NUMERIC}
+	  </if>
+		 <if test="intAdjPct != null">
+        	and int_adj_pct = #{intAdjPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanOdRateTyp != null">
+        	and loan_od_rate_typ = #{loanOdRateTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanOdBaseRate != null">
+        	and loan_od_base_rate = #{loanOdBaseRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanOdIntRate != null">
+        	and loan_od_int_rate = #{loanOdIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanDiverInd != null">
+        	and loan_diver_ind = #{loanDiverInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanDiverIntRate != null">
+        	and loan_diver_int_rate = #{loanDiverIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="firstRepcDt != null">
+        	and first_repc_dt = #{firstRepcDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastGenOdIntDt != null">
+        	and last_gen_od_int_dt = #{lastGenOdIntDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastIntAccDt != null">
+        	and last_int_acc_dt = #{lastIntAccDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastDeviIntAccDt != null">
+        	and last_devi_int_acc_dt = #{lastDeviIntAccDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastSetlDt != null">
+        	and last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="curDueDt != null">
+        	and cur_due_dt = #{curDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="nextDueDt != null">
+        	and next_due_dt = #{nextDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="nextBillDt != null">
+        	and next_bill_dt = #{nextBillDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymFreqUnit != null">
+        	and paym_freq_unit = #{paymFreqUnit,jdbcType=VARCHAR}
+	  </if>
+		 <if test="paymFreqFreq != null">
+        	and paym_freq_freq = #{paymFreqFreq,jdbcType=BIGINT}
+	  </if>
+		 <if test="lastRepcDt != null">
+        	and last_repc_dt = #{lastRepcDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="nextRepcDt != null">
+        	and next_repc_dt = #{nextRepcDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanCcy != null">
+        	and loan_ccy = #{loanCcy,jdbcType=VARCHAR}
+	  </if>
+		 <if test="origPrcp != null">
+        	and orig_prcp = #{origPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanOsPrcp != null">
+        	and loan_os_prcp = #{loanOsPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="loanTnr != null">
+        	and loan_tnr = #{loanTnr,jdbcType=BIGINT}
+	  </if>
+		 <if test="loanOsDay != null">
+        	and loan_os_day = #{loanOsDay,jdbcType=BIGINT}
+	  </if>
+		 <if test="chargeDt != null">
+        	and charge_dt = #{chargeDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="ratChgEffDt != null">
+        	and rat_chg_eff_dt = #{ratChgEffDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanGlRoleCde != null">
+        	and loan_gl_role_cde = #{loanGlRoleCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="bussTyp != null">
+        	and buss_typ = #{bussTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lnCostProd != null">
+        	and ln_cost_prod = #{lnCostProd,jdbcType=NUMERIC}
+	  </if>
+		 <if test="lnCostProdDt != null">
+        	and ln_cost_prod_dt = #{lnCostProdDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanGrd != null">
+        	and loan_grd = #{loanGrd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanPaymMtd != null">
+        	and loan_paym_mtd = #{loanPaymMtd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanPaymTyp != null">
+        	and loan_paym_typ = #{loanPaymTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="odRateAdjPct != null">
+        	and od_rate_adj_pct = #{odRateAdjPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="diverAdjPct != null">
+        	and diver_adj_pct = #{diverAdjPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="intBase != null">
+        	and int_base = #{intBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="curGenOdIntDt != null">
+        	and cur_gen_od_int_dt = #{curGenOdIntDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastOdIntAccDt != null">
+        	and last_od_int_acc_dt = #{lastOdIntAccDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="loanDevaOrd != null">
+        	and loan_deva_ord = #{loanDevaOrd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="oldLastDueDt != null">
+        	and old_last_due_dt = #{oldLastDueDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="prcsPageDtInd != null">
+        	and prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="billDay != null">
+        	and bill_day = #{billDay,jdbcType=BIGINT}
+	  </if>
+		 <if test="lisId != null">
+        	and lis_id = #{lisId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="sbsyInd != null">
+        	and sbsy_ind = #{sbsyInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="acctNo != null">
+        	and acct_no = #{acctNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgOdDt != null">
+        	and last_chg_od_dt = #{lastChgOdDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="upVer != null">
+        	and up_ver = #{upVer,jdbcType=NUMERIC}
+	  </if>
+		 <if test="nextSynRateDt != null">
+        	and next_syn_rate_dt = #{nextSynRateDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="instmInd != null">
+        	and instm_ind = #{instmInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="sbsyIntRate != null">
+        	and sbsy_int_rate = #{sbsyIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="remTermPrcp != null">
+        	and rem_term_prcp = #{remTermPrcp,jdbcType=NUMERIC}
+	  </if>
+		 <if test="thdCnt != null">
+        	and thd_cnt = #{thdCnt,jdbcType=BIGINT}
+	  </if>
+		 <if test="appUserId != null">
+        	and app_user_id = #{appUserId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="appUserName != null">
+        	and app_user_name = #{appUserName,jdbcType=VARCHAR}
+	  </if>
+		 <if test="appUserOrgNo != null">
+        	and app_user_org_no = #{appUserOrgNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="rlIntRate != null">
+        	and rl_int_rate = #{rlIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="typGrp != null">
+        	and typ_grp = #{typGrp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="payTyp != null">
+        	and pay_typ = #{payTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="odRateSprd != null">
+        	and od_rate_sprd = #{odRateSprd,jdbcType=NUMERIC}
+	  </if>
+		 <if test="oldLoanTyp != null">
+        	and old_loan_typ = #{oldLoanTyp,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmLoanHist" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_loan_hist
+		 <where>
+         <if test="txLogSeq != null">
+        	and tx_log_seq = #{txLogSeq,jdbcType=BIGINT}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bchCde != null">
+        	and bch_cde = #{bchCde,jdbcType=VARCHAR}
+         </if>
+         <if test="idType != null">
+        	and id_type = #{idType,jdbcType=VARCHAR}
+         </if>
+         <if test="idNo != null">
+        	and id_no = #{idNo,jdbcType=VARCHAR}
+         </if>
+         <if test="issCtry != null">
+        	and iss_ctry = #{issCtry,jdbcType=VARCHAR}
+         </if>
+         <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+         </if>
+         <if test="custName != null">
+        	and cust_name = #{custName,jdbcType=VARCHAR}
+         </if>
+         <if test="dealerCde != null">
+        	and dealer_cde = #{dealerCde,jdbcType=VARCHAR}
+         </if>
+         <if test="loanTyp != null">
+        	and loan_typ = #{loanTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="loanContNo != null">
+        	and loan_cont_no = #{loanContNo,jdbcType=VARCHAR}
+         </if>
+         <if test="loanSts != null">
+        	and loan_sts = #{loanSts,jdbcType=VARCHAR}
+         </if>
+         <if test="tnr != null">
+        	and tnr = #{tnr,jdbcType=NUMERIC}
+         </if>
+         <if test="lastDueDt != null">
+        	and last_due_dt = #{lastDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="intStartDt != null">
+        	and int_start_dt = #{intStartDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanDebtSts != null">
+        	and loan_debt_sts = #{loanDebtSts,jdbcType=VARCHAR}
+         </if>
+         <if test="fstPaymDt != null">
+        	and fst_paym_dt = #{fstPaymDt,jdbcType=VARCHAR}
+         </if>
+         <if test="dueDay != null">
+        	and due_day = #{dueDay,jdbcType=BIGINT}
+         </if>
+         <if test="loanOdInd != null">
+        	and loan_od_ind = #{loanOdInd,jdbcType=VARCHAR}
+         </if>
+         <if test="loanDevaInd != null">
+        	and loan_deva_ind = #{loanDevaInd,jdbcType=VARCHAR}
+         </if>
+         <if test="loanDevaDt != null">
+        	and loan_deva_dt = #{loanDevaDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanStpAccInd != null">
+        	and loan_stp_acc_ind = #{loanStpAccInd,jdbcType=VARCHAR}
+         </if>
+         <if test="loanStpAccDt != null">
+        	and loan_stp_acc_dt = #{loanStpAccDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanActvDt != null">
+        	and loan_actv_dt = #{loanActvDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanRateMode != null">
+        	and loan_rate_mode = #{loanRateMode,jdbcType=VARCHAR}
+         </if>
+         <if test="rateBase != null">
+        	and rate_base = #{rateBase,jdbcType=VARCHAR}
+         </if>
+         <if test="loanRateTyp != null">
+        	and loan_rate_typ = #{loanRateTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="loanIntRate != null">
+        	and loan_int_rate = #{loanIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="loanBaseRate != null">
+        	and loan_base_rate = #{loanBaseRate,jdbcType=NUMERIC}
+         </if>
+         <if test="loanSprd != null">
+        	and loan_sprd = #{loanSprd,jdbcType=NUMERIC}
+         </if>
+         <if test="intAdjPct != null">
+        	and int_adj_pct = #{intAdjPct,jdbcType=NUMERIC}
+         </if>
+         <if test="loanOdRateTyp != null">
+        	and loan_od_rate_typ = #{loanOdRateTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="loanOdBaseRate != null">
+        	and loan_od_base_rate = #{loanOdBaseRate,jdbcType=NUMERIC}
+         </if>
+         <if test="loanOdIntRate != null">
+        	and loan_od_int_rate = #{loanOdIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="loanDiverInd != null">
+        	and loan_diver_ind = #{loanDiverInd,jdbcType=VARCHAR}
+         </if>
+         <if test="loanDiverIntRate != null">
+        	and loan_diver_int_rate = #{loanDiverIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="firstRepcDt != null">
+        	and first_repc_dt = #{firstRepcDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastGenOdIntDt != null">
+        	and last_gen_od_int_dt = #{lastGenOdIntDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastIntAccDt != null">
+        	and last_int_acc_dt = #{lastIntAccDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastDeviIntAccDt != null">
+        	and last_devi_int_acc_dt = #{lastDeviIntAccDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastSetlDt != null">
+        	and last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR}
+         </if>
+         <if test="curDueDt != null">
+        	and cur_due_dt = #{curDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="nextDueDt != null">
+        	and next_due_dt = #{nextDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="nextBillDt != null">
+        	and next_bill_dt = #{nextBillDt,jdbcType=VARCHAR}
+         </if>
+         <if test="paymFreqUnit != null">
+        	and paym_freq_unit = #{paymFreqUnit,jdbcType=VARCHAR}
+         </if>
+         <if test="paymFreqFreq != null">
+        	and paym_freq_freq = #{paymFreqFreq,jdbcType=BIGINT}
+         </if>
+         <if test="lastRepcDt != null">
+        	and last_repc_dt = #{lastRepcDt,jdbcType=VARCHAR}
+         </if>
+         <if test="nextRepcDt != null">
+        	and next_repc_dt = #{nextRepcDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanCcy != null">
+        	and loan_ccy = #{loanCcy,jdbcType=VARCHAR}
+         </if>
+         <if test="origPrcp != null">
+        	and orig_prcp = #{origPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="loanOsPrcp != null">
+        	and loan_os_prcp = #{loanOsPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="loanTnr != null">
+        	and loan_tnr = #{loanTnr,jdbcType=BIGINT}
+         </if>
+         <if test="loanOsDay != null">
+        	and loan_os_day = #{loanOsDay,jdbcType=BIGINT}
+         </if>
+         <if test="chargeDt != null">
+        	and charge_dt = #{chargeDt,jdbcType=VARCHAR}
+         </if>
+         <if test="ratChgEffDt != null">
+        	and rat_chg_eff_dt = #{ratChgEffDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanGlRoleCde != null">
+        	and loan_gl_role_cde = #{loanGlRoleCde,jdbcType=VARCHAR}
+         </if>
+         <if test="bussTyp != null">
+        	and buss_typ = #{bussTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="lnCostProd != null">
+        	and ln_cost_prod = #{lnCostProd,jdbcType=NUMERIC}
+         </if>
+         <if test="lnCostProdDt != null">
+        	and ln_cost_prod_dt = #{lnCostProdDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanGrd != null">
+        	and loan_grd = #{loanGrd,jdbcType=VARCHAR}
+         </if>
+         <if test="loanPaymMtd != null">
+        	and loan_paym_mtd = #{loanPaymMtd,jdbcType=VARCHAR}
+         </if>
+         <if test="loanPaymTyp != null">
+        	and loan_paym_typ = #{loanPaymTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="odRateAdjPct != null">
+        	and od_rate_adj_pct = #{odRateAdjPct,jdbcType=NUMERIC}
+         </if>
+         <if test="diverAdjPct != null">
+        	and diver_adj_pct = #{diverAdjPct,jdbcType=NUMERIC}
+         </if>
+         <if test="intBase != null">
+        	and int_base = #{intBase,jdbcType=VARCHAR}
+         </if>
+         <if test="curGenOdIntDt != null">
+        	and cur_gen_od_int_dt = #{curGenOdIntDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastOdIntAccDt != null">
+        	and last_od_int_acc_dt = #{lastOdIntAccDt,jdbcType=VARCHAR}
+         </if>
+         <if test="loanDevaOrd != null">
+        	and loan_deva_ord = #{loanDevaOrd,jdbcType=VARCHAR}
+         </if>
+         <if test="oldLastDueDt != null">
+        	and old_last_due_dt = #{oldLastDueDt,jdbcType=VARCHAR}
+         </if>
+         <if test="prcsPageDtInd != null">
+        	and prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR}
+         </if>
+         <if test="billDay != null">
+        	and bill_day = #{billDay,jdbcType=BIGINT}
+         </if>
+         <if test="lisId != null">
+        	and lis_id = #{lisId,jdbcType=VARCHAR}
+         </if>
+         <if test="sbsyInd != null">
+        	and sbsy_ind = #{sbsyInd,jdbcType=VARCHAR}
+         </if>
+         <if test="acctNo != null">
+        	and acct_no = #{acctNo,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgOdDt != null">
+        	and last_chg_od_dt = #{lastChgOdDt,jdbcType=VARCHAR}
+         </if>
+         <if test="upVer != null">
+        	and up_ver = #{upVer,jdbcType=NUMERIC}
+         </if>
+         <if test="nextSynRateDt != null">
+        	and next_syn_rate_dt = #{nextSynRateDt,jdbcType=VARCHAR}
+         </if>
+         <if test="instmInd != null">
+        	and instm_ind = #{instmInd,jdbcType=VARCHAR}
+         </if>
+         <if test="sbsyIntRate != null">
+        	and sbsy_int_rate = #{sbsyIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="remTermPrcp != null">
+        	and rem_term_prcp = #{remTermPrcp,jdbcType=NUMERIC}
+         </if>
+         <if test="thdCnt != null">
+        	and thd_cnt = #{thdCnt,jdbcType=BIGINT}
+         </if>
+         <if test="appUserId != null">
+        	and app_user_id = #{appUserId,jdbcType=VARCHAR}
+         </if>
+         <if test="appUserName != null">
+        	and app_user_name = #{appUserName,jdbcType=VARCHAR}
+         </if>
+         <if test="appUserOrgNo != null">
+        	and app_user_org_no = #{appUserOrgNo,jdbcType=VARCHAR}
+         </if>
+         <if test="rlIntRate != null">
+        	and rl_int_rate = #{rlIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="typGrp != null">
+        	and typ_grp = #{typGrp,jdbcType=VARCHAR}
+         </if>
+         <if test="payTyp != null">
+        	and pay_typ = #{payTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="odRateSprd != null">
+        	and od_rate_sprd = #{odRateSprd,jdbcType=NUMERIC}
+         </if>
+         <if test="oldLoanTyp != null">
+        	and old_loan_typ = #{oldLoanTyp,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmLoanHist">
+		insert into lm_loan_hist
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="txLogSeq != null">
+        	    tx_log_seq ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="bchCde != null">
+        	    bch_cde ,
+	    </if>
+			<if test="idType != null">
+        	    id_type ,
+	    </if>
+			<if test="idNo != null">
+        	    id_no ,
+	    </if>
+			<if test="issCtry != null">
+        	    iss_ctry ,
+	    </if>
+			<if test="custId != null">
+        	    cust_id ,
+	    </if>
+			<if test="custName != null">
+        	    cust_name ,
+	    </if>
+			<if test="dealerCde != null">
+        	    dealer_cde ,
+	    </if>
+			<if test="loanTyp != null">
+        	    loan_typ ,
+	    </if>
+			<if test="loanContNo != null">
+        	    loan_cont_no ,
+	    </if>
+			<if test="loanSts != null">
+        	    loan_sts ,
+	    </if>
+			<if test="tnr != null">
+        	    tnr ,
+	    </if>
+			<if test="lastDueDt != null">
+        	    last_due_dt ,
+	    </if>
+			<if test="intStartDt != null">
+        	    int_start_dt ,
+	    </if>
+			<if test="loanDebtSts != null">
+        	    loan_debt_sts ,
+	    </if>
+			<if test="fstPaymDt != null">
+        	    fst_paym_dt ,
+	    </if>
+			<if test="dueDay != null">
+        	    due_day ,
+	    </if>
+			<if test="loanOdInd != null">
+        	    loan_od_ind ,
+	    </if>
+			<if test="loanDevaInd != null">
+        	    loan_deva_ind ,
+	    </if>
+			<if test="loanDevaDt != null">
+        	    loan_deva_dt ,
+	    </if>
+			<if test="loanStpAccInd != null">
+        	    loan_stp_acc_ind ,
+	    </if>
+			<if test="loanStpAccDt != null">
+        	    loan_stp_acc_dt ,
+	    </if>
+			<if test="loanActvDt != null">
+        	    loan_actv_dt ,
+	    </if>
+			<if test="loanRateMode != null">
+        	    loan_rate_mode ,
+	    </if>
+			<if test="rateBase != null">
+        	    rate_base ,
+	    </if>
+			<if test="loanRateTyp != null">
+        	    loan_rate_typ ,
+	    </if>
+			<if test="loanIntRate != null">
+        	    loan_int_rate ,
+	    </if>
+			<if test="loanBaseRate != null">
+        	    loan_base_rate ,
+	    </if>
+			<if test="loanSprd != null">
+        	    loan_sprd ,
+	    </if>
+			<if test="intAdjPct != null">
+        	    int_adj_pct ,
+	    </if>
+			<if test="loanOdRateTyp != null">
+        	    loan_od_rate_typ ,
+	    </if>
+			<if test="loanOdBaseRate != null">
+        	    loan_od_base_rate ,
+	    </if>
+			<if test="loanOdIntRate != null">
+        	    loan_od_int_rate ,
+	    </if>
+			<if test="loanDiverInd != null">
+        	    loan_diver_ind ,
+	    </if>
+			<if test="loanDiverIntRate != null">
+        	    loan_diver_int_rate ,
+	    </if>
+			<if test="firstRepcDt != null">
+        	    first_repc_dt ,
+	    </if>
+			<if test="lastGenOdIntDt != null">
+        	    last_gen_od_int_dt ,
+	    </if>
+			<if test="lastIntAccDt != null">
+        	    last_int_acc_dt ,
+	    </if>
+			<if test="lastDeviIntAccDt != null">
+        	    last_devi_int_acc_dt ,
+	    </if>
+			<if test="lastSetlDt != null">
+        	    last_setl_dt ,
+	    </if>
+			<if test="curDueDt != null">
+        	    cur_due_dt ,
+	    </if>
+			<if test="nextDueDt != null">
+        	    next_due_dt ,
+	    </if>
+			<if test="nextBillDt != null">
+        	    next_bill_dt ,
+	    </if>
+			<if test="paymFreqUnit != null">
+        	    paym_freq_unit ,
+	    </if>
+			<if test="paymFreqFreq != null">
+        	    paym_freq_freq ,
+	    </if>
+			<if test="lastRepcDt != null">
+        	    last_repc_dt ,
+	    </if>
+			<if test="nextRepcDt != null">
+        	    next_repc_dt ,
+	    </if>
+			<if test="loanCcy != null">
+        	    loan_ccy ,
+	    </if>
+			<if test="origPrcp != null">
+        	    orig_prcp ,
+	    </if>
+			<if test="loanOsPrcp != null">
+        	    loan_os_prcp ,
+	    </if>
+			<if test="loanTnr != null">
+        	    loan_tnr ,
+	    </if>
+			<if test="loanOsDay != null">
+        	    loan_os_day ,
+	    </if>
+			<if test="chargeDt != null">
+        	    charge_dt ,
+	    </if>
+			<if test="ratChgEffDt != null">
+        	    rat_chg_eff_dt ,
+	    </if>
+			<if test="loanGlRoleCde != null">
+        	    loan_gl_role_cde ,
+	    </if>
+			<if test="bussTyp != null">
+        	    buss_typ ,
+	    </if>
+			<if test="lnCostProd != null">
+        	    ln_cost_prod ,
+	    </if>
+			<if test="lnCostProdDt != null">
+        	    ln_cost_prod_dt ,
+	    </if>
+			<if test="loanGrd != null">
+        	    loan_grd ,
+	    </if>
+			<if test="loanPaymMtd != null">
+        	    loan_paym_mtd ,
+	    </if>
+			<if test="loanPaymTyp != null">
+        	    loan_paym_typ ,
+	    </if>
+			<if test="odRateAdjPct != null">
+        	    od_rate_adj_pct ,
+	    </if>
+			<if test="diverAdjPct != null">
+        	    diver_adj_pct ,
+	    </if>
+			<if test="intBase != null">
+        	    int_base ,
+	    </if>
+			<if test="curGenOdIntDt != null">
+        	    cur_gen_od_int_dt ,
+	    </if>
+			<if test="lastOdIntAccDt != null">
+        	    last_od_int_acc_dt ,
+	    </if>
+			<if test="loanDevaOrd != null">
+        	    loan_deva_ord ,
+	    </if>
+			<if test="oldLastDueDt != null">
+        	    old_last_due_dt ,
+	    </if>
+			<if test="prcsPageDtInd != null">
+        	    prcs_page_dt_ind ,
+	    </if>
+			<if test="billDay != null">
+        	    bill_day ,
+	    </if>
+			<if test="lisId != null">
+        	    lis_id ,
+	    </if>
+			<if test="sbsyInd != null">
+        	    sbsy_ind ,
+	    </if>
+			<if test="acctNo != null">
+        	    acct_no ,
+	    </if>
+			<if test="lastChgOdDt != null">
+        	    last_chg_od_dt ,
+	    </if>
+			<if test="upVer != null">
+        	    up_ver ,
+	    </if>
+			<if test="nextSynRateDt != null">
+        	    next_syn_rate_dt ,
+	    </if>
+			<if test="instmInd != null">
+        	    instm_ind ,
+	    </if>
+			<if test="sbsyIntRate != null">
+        	    sbsy_int_rate ,
+	    </if>
+			<if test="remTermPrcp != null">
+        	    rem_term_prcp ,
+	    </if>
+			<if test="thdCnt != null">
+        	    thd_cnt ,
+	    </if>
+			<if test="appUserId != null">
+        	    app_user_id ,
+	    </if>
+			<if test="appUserName != null">
+        	    app_user_name ,
+	    </if>
+			<if test="appUserOrgNo != null">
+        	    app_user_org_no ,
+	    </if>
+			<if test="rlIntRate != null">
+        	    rl_int_rate ,
+	    </if>
+			<if test="typGrp != null">
+        	    typ_grp ,
+	    </if>
+			<if test="payTyp != null">
+        	    pay_typ ,
+	    </if>
+			<if test="odRateSprd != null">
+        	    od_rate_sprd ,
+	    </if>
+			<if test="oldLoanTyp != null">
+        	    old_loan_typ ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="txLogSeq != null">
+        	   #{txLogSeq,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bchCde != null">
+        	   #{bchCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="idType != null">
+        	   #{idType,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="idNo != null">
+        	   #{idNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="issCtry != null">
+        	   #{issCtry,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="custId != null">
+        	   #{custId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="custName != null">
+        	   #{custName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="dealerCde != null">
+        	   #{dealerCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanTyp != null">
+        	   #{loanTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanContNo != null">
+        	   #{loanContNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanSts != null">
+        	   #{loanSts,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="tnr != null">
+        	   #{tnr,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="lastDueDt != null">
+        	   #{lastDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="intStartDt != null">
+        	   #{intStartDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanDebtSts != null">
+        	   #{loanDebtSts,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="fstPaymDt != null">
+        	   #{fstPaymDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="dueDay != null">
+        	   #{dueDay,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loanOdInd != null">
+        	   #{loanOdInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanDevaInd != null">
+        	   #{loanDevaInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanDevaDt != null">
+        	   #{loanDevaDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanStpAccInd != null">
+        	   #{loanStpAccInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanStpAccDt != null">
+        	   #{loanStpAccDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanActvDt != null">
+        	   #{loanActvDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanRateMode != null">
+        	   #{loanRateMode,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="rateBase != null">
+        	   #{rateBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanRateTyp != null">
+        	   #{loanRateTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanIntRate != null">
+        	   #{loanIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanBaseRate != null">
+        	   #{loanBaseRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanSprd != null">
+        	   #{loanSprd,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="intAdjPct != null">
+        	   #{intAdjPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanOdRateTyp != null">
+        	   #{loanOdRateTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanOdBaseRate != null">
+        	   #{loanOdBaseRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanOdIntRate != null">
+        	   #{loanOdIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanDiverInd != null">
+        	   #{loanDiverInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanDiverIntRate != null">
+        	   #{loanDiverIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="firstRepcDt != null">
+        	   #{firstRepcDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastGenOdIntDt != null">
+        	   #{lastGenOdIntDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastIntAccDt != null">
+        	   #{lastIntAccDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastDeviIntAccDt != null">
+        	   #{lastDeviIntAccDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastSetlDt != null">
+        	   #{lastSetlDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="curDueDt != null">
+        	   #{curDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="nextDueDt != null">
+        	   #{nextDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="nextBillDt != null">
+        	   #{nextBillDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymFreqUnit != null">
+        	   #{paymFreqUnit,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="paymFreqFreq != null">
+        	   #{paymFreqFreq,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="lastRepcDt != null">
+        	   #{lastRepcDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="nextRepcDt != null">
+        	   #{nextRepcDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanCcy != null">
+        	   #{loanCcy,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="origPrcp != null">
+        	   #{origPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanOsPrcp != null">
+        	   #{loanOsPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="loanTnr != null">
+        	   #{loanTnr,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loanOsDay != null">
+        	   #{loanOsDay,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="chargeDt != null">
+        	   #{chargeDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="ratChgEffDt != null">
+        	   #{ratChgEffDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanGlRoleCde != null">
+        	   #{loanGlRoleCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="bussTyp != null">
+        	   #{bussTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lnCostProd != null">
+        	   #{lnCostProd,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="lnCostProdDt != null">
+        	   #{lnCostProdDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanGrd != null">
+        	   #{loanGrd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanPaymMtd != null">
+        	   #{loanPaymMtd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanPaymTyp != null">
+        	   #{loanPaymTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="odRateAdjPct != null">
+        	   #{odRateAdjPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="diverAdjPct != null">
+        	   #{diverAdjPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="intBase != null">
+        	   #{intBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="curGenOdIntDt != null">
+        	   #{curGenOdIntDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastOdIntAccDt != null">
+        	   #{lastOdIntAccDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="loanDevaOrd != null">
+        	   #{loanDevaOrd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="oldLastDueDt != null">
+        	   #{oldLastDueDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="prcsPageDtInd != null">
+        	   #{prcsPageDtInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="billDay != null">
+        	   #{billDay,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="lisId != null">
+        	   #{lisId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="sbsyInd != null">
+        	   #{sbsyInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="acctNo != null">
+        	   #{acctNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgOdDt != null">
+        	   #{lastChgOdDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="upVer != null">
+        	   #{upVer,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="nextSynRateDt != null">
+        	   #{nextSynRateDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="instmInd != null">
+        	   #{instmInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="sbsyIntRate != null">
+        	   #{sbsyIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="remTermPrcp != null">
+        	   #{remTermPrcp,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="thdCnt != null">
+        	   #{thdCnt,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="appUserId != null">
+        	   #{appUserId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="appUserName != null">
+        	   #{appUserName,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="appUserOrgNo != null">
+        	   #{appUserOrgNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="rlIntRate != null">
+        	   #{rlIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="typGrp != null">
+        	   #{typGrp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="payTyp != null">
+        	   #{payTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="odRateSprd != null">
+        	   #{odRateSprd,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="oldLoanTyp != null">
+        	   #{oldLoanTyp,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmLoanHist">
+		update lm_loan_hist 
+		<set>
+			<if test="txLogSeq != null">
+        	 tx_log_seq = #{txLogSeq,jdbcType=BIGINT} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bchCde != null">
+        	 bch_cde = #{bchCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="idType != null">
+        	 id_type = #{idType,jdbcType=VARCHAR} ,
+       </if>
+			<if test="idNo != null">
+        	 id_no = #{idNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="issCtry != null">
+        	 iss_ctry = #{issCtry,jdbcType=VARCHAR} ,
+       </if>
+			<if test="custId != null">
+        	 cust_id = #{custId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="custName != null">
+        	 cust_name = #{custName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="dealerCde != null">
+        	 dealer_cde = #{dealerCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanTyp != null">
+        	 loan_typ = #{loanTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanContNo != null">
+        	 loan_cont_no = #{loanContNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanSts != null">
+        	 loan_sts = #{loanSts,jdbcType=VARCHAR} ,
+       </if>
+			<if test="tnr != null">
+        	 tnr = #{tnr,jdbcType=NUMERIC} ,
+       </if>
+			<if test="lastDueDt != null">
+        	 last_due_dt = #{lastDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="intStartDt != null">
+        	 int_start_dt = #{intStartDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanDebtSts != null">
+        	 loan_debt_sts = #{loanDebtSts,jdbcType=VARCHAR} ,
+       </if>
+			<if test="fstPaymDt != null">
+        	 fst_paym_dt = #{fstPaymDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="dueDay != null">
+        	 due_day = #{dueDay,jdbcType=BIGINT} ,
+       </if>
+			<if test="loanOdInd != null">
+        	 loan_od_ind = #{loanOdInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanDevaInd != null">
+        	 loan_deva_ind = #{loanDevaInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanDevaDt != null">
+        	 loan_deva_dt = #{loanDevaDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanStpAccInd != null">
+        	 loan_stp_acc_ind = #{loanStpAccInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanStpAccDt != null">
+        	 loan_stp_acc_dt = #{loanStpAccDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanActvDt != null">
+        	 loan_actv_dt = #{loanActvDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanRateMode != null">
+        	 loan_rate_mode = #{loanRateMode,jdbcType=VARCHAR} ,
+       </if>
+			<if test="rateBase != null">
+        	 rate_base = #{rateBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanRateTyp != null">
+        	 loan_rate_typ = #{loanRateTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanIntRate != null">
+        	 loan_int_rate = #{loanIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanBaseRate != null">
+        	 loan_base_rate = #{loanBaseRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanSprd != null">
+        	 loan_sprd = #{loanSprd,jdbcType=NUMERIC} ,
+       </if>
+			<if test="intAdjPct != null">
+        	 int_adj_pct = #{intAdjPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanOdRateTyp != null">
+        	 loan_od_rate_typ = #{loanOdRateTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanOdBaseRate != null">
+        	 loan_od_base_rate = #{loanOdBaseRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanOdIntRate != null">
+        	 loan_od_int_rate = #{loanOdIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanDiverInd != null">
+        	 loan_diver_ind = #{loanDiverInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanDiverIntRate != null">
+        	 loan_diver_int_rate = #{loanDiverIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="firstRepcDt != null">
+        	 first_repc_dt = #{firstRepcDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastGenOdIntDt != null">
+        	 last_gen_od_int_dt = #{lastGenOdIntDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastIntAccDt != null">
+        	 last_int_acc_dt = #{lastIntAccDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastDeviIntAccDt != null">
+        	 last_devi_int_acc_dt = #{lastDeviIntAccDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastSetlDt != null">
+        	 last_setl_dt = #{lastSetlDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="curDueDt != null">
+        	 cur_due_dt = #{curDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="nextDueDt != null">
+        	 next_due_dt = #{nextDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="nextBillDt != null">
+        	 next_bill_dt = #{nextBillDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymFreqUnit != null">
+        	 paym_freq_unit = #{paymFreqUnit,jdbcType=VARCHAR} ,
+       </if>
+			<if test="paymFreqFreq != null">
+        	 paym_freq_freq = #{paymFreqFreq,jdbcType=BIGINT} ,
+       </if>
+			<if test="lastRepcDt != null">
+        	 last_repc_dt = #{lastRepcDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="nextRepcDt != null">
+        	 next_repc_dt = #{nextRepcDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanCcy != null">
+        	 loan_ccy = #{loanCcy,jdbcType=VARCHAR} ,
+       </if>
+			<if test="origPrcp != null">
+        	 orig_prcp = #{origPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanOsPrcp != null">
+        	 loan_os_prcp = #{loanOsPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="loanTnr != null">
+        	 loan_tnr = #{loanTnr,jdbcType=BIGINT} ,
+       </if>
+			<if test="loanOsDay != null">
+        	 loan_os_day = #{loanOsDay,jdbcType=BIGINT} ,
+       </if>
+			<if test="chargeDt != null">
+        	 charge_dt = #{chargeDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="ratChgEffDt != null">
+        	 rat_chg_eff_dt = #{ratChgEffDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanGlRoleCde != null">
+        	 loan_gl_role_cde = #{loanGlRoleCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="bussTyp != null">
+        	 buss_typ = #{bussTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lnCostProd != null">
+        	 ln_cost_prod = #{lnCostProd,jdbcType=NUMERIC} ,
+       </if>
+			<if test="lnCostProdDt != null">
+        	 ln_cost_prod_dt = #{lnCostProdDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanGrd != null">
+        	 loan_grd = #{loanGrd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanPaymMtd != null">
+        	 loan_paym_mtd = #{loanPaymMtd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanPaymTyp != null">
+        	 loan_paym_typ = #{loanPaymTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="odRateAdjPct != null">
+        	 od_rate_adj_pct = #{odRateAdjPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="diverAdjPct != null">
+        	 diver_adj_pct = #{diverAdjPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="intBase != null">
+        	 int_base = #{intBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="curGenOdIntDt != null">
+        	 cur_gen_od_int_dt = #{curGenOdIntDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastOdIntAccDt != null">
+        	 last_od_int_acc_dt = #{lastOdIntAccDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="loanDevaOrd != null">
+        	 loan_deva_ord = #{loanDevaOrd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="oldLastDueDt != null">
+        	 old_last_due_dt = #{oldLastDueDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="prcsPageDtInd != null">
+        	 prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="billDay != null">
+        	 bill_day = #{billDay,jdbcType=BIGINT} ,
+       </if>
+			<if test="lisId != null">
+        	 lis_id = #{lisId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="sbsyInd != null">
+        	 sbsy_ind = #{sbsyInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="acctNo != null">
+        	 acct_no = #{acctNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgOdDt != null">
+        	 last_chg_od_dt = #{lastChgOdDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="upVer != null">
+        	 up_ver = #{upVer,jdbcType=NUMERIC} ,
+       </if>
+			<if test="nextSynRateDt != null">
+        	 next_syn_rate_dt = #{nextSynRateDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="instmInd != null">
+        	 instm_ind = #{instmInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="sbsyIntRate != null">
+        	 sbsy_int_rate = #{sbsyIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="remTermPrcp != null">
+        	 rem_term_prcp = #{remTermPrcp,jdbcType=NUMERIC} ,
+       </if>
+			<if test="thdCnt != null">
+        	 thd_cnt = #{thdCnt,jdbcType=BIGINT} ,
+       </if>
+			<if test="appUserId != null">
+        	 app_user_id = #{appUserId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="appUserName != null">
+        	 app_user_name = #{appUserName,jdbcType=VARCHAR} ,
+       </if>
+			<if test="appUserOrgNo != null">
+        	 app_user_org_no = #{appUserOrgNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="rlIntRate != null">
+        	 rl_int_rate = #{rlIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="typGrp != null">
+        	 typ_grp = #{typGrp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="payTyp != null">
+        	 pay_typ = #{payTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="odRateSprd != null">
+        	 od_rate_sprd = #{odRateSprd,jdbcType=NUMERIC} ,
+       </if>
+			<if test="oldLoanTyp != null">
+        	 old_loan_typ = #{oldLoanTyp,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where tx_log_seq= #{txLogSeq}
+	</update>
+</mapper>

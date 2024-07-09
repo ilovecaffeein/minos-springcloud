@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.PayRstDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.PayRst" id="BaseResultMap">
+        <result property="txlogSeq" column="txlog_seq" jdbcType="BIGINT"/>
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="transCode" column="trans_code" jdbcType="VARCHAR"/>
+        <result property="appAmt" column="app_amt" jdbcType="NUMERIC"/>
+        <result property="actAmt" column="act_amt" jdbcType="NUMERIC"/>
+        <result property="acctNo" column="acct_no" jdbcType="VARCHAR"/>
+        <result property="errCde" column="err_cde" jdbcType="VARCHAR"/>
+        <result property="errMsg" column="err_msg" jdbcType="VARCHAR"/>
+        <result property="prcsPageDtInd" column="prcs_page_dt_ind" jdbcType="VARCHAR"/>
+        <result property="sucInd" column="suc_ind" jdbcType="VARCHAR"/>
+        <result property="batSeqNo" column="bat_seq_no" jdbcType="BIGINT"/>
+        <result property="subTxlogSeq" column="sub_txlog_seq" jdbcType="BIGINT"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        txlog_seq,loan_no,trans_code,app_amt,act_amt,acct_no,err_cde,err_msg,prcs_page_dt_ind,suc_ind,bat_seq_no,sub_txlog_seq 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PayRst">
+		select 
+		<include refid="Base_Column_List" />
+		 from pay_rst
+		 <where>
+		 <if test="txlogSeq != null">
+        	and txlog_seq = #{txlogSeq,jdbcType=BIGINT}
+	  </if>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="transCode != null">
+        	and trans_code = #{transCode,jdbcType=VARCHAR}
+	  </if>
+		 <if test="appAmt != null">
+        	and app_amt = #{appAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="actAmt != null">
+        	and act_amt = #{actAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="acctNo != null">
+        	and acct_no = #{acctNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="errCde != null">
+        	and err_cde = #{errCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="errMsg != null">
+        	and err_msg = #{errMsg,jdbcType=VARCHAR}
+	  </if>
+		 <if test="prcsPageDtInd != null">
+        	and prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="sucInd != null">
+        	and suc_ind = #{sucInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="batSeqNo != null">
+        	and bat_seq_no = #{batSeqNo,jdbcType=BIGINT}
+	  </if>
+		 <if test="subTxlogSeq != null">
+        	and sub_txlog_seq = #{subTxlogSeq,jdbcType=BIGINT}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PayRst" >
+		select 
+		<include refid="Base_Column_List" />
+		 from pay_rst
+		 <where>
+         <if test="txlogSeq != null">
+        	and txlog_seq = #{txlogSeq,jdbcType=BIGINT}
+         </if>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="transCode != null">
+        	and trans_code = #{transCode,jdbcType=VARCHAR}
+         </if>
+         <if test="appAmt != null">
+        	and app_amt = #{appAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="actAmt != null">
+        	and act_amt = #{actAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="acctNo != null">
+        	and acct_no = #{acctNo,jdbcType=VARCHAR}
+         </if>
+         <if test="errCde != null">
+        	and err_cde = #{errCde,jdbcType=VARCHAR}
+         </if>
+         <if test="errMsg != null">
+        	and err_msg = #{errMsg,jdbcType=VARCHAR}
+         </if>
+         <if test="prcsPageDtInd != null">
+        	and prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR}
+         </if>
+         <if test="sucInd != null">
+        	and suc_ind = #{sucInd,jdbcType=VARCHAR}
+         </if>
+         <if test="batSeqNo != null">
+        	and bat_seq_no = #{batSeqNo,jdbcType=BIGINT}
+         </if>
+         <if test="subTxlogSeq != null">
+        	and sub_txlog_seq = #{subTxlogSeq,jdbcType=BIGINT}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.PayRst">
+		insert into pay_rst
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="txlogSeq != null">
+        	    txlog_seq ,
+	    </if>
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="transCode != null">
+        	    trans_code ,
+	    </if>
+			<if test="appAmt != null">
+        	    app_amt ,
+	    </if>
+			<if test="actAmt != null">
+        	    act_amt ,
+	    </if>
+			<if test="acctNo != null">
+        	    acct_no ,
+	    </if>
+			<if test="errCde != null">
+        	    err_cde ,
+	    </if>
+			<if test="errMsg != null">
+        	    err_msg ,
+	    </if>
+			<if test="prcsPageDtInd != null">
+        	    prcs_page_dt_ind ,
+	    </if>
+			<if test="sucInd != null">
+        	    suc_ind ,
+	    </if>
+			<if test="batSeqNo != null">
+        	    bat_seq_no ,
+	    </if>
+			<if test="subTxlogSeq != null">
+        	    sub_txlog_seq ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="txlogSeq != null">
+        	   #{txlogSeq,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="transCode != null">
+        	   #{transCode,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="appAmt != null">
+        	   #{appAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="actAmt != null">
+        	   #{actAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="acctNo != null">
+        	   #{acctNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="errCde != null">
+        	   #{errCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="errMsg != null">
+        	   #{errMsg,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="prcsPageDtInd != null">
+        	   #{prcsPageDtInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="sucInd != null">
+        	   #{sucInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="batSeqNo != null">
+        	   #{batSeqNo,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="subTxlogSeq != null">
+        	   #{subTxlogSeq,jdbcType=BIGINT} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.PayRst">
+		update pay_rst 
+		<set>
+			<if test="txlogSeq != null">
+        	 txlog_seq = #{txlogSeq,jdbcType=BIGINT} ,
+       </if>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="transCode != null">
+        	 trans_code = #{transCode,jdbcType=VARCHAR} ,
+       </if>
+			<if test="appAmt != null">
+        	 app_amt = #{appAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="actAmt != null">
+        	 act_amt = #{actAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="acctNo != null">
+        	 acct_no = #{acctNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="errCde != null">
+        	 err_cde = #{errCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="errMsg != null">
+        	 err_msg = #{errMsg,jdbcType=VARCHAR} ,
+       </if>
+			<if test="prcsPageDtInd != null">
+        	 prcs_page_dt_ind = #{prcsPageDtInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="sucInd != null">
+        	 suc_ind = #{sucInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="batSeqNo != null">
+        	 bat_seq_no = #{batSeqNo,jdbcType=BIGINT} ,
+       </if>
+			<if test="subTxlogSeq != null">
+        	 sub_txlog_seq = #{subTxlogSeq,jdbcType=BIGINT} ,
+       </if>
+		</set>
+		where txlog_seq= #{txlogSeq}
+	</update>
+	<select id="findById" resultMap="BaseResultMap">
+		select *
+		from pay_rst aa
+		where aa.txlog_seq = #{txlogSeq,jdbcType=BIGINT}
+		and aa.sub_txlog_seq =  #{subTxlogSeq,jdbcType=BIGINT}
+	</select>
+</mapper>
