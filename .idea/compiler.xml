@@ -10,6 +10,7 @@
         <module name="minos-basic-service" />
         <module name="minos-eureka-service" />
         <module name="minos-config-service" />
+        <module name="minos-api" />
         <module name="minos-outside-service" />
         <module name="minos-commons" />
       </profile>
