@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    include: datasource
+  cloud:
+    config:
+      name: config
+      default-label: main
+      uri: http://localhost:8091/
+      profile: prod
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8090/eureka/

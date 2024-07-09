@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.LmHoldInfoDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.LmHoldInfo" id="BaseResultMap">
+        <result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+        <result property="custId" column="cust_id" jdbcType="VARCHAR"/>
+        <result property="idType" column="id_type" jdbcType="VARCHAR"/>
+        <result property="idNo" column="id_no" jdbcType="VARCHAR"/>
+        <result property="issCtry" column="iss_ctry" jdbcType="VARCHAR"/>
+        <result property="holdPct" column="hold_pct" jdbcType="NUMERIC"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="holdAmt" column="hold_amt" jdbcType="NUMERIC"/>
+        <result property="incPct" column="inc_pct" jdbcType="NUMERIC"/>
+        <result property="chnType" column="chn_type" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        loan_no,cust_id,id_type,id_no,iss_ctry,hold_pct,last_chg_usr,last_chg_dt,hold_amt,inc_pct,chn_type 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmHoldInfo">
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_hold_info
+		 <where>
+		 <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+	  </if>
+		 <if test="idType != null">
+        	and id_type = #{idType,jdbcType=VARCHAR}
+	  </if>
+		 <if test="idNo != null">
+        	and id_no = #{idNo,jdbcType=VARCHAR}
+	  </if>
+		 <if test="issCtry != null">
+        	and iss_ctry = #{issCtry,jdbcType=VARCHAR}
+	  </if>
+		 <if test="holdPct != null">
+        	and hold_pct = #{holdPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="holdAmt != null">
+        	and hold_amt = #{holdAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="incPct != null">
+        	and inc_pct = #{incPct,jdbcType=NUMERIC}
+	  </if>
+		 <if test="chnType != null">
+        	and chn_type = #{chnType,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.LmHoldInfo" >
+		select 
+		<include refid="Base_Column_List" />
+		 from lm_hold_info
+		 <where>
+         <if test="loanNo != null">
+        	and loan_no = #{loanNo,jdbcType=VARCHAR}
+         </if>
+         <if test="custId != null">
+        	and cust_id = #{custId,jdbcType=VARCHAR}
+         </if>
+         <if test="idType != null">
+        	and id_type = #{idType,jdbcType=VARCHAR}
+         </if>
+         <if test="idNo != null">
+        	and id_no = #{idNo,jdbcType=VARCHAR}
+         </if>
+         <if test="issCtry != null">
+        	and iss_ctry = #{issCtry,jdbcType=VARCHAR}
+         </if>
+         <if test="holdPct != null">
+        	and hold_pct = #{holdPct,jdbcType=NUMERIC}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="holdAmt != null">
+        	and hold_amt = #{holdAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="incPct != null">
+        	and inc_pct = #{incPct,jdbcType=NUMERIC}
+         </if>
+         <if test="chnType != null">
+        	and chn_type = #{chnType,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.LmHoldInfo">
+		insert into lm_hold_info
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="loanNo != null">
+        	    loan_no ,
+	    </if>
+			<if test="custId != null">
+        	    cust_id ,
+	    </if>
+			<if test="idType != null">
+        	    id_type ,
+	    </if>
+			<if test="idNo != null">
+        	    id_no ,
+	    </if>
+			<if test="issCtry != null">
+        	    iss_ctry ,
+	    </if>
+			<if test="holdPct != null">
+        	    hold_pct ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="holdAmt != null">
+        	    hold_amt ,
+	    </if>
+			<if test="incPct != null">
+        	    inc_pct ,
+	    </if>
+			<if test="chnType != null">
+        	    chn_type ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="loanNo != null">
+        	   #{loanNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="custId != null">
+        	   #{custId,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="idType != null">
+        	   #{idType,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="idNo != null">
+        	   #{idNo,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="issCtry != null">
+        	   #{issCtry,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="holdPct != null">
+        	   #{holdPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="holdAmt != null">
+        	   #{holdAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="incPct != null">
+        	   #{incPct,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="chnType != null">
+        	   #{chnType,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.LmHoldInfo">
+		update lm_hold_info 
+		<set>
+			<if test="loanNo != null">
+        	 loan_no = #{loanNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="custId != null">
+        	 cust_id = #{custId,jdbcType=VARCHAR} ,
+       </if>
+			<if test="idType != null">
+        	 id_type = #{idType,jdbcType=VARCHAR} ,
+       </if>
+			<if test="idNo != null">
+        	 id_no = #{idNo,jdbcType=VARCHAR} ,
+       </if>
+			<if test="issCtry != null">
+        	 iss_ctry = #{issCtry,jdbcType=VARCHAR} ,
+       </if>
+			<if test="holdPct != null">
+        	 hold_pct = #{holdPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="holdAmt != null">
+        	 hold_amt = #{holdAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="incPct != null">
+        	 inc_pct = #{incPct,jdbcType=NUMERIC} ,
+       </if>
+			<if test="chnType != null">
+        	 chn_type = #{chnType,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where loan_no= #{loanNo}
+	</update>
+</mapper>

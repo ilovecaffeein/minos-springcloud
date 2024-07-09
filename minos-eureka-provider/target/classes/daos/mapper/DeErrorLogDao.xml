@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.DeErrorLogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+	<resultMap type="com.caxs.minos.domain.DeErrorLog" id="BaseResultMap">
+		<result property="deErrSeq" column="de_err_seq" jdbcType="BIGINT"/>
+		<result property="loanNo" column="loan_no" jdbcType="VARCHAR"/>
+		<result property="prcsDt" column="prcs_dt" jdbcType="VARCHAR"/>
+		<result property="logDt" column="log_dt" jdbcType="VARCHAR"/>
+		<result property="macTime" column="mac_time" jdbcType="VARCHAR"/>
+		<result property="jobNam" column="job_nam" jdbcType="VARCHAR"/>
+		<result property="rtnCde" column="rtn_cde" jdbcType="VARCHAR"/>
+		<result property="errMsg" column="err_msg" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		de_err_seq,loan_no,prcs_dt,log_dt,mac_time,job_nam,rtn_cde,err_msg
+	</sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.DeErrorLog">
+		select
+		<include refid="Base_Column_List" />
+		from de_error_log
+		<where>
+			<if test="deErrSeq != null">
+				and de_err_seq = #{deErrSeq,jdbcType=BIGINT}
+			</if>
+			<if test="loanNo != null">
+				and loan_no = #{loanNo,jdbcType=VARCHAR}
+			</if>
+			<if test="prcsDt != null">
+				and prcs_dt = #{prcsDt,jdbcType=VARCHAR}
+			</if>
+			<if test="logDt != null">
+				and log_dt = #{logDt,jdbcType=VARCHAR}
+			</if>
+			<if test="macTime != null">
+				and mac_time = #{macTime,jdbcType=VARCHAR}
+			</if>
+			<if test="jobNam != null">
+				and job_nam = #{jobNam,jdbcType=VARCHAR}
+			</if>
+			<if test="rtnCde != null">
+				and rtn_cde = #{rtnCde,jdbcType=VARCHAR}
+			</if>
+			<if test="errMsg != null">
+				and err_msg = #{errMsg,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.DeErrorLog" >
+		select
+		<include refid="Base_Column_List" />
+		from de_error_log
+		<where>
+			<if test="deErrSeq != null">
+				and de_err_seq = #{deErrSeq,jdbcType=BIGINT}
+			</if>
+			<if test="loanNo != null">
+				and loan_no = #{loanNo,jdbcType=VARCHAR}
+			</if>
+			<if test="prcsDt != null">
+				and prcs_dt = #{prcsDt,jdbcType=VARCHAR}
+			</if>
+			<if test="logDt != null">
+				and log_dt = #{logDt,jdbcType=VARCHAR}
+			</if>
+			<if test="macTime != null">
+				and mac_time = #{macTime,jdbcType=VARCHAR}
+			</if>
+			<if test="jobNam != null">
+				and job_nam = #{jobNam,jdbcType=VARCHAR}
+			</if>
+			<if test="rtnCde != null">
+				and rtn_cde = #{rtnCde,jdbcType=VARCHAR}
+			</if>
+			<if test="errMsg != null">
+				and err_msg = #{errMsg,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="com.caxs.minos.domain.DeErrorLog">
+		insert into de_error_log
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="deErrSeq != null">
+				de_err_seq ,
+			</if>
+			<if test="loanNo != null">
+				loan_no ,
+			</if>
+			<if test="prcsDt != null">
+				prcs_dt ,
+			</if>
+			<if test="logDt != null">
+				log_dt ,
+			</if>
+			<if test="macTime != null">
+				mac_time ,
+			</if>
+			<if test="jobNam != null">
+				job_nam ,
+			</if>
+			<if test="rtnCde != null">
+				rtn_cde ,
+			</if>
+			<if test="errMsg != null">
+				err_msg ,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides="," >
+			<if test="deErrSeq != null">
+				#{deErrSeq,jdbcType=BIGINT} ,
+			</if>
+			<if test="loanNo != null">
+				#{loanNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="prcsDt != null">
+				#{prcsDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="logDt != null">
+				#{logDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="macTime != null">
+				#{macTime,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobNam != null">
+				#{jobNam,jdbcType=VARCHAR} ,
+			</if>
+			<if test="rtnCde != null">
+				#{rtnCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="errMsg != null">
+				#{errMsg,jdbcType=VARCHAR} ,
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="com.caxs.minos.domain.DeErrorLog">
+		update de_error_log
+		<set>
+			<if test="deErrSeq != null">
+				de_err_seq = #{deErrSeq,jdbcType=BIGINT} ,
+			</if>
+			<if test="loanNo != null">
+				loan_no = #{loanNo,jdbcType=VARCHAR} ,
+			</if>
+			<if test="prcsDt != null">
+				prcs_dt = #{prcsDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="logDt != null">
+				log_dt = #{logDt,jdbcType=VARCHAR} ,
+			</if>
+			<if test="macTime != null">
+				mac_time = #{macTime,jdbcType=VARCHAR} ,
+			</if>
+			<if test="jobNam != null">
+				job_nam = #{jobNam,jdbcType=VARCHAR} ,
+			</if>
+			<if test="rtnCde != null">
+				rtn_cde = #{rtnCde,jdbcType=VARCHAR} ,
+			</if>
+			<if test="errMsg != null">
+				err_msg = #{errMsg,jdbcType=VARCHAR} ,
+			</if>
+		</set>
+		where de_err_seq= #{deErrSeq}
+	</update>
+</mapper>

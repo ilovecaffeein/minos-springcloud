@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.SComCdeDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.SComCde" id="BaseResultMap">
+        <result property="comTyp" column="com_typ" jdbcType="VARCHAR"/>
+        <result property="comTypDesc" column="com_typ_desc" jdbcType="VARCHAR"/>
+        <result property="comCde" column="com_cde" jdbcType="VARCHAR"/>
+        <result property="comDesc" column="com_desc" jdbcType="VARCHAR"/>
+        <result property="comSysInd" column="com_sys_ind" jdbcType="VARCHAR"/>
+        <result property="comStatus" column="com_status" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="mappedComCde" column="mapped_com_cde" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        com_typ,com_typ_desc,com_cde,com_desc,com_sys_ind,com_status,last_chg_dt,last_chg_usr,mapped_com_cde 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SComCde">
+		select 
+		<include refid="Base_Column_List" />
+		 from s_com_cde
+		 <where>
+		 <if test="comTyp != null">
+        	and com_typ = #{comTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="comTypDesc != null">
+        	and com_typ_desc = #{comTypDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="comCde != null">
+        	and com_cde = #{comCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="comDesc != null">
+        	and com_desc = #{comDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="comSysInd != null">
+        	and com_sys_ind = #{comSysInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="comStatus != null">
+        	and com_status = #{comStatus,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="mappedComCde != null">
+        	and mapped_com_cde = #{mappedComCde,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.SComCde" >
+		select 
+		<include refid="Base_Column_List" />
+		 from s_com_cde
+		 <where>
+         <if test="comTyp != null">
+        	and com_typ = #{comTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="comTypDesc != null">
+        	and com_typ_desc = #{comTypDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="comCde != null">
+        	and com_cde = #{comCde,jdbcType=VARCHAR}
+         </if>
+         <if test="comDesc != null">
+        	and com_desc = #{comDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="comSysInd != null">
+        	and com_sys_ind = #{comSysInd,jdbcType=VARCHAR}
+         </if>
+         <if test="comStatus != null">
+        	and com_status = #{comStatus,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="mappedComCde != null">
+        	and mapped_com_cde = #{mappedComCde,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.SComCde">
+		insert into s_com_cde
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="comTyp != null">
+        	    com_typ ,
+	    </if>
+			<if test="comTypDesc != null">
+        	    com_typ_desc ,
+	    </if>
+			<if test="comCde != null">
+        	    com_cde ,
+	    </if>
+			<if test="comDesc != null">
+        	    com_desc ,
+	    </if>
+			<if test="comSysInd != null">
+        	    com_sys_ind ,
+	    </if>
+			<if test="comStatus != null">
+        	    com_status ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="mappedComCde != null">
+        	    mapped_com_cde ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="comTyp != null">
+        	   #{comTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="comTypDesc != null">
+        	   #{comTypDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="comCde != null">
+        	   #{comCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="comDesc != null">
+        	   #{comDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="comSysInd != null">
+        	   #{comSysInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="comStatus != null">
+        	   #{comStatus,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="mappedComCde != null">
+        	   #{mappedComCde,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.SComCde">
+		update s_com_cde 
+		<set>
+			<if test="comTyp != null">
+        	 com_typ = #{comTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="comTypDesc != null">
+        	 com_typ_desc = #{comTypDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="comCde != null">
+        	 com_cde = #{comCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="comDesc != null">
+        	 com_desc = #{comDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="comSysInd != null">
+        	 com_sys_ind = #{comSysInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="comStatus != null">
+        	 com_status = #{comStatus,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="mappedComCde != null">
+        	 mapped_com_cde = #{mappedComCde,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where com_typ= #{comTyp}
+	</update>
+</mapper>

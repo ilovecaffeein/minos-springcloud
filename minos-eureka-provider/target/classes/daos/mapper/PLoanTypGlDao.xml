@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.caxs.minos.dao.PLoanTypGlDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.caxs.minos.domain.PLoanTypGl" id="BaseResultMap">
+        <result property="bankCde" column="bank_cde" jdbcType="VARCHAR"/>
+        <result property="typGl" column="typ_gl" jdbcType="VARCHAR"/>
+        <result property="glAccDesc" column="gl_acc_desc" jdbcType="VARCHAR"/>
+        <result property="glRatBase" column="gl_rat_base" jdbcType="VARCHAR"/>
+        <result property="glDueDayOpt" column="gl_due_day_opt" jdbcType="VARCHAR"/>
+        <result property="glDrwOptInd" column="gl_drw_opt_ind" jdbcType="VARCHAR"/>
+        <result property="glPaymOpt" column="gl_paym_opt" jdbcType="VARCHAR"/>
+        <result property="glRatAdjOpt" column="gl_rat_adj_opt" jdbcType="VARCHAR"/>
+        <result property="glRatChgCat" column="gl_rat_chg_cat" jdbcType="VARCHAR"/>
+        <result property="glHolidayAdj" column="gl_holiday_adj" jdbcType="VARCHAR"/>
+        <result property="glFixedOdInd" column="gl_fixed_od_ind" jdbcType="VARCHAR"/>
+        <result property="glOdIntRate" column="gl_od_int_rate" jdbcType="NUMERIC"/>
+        <result property="glOdCommPart" column="gl_od_comm_part" jdbcType="VARCHAR"/>
+        <result property="glOdCat" column="gl_od_cat" jdbcType="VARCHAR"/>
+        <result property="glOdRateTyp" column="gl_od_rate_typ" jdbcType="VARCHAR"/>
+        <result property="glOdCpdInd" column="gl_od_cpd_ind" jdbcType="VARCHAR"/>
+        <result property="glOdMinAmt" column="gl_od_min_amt" jdbcType="NUMERIC"/>
+        <result property="glOdAppxTyp" column="gl_od_appx_typ" jdbcType="VARCHAR"/>
+        <result property="glIntAppxTyp" column="gl_int_appx_typ" jdbcType="VARCHAR"/>
+        <result property="glPpRatBase" column="gl_pp_rat_base" jdbcType="VARCHAR"/>
+        <result property="glPpRatOpt" column="gl_pp_rat_opt" jdbcType="VARCHAR"/>
+        <result property="glRstrDueDay" column="gl_rstr_due_day" jdbcType="VARCHAR"/>
+        <result property="glRpymMtd" column="gl_rpym_mtd" jdbcType="BIGINT"/>
+        <result property="glOdRpymMtd" column="gl_od_rpym_mtd" jdbcType="BIGINT"/>
+        <result property="glDeviRpym" column="gl_devi_rpym" jdbcType="BIGINT"/>
+        <result property="glMatDueDay" column="gl_mat_due_day" jdbcType="VARCHAR"/>
+        <result property="glPpTyp" column="gl_pp_typ" jdbcType="VARCHAR"/>
+        <result property="glPpMinVal" column="gl_pp_min_val" jdbcType="NUMERIC"/>
+        <result property="glIsContInd" column="gl_is_cont_ind" jdbcType="VARCHAR"/>
+        <result property="lastChgDt" column="last_chg_dt" jdbcType="VARCHAR"/>
+        <result property="lastChgUsr" column="last_chg_usr" jdbcType="VARCHAR"/>
+        <result property="glOdGraceInd" column="gl_od_grace_ind" jdbcType="VARCHAR"/>
+        <result property="glOdIntGraceInd" column="gl_od_int_grace_ind" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+  <sql id="Base_Column_List" >
+        bank_cde,typ_gl,gl_acc_desc,gl_rat_base,gl_due_day_opt,gl_drw_opt_ind,gl_paym_opt,gl_rat_adj_opt,gl_rat_chg_cat,gl_holiday_adj,gl_fixed_od_ind,gl_od_int_rate,gl_od_comm_part,gl_od_cat,gl_od_rate_typ,gl_od_cpd_ind,gl_od_min_amt,gl_od_appx_typ,gl_int_appx_typ,gl_pp_rat_base,gl_pp_rat_opt,gl_rstr_due_day,gl_rpym_mtd,gl_od_rpym_mtd,gl_devi_rpym,gl_mat_due_day,gl_pp_typ,gl_pp_min_val,gl_is_cont_ind,last_chg_dt,last_chg_usr,gl_od_grace_ind,gl_od_int_grace_ind 
+  </sql>
+
+	<select id="selectOneByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PLoanTypGl">
+		select 
+		<include refid="Base_Column_List" />
+		 from p_loan_typ_gl
+		 <where>
+		 <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+	  </if>
+		 <if test="typGl != null">
+        	and typ_gl = #{typGl,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glAccDesc != null">
+        	and gl_acc_desc = #{glAccDesc,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glRatBase != null">
+        	and gl_rat_base = #{glRatBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glDueDayOpt != null">
+        	and gl_due_day_opt = #{glDueDayOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glDrwOptInd != null">
+        	and gl_drw_opt_ind = #{glDrwOptInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glPaymOpt != null">
+        	and gl_paym_opt = #{glPaymOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glRatAdjOpt != null">
+        	and gl_rat_adj_opt = #{glRatAdjOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glRatChgCat != null">
+        	and gl_rat_chg_cat = #{glRatChgCat,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glHolidayAdj != null">
+        	and gl_holiday_adj = #{glHolidayAdj,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glFixedOdInd != null">
+        	and gl_fixed_od_ind = #{glFixedOdInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdIntRate != null">
+        	and gl_od_int_rate = #{glOdIntRate,jdbcType=NUMERIC}
+	  </if>
+		 <if test="glOdCommPart != null">
+        	and gl_od_comm_part = #{glOdCommPart,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdCat != null">
+        	and gl_od_cat = #{glOdCat,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdRateTyp != null">
+        	and gl_od_rate_typ = #{glOdRateTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdCpdInd != null">
+        	and gl_od_cpd_ind = #{glOdCpdInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdMinAmt != null">
+        	and gl_od_min_amt = #{glOdMinAmt,jdbcType=NUMERIC}
+	  </if>
+		 <if test="glOdAppxTyp != null">
+        	and gl_od_appx_typ = #{glOdAppxTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glIntAppxTyp != null">
+        	and gl_int_appx_typ = #{glIntAppxTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glPpRatBase != null">
+        	and gl_pp_rat_base = #{glPpRatBase,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glPpRatOpt != null">
+        	and gl_pp_rat_opt = #{glPpRatOpt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glRstrDueDay != null">
+        	and gl_rstr_due_day = #{glRstrDueDay,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glRpymMtd != null">
+        	and gl_rpym_mtd = #{glRpymMtd,jdbcType=BIGINT}
+	  </if>
+		 <if test="glOdRpymMtd != null">
+        	and gl_od_rpym_mtd = #{glOdRpymMtd,jdbcType=BIGINT}
+	  </if>
+		 <if test="glDeviRpym != null">
+        	and gl_devi_rpym = #{glDeviRpym,jdbcType=BIGINT}
+	  </if>
+		 <if test="glMatDueDay != null">
+        	and gl_mat_due_day = #{glMatDueDay,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glPpTyp != null">
+        	and gl_pp_typ = #{glPpTyp,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glPpMinVal != null">
+        	and gl_pp_min_val = #{glPpMinVal,jdbcType=NUMERIC}
+	  </if>
+		 <if test="glIsContInd != null">
+        	and gl_is_cont_ind = #{glIsContInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+	  </if>
+		 <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdGraceInd != null">
+        	and gl_od_grace_ind = #{glOdGraceInd,jdbcType=VARCHAR}
+	  </if>
+		 <if test="glOdIntGraceInd != null">
+        	and gl_od_int_grace_ind = #{glOdIntGraceInd,jdbcType=VARCHAR}
+	  </if>
+         </where>
+	</select>
+
+	<select id="selectListByObject" resultMap="BaseResultMap" parameterType="com.caxs.minos.domain.PLoanTypGl" >
+		select 
+		<include refid="Base_Column_List" />
+		 from p_loan_typ_gl
+		 <where>
+         <if test="bankCde != null">
+        	and bank_cde = #{bankCde,jdbcType=VARCHAR}
+         </if>
+         <if test="typGl != null">
+        	and typ_gl = #{typGl,jdbcType=VARCHAR}
+         </if>
+         <if test="glAccDesc != null">
+        	and gl_acc_desc = #{glAccDesc,jdbcType=VARCHAR}
+         </if>
+         <if test="glRatBase != null">
+        	and gl_rat_base = #{glRatBase,jdbcType=VARCHAR}
+         </if>
+         <if test="glDueDayOpt != null">
+        	and gl_due_day_opt = #{glDueDayOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="glDrwOptInd != null">
+        	and gl_drw_opt_ind = #{glDrwOptInd,jdbcType=VARCHAR}
+         </if>
+         <if test="glPaymOpt != null">
+        	and gl_paym_opt = #{glPaymOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="glRatAdjOpt != null">
+        	and gl_rat_adj_opt = #{glRatAdjOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="glRatChgCat != null">
+        	and gl_rat_chg_cat = #{glRatChgCat,jdbcType=VARCHAR}
+         </if>
+         <if test="glHolidayAdj != null">
+        	and gl_holiday_adj = #{glHolidayAdj,jdbcType=VARCHAR}
+         </if>
+         <if test="glFixedOdInd != null">
+        	and gl_fixed_od_ind = #{glFixedOdInd,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdIntRate != null">
+        	and gl_od_int_rate = #{glOdIntRate,jdbcType=NUMERIC}
+         </if>
+         <if test="glOdCommPart != null">
+        	and gl_od_comm_part = #{glOdCommPart,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdCat != null">
+        	and gl_od_cat = #{glOdCat,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdRateTyp != null">
+        	and gl_od_rate_typ = #{glOdRateTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdCpdInd != null">
+        	and gl_od_cpd_ind = #{glOdCpdInd,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdMinAmt != null">
+        	and gl_od_min_amt = #{glOdMinAmt,jdbcType=NUMERIC}
+         </if>
+         <if test="glOdAppxTyp != null">
+        	and gl_od_appx_typ = #{glOdAppxTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="glIntAppxTyp != null">
+        	and gl_int_appx_typ = #{glIntAppxTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="glPpRatBase != null">
+        	and gl_pp_rat_base = #{glPpRatBase,jdbcType=VARCHAR}
+         </if>
+         <if test="glPpRatOpt != null">
+        	and gl_pp_rat_opt = #{glPpRatOpt,jdbcType=VARCHAR}
+         </if>
+         <if test="glRstrDueDay != null">
+        	and gl_rstr_due_day = #{glRstrDueDay,jdbcType=VARCHAR}
+         </if>
+         <if test="glRpymMtd != null">
+        	and gl_rpym_mtd = #{glRpymMtd,jdbcType=BIGINT}
+         </if>
+         <if test="glOdRpymMtd != null">
+        	and gl_od_rpym_mtd = #{glOdRpymMtd,jdbcType=BIGINT}
+         </if>
+         <if test="glDeviRpym != null">
+        	and gl_devi_rpym = #{glDeviRpym,jdbcType=BIGINT}
+         </if>
+         <if test="glMatDueDay != null">
+        	and gl_mat_due_day = #{glMatDueDay,jdbcType=VARCHAR}
+         </if>
+         <if test="glPpTyp != null">
+        	and gl_pp_typ = #{glPpTyp,jdbcType=VARCHAR}
+         </if>
+         <if test="glPpMinVal != null">
+        	and gl_pp_min_val = #{glPpMinVal,jdbcType=NUMERIC}
+         </if>
+         <if test="glIsContInd != null">
+        	and gl_is_cont_ind = #{glIsContInd,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgDt != null">
+        	and last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+         </if>
+         <if test="lastChgUsr != null">
+        	and last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdGraceInd != null">
+        	and gl_od_grace_ind = #{glOdGraceInd,jdbcType=VARCHAR}
+         </if>
+         <if test="glOdIntGraceInd != null">
+        	and gl_od_int_grace_ind = #{glOdIntGraceInd,jdbcType=VARCHAR}
+         </if>
+         </where>
+	</select>
+	 
+	<insert id="insert" parameterType="com.caxs.minos.domain.PLoanTypGl">
+		insert into p_loan_typ_gl
+		<trim prefix="(" suffix=")" suffixOverrides="," >
+			<if test="bankCde != null">
+        	    bank_cde ,
+	    </if>
+			<if test="typGl != null">
+        	    typ_gl ,
+	    </if>
+			<if test="glAccDesc != null">
+        	    gl_acc_desc ,
+	    </if>
+			<if test="glRatBase != null">
+        	    gl_rat_base ,
+	    </if>
+			<if test="glDueDayOpt != null">
+        	    gl_due_day_opt ,
+	    </if>
+			<if test="glDrwOptInd != null">
+        	    gl_drw_opt_ind ,
+	    </if>
+			<if test="glPaymOpt != null">
+        	    gl_paym_opt ,
+	    </if>
+			<if test="glRatAdjOpt != null">
+        	    gl_rat_adj_opt ,
+	    </if>
+			<if test="glRatChgCat != null">
+        	    gl_rat_chg_cat ,
+	    </if>
+			<if test="glHolidayAdj != null">
+        	    gl_holiday_adj ,
+	    </if>
+			<if test="glFixedOdInd != null">
+        	    gl_fixed_od_ind ,
+	    </if>
+			<if test="glOdIntRate != null">
+        	    gl_od_int_rate ,
+	    </if>
+			<if test="glOdCommPart != null">
+        	    gl_od_comm_part ,
+	    </if>
+			<if test="glOdCat != null">
+        	    gl_od_cat ,
+	    </if>
+			<if test="glOdRateTyp != null">
+        	    gl_od_rate_typ ,
+	    </if>
+			<if test="glOdCpdInd != null">
+        	    gl_od_cpd_ind ,
+	    </if>
+			<if test="glOdMinAmt != null">
+        	    gl_od_min_amt ,
+	    </if>
+			<if test="glOdAppxTyp != null">
+        	    gl_od_appx_typ ,
+	    </if>
+			<if test="glIntAppxTyp != null">
+        	    gl_int_appx_typ ,
+	    </if>
+			<if test="glPpRatBase != null">
+        	    gl_pp_rat_base ,
+	    </if>
+			<if test="glPpRatOpt != null">
+        	    gl_pp_rat_opt ,
+	    </if>
+			<if test="glRstrDueDay != null">
+        	    gl_rstr_due_day ,
+	    </if>
+			<if test="glRpymMtd != null">
+        	    gl_rpym_mtd ,
+	    </if>
+			<if test="glOdRpymMtd != null">
+        	    gl_od_rpym_mtd ,
+	    </if>
+			<if test="glDeviRpym != null">
+        	    gl_devi_rpym ,
+	    </if>
+			<if test="glMatDueDay != null">
+        	    gl_mat_due_day ,
+	    </if>
+			<if test="glPpTyp != null">
+        	    gl_pp_typ ,
+	    </if>
+			<if test="glPpMinVal != null">
+        	    gl_pp_min_val ,
+	    </if>
+			<if test="glIsContInd != null">
+        	    gl_is_cont_ind ,
+	    </if>
+			<if test="lastChgDt != null">
+        	    last_chg_dt ,
+	    </if>
+			<if test="lastChgUsr != null">
+        	    last_chg_usr ,
+	    </if>
+			<if test="glOdGraceInd != null">
+        	    gl_od_grace_ind ,
+	    </if>
+			<if test="glOdIntGraceInd != null">
+        	    gl_od_int_grace_ind ,
+	    </if>
+		</trim>
+    	<trim prefix="values (" suffix=")" suffixOverrides="," >
+    	    <if test="bankCde != null">
+        	   #{bankCde,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="typGl != null">
+        	   #{typGl,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glAccDesc != null">
+        	   #{glAccDesc,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glRatBase != null">
+        	   #{glRatBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glDueDayOpt != null">
+        	   #{glDueDayOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glDrwOptInd != null">
+        	   #{glDrwOptInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glPaymOpt != null">
+        	   #{glPaymOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glRatAdjOpt != null">
+        	   #{glRatAdjOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glRatChgCat != null">
+        	   #{glRatChgCat,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glHolidayAdj != null">
+        	   #{glHolidayAdj,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glFixedOdInd != null">
+        	   #{glFixedOdInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdIntRate != null">
+        	   #{glOdIntRate,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="glOdCommPart != null">
+        	   #{glOdCommPart,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdCat != null">
+        	   #{glOdCat,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdRateTyp != null">
+        	   #{glOdRateTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdCpdInd != null">
+        	   #{glOdCpdInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdMinAmt != null">
+        	   #{glOdMinAmt,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="glOdAppxTyp != null">
+        	   #{glOdAppxTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glIntAppxTyp != null">
+        	   #{glIntAppxTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glPpRatBase != null">
+        	   #{glPpRatBase,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glPpRatOpt != null">
+        	   #{glPpRatOpt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glRstrDueDay != null">
+        	   #{glRstrDueDay,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glRpymMtd != null">
+        	   #{glRpymMtd,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="glOdRpymMtd != null">
+        	   #{glOdRpymMtd,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="glDeviRpym != null">
+        	   #{glDeviRpym,jdbcType=BIGINT} ,
+        </if>
+    	    <if test="glMatDueDay != null">
+        	   #{glMatDueDay,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glPpTyp != null">
+        	   #{glPpTyp,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glPpMinVal != null">
+        	   #{glPpMinVal,jdbcType=NUMERIC} ,
+        </if>
+    	    <if test="glIsContInd != null">
+        	   #{glIsContInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgDt != null">
+        	   #{lastChgDt,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="lastChgUsr != null">
+        	   #{lastChgUsr,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdGraceInd != null">
+        	   #{glOdGraceInd,jdbcType=VARCHAR} ,
+        </if>
+    	    <if test="glOdIntGraceInd != null">
+        	   #{glOdIntGraceInd,jdbcType=VARCHAR} ,
+        </if>
+    	</trim>
+	</insert>
+	 
+	<update id="update" parameterType="com.caxs.minos.domain.PLoanTypGl">
+		update p_loan_typ_gl 
+		<set>
+			<if test="bankCde != null">
+        	 bank_cde = #{bankCde,jdbcType=VARCHAR} ,
+       </if>
+			<if test="typGl != null">
+        	 typ_gl = #{typGl,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glAccDesc != null">
+        	 gl_acc_desc = #{glAccDesc,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glRatBase != null">
+        	 gl_rat_base = #{glRatBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glDueDayOpt != null">
+        	 gl_due_day_opt = #{glDueDayOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glDrwOptInd != null">
+        	 gl_drw_opt_ind = #{glDrwOptInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glPaymOpt != null">
+        	 gl_paym_opt = #{glPaymOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glRatAdjOpt != null">
+        	 gl_rat_adj_opt = #{glRatAdjOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glRatChgCat != null">
+        	 gl_rat_chg_cat = #{glRatChgCat,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glHolidayAdj != null">
+        	 gl_holiday_adj = #{glHolidayAdj,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glFixedOdInd != null">
+        	 gl_fixed_od_ind = #{glFixedOdInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdIntRate != null">
+        	 gl_od_int_rate = #{glOdIntRate,jdbcType=NUMERIC} ,
+       </if>
+			<if test="glOdCommPart != null">
+        	 gl_od_comm_part = #{glOdCommPart,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdCat != null">
+        	 gl_od_cat = #{glOdCat,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdRateTyp != null">
+        	 gl_od_rate_typ = #{glOdRateTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdCpdInd != null">
+        	 gl_od_cpd_ind = #{glOdCpdInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdMinAmt != null">
+        	 gl_od_min_amt = #{glOdMinAmt,jdbcType=NUMERIC} ,
+       </if>
+			<if test="glOdAppxTyp != null">
+        	 gl_od_appx_typ = #{glOdAppxTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glIntAppxTyp != null">
+        	 gl_int_appx_typ = #{glIntAppxTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glPpRatBase != null">
+        	 gl_pp_rat_base = #{glPpRatBase,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glPpRatOpt != null">
+        	 gl_pp_rat_opt = #{glPpRatOpt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glRstrDueDay != null">
+        	 gl_rstr_due_day = #{glRstrDueDay,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glRpymMtd != null">
+        	 gl_rpym_mtd = #{glRpymMtd,jdbcType=BIGINT} ,
+       </if>
+			<if test="glOdRpymMtd != null">
+        	 gl_od_rpym_mtd = #{glOdRpymMtd,jdbcType=BIGINT} ,
+       </if>
+			<if test="glDeviRpym != null">
+        	 gl_devi_rpym = #{glDeviRpym,jdbcType=BIGINT} ,
+       </if>
+			<if test="glMatDueDay != null">
+        	 gl_mat_due_day = #{glMatDueDay,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glPpTyp != null">
+        	 gl_pp_typ = #{glPpTyp,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glPpMinVal != null">
+        	 gl_pp_min_val = #{glPpMinVal,jdbcType=NUMERIC} ,
+       </if>
+			<if test="glIsContInd != null">
+        	 gl_is_cont_ind = #{glIsContInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgDt != null">
+        	 last_chg_dt = #{lastChgDt,jdbcType=VARCHAR} ,
+       </if>
+			<if test="lastChgUsr != null">
+        	 last_chg_usr = #{lastChgUsr,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdGraceInd != null">
+        	 gl_od_grace_ind = #{glOdGraceInd,jdbcType=VARCHAR} ,
+       </if>
+			<if test="glOdIntGraceInd != null">
+        	 gl_od_int_grace_ind = #{glOdIntGraceInd,jdbcType=VARCHAR} ,
+       </if>
+		</set>
+		where bank_cde= #{bankCde}
+	</update>
+	<select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from p_loan_typ_gl
+		<where>
+			<if test="bankCde != null">
+				and bank_cde = #{bankCde,jdbcType=VARCHAR}
+			</if>
+			<if test="typGl != null">
+				and typ_gl = #{typGl,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+</mapper>

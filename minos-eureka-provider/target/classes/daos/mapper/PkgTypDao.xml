@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caxs.minos.dao.PkgTypDao">
+  <resultMap id="BaseResultMap" type="com.caxs.minos.domain.PkgTyp">
+    <id column="typ_id" jdbcType="BIGINT" property="typId" />
+    <result column="pkg_typ" jdbcType="VARCHAR" property="pkgTyp" />
+    <result column="fld_del" jdbcType="VARCHAR" property="fldDel" />
+    <result column="ln_del" jdbcType="VARCHAR" property="lnDel" />
+    <result column="fld_alg" jdbcType="VARCHAR" property="fldAlg" />
+    <result column="fd_chr" jdbcType="VARCHAR" property="fdChr" />
+    <result column="emt_sd" jdbcType="VARCHAR" property="emtSd" />
+    <result column="hd_del" jdbcType="VARCHAR" property="hdDel" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from pkg_typ
+    where typ_id = #{typId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.caxs.minos.domain.PkgTyp">
+    insert into pkg_typ (typ_id, pkg_typ, fld_del, 
+      ln_del, fld_alg, fd_chr, 
+      emt_sd, hd_del)
+    values (#{typId,jdbcType=BIGINT}, #{pkgTyp,jdbcType=VARCHAR}, #{fldDel,jdbcType=VARCHAR}, 
+      #{lnDel,jdbcType=VARCHAR}, #{fldAlg,jdbcType=VARCHAR}, #{fdChr,jdbcType=VARCHAR}, 
+      #{emtSd,jdbcType=VARCHAR}, #{hdDel,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.caxs.minos.domain.PkgTyp">
+    update pkg_typ
+    set pkg_typ = #{pkgTyp,jdbcType=VARCHAR},
+      fld_del = #{fldDel,jdbcType=VARCHAR},
+      ln_del = #{lnDel,jdbcType=VARCHAR},
+      fld_alg = #{fldAlg,jdbcType=VARCHAR},
+      fd_chr = #{fdChr,jdbcType=VARCHAR},
+      emt_sd = #{emtSd,jdbcType=VARCHAR},
+      hd_del = #{hdDel,jdbcType=VARCHAR}
+    where typ_id = #{typId,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select typ_id, pkg_typ, fld_del, ln_del, fld_alg, fd_chr, emt_sd, hd_del
+    from pkg_typ
+    where typ_id = #{typId,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select typ_id, pkg_typ, fld_del, ln_del, fld_alg, fd_chr, emt_sd, hd_del
+    from pkg_typ
+  </select>
+</mapper>

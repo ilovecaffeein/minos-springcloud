@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.caxs.minos.dao.TxLogNoNextValDualDao">
+    <resultMap type="com.caxs.minos.domain.TxLogNoNextValDual" id="InextValDualMap">
+        <result column="NEXTVAL" property="nextVal" jdbcType="DECIMAL" />
+    </resultMap>
+    <select id="findDual"  resultMap="InextValDualMap" parameterType="com.caxs.minos.domain.TxLogNoNextValDual">
+       SELECT nextval('seq_themis_no')
+</select>
+    <select id="findNextSeqNo" resultType="java.lang.String">
+		SELECT nextval('seq_txlog_no')
+</select>
+    <select id="findPayPkgSeq" resultType="java.lang.String">
+        SELECT nextval('pay_pkg_seq')
+    </select>
+</mapper>
