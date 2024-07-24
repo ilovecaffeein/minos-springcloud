@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.caxs.minos.dao.LmAtpyDetlDao;
 import com.caxs.minos.dao.LmNotifyDao;
 import com.caxs.minos.dao.LmPmShdDao;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.domain.LmAtpyDetl;
 import com.caxs.minos.domain.LmNotify;
 import com.caxs.minos.domain.LmPmShd;
@@ -15,7 +16,6 @@ import com.caxs.minos.serv.db.IDailyDeductionNotifiService;
 import com.caxs.minos.serv.db.ILoanRelateInterestCalcService;
 import com.caxs.minos.serv.db.ISystemInfoService;
 import com.caxs.minos.utils.CommonUtil;
-import com.caxs.minos.utils.DateOperation;
 import com.caxs.minos.utils.SpringUtils;
 import com.caxs.minos.utils.SystemUtils;
 import org.apache.commons.logging.Log;
@@ -93,7 +93,7 @@ public class DailyDeductionNotifiService implements IDailyDeductionNotifiService
             if( Integer.parseInt(lmNotify.getDueDay())<0 || Integer.parseInt(lmNotify.getDueDay())>31){
                 throw new MinosException("LmNotify 表中还款日有误，请检查！");
             }
-            int Year=DateOperation.getYear(jobContext.getBuzDate());//获取年份
+            int Year= DateOperation.getYear(jobContext.getBuzDate());//获取年份
             int nMonth= DateOperation.getMonth(jobContext.getBuzDate());//获取月份
             String Month=jobContext.getBuzDate().substring(5, 7);//获取月份
             String Day=jobContext.getBuzDate().substring(8, 10);//获取日

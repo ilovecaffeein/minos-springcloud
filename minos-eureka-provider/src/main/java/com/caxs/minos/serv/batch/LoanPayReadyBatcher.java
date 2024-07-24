@@ -4,11 +4,11 @@ import com.caxs.minos.dao.DeAtpyJobsDao;
 import com.caxs.minos.domain.DeAtpyJobs;
 import com.caxs.minos.domain.trans.AtpyJobTrans;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.JobBussTypeEnum;
 import com.caxs.minos.enums.JobStateEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.IBatchService;
 import com.caxs.minos.serv.db.IGenerateLoanRepayService;
 import com.caxs.minos.serv.db.ILoanPayReadyBatcherService;
@@ -45,8 +45,8 @@ public class LoanPayReadyBatcher implements ILoanPayReadyBatcherService {
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNAF;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNAF;
     }
 
     @Override

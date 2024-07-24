@@ -3,6 +3,7 @@ package com.caxs.minos.serv.db.imp;
 import com.caxs.minos.dao.LmLoanContDao;
 import com.caxs.minos.dao.LmLoanDao;
 import com.caxs.minos.dao.SCcyDao;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.MinosConst;
 import com.caxs.minos.domain.LmLoan;
 import com.caxs.minos.domain.LmLoanCont;
@@ -12,7 +13,7 @@ import com.caxs.minos.domain.trans.PunishIntFieldsTrans;
 import com.caxs.minos.enums.CommPartEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.buz.InterestCal;
+import com.caxs.minos.serv.buz.InterestCalImp;
 import com.caxs.minos.serv.db.IPunishCalorService;
 import com.caxs.minos.utils.*;
 import org.apache.commons.logging.Log;
@@ -483,11 +484,11 @@ public class PunishCalorService implements IPunishCalorService {
         prodForOdIntCal = DigitalUtils.getAmtForInterestCal(prodForOdIntCal);
         //不在本金宽限期才计算罚息
         if (!isInPrcpGrace) {
-            pi.odInt = InterestCal.computeInterest(daylyRate,DigitalUtils.getBigDecimal(prodForOdIntCal));
+            pi.odInt = InterestCalImp.computeInterest(daylyRate.doubleValue(),prodForOdIntCal,2);
         }
         //不在利息宽限期才计算复利
         if (hasCommInt && !isInIntGrace) {
-            pi.commInt = InterestCal.computeInterest(daylyRate, DigitalUtils.getBigDecimal(prodForCommIntCal));
+            pi.commInt = InterestCalImp.computeInterest(daylyRate.doubleValue(), prodForCommIntCal,2);
         }
         return pi;
     }

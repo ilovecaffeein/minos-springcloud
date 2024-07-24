@@ -60,5 +60,9 @@
             <artifactId>minos-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.shd</groupId>
+            <artifactId>shd</artifactId>
+        </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,7 @@
 package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.dao.*;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.domain.*;
 import com.caxs.minos.domain.trans.AdvPayOptTrans;
 import com.caxs.minos.domain.trans.PaymentResultTrans;
@@ -11,7 +12,7 @@ import com.caxs.minos.enums.PaymentModeEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
 import com.caxs.minos.serv.buz.AccountUtils;
-import com.caxs.minos.serv.buz.InterestCal;
+import com.caxs.minos.serv.buz.InterestCalImp;
 import com.caxs.minos.serv.db.IEntryRuleConfiguraService;
 import com.caxs.minos.serv.db.IPunishCalorService;
 import com.caxs.minos.serv.db.ISplitPaymentExampleService;
@@ -170,7 +171,7 @@ public class SplitPaymentExampleService implements ISplitPaymentExampleService {
                 int dayCount = new Long(DateOperation.DateCal(paymentTime, shd1.getPsDueDt()))
                         .intValue();
                 /* 如果提前或者剩余本金的正常利息 */
-                advanceInterest = SystemUtils.getDoubleWhenEvenUp(InterestCal.decimalAmtForInterestCal(
+                advanceInterest = SystemUtils.getDoubleWhenEvenUp(InterestCalImp.decimalAmtForInterestCal(
                         loanRate.getLendingRateDayly(), shd1.getPsRemPrcp(),dayCount,0));
 
                 totalAmt = SystemUtils.getBigDecimalfNull(shd1.getPsRemPrcp()) ;
@@ -182,7 +183,7 @@ public class SplitPaymentExampleService implements ISplitPaymentExampleService {
                 int dayCount = new Long(DateOperation.DateCal(paymentTime, shd1.getPsDueDt()))
                         .intValue();
                 /* 如果提前或者剩余本金的正常利息 */
-                advanceInterest = SystemUtils.getDoubleWhenEvenUp(InterestCal.decimalAmtForInterestCal(
+                advanceInterest = SystemUtils.getDoubleWhenEvenUp(InterestCalImp.decimalAmtForInterestCal(
                         loanRate.getLendingRateDayly(), shd1.getPsRemPrcp(),dayCount,0));
 
                 totalAmt =  repaymentAmount ;

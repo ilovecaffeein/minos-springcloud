@@ -2,6 +2,7 @@ package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.dao.LmPmShdDao;
 import com.caxs.minos.dao.PLoanTypGlDao;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.MinosConst;
 import com.caxs.minos.domain.LmLnRepcLog;
 import com.caxs.minos.domain.LmLoan;
@@ -10,14 +11,12 @@ import com.caxs.minos.domain.LmPmShd;
 import com.caxs.minos.domain.trans.RateChangeLogTrans;
 import com.caxs.minos.enums.AdvancePaymentIntBaseEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.buz.InterestCal;
+import com.caxs.minos.serv.buz.InterestCalImp;
 import com.caxs.minos.serv.db.IEntryRuleConfiguraService;
 import com.caxs.minos.serv.db.ILoanRelateInterestCalcService;
-import com.caxs.minos.utils.DateOperation;
 import com.caxs.minos.utils.LoanRelateUtils;
 import com.caxs.minos.utils.RoundingUtil;
 import org.apache.commons.collections.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -205,13 +204,7 @@ public class LoanRelateInterestCalcService implements ILoanRelateInterestCalcSer
 			if ( accDays < 0 ) {
 				throw new MinosException("计算利息的天数：" + accDays + "不能小于0");
 			}
-			result = InterestCal.computeInterest(new BigDecimal(lastRateDayly), interestPrcp,accDays);
-		} else {
-			/************
-			 PayShdIntCal cal = new PShdRepcLogCal(firstDate, buzDate,
-			 lmLnRepcLogList, ppErLmPmShdList, loanRelate, hasLastDateInterest,false);
-			 result = cal.cal(interestPrcp, lastRateDayly);
-			 ************/
+			result =new BigDecimal(InterestCalImp.computeInterest(lastRateDayly, interestPrcp.doubleValue(),accDays));
 		}
 		return result;
 	}

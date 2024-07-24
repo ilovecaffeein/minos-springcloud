@@ -2,7 +2,7 @@ package com.caxs.minos.utils;
 
 import com.caxs.minos.def.MinosConst;
 import com.caxs.minos.exception.MinosException;
-import org.apache.commons.lang3.StringUtils;
+
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -34,7 +34,7 @@ public class MinosCommUtils {
      */
     public static Serializable mapTOdomain(Serializable domain, String xml)
             throws MinosException {
-        if (StringUtils.isBlank(xml)) {
+        if (org.apache.commons.lang3.StringUtils.isBlank(xml)) {
             return null;
         }
         if (domain == null) {
@@ -50,7 +50,7 @@ public class MinosCommUtils {
                 continue;
             }
             // 在大写字母前加_ 首字母除外
-            String formatName = StringUtil.getInstance()
+            String formatName = StringUtils.getInstance()
                     .AddUnderlineByUppercase(str).toUpperCase();
             try {
                 String sq1 = "get" + str.substring(0, 1).toUpperCase()
@@ -64,7 +64,7 @@ public class MinosCommUtils {
                         Method md = domain.getClass().getDeclaredMethod(sq,
                                 String.class);
                         String kValue = getFieldValue(formatName,xml) ;
-                        if (!StringUtils.isEmpty(kValue)) {
+                        if (!org.apache.commons.lang3.StringUtils.isEmpty(kValue)) {
                             md.invoke(domain, kValue);
                         }
                     } else if (returnType[0].getName().endsWith("int")) {
@@ -107,7 +107,7 @@ public class MinosCommUtils {
                                 + str.substring(1, str.length());
                         Method md = domain.getClass().getDeclaredMethod(sq,BigDecimal.class);
                         String kValue = getFieldValue(formatName,xml) ;
-                        if (!StringUtils.isEmpty(kValue)) {
+                        if (!org.apache.commons.lang3.StringUtils.isEmpty(kValue)) {
                             BigDecimal bv = new BigDecimal(kValue);
                             md.invoke(domain, bv);
                         }
@@ -118,7 +118,7 @@ public class MinosCommUtils {
                         Method md = domain.getClass().getDeclaredMethod(sq,
                                 Long.class);
                         String kValue = getFieldValue(formatName,xml) ;
-                        if (!StringUtils.isEmpty(kValue)) {
+                        if (!org.apache.commons.lang3.StringUtils.isEmpty(kValue)) {
                             md.invoke(domain, kValue == null? "":new Long(kValue));
                         }
                     } else if (returnType[0].getName().endsWith("Short")) {
@@ -127,7 +127,7 @@ public class MinosCommUtils {
                         Method md = domain.getClass().getDeclaredMethod(sq,
                                 Short.class);
                         String kValue = getFieldValue(formatName,xml) ;
-                        if (!StringUtils.isEmpty(kValue)) {
+                        if (!org.apache.commons.lang3.StringUtils.isEmpty(kValue)) {
                             md.invoke(domain, kValue == null? "":new Short(kValue));
                         }
                     } else if (returnType[0].getName().endsWith("Byte")) {
@@ -136,7 +136,7 @@ public class MinosCommUtils {
                         Method md = domain.getClass().getDeclaredMethod(sq,
                                 Byte.class);
                         String kValue = getFieldValue(formatName,xml) ;
-                        if (!StringUtils.isEmpty(kValue)) {
+                        if (!org.apache.commons.lang3.StringUtils.isEmpty(kValue)) {
                             md.invoke(domain, kValue == null? "":new Byte(kValue));
                         }
                     } else { // 注意如果上面的类型都没有匹配到,那么把它当做是另一个对象

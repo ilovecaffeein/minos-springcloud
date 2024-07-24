@@ -2,8 +2,8 @@ package com.caxs.minos.serv.batch;
 
 import com.caxs.minos.domain.SBch;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.INormIntAccrualSerivce;
 import com.caxs.minos.serv.db.imp.BatcherService;
 import org.apache.commons.logging.Log;
@@ -42,8 +42,8 @@ public class LoanNormIntAccrualJobBatcher extends BatcherService {
     }
 
     @Override
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNAE;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNAE;
     }
 
     @Override

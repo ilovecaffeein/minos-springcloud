@@ -122,8 +122,9 @@ public class MinosException extends RuntimeException {
      * @param message
      * @param errCode
      */
-    public MinosException(String message, String errCode) {
+    public MinosException(String errCode,String message) {
         super(message);
+        this.setCode(errCode);
         log.error(message);
     }
 

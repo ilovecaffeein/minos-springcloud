@@ -10,6 +10,7 @@ public class PUBConstant {
     /**
      * Operation 中doExecute方法返回值
      */
+    public static final String ADVANCE = "ER";// 会计分录中使用的，标示通用
     public static final String ALL = "ALL";// 会计分录中使用的，标示通用
     public static final String ALL_DESC = "通用";// 会计分录中使用的，标示通用
 

@@ -31,6 +31,13 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
+        <!-- 不带server ，是客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.3.RELEASE</version>
+        </dependency>
+
         <!-- 程序监控器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,13 +58,6 @@
         <dependency>
             <groupId>com.caxs</groupId>
             <artifactId>minos-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.caxs</groupId>
-            <artifactId>minos-eureka-provider</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>

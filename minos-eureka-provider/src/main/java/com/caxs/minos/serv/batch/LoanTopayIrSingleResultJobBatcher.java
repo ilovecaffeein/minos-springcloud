@@ -2,8 +2,8 @@ package com.caxs.minos.serv.batch;
 
 import com.caxs.minos.domain.DeAtpyJobs;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ISpeciPaySystemService;
 import com.caxs.minos.serv.db.imp.BatcherService;
 import org.apache.commons.logging.Log;
@@ -33,8 +33,8 @@ public class LoanTopayIrSingleResultJobBatcher extends BatcherService {
 
 
     @Override
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNBS;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNBS;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.caxs.minos.utils;
 
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.MinosConst;
 import com.caxs.minos.domain.LmLoan;
 import com.caxs.minos.domain.LmLoanCont;
@@ -7,6 +8,7 @@ import com.caxs.minos.domain.LmPmShd;
 import com.caxs.minos.domain.PLoanTypGl;
 import com.caxs.minos.enums.*;
 import com.caxs.minos.exception.MinosException;
+import com.yuchengtech.ycloans.common.enumeration.PaymentFreq;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.util.CollectionUtils;
@@ -290,11 +292,11 @@ public class LoanRelateUtils {
      *
      * @return 还款频率，如果等于PaymentFreq.NULL，就表示一次性还本付息
      */
-    public PaymentFreqEnum getPaymentFreq() {
+    public PaymentFreq getPaymentFreq() {
         if ("05".equals(lmLoan.getLoanPaymTyp())) {
-            return PaymentFreqEnum.NULL;
+            return PaymentFreq.NULL;
         }
-        return PaymentFreqEnum.getEnum(lmLoan.getPaymFreqUnit());
+        return PaymentFreq.getEnum(lmLoan.getPaymFreqUnit());
     }
 
 
@@ -385,20 +387,8 @@ public class LoanRelateUtils {
         }
         if ( 0 == MinosConst.GRACE_TYP_BY_DAY) { // 20200812带后续修改
             return loanCont.getLoanOdGrace();
-        } else {
-            if (loanCont.getLoanOdGrace() != 365) {// 该模式下，loan_od_grace必须为365，表示该笔贷款是月末宽限期
-                return loanCont.getLoanOdGrace();
-            }
-            if (!DateOperation.isYearAndMonthSame(lmLoan.getNextDueDt(), buzDate)) {
-                return 0;
-            }
-            String lastDayInMonth = DateOperation
-                    .formatDate(DateOperation
-                            .getLastDayInMonth(DateOperation
-                                    .parseStringToDate(buzDate)));
-            int graceDay = (int) DateOperation.DateCal(lastDayInMonth, lmLoan.getNextDueDt());
-            return ++graceDay;
         }
+        return 0;
     }
 
     // 获取罚息宽限期天数
@@ -415,21 +405,8 @@ public class LoanRelateUtils {
         }
         if ( 0 == MinosConst.GRACE_TYP_BY_DAY) { // 20200812带后续修改
             return loanCont.getLoanOdIntGrace();
-        } else {
-            if (loanCont.getLoanOdIntGrace() != 365) {// 该模式下，loan_od_grace必须为365，表示该笔贷款是月末宽限期
-                return loanCont.getLoanOdIntGrace();
-            }
-            if (!DateOperation.isYearAndMonthSame(lmLoan.getNextDueDt(), buzDate)) {
-                return 0;
-            }
-            String lastDayInMonth = DateOperation
-                    .formatDate(DateOperation
-                            .getLastDayInMonth(DateOperation
-                                    .parseStringToDate(buzDate)));
-            int graceDay = (int) DateOperation.DateCal(lastDayInMonth, lmLoan.getNextDueDt());
-            return ++graceDay;
         }
+        return 0;
     }
-
 
 }

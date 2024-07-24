@@ -148,6 +148,33 @@ public class AccountUtils {
         return totalFeeAmt.doubleValue();
     }
 
+    /**
+     * 保存到还款计划表
+     * @param lmPmShd
+     * @param logg
+     */
+    public static LmPmShd  mergeLmShd(LmPmShd lmPmShd, LmSetlmtLog logg) {
+        if (lmPmShd.getPsPerdNo().intValue() > 0) {
+            return  lmPmShd;
+        }
+        lmPmShd.setSetlOdIncTaken(SystemUtils.getDoubleToBigDecimal(MinosConst.ZERO_DOUBLE));
+        lmPmShd.setPsCurOdIncTaken(SystemUtils.getDoubleToBigDecimal(MinosConst.ZERO_DOUBLE));
+        if ( ! "Y".equals(lmPmShd.getSetlInd())) {
+            if ( PrcpAndIntStateEnum.NORMAL.getCodeInDb().equals(lmPmShd.getPrcpState())) {
+                if (logg.getSetlValDt().compareTo(lmPmShd.getPsDueDt()) >= 0) {
+                    if ( lmPmShd.getPsPrcpAmt().doubleValue()> lmPmShd.getSetlPrcp().doubleValue()) {
+                        lmPmShd.setPrcpState(PrcpAndIntStateEnum.LATE.getCodeInDb());
+                    }
+                    if ( lmPmShd.getPsNormIntAmt().doubleValue()> lmPmShd.getSetlNormInt().doubleValue()) {
+                        lmPmShd.setIntState(PrcpAndIntStateEnum.LATE.getCodeInDb());
+                    }
+                }
+            }
+        }
+        lmPmShd.setPsIncTaken(lmPmShd.getSetlNormInt());
+        lmPmShd.setSetlIncTaken(lmPmShd.getSetlNormInt());
+        return  lmPmShd;
+    }
 
     /**
      * 保存到还款计划表
@@ -186,27 +213,27 @@ public class AccountUtils {
      * 保存到还款计划表
      *
      * @param paymentShdTrans
-     * @param lmPmShdList
+     * @param lmPmShd
      * @param
      */
-    public static void genPmShd(PaymentShdTrans paymentShdTrans, LmPmShd lmPmShdList,String lastSetlDt) {
-        if( Integer.valueOf(paymentShdTrans.getPsPerdNo()) == lmPmShdList.getPsPerdNo()){
-            lmPmShdList.setPsOdIntAmt(paymentShdTrans.getPsOdIntAmt());
-            lmPmShdList.setPsCommOdInt(paymentShdTrans.getPsCommOdInt());
-            lmPmShdList.setSetlPrcp(paymentShdTrans.getSetlPrcp());
-            lmPmShdList.setSetlNormInt(paymentShdTrans.getSetlNormInt());
-            lmPmShdList.setSetlOdIntAmt(paymentShdTrans.getSetlOdIntAmt());
-            lmPmShdList.setSetlCommOdInt(paymentShdTrans.getSetlCommOdInt());
-            lmPmShdList.setSetlFeeAmt(paymentShdTrans.getSetlFeeAmt());
-            lmPmShdList.setProdPrcpAmt(MinosConst.ZERO_BIGDECIMAL);
-            lmPmShdList.setProdIntAmt(MinosConst.ZERO_BIGDECIMAL);
-            lmPmShdList.setProdCommIntAmt(MinosConst.ZERO_BIGDECIMAL);
-            lmPmShdList.setSetlInd(paymentShdTrans.getSetlInd());
-            if( SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShdList.getSetlCommOdInt())) ||
-                    SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShdList.getSetlNormInt()))  ||
-                    SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShdList.getSetlNormInt())) ||
-                    SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShdList.getSetlPrcp()))){
-                lmPmShdList.setLastSetlDt(lastSetlDt);
+    public static void genPmShd(PaymentShdTrans paymentShdTrans, LmPmShd lmPmShd,String lastSetlDt) {
+        if( Integer.valueOf(paymentShdTrans.getPsPerdNo()) == lmPmShd.getPsPerdNo()){
+            lmPmShd.setPsOdIntAmt(paymentShdTrans.getPsOdIntAmt());
+            lmPmShd.setPsCommOdInt(paymentShdTrans.getPsCommOdInt());
+            lmPmShd.setSetlPrcp(paymentShdTrans.getSetlPrcp());
+            lmPmShd.setSetlNormInt(paymentShdTrans.getSetlNormInt());
+            lmPmShd.setSetlOdIntAmt(paymentShdTrans.getSetlOdIntAmt());
+            lmPmShd.setSetlCommOdInt(paymentShdTrans.getSetlCommOdInt());
+            lmPmShd.setSetlFeeAmt(paymentShdTrans.getSetlFeeAmt());
+            lmPmShd.setProdPrcpAmt(MinosConst.ZERO_BIGDECIMAL);
+            lmPmShd.setProdIntAmt(MinosConst.ZERO_BIGDECIMAL);
+            lmPmShd.setProdCommIntAmt(MinosConst.ZERO_BIGDECIMAL);
+            lmPmShd.setSetlInd(paymentShdTrans.getSetlInd());
+            if( SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShd.getSetlCommOdInt())) ||
+                    SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShd.getSetlNormInt()))  ||
+                    SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShd.getSetlNormInt())) ||
+                    SystemUtils.isAmtGreatThanZero(SystemUtils.getBigDecimalfNull(lmPmShd.getSetlPrcp()))){
+                lmPmShd.setLastSetlDt(lastSetlDt);
             }
         }
     }
@@ -240,8 +267,6 @@ public class AccountUtils {
         ap.setAccountSelf(YnFlagEnum.YES.getCodeInDb().equals(lmAcctInfo.getAccountSelf()));
         ap.setBankName(lmAcctInfo.getAcctBankNam());
         ap.setBindMobile(lmAcctInfo.getBindMobile());
-        //委托人出资比例
-        //ap.setFundRatio(lmAcctInfo.getFundRatio().doubleValue());
         return ap;
     }
 }

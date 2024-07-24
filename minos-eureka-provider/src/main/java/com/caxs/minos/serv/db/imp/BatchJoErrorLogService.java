@@ -2,12 +2,11 @@ package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.dao.DeErrorLogDao;
 import com.caxs.minos.dao.TxLogNoNextValDualDao;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.domain.DeErrorLog;
 import com.caxs.minos.serv.db.IBatchJoErrorLogService;
-import com.caxs.minos.utils.DateOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 

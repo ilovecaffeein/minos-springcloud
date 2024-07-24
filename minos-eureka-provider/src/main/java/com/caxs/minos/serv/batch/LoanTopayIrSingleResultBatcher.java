@@ -6,12 +6,8 @@ import com.caxs.minos.def.ErrorCode;
 import com.caxs.minos.domain.DeAtpyJobs;
 import com.caxs.minos.domain.ToPayIr;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
-import com.caxs.minos.enums.JobBussTypeEnum;
-import com.caxs.minos.enums.JobStateEnum;
-import com.caxs.minos.enums.PkgStateEnum;
-import com.caxs.minos.enums.YnFlagEnum;
+import com.caxs.minos.enums.*;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ILoanTopayIrSingleResultBatcherService;
 import com.caxs.minos.serv.db.ISpeciPaySystemService;
 import com.caxs.minos.serv.db.ISystemInfoService;
@@ -52,8 +48,8 @@ public class LoanTopayIrSingleResultBatcher implements ILoanTopayIrSingleResultB
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNBS;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNBS;
     }
 
     @Override

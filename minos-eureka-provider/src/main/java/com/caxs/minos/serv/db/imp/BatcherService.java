@@ -1,7 +1,7 @@
 package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.serv.db.IBatcherService;
 
 /***
@@ -25,7 +25,7 @@ public abstract class BatcherService implements IBatcherService {
 
     abstract public void runBatch();
 
-    public abstract BatcherCode getBatcherCode();
+    public abstract BatcherCodeEnum getBatcherCode();
 
     final public void run() {
         RunForEndDayService.incThreadCount();

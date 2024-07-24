@@ -2,12 +2,12 @@ package com.caxs.minos.utils;
 
 
 import com.caxs.minos.def.MinosConst;
+import com.caxs.minos.exception.Cfs2MinosException;
 import com.caxs.minos.exception.MinosException;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.InvocationTargetException;
@@ -16,7 +16,6 @@ import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.*;
-
 /***
  * @ClassName(类名) : SystemUtils
  * @Description(描述) : 数据比较
@@ -25,6 +24,34 @@ import java.util.*;
  */
 public class SystemUtils {
     private static Log log = LogFactory.getLog(SystemUtils.class);
+
+    /**
+     * 年利率是否相等
+     *
+     * @param rate1
+     * @param rate0
+     * @return
+     */
+    public static boolean isDaylyRateEqual(double rate1, double rate0) {
+        double result = Math.abs(rate1 - rate0);
+        return getDoubleByLoanRoundMode(result,
+                MinosConst.DEFAULT_INT_RATE_DIGTIAL_COUNT, BigDecimal.ROUND_HALF_UP) < MinosConst.DEFAULT_INT_RATE_DIGTIAL_COUNT;
+    }
+
+    /**
+     * 根据修约模式修约
+     *
+     * @param amt
+     * @param reservedDigCount
+     * @return
+     */
+    public static double getDoubleByLoanRoundMode(double amt,
+                                                  int reservedDigCount,int LoanRoundingMode) {
+        BigDecimal dec1 = BigDecimal.valueOf(amt);
+        dec1 = dec1.setScale(reservedDigCount, BigDecimal.ROUND_HALF_UP);
+        return dec1.doubleValue();
+    }
+
 
     /**
      * 四舍五入
@@ -594,4 +621,76 @@ public class SystemUtils {
         return left1.multiply(left2);
     }
 
+    /**
+     * 两个数相乘法。
+     *
+     * @param left1
+     *            算式左边第一个
+     * @param left2 算式左边第二个
+     * @return
+     */
+    public static double amtMult(double left1, double left2) {
+        BigDecimal left1Big = getBigDecimal(left1);
+        BigDecimal left2Big = getBigDecimal(left2);
+        return left1Big.multiply(left2Big).doubleValue();
+    }
+
+    // 获取高精度值，参数为双精度浮点型
+    public static BigDecimal getBigDecimal(double amt) {
+        BigDecimal dec1 = BigDecimal.valueOf(amt);
+        dec1 = dec1.setScale(MinosConst.DEFAULT_AMT_COMPARE_DIGTIAL_COUNT, 2);
+        return dec1;
+    }
+
+
+    // 两金额值相除
+    public static double amtDiv(double left1, double left2) {
+        return div(left1, left2, MinosConst.DEFAULT_AMT_COMPARE_DIGTIAL_COUNT);
+    }
+
+    // 两数相除
+    private static double div(double left1, double left2, int digCount) {
+        BigDecimal dec1 = getBigDecimal(left1, digCount + 1);
+
+        BigDecimal dec2 = getBigDecimal(left2, digCount + 1);
+        BigDecimal dec3 = dec1.divide(dec2, digCount, 2);
+        return dec3.doubleValue();
+
+    }
+
+    /**
+     * 返回金额
+     */
+    public static double getBigToAmt(BigDecimal str) throws Cfs2MinosException {
+        try {
+            return SystemUtils
+                    .getDoubleWhenEvenUp(str.doubleValue());
+
+        } catch (Exception e) {
+            throw new Cfs2MinosException(Cfs2MinosException.ERROR99999,
+                    "将String 类型的值[" + str + "]转换成double失败，请检查程序"
+                            + e.getMessage());
+        }
+    }
+
+    /**
+     * 返回金额
+     */
+    public static double getObjToAmt(Object str) throws Cfs2MinosException {
+        try {
+            return SystemUtils
+                    .getDoubleWhenEvenUp(Double.valueOf((String) str));
+
+        } catch (Exception e) {
+            throw new Cfs2MinosException(Cfs2MinosException.ERROR99999,
+                    "将String 类型的值[" + str + "]转换成double失败，请检查程序"
+                            + e.getMessage());
+        }
+    }
+
+    /** 返回利率 */
+    public static double getObToRate(Object rate) throws Cfs2MinosException {
+        return SystemUtils.getBigDecimal(Double.valueOf(String.valueOf(rate)),
+                MinosConst.DEFAULT_INT_RATE_DIGTIAL_COUNT + 1).doubleValue();
+    }
 }

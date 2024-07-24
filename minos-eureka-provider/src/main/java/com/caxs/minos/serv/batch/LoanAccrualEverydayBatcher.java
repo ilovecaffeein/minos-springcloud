@@ -2,10 +2,10 @@ package com.caxs.minos.serv.batch;
 
 import com.caxs.minos.domain.SBch;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.BranchLevelEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ILoanAccrualEverydayBatcherService;
 import com.caxs.minos.serv.db.IOverReckonAccrualEverydayService;
 import com.caxs.minos.serv.db.ISystemInfoService;
@@ -38,8 +38,8 @@ public class LoanAccrualEverydayBatcher implements ILoanAccrualEverydayBatcherSe
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNAA;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNAA;
     }
 
     @Override

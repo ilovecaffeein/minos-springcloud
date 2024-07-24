@@ -3,16 +3,16 @@ package com.caxs.minos.serv.batch;
 import com.caxs.minos.dao.LmLoanDao;
 import com.caxs.minos.dao.LmSetlmtTDao;
 import com.caxs.minos.dao.SCtrlDao;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.PUBConstant;
 import com.caxs.minos.domain.LmLoan;
 import com.caxs.minos.domain.LmSetlmtT;
 import com.caxs.minos.domain.SCtrl;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ILoanRunForBeginDayBatcherService;
-import com.caxs.minos.utils.DateOperation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
@@ -46,8 +46,8 @@ public class LoanRunForBeginDayBatcher implements ILoanRunForBeginDayBatcherServ
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNAM;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNAM;
     }
 
     @Override

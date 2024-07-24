@@ -1,11 +1,8 @@
 package com.caxs.minos.dao;
 
-
 import com.caxs.minos.domain.PLoanMtd;
 import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
-
 /**
  * 还款方式定义主表
 LOAN_MTD_TYP: 包括是否为气球贷、是否为利随本清、是否为弹性还款、本息不同间隔、本金递增递减等。

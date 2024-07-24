@@ -3,12 +3,11 @@ package com.caxs.minos.serv.batch;
 import com.caxs.minos.dao.SCtrlDao;
 import com.caxs.minos.domain.SCtrl;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.YnFlagEnum;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ILoanBFinishBatcherService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +32,8 @@ public class LoanBFinishBatcher implements ILoanBFinishBatcherService {
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.BEND;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.BEND;
     }
 
     @Override

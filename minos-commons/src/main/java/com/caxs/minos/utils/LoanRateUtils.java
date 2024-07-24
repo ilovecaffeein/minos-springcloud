@@ -2,8 +2,8 @@ package com.caxs.minos.utils;
 
 import com.caxs.minos.domain.LmLoan;
 import com.caxs.minos.domain.LmLoanCont;
-import com.caxs.minos.enums.LoanRateBaseEnum;
 import com.caxs.minos.exception.MinosException;
+import com.yuchengtech.ycloans.common.enumeration.LoanRateBase;
 
 import java.math.BigDecimal;
 /**
@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  */
 public class LoanRateUtils {
     private int dayCountYearly;
-    private LoanRateBaseEnum loanRateBase;
+    private LoanRateBase loanRateBase;
     private LmLoan lmLoan;
     // 为true表按实际天数算，由p_loan_typ_gl表中GL_RAT_BASE决定
     private LoanRelateUtils loanRelate;
@@ -32,7 +32,7 @@ public class LoanRateUtils {
         this.lmLoan = lmLoan;
         loanRelate = new LoanRelateUtils(lmLoan, lmLoanCont);
 		/* 取利率基础 */
-        loanRateBase = LoanRateBaseEnum.getEnum(lmLoan.getRateBase());
+        loanRateBase = LoanRateBase.getEnum(lmLoan.getRateBase());
         //计算一年多少天
         this.dayCountYearly = dayCountYearly;
     }
@@ -50,7 +50,7 @@ public class LoanRateUtils {
     }
 
     //计算日利率
-    public BigDecimal computeDaylyRate(LoanRateBaseEnum loanRateBase,BigDecimal rate, int yearDayCount) {
+    public BigDecimal computeDaylyRate(LoanRateBase loanRateBase,BigDecimal rate, int yearDayCount) {
         if (rate == null) {
             throw new MinosException("利率不能为空");
         }
@@ -68,7 +68,7 @@ public class LoanRateUtils {
     /**
      * @return the loanRateBase
      */
-    public LoanRateBaseEnum getLoanRateBase() {
+    public LoanRateBase getLoanRateBase() {
         return loanRateBase;
     }
 }

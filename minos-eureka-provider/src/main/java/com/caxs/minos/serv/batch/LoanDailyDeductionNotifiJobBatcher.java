@@ -2,8 +2,8 @@ package com.caxs.minos.serv.batch;
 
 import com.caxs.minos.domain.DeAtpyJobs;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.IDailyDeductionNotifiService;
 import com.caxs.minos.serv.db.imp.BatcherService;
 import org.apache.commons.logging.Log;
@@ -44,8 +44,8 @@ public class LoanDailyDeductionNotifiJobBatcher extends BatcherService {
         this.deAtpyJobs = deAtpyJobs;
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNAO;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNAO;
     }
 
 

@@ -7,13 +7,13 @@ import com.caxs.minos.domain.DeErrorLog;
 import com.caxs.minos.domain.DeProc;
 import com.caxs.minos.domain.DeProcLog;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.JobStateEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
 import com.caxs.minos.serv.batch.LoanInteriorInfoModifyBatcher;
 import com.caxs.minos.serv.batch.LoanRunForBeginDayBatcher;
 import com.caxs.minos.serv.batch.LoanSuspensionBatcher;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -311,7 +311,7 @@ public class RunForEndDayService implements IRunForEndDayService {
             if (log.isDebugEnabled())
                 log.debug("日终批处理：" + jobExe + " 开始！");
             Class<? extends Serializable> destClass  = (Class<? extends Serializable>) Class.forName(
-                    BatcherCode.NULL.getWholePath(jobExe));
+                    BatcherCodeEnum.NULL.getWholePath(jobExe));
             log.debug("日终批处理类：" + destClass);
             if ( destClass.newInstance() instanceof LoanRunForBeginDayBatcher)
                 iLoanRunForBeginDayBatcherService.runBatch(jobContext);//日终初始化处理

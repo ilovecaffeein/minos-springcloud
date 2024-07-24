@@ -2,12 +2,13 @@ server:
   port: 8092
 spring:
   application:
-    name: minos-eureka-provider
+    name: MINOS-EUREKA-PROVIDER
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://10.10.8.227:5433/glloans?characterEncoding=utf8
     username: glloans
     password: RunAq4EpFdNNvbj
+    type: com.alibaba.druid.pool.DruidDataSource   #这里是配置druid连接池，以下都是druid的配置信息
     filters: stat,wall,log4j
     maxActive: 20
     initialSize: 1
@@ -27,9 +28,3 @@ mybatis:
   config-location: classpath:daos/mybatis.cfg.xml    # mybatis配置文件所在路径
   type-aliases-package: com.caxs.minos    # 定义所有操作类的别名所在包
   mapper-locations: classpath:daos/mapper/**Dao.xml  # 所有的mapper映射文件
-#logging  不同的目录不同的日志输出级别
-logging:
-  config: classpath:config/logback-boot.xml
-  level:
-    root: info
-    com.caxs: debug

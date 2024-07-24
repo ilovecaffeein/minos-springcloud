@@ -219,4 +219,10 @@ public class ShdMtdTrans implements Serializable {
     public void setPayDay(Integer payDay) {
         this.payDay = payDay;
     }
+
+    public  ShdMtdTrans(String intStartDt,int mtdInstl,String instmInd){
+        this.intStartDt  =intStartDt ;
+        this.mtdInstl  =mtdInstl ;
+        this.instmInd  =instmInd ;
+    }
 }

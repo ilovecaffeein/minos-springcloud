@@ -1,6 +1,7 @@
 package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.dao.*;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.DBConst;
 import com.caxs.minos.def.ErrorCode;
 import com.caxs.minos.def.LoanVarDef;
@@ -12,13 +13,14 @@ import com.caxs.minos.enums.*;
 import com.caxs.minos.exception.MinosException;
 import com.caxs.minos.serv.db.*;
 import com.caxs.minos.utils.*;
+import com.yuchengtech.ycloans.common.enumeration.PaymentFreq;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
+
 import java.math.BigDecimal;
 import java.util.*;
 /***
@@ -137,7 +139,7 @@ public class OverReckonAccrualEverydayService implements IOverReckonAccrualEvery
         LoanRateUtils loanRate = new LoanRateUtils(lr.getLoan(), lr.getLoanCont(),sCcy.getCcyBase());
         // 根据借据号查询需要做结息处理的期数
         List<LmPmShd> lmPmShdList = null;
-        if (PaymentFreqEnum.NULL.equals(lr.getPaymentFreq())) {
+        if (PaymentFreq.NULL.equals(lr.getPaymentFreq())) {
             lmPmShdList = lmPmShdDao.findOneTimePay(lr.getLoan().getLoanNo());
         } else {
             lmPmShdList = lmPmShdDao.findShapeTrans(lr.getLoan().getLoanNo(),
@@ -326,7 +328,7 @@ public class OverReckonAccrualEverydayService implements IOverReckonAccrualEvery
             String firstOverDueDateStr = null; // 逾期后的第一个结息日(String型)
             // 计算逾期之后第一次结息日
             firstOverDueDate = DateOperation.getFirstPayDateByPaymentFreq(
-                    lr.getLoan().getLastDueDt(), lr.getLoan().getDueDay(), PaymentFreqEnum
+                    lr.getLoan().getLastDueDt(), lr.getLoan().getDueDay(), PaymentFreq
                             .getEnum(lr.getLoan().getPaymFreqUnit()), lr.getLoan().getPaymFreqFreq(),
                     isFirstPerdOverOnePaymentFreq(lr));
             // 选中记录中的最大期数
@@ -519,7 +521,7 @@ public class OverReckonAccrualEverydayService implements IOverReckonAccrualEvery
                 }
                 if (!isGenOdInt) {
                     if (lmPmShd.getPsDueDt().compareTo(jobContext.getBuzDate()) < 0) {
-                        if (SpringUtils.isNullOrEmpty(loanRelateTrans.getLoan().getCurGenOdIntDt())) {
+                        if (StringUtils.isNullOrEmpty(loanRelateTrans.getLoan().getCurGenOdIntDt())) {
                             if (loanRelateTrans.getLoan().getCurGenOdIntDt().compareTo(jobContext.getBuzDate()) > 0) {
                                 return false;
                             }
@@ -534,7 +536,7 @@ public class OverReckonAccrualEverydayService implements IOverReckonAccrualEvery
                 flag = true;
             } else if (LoanDevaIndEnum.YES.getCodeInDb().equals(loanRelateTrans.getLoan().getLoanDevaInd())
                     && ("".equals(loanRelateTrans.getLoan().getLastGenOdIntDt()) || loanRelateTrans.getLoan().getLastGenOdIntDt() == null)
-                    && ( PaymentFreqEnum.NULL.equals(loanRelateTrans.getPaymentFreq()))) {// 如果没有结过罚息，并且已做减值的利随本清，应当月结息
+                    && ( PaymentFreq.NULL.equals(loanRelateTrans.getPaymentFreq()))) {// 如果没有结过罚息，并且已做减值的利随本清，应当月结息
                 nextDueDate = loanRelateTrans.getLoan().getLastDeviIntAccDt();// 取减值日期推算当月结息日
                 currentDueDate = DateOperation.getDateStringToDb(DateOperation
                         .getFirstPayDateByPaymentFreq(DateOperation.dateStringAddDay(nextDueDate, 1), loanRelateTrans.getDueDay(),
@@ -558,7 +560,7 @@ public class OverReckonAccrualEverydayService implements IOverReckonAccrualEvery
      * @return
      */
     public boolean isFirstPerdOverOnePaymentFreq(LoanRelateUtils loanRelateTrans ) {
-        if (StringUtils.hasText(loanRelateTrans.getLoan().getInstmInd())) {
+        if (org.springframework.util.StringUtils.hasText(loanRelateTrans.getLoan().getInstmInd())) {
             return "Y".equals(loanRelateTrans.getLoan().getInstmInd());
         } else
             return loanRelateTrans.isFirstPerdOverOnePaymentFreq(systemInfoService.getPLoanTypGl());
@@ -595,7 +597,7 @@ public class OverReckonAccrualEverydayService implements IOverReckonAccrualEvery
             }
         } else if (lmChgStatRuleService.getLoanOverToCalcOdTyp().equals(
                         LoanOverToCalcOdTypEnum.F.getCodeInDb())) {
-            PaymentFreqEnum freq = PaymentFreqEnum.getEnum(lr.getPaymFreqUnit());
+            PaymentFreq freq = PaymentFreq.getEnum(lr.getPaymFreqUnit());
             int freqUnit = Double.valueOf(lr.getPaymFreqFreq()).intValue();
 
             Date fstDt = null;

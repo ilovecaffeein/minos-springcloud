@@ -1,6 +1,7 @@
 package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.dao.*;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.DBConst;
 import com.caxs.minos.def.ErrorCode;
 import com.caxs.minos.def.LoanVarDef;
@@ -11,9 +12,8 @@ import com.caxs.minos.domain.trans.BatchJobContextTrans;
 import com.caxs.minos.domain.trans.PaymentTryCalculationTrans;
 import com.caxs.minos.enums.*;
 import com.caxs.minos.exception.MinosException;
+import com.caxs.minos.enums.PaymentModeEnum;
 import com.caxs.minos.serv.db.*;
-import com.caxs.minos.serv.db.*;
-import com.caxs.minos.utils.DateOperation;
 import com.caxs.minos.utils.LoanRelateUtils;
 import com.caxs.minos.utils.RoundingUtil;
 import com.caxs.minos.utils.SystemUtils;
@@ -41,6 +41,9 @@ import static com.caxs.minos.enums.YnFlagEnum.YnFlag;
 public class GenerateLoanRepayService implements IGenerateLoanRepayService {
     // 打印日志属性
     private final Log log = LogFactory.getLog(getClass());
+
+    @Resource
+    IPaymentNormMoneyService iPaymentNormMoneyService;
 
     @Resource
     ISpeciPaySystemService speciPaySystemService;
@@ -217,7 +220,11 @@ public class GenerateLoanRepayService implements IGenerateLoanRepayService {
                     lmAtpyDetl.setNight(YnFlagEnum.YES.getCodeInDb());
                     lmAtpyDetl.setPrcsPageDtInd(YnFlagEnum.YES.getCodeInDb());
                     lmAtpyDetlDao.insert(lmAtpyDetl);
-                    if( YnFlagEnum.YES.getCodeInDb().equals(loan.getPbcInd()) && LoanVarDef.CA.equals(loan.getPlaceCde())
+
+                    if( YnFlagEnum.YES.getCodeInDb().equals(loan.getPbcInd())
+                            && ( LoanVarDef.CA.equals(loan.getPlaceCde()) || LoanVarDef.JGXS_CD.equals(loan.getPlaceCde())
+                                || LoanVarDef.BOBANK.equals(loan.getPlaceCde())  || LoanVarDef.YFBL.equals(loan.getPlaceCde())
+                                || LoanVarDef.ZXZL.equals(loan.getPlaceCde()) )
                             &&  ( nDays <=sCtrl.getDebtOver()) ){
                         speciPaySystemService.saveAppendBatchPayData(jobContext, loan, lmAtpyDetl, job);
                     }
@@ -442,10 +449,9 @@ public class GenerateLoanRepayService implements IGenerateLoanRepayService {
 
             LmSetlmtLog lmSetlmtObj = null;
             lmSetlmtObj = getNewedLmSetlmt(loanPyclList,jobContext);
-            lmSetlmtObj.setPchCde(loanPyclList.get(0).getPchCde());
 
             //会计分录入账
-            //iPaymentNormMoneyService.saveLoanPayment(lmSetlmtObj);
+            iPaymentNormMoneyService.saveLoanPayment(lmSetlmtObj);
             AtpyStateEnum as = AtpyStateEnum.COMPLETE;
             loanPyclList.get(0).setAtpySts(as.getCodeInDb());
             lmAtpyDetlDao.update(loanPyclList.get(0));
@@ -491,6 +497,7 @@ public class GenerateLoanRepayService implements IGenerateLoanRepayService {
         lmtLog.setSetlCompInd(YnFlag.NO.getCodeInDb());
         lmtLog.setSetlPrcpInd(YnFlag.NO.getCodeInDb());
         lmtLog.setOlInd(YnFlag.YES.getCodeInDb());
+        lmtLog.setPchCde(atpyDetailPycl.getZhyCde());
         return lmtLog;
     }
 

@@ -29,6 +29,13 @@
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
 
+        <!-- 不带server ，是客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-eureka</artifactId>
+            <version>1.4.3.RELEASE</version>
+        </dependency>
+
         <!-- 程序监控器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,14 +60,13 @@
 
         <dependency>
             <groupId>com.caxs</groupId>
-            <artifactId>minos-eureka-provider</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <artifactId>minos-commons</artifactId>
         </dependency>
 
+        <!-- 自定义还款计划试算包-->
         <dependency>
-            <groupId>com.caxs</groupId>
-            <artifactId>minos-commons</artifactId>
+            <groupId>com.shd</groupId>
+            <artifactId>shd</artifactId>
         </dependency>
 
         <dependency>
@@ -87,5 +93,22 @@
             <version>2.4</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-core</artifactId>
+            <version>1.19.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-apache-client4</artifactId>
+            <version>1.19.4</version>
+        </dependency>
     </dependencies>
 </project>

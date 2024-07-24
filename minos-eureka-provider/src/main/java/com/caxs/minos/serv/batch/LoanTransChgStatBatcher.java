@@ -2,9 +2,9 @@ package com.caxs.minos.serv.batch;
 
 import com.caxs.minos.domain.SBch;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ILmChgStatRuleService;
 import com.caxs.minos.serv.db.ILoanTransChgStatBatcherService;
 import com.caxs.minos.serv.db.ISystemInfoService;
@@ -39,8 +39,8 @@ public class LoanTransChgStatBatcher implements ILoanTransChgStatBatcherService 
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LNAN;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LNAN;
     }
 
     @Override

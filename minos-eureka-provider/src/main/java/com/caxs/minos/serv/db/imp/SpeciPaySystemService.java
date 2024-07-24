@@ -2,6 +2,7 @@ package com.caxs.minos.serv.db.imp;
 
 import com.caxs.minos.aeskey.EnDe3DES;
 import com.caxs.minos.dao.*;
+import com.caxs.minos.date.DateOperation;
 import com.caxs.minos.def.DBConst;
 import com.caxs.minos.def.ErrorCode;
 import com.caxs.minos.def.MinosConst;
@@ -13,12 +14,10 @@ import com.caxs.minos.files.PakAgeDataWriterContentWraper;
 import com.caxs.minos.files.PakAgeDateResultReader;
 import com.caxs.minos.serv.db.*;
 import com.caxs.minos.utils.CommonUtil;
-import com.caxs.minos.utils.DateOperation;
 import com.caxs.minos.utils.SystemUtils;
 import jdk.nashorn.internal.ir.annotations.Reference;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -210,7 +209,7 @@ public class SpeciPaySystemService implements ISpeciPaySystemService {
         } catch (Throwable t) {
             throw new MinosException(t);
         } finally {
-            log.info("扣款发放发记账结束！" );
+            log.info("扣款发送扣款请求结束！" );
         }
     }
 

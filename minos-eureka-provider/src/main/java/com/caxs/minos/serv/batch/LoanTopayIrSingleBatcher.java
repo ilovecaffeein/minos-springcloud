@@ -3,16 +3,15 @@ package com.caxs.minos.serv.batch;
 import com.caxs.minos.dao.DeAtpyJobsDao;
 import com.caxs.minos.domain.DeAtpyJobs;
 import com.caxs.minos.domain.trans.BatchJobContextTrans;
+import com.caxs.minos.enums.BatcherCodeEnum;
 import com.caxs.minos.enums.JobBussTypeEnum;
 import com.caxs.minos.enums.JobStateEnum;
 import com.caxs.minos.enums.YnFlagEnum;
 import com.caxs.minos.exception.MinosException;
-import com.caxs.minos.serv.common.enumeration.BatcherCode;
 import com.caxs.minos.serv.db.ILoanTopayIrSingleBatcherService;
 import com.caxs.minos.serv.db.ISpeciPaySystemService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -43,8 +42,8 @@ public class LoanTopayIrSingleBatcher implements ILoanTopayIrSingleBatcherServic
         super();
     }
 
-    public BatcherCode getBatcherCode() {
-        return BatcherCode.LPKK;
+    public BatcherCodeEnum getBatcherCode() {
+        return BatcherCodeEnum.LPKK;
     }
 
     @Override

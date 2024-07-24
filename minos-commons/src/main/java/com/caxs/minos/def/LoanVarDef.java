@@ -615,4 +615,126 @@ public class LoanVarDef {
     final public static String ZYYH = "ZYYH";
     /**公共代付接口*/
     final public static String PUBK = "PUBK";
+    /**金鼓存量业务*/
+    final public static String JGXS_CD = "JGXS";
+    /**锡商银行*/
+    final public static String HOLD = "HOLD";
+    /**网商银行*/
+    final public static String MYbank = "MYbank";
+    /**百信银行*/
+    final public static String AIBANK = "AIBANK";
+    /**百信商用车*/
+    final public static String AIBANK_CV = "AIBANK_CV";
+    /**百信代偿业务银行*/
+    final public static String AIBANK_DC = "AiBankDc";
+    /**网商代偿业务银行*/
+    final public static String MYBANK_DC = "MyBankDc";
+    /**北京代偿业务银行*/
+    final public static String BJBANK_DC = "BjBankDc";
+    /**渤海业务银行*/
+    final public static String BOHAI = "BOHAI";
+    /**浦发业务银行*/
+    final public static String SPDBANK = "SPDBANK";
+    /**浦发业务银行*/
+    final public static String SPDBANK_XX = "XXXXXXX";
+    /**浦发贴息业务银行*/
+    final public static String SPDBANK_TX = "SPDBANK_TX";
+    /** 网商代偿还款 */
+    final public static String LYDC = "LYDC";
+    /** 网商追偿主动还款 */
+    final public static String LYZC = "LYZC";
+    /** 浦发提现*/
+    final public static String SPTX = "SPTX";
+    /** 浦发充值*/
+    final public static String SPCZ = "SPCZ";
+    /** 北京银行提前还款*/
+    final public static String BBFS = "BBFS";
+    /**兴邦业务银行*/
+    final public static String XBJZ = "XBJZ";
+    /**浦发代偿业务*/
+    final public static String SPDC = "SPDC";
+    /**中信金租*/
+    final public static String ZXZL = "ZXZL";
+    /**上海银行*/
+    final public static String BOSC = "BOSC";
+    /**百信银行独资还款计划入账 --提前结清文件数据（百信乘用车业务,百信商用车业务）*/
+    final public static String ABFS = "ABFS";
+    /** 百信（车抵贷）*/
+    final public static String AIBANK_CM = "AIBANK_CM";
+    /**蓝海银行*/
+    final public static String BOBANK = "BOBANK";
+    /**蓝海银行-费用代码*/
+    final public static String F0101 = "F0101";
+    /** 代偿记录*/
+    final public static String PUDC = "PUDC";
+    /** 国银金租**/
+    final public static String CDBL = "CDBL";
+    /** 债权债转**/
+    final public static String SALP = "SALP";
+    /** 邮储上分**/
+    final public static String PSBC_CORE = "psbc_core";
+    /**浦发商用车*/
+    final public static String SPDBANK_CM = "spd";
+    /**浦发业务银行*/
+    final public static String SPDBANK_CM_TX = "spd_TX";
+    /**浦发银行：解析核心逾期清单文件,解析核心还款文件 -商用车*/
+    final public static String SPDA = "SPDA";
+    /**浦发银行：核心还款入账更新还款计划-商用车*/
+    final public static String SPDB = "SPDB";
+    /**浦发银行 ： 更新计划表逾期利息-商用车*/
+    final public static String SPDD = "SPDD";
+    /**浦发银行：解析核心逾期清单文件,解析核心还款文件*/
+    final public static String SPFO = "SPFO";
+    /**浦发银行：核心还款入账更新还款计划*/
+    final public static String SPFY = "SPFY";
+    /**浦发银行 ： 更新计划表逾期利息*/
+    final public static String SPFR = "SPFR";
+    /**国金涌富-资产还款情况更新上传接口*/
+    final public static String GJRY = "GJRY";
+    /**国金涌富-业务基本信息数据上传接口*/
+    final public static String GJLI = "GJLI";
+    /** 苏银金租**/
+    final public static String SYJZ = "SYJZ";
+    /** 苏银金租**/
+    final public static String SYJZ_CM = "SYJZ_CM";
+    /** 国金涌富**/
+    final public static String GJFM = "GJFM";
+    /** 中原金租**/
+    final public static String LIKU = "ZYYH-ZJD";
+    /** 百信回购 */
+    final public static String LABK = "LABK";
+    /** 皖新车抵贷**/
+    final public static String WXZL = "WXZL";
+    /** 东莞信托**/
+    final public static String DGXT = "DGXT";
+    /** 中航信托**/
+    final public static String ZHXT = "ZHXT";
+    /** 青海银行（车抵贷）**/
+    final public static String QHBANK = "QHBANK";
+    /** 青海银行（车抵贷）**/
+    final public static String QHBANK_CM = "QHBANK_CM";
+    /** 华瑞银行车抵贷 **/
+    final public static String SHRBANK_CM = "SHRBANK_CM";
+    /** 盈峰保理 **/
+    final public static String YFBL = "YFBL";
+    /** 主动回购 **/
+    final public static String ZDHG = "ZDHG";
+    /** 主动还款**/
+    final public static String ZDHK = "ZDHK";
+    /**兴邦金租车抵贷*/
+    final public static String XBJZ_CM = "XBJZ_CM";
+    /**工商银行消费分期卡*/
+    final public static String ICBC = "ICBC";
+    /**中关村车抵贷*/
+    final public static String ZGCBANK_CM = "ZGCBANK_CM";
+    /**苏商银行(车抵贷)*/
+    final public static String SNBANK_CM = "SNBANK_CM";
+    /**宁波银行车抵贷*/
+    final public static String NBCB_CM = "NBCB_CM";
+    /**宁波银行*/
+    final public static String NBCB = "NBCB";
+    /**浙商银行车抵贷*/
+    final public static String CZBA_CM = "CZBA_CM";
+    /**资方银行车抵贷*/
+    final public static String PUB_PLACE = "PUB_PLACE";
 }

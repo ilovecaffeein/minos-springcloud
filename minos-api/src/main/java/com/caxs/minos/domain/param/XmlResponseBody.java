@@ -43,8 +43,7 @@ public class XmlResponseBody {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         XmlResponseBody that = (XmlResponseBody) o;
-        return errorCode.equals(that.errorCode) &&
-                errorMsg.equals(that.errorMsg);
+        return errorCode.equals(that.errorCode) && errorMsg.equals(that.errorMsg);
     }
 
     @Override
