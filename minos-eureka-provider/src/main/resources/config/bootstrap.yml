@@ -10,6 +10,7 @@ spring:
       default-label: main
       uri: http://localhost:8091/
       profile: prod
+      import: classpath:applicationContext.xml
 # Eureka客户端相关配置
 eureka:
   client:   #客户端进行Eureka注册的配置
